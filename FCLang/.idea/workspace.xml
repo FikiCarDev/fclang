@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6b4adaf3-7f70-420c-b0d2-2535c66f872e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZZaJZjfDmYxv3YNynmmVL9fiMr" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.devfoFikiCar.main" />
+      <module name="FCLang" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.devfoFikiCar.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6b4adaf3-7f70-420c-b0d2-2535c66f872e" name="Default Changelist" comment="" />
+      <created>1585048998518</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585048998518</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1003" y="496" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585049050584">
+      <screen x="0" y="23" width="2560" height="1346" />
+    </state>
+    <state x="1003" y="496" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585049050584" />
+    <state width="2518" height="366" key="GridCell.Tab.0.bottom" timestamp="1585072916854">
+      <screen x="0" y="23" width="2560" height="1346" />
+    </state>
+    <state width="2518" height="366" key="GridCell.Tab.0.bottom/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585072916854" />
+    <state width="2518" height="366" key="GridCell.Tab.0.center" timestamp="1585072916853">
+      <screen x="0" y="23" width="2560" height="1346" />
+    </state>
+    <state width="2518" height="366" key="GridCell.Tab.0.center/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585072916853" />
+    <state width="2518" height="366" key="GridCell.Tab.0.left" timestamp="1585072916853">
+      <screen x="0" y="23" width="2560" height="1346" />
+    </state>
+    <state width="2518" height="366" key="GridCell.Tab.0.left/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585072916853" />
+    <state width="2518" height="366" key="GridCell.Tab.0.right" timestamp="1585072916853">
+      <screen x="0" y="23" width="2560" height="1346" />
+    </state>
+    <state width="2518" height="366" key="GridCell.Tab.0.right/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585072916853" />
+    <state x="945" y="330" width="670" height="676" key="search.everywhere.popup" timestamp="1585064490889">
+      <screen x="0" y="23" width="2560" height="1346" />
+    </state>
+    <state x="945" y="330" width="670" height="676" key="search.everywhere.popup/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585064490889" />
+  </component>
+</project>

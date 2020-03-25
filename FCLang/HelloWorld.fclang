@@ -1,0 +1,12 @@
+print "Hello, World"
+print 1
+print 12.2
+print 12
+
+int a = 2
+decimal d = 1.0
+string s = "My name is Jeff"
+
+print a
+print d
+print s

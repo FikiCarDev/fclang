@@ -1,0 +1,74 @@
+package com.devfoFikiCar.lexer;
+
+import com.devfoFikiCar.Token;
+
+import java.util.ArrayList;
+
+public class Lexer {
+    public static ArrayList<Token> lexer(String fileContents){
+        ArrayList<Token> tokens = new ArrayList<>();
+        char[] data = fileContents.toCharArray();
+        String temp = "";
+        boolean inString = false;
+
+        for(int i = 0; i < data.length; i++){
+            if(data[i] == '"'){
+                if(!inString) inString = true;
+                else inString = false;
+            }
+            if((data[i] != ' ') || (data[i] == ' ' && inString)){
+                temp += data[i];
+            } else {
+                boolean skip = false;
+                switch (temp){
+                    case "print": {
+                        Token token = new Token("PRINT", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "int": {
+                        Token token = new Token("INT_T", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "decimal": {
+                        Token token = new Token("DECIMAL_T", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "string": {
+                        Token token = new Token("STRING_T", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "=": {
+                        Token token = new Token("EQUALS", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                }
+                if(temp.matches("(\".*\")") && !skip){
+                    Token token = new Token("STRING", temp);
+                    tokens.add(token);
+                } else if(temp.matches("\\d+") && !skip){
+                    Token token = new Token("INT", temp);
+                    tokens.add(token);
+                } else if(temp.matches("\\d+(\\.\\d{1,2})?") && !skip){
+                    Token token = new Token("DECIMAL", temp);
+                    tokens.add(token);
+                } else if(temp.matches(".*") && !skip && temp != ""){
+                    Token token = new Token("NAME", temp);
+                    tokens.add(token);
+                }
+                temp = "";
+            }
+        }
+
+        return tokens;
+    }
+}

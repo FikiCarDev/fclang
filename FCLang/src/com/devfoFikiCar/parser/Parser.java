@@ -188,13 +188,12 @@ public class Parser {
         if(tokens.get(index).key == "INT"){
             return index + 1;
         } else if(tokens.get(index).key == "L_PARENTHESES"){
-            System.out.println("HERE");
             index = expression(index + 1);
             if(index == 0){
                 return 0;
             } else {
-                if(tokens.get(index + 1).key == "R_PARENTHESES"){
-                    return index + 1;
+                if(tokens.get(index + 2).key == "R_PARENTHESES"){
+                    return index + 2;
                 } else return 0;
             }
         } else return 0;

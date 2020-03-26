@@ -41,7 +41,7 @@ public class Parser {
                     else index = result;
                     break;
                 }
-                case "INT":{
+                default:{
                     int result = expression(index);
                     if(result == 0) Error.FatalError(5);
                     else index = result;

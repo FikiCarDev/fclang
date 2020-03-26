@@ -4,9 +4,6 @@
     <list default="true" id="6b4adaf3-7f70-420c-b0d2-2535c66f872e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HelloWorld.fclang" beforeDir="false" afterPath="$PROJECT_DIR$/HelloWorld.fclang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/error/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/error/Error.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/lexer/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/lexer/Lexer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/parser/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,22 +86,22 @@
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
     <state x="1003" y="496" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585049050584" />
-    <state width="2518" height="366" key="GridCell.Tab.0.bottom" timestamp="1585237672548">
+    <state width="2518" height="366" key="GridCell.Tab.0.bottom" timestamp="1585238171642">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state width="2518" height="366" key="GridCell.Tab.0.bottom/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585237672548" />
-    <state width="2518" height="366" key="GridCell.Tab.0.center" timestamp="1585237672547">
+    <state width="2518" height="366" key="GridCell.Tab.0.bottom/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585238171642" />
+    <state width="2518" height="366" key="GridCell.Tab.0.center" timestamp="1585238171641">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state width="2518" height="366" key="GridCell.Tab.0.center/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585237672547" />
-    <state width="2518" height="366" key="GridCell.Tab.0.left" timestamp="1585237672546">
+    <state width="2518" height="366" key="GridCell.Tab.0.center/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585238171641" />
+    <state width="2518" height="366" key="GridCell.Tab.0.left" timestamp="1585238171641">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state width="2518" height="366" key="GridCell.Tab.0.left/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585237672546" />
-    <state width="2518" height="366" key="GridCell.Tab.0.right" timestamp="1585237672547">
+    <state width="2518" height="366" key="GridCell.Tab.0.left/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585238171641" />
+    <state width="2518" height="366" key="GridCell.Tab.0.right" timestamp="1585238171642">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state width="2518" height="366" key="GridCell.Tab.0.right/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585237672547" />
+    <state width="2518" height="366" key="GridCell.Tab.0.right/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585238171642" />
     <state width="2518" height="453" key="GridCell.Tab.1.bottom" timestamp="1585237332889">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>

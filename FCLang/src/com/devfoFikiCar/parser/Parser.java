@@ -187,7 +187,8 @@ public class Parser {
     public static int factor(int index){
         if(tokens.get(index).key == "INT"){
             return index + 1;
-        } else if(tokens.get(index + 1).key == "L_PARENTHESES"){
+        } else if(tokens.get(index).key == "L_PARENTHESES"){
+            System.out.println("HERE");
             index = expression(index + 1);
             if(index == 0){
                 return 0;

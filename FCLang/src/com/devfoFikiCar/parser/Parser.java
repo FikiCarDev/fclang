@@ -41,6 +41,12 @@ public class Parser {
                     else index = result;
                     break;
                 }
+                case "INT":{
+                    int result = expression(index);
+                    if(result == 0) Error.FatalError(5);
+                    else index = result;
+                    break;
+                }
             }
         }
         // FOR DEBUGGING
@@ -114,8 +120,6 @@ public class Parser {
     public static int decimal_d(int index){
         if(tokens.get(index + 1).key == "NAME"){
             if(tokens.get(index + 2).key == "EQUALS") {
-                // after adding expressions you can first try searching for expression from here
-                // using function declare_e
                 index = declare_v(index + 3, tokens.get(index).key, tokens.get(index + 1).value);
                 return index;
             } else return 0;
@@ -142,5 +146,56 @@ public class Parser {
             }
             return index;
         } return 0;
+    }
+
+    /*   TEST CASE:
+     *
+     *   2 + 2 + 1
+     *   1 2 3 4 5
+     *
+     *   2 + ( 2 * 2 )
+     *   1 2 3 4 5 6 7
+     * */
+
+    // expression: term (('-' | '+') term)*
+    public static int expression(int index){
+        if(term(index) != 0){
+            index = term(index);
+            return index;
+        } else if(tokens.get(index).key == "ADDITION" || tokens.get(index).key == "SUBTRACTION") {
+            index = term(index + 1);
+            if (index != 0) {
+                return index;
+            } else return 0;
+        } else return 0;
+    }
+
+    // term: factor (('/' | '*') factor)*
+    public static int term(int index){
+        if(factor(index) != 0){
+            index = factor(index);
+            return index;
+        } else if(tokens.get(index).key == "MULTIPLICATION" || tokens.get(index).key == "DIVISION"){
+            index = factor(index + 1);
+            if(index != 0){
+                return index;
+            } else return 0;
+        } else return 0;
+    }
+
+    // factor: NUMBER | '(' expression ')'
+    public static int factor(int index){
+        if(tokens.get(index).key == "INT"){
+            return index + 1;
+        } else if(tokens.get(index + 1).key == "L_PARENTHESES"){
+            index = expression(index + 1);
+            if(index == 0){
+                return 0;
+            } else {
+                if(tokens.get(index + 1).key == "R_PARENTHESES"){
+                    return index + 1;
+                } else return 0;
+            }
+        } else return 0;
     }
 }

@@ -14,6 +14,12 @@ public class Token {
     *   INT_T           - TYPES
     *   DECIMAL_T       |
     *   EQUALS          - =
+    *   ADDITION
+    *   SUBTRACTION
+    *   MULTIPLICATION
+    *   DIVISION
+    *   L_PARENTHESES   (
+    *   R_PARENTHESES   )
     * */
 
     public Token(String Key, String Value){

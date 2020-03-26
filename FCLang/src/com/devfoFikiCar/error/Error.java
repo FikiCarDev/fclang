@@ -15,6 +15,9 @@ public class Error {
             case 4:
                 System.out.println("Wrong decimal declaration.");
                 System.exit(0);
+            case 5:
+                System.out.println("Wrong expression.");
+                System.exit(0);
         }
     }
 }

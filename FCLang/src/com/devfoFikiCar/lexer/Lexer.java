@@ -51,6 +51,42 @@ public class Lexer {
                         skip = true;
                         break;
                     }
+                    case "+":{
+                        Token token = new Token("ADDITION", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "-":{
+                        Token token = new Token("SUBTRACTION", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "*":{
+                        Token token = new Token("MULTIPLICATION", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "/":{
+                        Token token = new Token("DIVISION", temp);
+                        tokens.add(token);
+                        skip  = true;
+                        break;
+                    }
+                    case "(":{
+                        Token token = new Token("L_PARENTHESES", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case ")":{
+                        Token token = new Token("R_PARENTHESES", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
                 }
                 if(temp.matches("(\".*\")") && !skip){
                     Token token = new Token("STRING", temp);

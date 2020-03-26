@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b4adaf3-7f70-420c-b0d2-2535c66f872e" name="Default Changelist" comment="" />
+    <list default="true" id="6b4adaf3-7f70-420c-b0d2-2535c66f872e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HelloWorld.fclang" beforeDir="false" afterPath="$PROJECT_DIR$/HelloWorld.fclang" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/error/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/error/Error.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/lexer/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/lexer/Lexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/parser/Parser.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +21,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1ZZaJZjfDmYxv3YNynmmVL9fiMr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -22,6 +33,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -61,27 +73,58 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="1003" y="496" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585049050584">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
     <state x="1003" y="496" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585049050584" />
-    <state width="2518" height="366" key="GridCell.Tab.0.bottom" timestamp="1585072916854">
+    <state width="2518" height="366" key="GridCell.Tab.0.bottom" timestamp="1585237672548">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state width="2518" height="366" key="GridCell.Tab.0.bottom/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585072916854" />
-    <state width="2518" height="366" key="GridCell.Tab.0.center" timestamp="1585072916853">
+    <state width="2518" height="366" key="GridCell.Tab.0.bottom/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585237672548" />
+    <state width="2518" height="366" key="GridCell.Tab.0.center" timestamp="1585237672547">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state width="2518" height="366" key="GridCell.Tab.0.center/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585072916853" />
-    <state width="2518" height="366" key="GridCell.Tab.0.left" timestamp="1585072916853">
+    <state width="2518" height="366" key="GridCell.Tab.0.center/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585237672547" />
+    <state width="2518" height="366" key="GridCell.Tab.0.left" timestamp="1585237672546">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state width="2518" height="366" key="GridCell.Tab.0.left/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585072916853" />
-    <state width="2518" height="366" key="GridCell.Tab.0.right" timestamp="1585072916853">
+    <state width="2518" height="366" key="GridCell.Tab.0.left/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585237672546" />
+    <state width="2518" height="366" key="GridCell.Tab.0.right" timestamp="1585237672547">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state width="2518" height="366" key="GridCell.Tab.0.right/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585072916853" />
+    <state width="2518" height="366" key="GridCell.Tab.0.right/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585237672547" />
+    <state width="2518" height="453" key="GridCell.Tab.1.bottom" timestamp="1585237332889">
+      <screen x="0" y="23" width="2560" height="1346" />
+    </state>
+    <state width="2518" height="453" key="GridCell.Tab.1.bottom/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585237332889" />
+    <state width="2518" height="453" key="GridCell.Tab.1.center" timestamp="1585237332888">
+      <screen x="0" y="23" width="2560" height="1346" />
+    </state>
+    <state width="2518" height="453" key="GridCell.Tab.1.center/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585237332888" />
+    <state width="2518" height="453" key="GridCell.Tab.1.left" timestamp="1585237332888">
+      <screen x="0" y="23" width="2560" height="1346" />
+    </state>
+    <state width="2518" height="453" key="GridCell.Tab.1.left/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585237332888" />
+    <state width="2518" height="453" key="GridCell.Tab.1.right" timestamp="1585237332889">
+      <screen x="0" y="23" width="2560" height="1346" />
+    </state>
+    <state width="2518" height="453" key="GridCell.Tab.1.right/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585237332889" />
+    <state x="956" y="528" key="com.intellij.ide.util.TipDialog" timestamp="1585232477719">
+      <screen x="0" y="23" width="2560" height="1346" />
+    </state>
+    <state x="956" y="528" key="com.intellij.ide.util.TipDialog/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585232477719" />
     <state x="945" y="330" width="670" height="676" key="search.everywhere.popup" timestamp="1585064490889">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>

@@ -157,29 +157,25 @@ public class Parser {
      *   1 2 3 4 5 6 7
      * */
 
-    // expression: term (('-' | '+') term)*
+    // expression: term (('-' | '+') term)?
     public static int expression(int index){
         if(term(index) != 0){
-            index = term(index);
+            index  = term(index);
+            if(index < tokens.size() && (tokens.get(index).key == "ADDITION" || tokens.get(index).key == "SUBTRACTION")){
+                index = expression(index + 1);
+            }
             return index;
-        } else if(tokens.get(index).key == "ADDITION" || tokens.get(index).key == "SUBTRACTION") {
-            index = term(index + 1);
-            if (index != 0) {
-                return index;
-            } else return 0;
-        } else return 0;
+        } return 0;
     }
 
-    // term: factor (('/' | '*') factor)*
+    // term: factor (('/' | '*') factor)?
     public static int term(int index){
         if(factor(index) != 0){
             index = factor(index);
+            if(index < tokens.size() && (tokens.get(index).key == "MULTIPLICATION" || tokens.get(index).key == "DIVISION")){
+                index = term(index + 1);
+            }
             return index;
-        } else if(tokens.get(index).key == "MULTIPLICATION" || tokens.get(index).key == "DIVISION"){
-            index = factor(index + 1);
-            if(index != 0){
-                return index;
-            } else return 0;
         } else return 0;
     }
 
@@ -192,8 +188,8 @@ public class Parser {
             if(index == 0){
                 return 0;
             } else {
-                if(tokens.get(index + 2).key == "R_PARENTHESES"){
-                    return index + 2;
+                if(index < tokens.size() && tokens.get(index).key == "R_PARENTHESES"){
+                    return index + 1;
                 } else return 0;
             }
         } else return 0;

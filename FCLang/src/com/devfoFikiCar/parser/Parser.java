@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Parser {
-    public static ArrayList<Token> tokens = new ArrayList<>();
-    public static HashMap<String, Integer> int_store = new HashMap<>();
-    public static HashMap<String, String> string_store = new HashMap<>();
-    public static HashMap<String, Double> decimal_store = new HashMap<>();
+    private static ArrayList<Token> tokens = new ArrayList<>();
+    private static HashMap<String, Integer> int_store = new HashMap<>();
+    private static HashMap<String, String> string_store = new HashMap<>();
+    private static HashMap<String, Double> decimal_store = new HashMap<>();
 
     public static void parse(ArrayList<Token> old){
         tokens = old;
@@ -42,7 +42,9 @@ public class Parser {
                     break;
                 }
                 default:{
-                    int result = expression(index);
+                    int ret[] = expression(index, 0);
+                    int result = ret[0];
+                    System.out.println(ret[1]);
                     if(result == 0) Error.FatalError(5);
                     else index = result;
                     break;
@@ -62,7 +64,7 @@ public class Parser {
     }
 
     // print: 'PRINT' STRING | INT | DECIMAL | NAME
-    public static int fprint(int index){
+    private static int fprint(int index){
         if(tokens.get(index + 1).key == "STRING" || tokens.get(index + 1).key == "INT" || tokens.get(index + 1).key == "DECIMAL"){
             String toPrint = tokens.get(index + 1).value;
             if(tokens.get(index + 1).key == "STRING")
@@ -97,7 +99,7 @@ public class Parser {
     }
 
     // int declaration
-    public static int int_d(int index){
+    private static int int_d(int index){
         if(tokens.get(index + 1).key == "NAME"){
             if(tokens.get(index + 2).key == "EQUALS") {
                 index = declare_v(index + 3, tokens.get(index).key, tokens.get(index + 1).value);
@@ -107,7 +109,7 @@ public class Parser {
     }
 
     // string declaration
-    public static int string_d(int index){
+    private static int string_d(int index){
         if(tokens.get(index + 1).key == "NAME"){
             if(tokens.get(index + 2).key == "EQUALS") {
                 index = declare_v(index + 3, tokens.get(index).key, tokens.get(index + 1).value);
@@ -117,7 +119,7 @@ public class Parser {
     }
 
     // decimal declaration
-    public static int decimal_d(int index){
+    private static int decimal_d(int index){
         if(tokens.get(index + 1).key == "NAME"){
             if(tokens.get(index + 2).key == "EQUALS") {
                 index = declare_v(index + 3, tokens.get(index).key, tokens.get(index + 1).value);
@@ -127,7 +129,7 @@ public class Parser {
     }
 
     // declares
-    public static int declare_v(int index, String type, String name){
+    private static int declare_v(int index, String type, String name){
         String value_t = tokens.get(index).key + "_T";
         if(type.equals(value_t)){
             switch (type){
@@ -148,50 +150,67 @@ public class Parser {
         } return 0;
     }
 
-    /*   TEST CASE:
-     *
-     *   2 + 2 + 1
-     *   1 2 3 4 5
-     *
-     *   2 + ( 2 * 2 )
-     *   1 2 3 4 5 6 7
-     * */
+    /*
+    *   return int[] pos 0 = index pos 2 = value
+    *
+    * */
 
     // expression: term (('-' | '+') term)?
-    public static int expression(int index){
-        if(term(index) != 0){
-            index  = term(index);
+    private static int[] expression(int index, int value){
+        int[] ret = {index, value};
+        if(term(index, value)[0] != 0){
+            index  = term(index, value)[0];
             if(index < tokens.size() && (tokens.get(index).key == "ADDITION" || tokens.get(index).key == "SUBTRACTION")){
-                index = expression(index + 1);
+                index = expression(index + 1, value)[0];
             }
-            return index;
-        } return 0;
+            ret[0] = index;
+            return ret;
+        } else {
+            ret[0] = 0;
+            return ret;
+        }
     }
 
     // term: factor (('/' | '*') factor)?
-    public static int term(int index){
-        if(factor(index) != 0){
-            index = factor(index);
+    private static int[] term(int index, int value){
+        int[] ret = {index, value};
+        if(factor(index, value)[0] != 0){
+            index = factor(index, value)[0];
             if(index < tokens.size() && (tokens.get(index).key == "MULTIPLICATION" || tokens.get(index).key == "DIVISION")){
-                index = term(index + 1);
+                index = term(index + 1, value)[0];
             }
-            return index;
-        } else return 0;
+            ret[0] = index;
+            return ret;
+        } else {
+            ret[0] = 0;
+            return ret;
+        }
     }
 
     // factor: NUMBER | '(' expression ')'
-    public static int factor(int index){
+    private static int[] factor(int index, int value){
+        int[] ret = {index, value};
         if(tokens.get(index).key == "INT"){
-            return index + 1;
+            ret[0] = index + 1;
+            ret[1] = Integer.parseInt(tokens.get(index).value);
+            return ret;
         } else if(tokens.get(index).key == "L_PARENTHESES"){
-            index = expression(index + 1);
+            index = expression(index + 1, value)[0];
             if(index == 0){
-                return 0;
+                ret[0] = 0;
+                return ret;
             } else {
                 if(index < tokens.size() && tokens.get(index).key == "R_PARENTHESES"){
-                    return index + 1;
-                } else return 0;
+                    ret[0] = index + 1;
+                    return ret;
+                } else {
+                    ret[0] = 0;
+                    return ret;
+                }
             }
-        } else return 0;
+        } else {
+            ret[0] = 0;
+            return ret;
+        }
     }
 }

@@ -232,6 +232,7 @@ public class Parser {
             } else {
                 if(index < tokens.size() && tokens.get(index).key == "R_PARENTHESES"){
                     ret[0] = index + 1;
+                    ret[1] = value;
                     return ret;
                 } else {
                     ret[0] = 0;

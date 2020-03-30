@@ -42,7 +42,7 @@ public class Parser {
                     break;
                 }
                 default:{
-                    int ret[] = expression(index, 0);
+                    int[] ret = expression(index, 0);
                     int result = ret[0];
                     System.out.println(ret[1]);
                     if(result == 0) Error.FatalError(5);
@@ -159,11 +159,25 @@ public class Parser {
     private static int[] expression(int index, int value){
         int[] ret = {index, value};
         if(term(index, value)[0] != 0){
-            index  = term(index, value)[0];
+            int[] ret_v = term(index, value);
+            index  = ret_v[0];
+            value = ret_v[1];
             if(index < tokens.size() && (tokens.get(index).key == "ADDITION" || tokens.get(index).key == "SUBTRACTION")){
-                index = expression(index + 1, value)[0];
+                ret_v = expression(index + 1, value);
+                switch (tokens.get(index).key){
+                    case "SUBTRACTION":{
+                        value -= ret_v[1];
+                        break;
+                    }
+                    case "ADDITION":{
+                        value += ret_v[1];
+                        break;
+                    }
+                }
+                index = ret_v[0];
             }
             ret[0] = index;
+            ret[1] = value;
             return ret;
         } else {
             ret[0] = 0;
@@ -175,11 +189,25 @@ public class Parser {
     private static int[] term(int index, int value){
         int[] ret = {index, value};
         if(factor(index, value)[0] != 0){
-            index = factor(index, value)[0];
+            int[] ret_v = factor(index, value);
+            index = ret_v[0];
+            value = ret_v[1];
             if(index < tokens.size() && (tokens.get(index).key == "MULTIPLICATION" || tokens.get(index).key == "DIVISION")){
-                index = term(index + 1, value)[0];
+                ret_v = expression(index + 1, value);
+                switch (tokens.get(index).key){
+                    case "DIVISION":{
+                        value /= ret_v[1];
+                        break;
+                    }
+                    case "MULTIPLICATION":{
+                        value *= ret_v[1];
+                        break;
+                    }
+                }
+                index = ret_v[0];
             }
             ret[0] = index;
+            ret[1] = value;
             return ret;
         } else {
             ret[0] = 0;
@@ -195,7 +223,9 @@ public class Parser {
             ret[1] = Integer.parseInt(tokens.get(index).value);
             return ret;
         } else if(tokens.get(index).key == "L_PARENTHESES"){
-            index = expression(index + 1, value)[0];
+            int[] ret_v = expression(index + 1, ret[1]);
+            index = ret_v[0];
+            value = ret_v[1];
             if(index == 0){
                 ret[0] = 0;
                 return ret;

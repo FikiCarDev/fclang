@@ -60,7 +60,7 @@ public class Parser {
 
     // print: 'PRINT' STRING | INT | DECIMAL | NAME
     private static int fprint(int index){
-        int[] ret_v = expression(index + 1, 0);
+        int[] ret_v = expression_int(index + 1, 0);
         if(ret_v[0] != 0){
             System.out.println(ret_v[1]);
             return --ret_v[0];
@@ -101,7 +101,7 @@ public class Parser {
     private static int int_d(int index){
         if(tokens.get(index + 1).key == "NAME"){
             if(tokens.get(index + 2).key == "EQUALS") {
-                int[] ret_v = expression(index + 3, 0);
+                int[] ret_v = expression_int(index + 3, 0);
                 if(ret_v[0] != 0){
                     int_store.put(tokens.get(index + 1).value, ret_v[1]);
                     index = ret_v[0];
@@ -156,20 +156,15 @@ public class Parser {
         } return 0;
     }
 
-    /*
-    *   return int[] pos 0 = index pos 2 = value
-    *
-    * */
-
     // expression: term (('-' | '+') term)?
-    private static int[] expression(int index, int value){
+    private static int[] expression_int(int index, int value){
         int[] ret = {index, value};
-        if(term(index, value)[0] != 0){
-            int[] ret_v = term(index, value);
+        if(term_int(index, value)[0] != 0){
+            int[] ret_v = term_int(index, value);
             index  = ret_v[0];
             value = ret_v[1];
             if(index < tokens.size() && (tokens.get(index).key == "ADDITION" || tokens.get(index).key == "SUBTRACTION")){
-                ret_v = expression(index + 1, value);
+                ret_v = expression_int(index + 1, value);
                 switch (tokens.get(index).key){
                     case "SUBTRACTION":{
                         value -= ret_v[1];
@@ -192,14 +187,14 @@ public class Parser {
     }
 
     // term: factor (('/' | '*') factor)?
-    private static int[] term(int index, int value){
+    private static int[] term_int(int index, int value){
         int[] ret = {index, value};
-        if(factor(index, value)[0] != 0){
-            int[] ret_v = factor(index, value);
+        if(factor_int(index, value)[0] != 0){
+            int[] ret_v = factor_int(index, value);
             index = ret_v[0];
             value = ret_v[1];
             if(index < tokens.size() && (tokens.get(index).key == "MULTIPLICATION" || tokens.get(index).key == "DIVISION")){
-                ret_v = expression(index + 1, value);
+                ret_v = expression_int(index + 1, value);
                 switch (tokens.get(index).key){
                     case "DIVISION":{
                         value /= ret_v[1];
@@ -222,14 +217,14 @@ public class Parser {
     }
 
     // factor: NUMBER | '(' expression ')'
-    private static int[] factor(int index, int value){
+    private static int[] factor_int(int index, int value){
         int[] ret = {index, value};
         if(tokens.get(index).key == "INT"){
             ret[0] = index + 1;
             ret[1] = Integer.parseInt(tokens.get(index).value);
             return ret;
         } else if(tokens.get(index).key == "L_PARENTHESES"){
-            int[] ret_v = expression(index + 1, ret[1]);
+            int[] ret_v = expression_int(index + 1, ret[1]);
             index = ret_v[0];
             value = ret_v[1];
             if(index == 0){
@@ -237,6 +232,96 @@ public class Parser {
                 return ret;
             } else {
                 if(index < tokens.size() && tokens.get(index).key == "R_PARENTHESES"){
+                    ret[0] = index + 1;
+                    ret[1] = value;
+                    return ret;
+                } else {
+                    ret[0] = 0;
+                    return ret;
+                }
+            }
+        } else {
+            ret[0] = 0;
+            return ret;
+        }
+    }
+
+    // expression for decimal
+    private static double[] expression_decimal(double index, double value){
+        double[] ret = {index, value};
+        if(term_decimal(index, value)[0] != 0){
+            double[] ret_v = term_decimal(index, value);
+            index  = ret_v[0];
+            value = ret_v[1];
+            if(index < tokens.size() && (tokens.get(Integer.parseInt(String.valueOf(index))).key == "ADDITION" || tokens.get(Integer.parseInt(String.valueOf(index))).key == "SUBTRACTION")){
+                ret_v = expression_decimal(index + 1, value);
+                switch (tokens.get(Integer.parseInt(String.valueOf(index))).key){
+                    case "SUBTRACTION":{
+                        value -= ret_v[1];
+                        break;
+                    }
+                    case "ADDITION":{
+                        value += ret_v[1];
+                        break;
+                    }
+                }
+                index = ret_v[0];
+            }
+            ret[0] = index;
+            ret[1] = value;
+            return ret;
+        } else {
+            ret[0] = 0;
+            return ret;
+        }
+    }
+
+    // term for decimal
+    private static double[] term_decimal(double index, double value){
+        double[] ret = {index, value};
+        if(factor_decimal(index, value)[0] != 0){
+            double[] ret_v = factor_decimal(index, value);
+            index = ret_v[0];
+            value = ret_v[1];
+            if(index < tokens.size() && (tokens.get(Integer.parseInt(String.valueOf(index))).key == "MULTIPLICATION" || tokens.get(Integer.parseInt(String.valueOf(index))).key == "DIVISION")){
+                ret_v = expression_decimal(index + 1, value);
+                switch (tokens.get(Integer.parseInt(String.valueOf(index))).key){
+                    case "DIVISION":{
+                        value /= ret_v[1];
+                        break;
+                    }
+                    case "MULTIPLICATION":{
+                        value *= ret_v[1];
+                        break;
+                    }
+                }
+                index = ret_v[0];
+            }
+            ret[0] = index;
+            ret[1] = value;
+            return ret;
+        } else {
+            ret[0] = 0;
+            return ret;
+        }
+    }
+
+    // factor for decimal
+    private static double[] factor_decimal(double index, double value){
+        double[] ret = {index, value};
+        if(tokens.get(Integer.parseInt(String.valueOf(index))).key == "DECIMAL"){
+            ret[0] = index + 1;
+            ret[1] = Integer.parseInt(tokens.get(Integer.parseInt(String.valueOf(index))).value);
+            return ret;
+        } else if(tokens.get(Integer.parseInt(String.valueOf(index))).key == "L_PARENTHESES"){
+            double[] ret_v = expression_decimal(index + 1, ret[1]);
+            index = ret_v[0];
+            value = ret_v[1];
+            if(index == 0){
+                ret[0] = 0;
+                return ret;
+            } else {
+                if(index < tokens.size() && tokens.get(Integer.parseInt(String.valueOf(index))).key == "R_PARENTHESES"){
                     ret[0] = index + 1;
                     ret[1] = value;
                     return ret;

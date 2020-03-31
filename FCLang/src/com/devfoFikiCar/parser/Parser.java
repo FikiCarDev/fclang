@@ -52,10 +52,10 @@ public class Parser {
             }
         }
         // FOR DEBUGGING
-        /*int_store.entrySet().forEach(entry->{
+        int_store.entrySet().forEach(entry->{
             System.out.println(entry.getKey() + " " + entry.getValue());
         });
-        string_store.entrySet().forEach(entry->{
+        /*string_store.entrySet().forEach(entry->{
             System.out.println(entry.getKey() + " " + entry.getValue());
         });
         decimal_store.entrySet().forEach(entry->{
@@ -102,10 +102,17 @@ public class Parser {
     private static int int_d(int index){
         if(tokens.get(index + 1).key == "NAME"){
             if(tokens.get(index + 2).key == "EQUALS") {
-                index = declare_v(index + 3, tokens.get(index).key, tokens.get(index + 1).value);
-                return index;
+                int[] ret_v = expression(index + 3, 0);
+                if(ret_v[0] != 0){
+                    int_store.put(tokens.get(index + 1).value, ret_v[1]);
+                    index = ret_v[0];
+                    return index;
+                } else {
+                    index = declare_v(index + 3, tokens.get(index).key, tokens.get(index + 1).value);
+                    return index;
+                }
             } else return 0;
-        } else return 0;
+        } return 0;
     }
 
     // string declaration

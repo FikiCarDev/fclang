@@ -60,21 +60,26 @@ public class Parser {
 
     // print: 'PRINT' STRING | INT | DECIMAL | NAME
     private static int fprint(int index){
-        // TODO:
-        //  Check for ret_v_double and int in switch statment
-        int[] ret_v_int = expression_int(index + 1, 0);
-        double[] ret_v_double = expression_decimal(index * 1.0 + 1.0, 0.0);
-        if(ret_v_int[0] != 0){
-            System.out.println(ret_v_int[1]);
-            return --ret_v_int[0];
-        } else if(ret_v_double[1] != 0){
-            return (int)--ret_v_double[0];
-        } else if(tokens.get(index + 1).key == "STRING" || tokens.get(index + 1).key == "INT" || tokens.get(index + 1).key == "DECIMAL"){
-            // TODO: here
-            String toPrint = tokens.get(index + 1).value;
-            if(tokens.get(index + 1).key == "STRING")
-                toPrint = toPrint.subSequence(1, toPrint.length() - 1).toString();
-            System.out.println(toPrint);
+        if(tokens.get(index + 1).key == "STRING" || tokens.get(index + 1).key == "INT" || tokens.get(index + 1).key == "DECIMAL"){
+            switch (tokens.get(index + 1).key){
+                case "INT":{
+                    int[] ret_v_int = expression_int(index + 1, 0);
+                    System.out.println(ret_v_int[1]);
+                    return --ret_v_int[0];
+                }
+                case "DECIMAL":{
+                    double[] ret_v_double = expression_decimal(index * 1.0 + 1.0, 0.0);
+                    System.out.println(ret_v_double[1]);
+                    return (int)--ret_v_double[0];
+                }
+                default:{
+                    String toPrint = tokens.get(index + 1).value;
+                    if(tokens.get(index + 1).key == "STRING")
+                        toPrint = toPrint.subSequence(1, toPrint.length() - 1).toString();
+                    System.out.println(toPrint);
+                    break;
+                }
+            }
             return index + 1;
         } else if(tokens.get(index + 1).key == "NAME"){
             if(int_store.containsKey(tokens.get(index + 1).value) || string_store.containsKey(tokens.get(index + 1).value) || decimal_store.containsKey(tokens.get(index + 1).value)){

@@ -50,9 +50,9 @@ public class Parser {
         int_store.entrySet().forEach(entry->{
             System.out.println(entry.getKey() + " " + entry.getValue());
         });
-        /*string_store.entrySet().forEach(entry->{
+        string_store.entrySet().forEach(entry->{
             System.out.println(entry.getKey() + " " + entry.getValue());
-        });*/
+        });
         decimal_store.entrySet().forEach(entry->{
             System.out.println(entry.getKey() + " " + entry.getValue());
         });

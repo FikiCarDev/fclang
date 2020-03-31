@@ -13,8 +13,10 @@ public class main {
         System.out.println(data);
 
         ArrayList<Token> tokens = Lexer.lexer(data);
+        int i = 0;
         for(Token t : tokens){
-            System.out.println("Token(" + t.key + ", " + t.value + ")");
+            System.out.println(i + ". Token(" + t.key + ", " + t.value + ")");
+            i++;
         }
 
         System.out.println("Beginning of FCLang execution: ");

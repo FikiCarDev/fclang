@@ -41,17 +41,12 @@ public class Parser {
                     else index = result;
                     break;
                 }
-                default:{
-                    int[] ret = expression(index, 0);
-                    int result = ret[0];
-                    System.out.println(ret[1]);
-                    if(result == 0) Error.FatalError(5);
-                    else index = result;
-                    break;
-                }
             }
         }
         // FOR DEBUGGING
+        System.out.println("======================================");
+        System.out.println("Value store check:");
+        System.out.println("======================================");
         int_store.entrySet().forEach(entry->{
             System.out.println(entry.getKey() + " " + entry.getValue());
         });
@@ -65,7 +60,11 @@ public class Parser {
 
     // print: 'PRINT' STRING | INT | DECIMAL | NAME
     private static int fprint(int index){
-        if(tokens.get(index + 1).key == "STRING" || tokens.get(index + 1).key == "INT" || tokens.get(index + 1).key == "DECIMAL"){
+        int[] ret_v = expression(index + 1, 0);
+        if(ret_v[0] != 0){
+            System.out.println(ret_v[1]);
+            return --ret_v[0];
+        }else if(tokens.get(index + 1).key == "STRING" || tokens.get(index + 1).key == "INT" || tokens.get(index + 1).key == "DECIMAL"){
             String toPrint = tokens.get(index + 1).value;
             if(tokens.get(index + 1).key == "STRING")
                 toPrint = toPrint.subSequence(1, toPrint.length() - 1).toString();
@@ -106,7 +105,7 @@ public class Parser {
                 if(ret_v[0] != 0){
                     int_store.put(tokens.get(index + 1).value, ret_v[1]);
                     index = ret_v[0];
-                    return index;
+                    return --index;
                 } else {
                     index = declare_v(index + 3, tokens.get(index).key, tokens.get(index + 1).value);
                     return index;

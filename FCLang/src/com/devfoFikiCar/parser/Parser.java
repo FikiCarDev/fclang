@@ -219,9 +219,13 @@ public class Parser {
     // factor: NUMBER | '(' expression ')'
     private static int[] factor_int(int index, int value){
         int[] ret = {index, value};
-        if(tokens.get(index).key == "INT"){
+        if(tokens.get(index).key == "INT" || tokens.get(index).key == "NAME"){
+            if(int_store.containsKey(tokens.get(index).value)){
+                ret[1] = int_store.get(tokens.get(index).value);
+            } else {
+                ret[1] = Integer.parseInt(tokens.get(index).value);
+            }
             ret[0] = index + 1;
-            ret[1] = Integer.parseInt(tokens.get(index).value);
             return ret;
         } else if(tokens.get(index).key == "L_PARENTHESES"){
             int[] ret_v = expression_int(index + 1, ret[1]);

@@ -7,3 +7,10 @@ print a
 print b
 print "HI"
 print 10
+bool test = false
+bool test1 = true
+print false
+print test
+string s = "HI"
+print s
+print test1

@@ -11,6 +11,7 @@ public class Parser {
     private static HashMap<String, Integer> int_store = new HashMap<>();
     private static HashMap<String, String> string_store = new HashMap<>();
     private static HashMap<String, Double> decimal_store = new HashMap<>();
+    private static HashMap<String, Boolean> bool_store = new HashMap<>();
 
     public static void parse(ArrayList<Token> old){
         tokens = old;
@@ -41,6 +42,12 @@ public class Parser {
                     else index = result;
                     break;
                 }
+                case "BOOL_T":{
+                    int result = bool_d(index);
+                    if(result == 0) Error.FatalError(6);
+                    else index = result;
+                    break;
+                }
             }
         }
         // FOR DEBUGGING
@@ -56,11 +63,14 @@ public class Parser {
         decimal_store.entrySet().forEach(entry->{
             System.out.println(entry.getKey() + " " + entry.getValue());
         });
+        bool_store.entrySet().forEach(entry->{
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        });
     }
 
     // print: 'PRINT' STRING | INT | DECIMAL | NAME
     private static int fprint(int index){
-        if(tokens.get(index + 1).key == "STRING" || tokens.get(index + 1).key == "INT" || tokens.get(index + 1).key == "DECIMAL"){
+        if(tokens.get(index + 1).key == "STRING" || tokens.get(index + 1).key == "INT" || tokens.get(index + 1).key == "DECIMAL" || tokens.get(index + 1).key == "BOOL"){
             switch (tokens.get(index + 1).key){
                 case "INT":{
                     int[] ret_v_int = expression_int(index + 1, 0);
@@ -72,6 +82,10 @@ public class Parser {
                     System.out.println(ret_v_double[1]);
                     return (int)--ret_v_double[0];
                 }
+                case "BOOL":{
+                    System.out.println(tokens.get(index + 1).value);
+                    break;
+                }
                 default:{
                     String toPrint = tokens.get(index + 1).value;
                     if(tokens.get(index + 1).key == "STRING")
@@ -82,24 +96,29 @@ public class Parser {
             }
             return index + 1;
         } else if(tokens.get(index + 1).key == "NAME"){
-            if(int_store.containsKey(tokens.get(index + 1).value) || string_store.containsKey(tokens.get(index + 1).value) || decimal_store.containsKey(tokens.get(index + 1).value)){
+            if(int_store.containsKey(tokens.get(index + 1).value) || string_store.containsKey(tokens.get(index + 1).value) || decimal_store.containsKey(tokens.get(index + 1).value) || bool_store.containsKey(tokens.get(index + 1).value)){
                 int store = 0;
-                if(int_store.containsKey(tokens.get(index + 1).value)) store = 1;
-                else if(string_store.containsKey(tokens.get(index + 1).value)) store = 2;
-                else store = 3;
+                if(bool_store.containsKey(tokens.get(index + 1).value)) store = 1;
+                else if(int_store.containsKey(tokens.get(index + 1).value)) store = 2;
+                else if(decimal_store.containsKey(tokens.get(index + 1).value)) store = 3;
+                else store = 4;
                 switch (store){
                     case 1:{
-                        System.out.println(int_store.get(tokens.get(index + 1).value));
+                        System.out.println(bool_store.get(tokens.get(index + 1).value));
                         break;
                     }
                     case 2:{
-                        String value = string_store.get(tokens.get(index + 1).value);
-                        value = value.subSequence(1, value.length() - 1).toString();
-                        System.out.println(value);
+                        System.out.println(int_store.get(tokens.get(index + 1).value));
                         break;
                     }
                     case 3:{
                         System.out.println(decimal_store.get(tokens.get(index + 1).value));
+                        break;
+                    }
+                    case 4:{
+                        String value = string_store.get(tokens.get(index + 1).value);
+                        value = value.subSequence(1, value.length() - 1).toString();
+                        System.out.println(value);
                         break;
                     }
                 }
@@ -129,6 +148,16 @@ public class Parser {
     private static int string_d(int index){
         if(tokens.get(index + 1).key == "NAME"){
             if(tokens.get(index + 2).key == "EQUALS") {
+                index = declare_v(index + 3, tokens.get(index).key, tokens.get(index + 1).value);
+                return index;
+            } else return 0;
+        } else return 0;
+    }
+
+    // bool declaration
+    private static int bool_d(int index){
+        if(tokens.get(index + 1).key == "NAME"){
+            if(tokens.get(index + 2).key == "EQUALS"){
                 index = declare_v(index + 3, tokens.get(index).key, tokens.get(index + 1).value);
                 return index;
             } else return 0;
@@ -168,6 +197,9 @@ public class Parser {
                 case "DECIMAL_T":{
                     decimal_store.put(name, Double.valueOf(tokens.get(index).value));
                     break;
+                }
+                case "BOOL_T":{
+                    bool_store.put(name, Boolean.valueOf(tokens.get(index).value));
                 }
             }
             return index;

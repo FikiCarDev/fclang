@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6b4adaf3-7f70-420c-b0d2-2535c66f872e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HelloWorld.fclang" beforeDir="false" afterPath="$PROJECT_DIR$/HelloWorld.fclang" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FCLang/com/devfoFikiCar/parser/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FCLang/com/devfoFikiCar/parser/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/error/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/error/Error.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/lexer/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/lexer/Lexer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/parser/Parser.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,18 +48,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -108,22 +100,22 @@
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
     <state x="1003" y="496" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585049050584" />
-    <state width="2518" height="366" key="GridCell.Tab.0.bottom" timestamp="1585238555404">
+    <state width="2518" height="366" key="GridCell.Tab.0.bottom" timestamp="1585759772888">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state width="2518" height="366" key="GridCell.Tab.0.bottom/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585238555404" />
-    <state width="2518" height="366" key="GridCell.Tab.0.center" timestamp="1585238555403">
+    <state width="2518" height="366" key="GridCell.Tab.0.bottom/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585759772888" />
+    <state width="2518" height="366" key="GridCell.Tab.0.center" timestamp="1585759772887">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state width="2518" height="366" key="GridCell.Tab.0.center/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585238555403" />
-    <state width="2518" height="366" key="GridCell.Tab.0.left" timestamp="1585238555402">
+    <state width="2518" height="366" key="GridCell.Tab.0.center/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585759772887" />
+    <state width="2518" height="366" key="GridCell.Tab.0.left" timestamp="1585759772887">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state width="2518" height="366" key="GridCell.Tab.0.left/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585238555402" />
-    <state width="2518" height="366" key="GridCell.Tab.0.right" timestamp="1585238555403">
+    <state width="2518" height="366" key="GridCell.Tab.0.left/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585759772887" />
+    <state width="2518" height="366" key="GridCell.Tab.0.right" timestamp="1585759772888">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state width="2518" height="366" key="GridCell.Tab.0.right/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585238555403" />
+    <state width="2518" height="366" key="GridCell.Tab.0.right/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585759772888" />
     <state width="2518" height="453" key="GridCell.Tab.1.bottom" timestamp="1585237332889">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
@@ -140,10 +132,10 @@
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
     <state width="2518" height="453" key="GridCell.Tab.1.right/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585237332889" />
-    <state x="956" y="528" key="com.intellij.ide.util.TipDialog" timestamp="1585743631718">
+    <state x="956" y="528" key="com.intellij.ide.util.TipDialog" timestamp="1585758297927">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state x="956" y="528" key="com.intellij.ide.util.TipDialog/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585743631718" />
+    <state x="956" y="528" key="com.intellij.ide.util.TipDialog/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585758297927" />
     <state x="945" y="330" width="670" height="676" key="search.everywhere.popup" timestamp="1585064490889">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>

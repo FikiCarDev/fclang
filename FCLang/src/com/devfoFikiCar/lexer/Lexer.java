@@ -81,8 +81,14 @@ public class Lexer {
                         skip = true;
                         break;
                     }
-                    case ")":{
+                    case ")": {
                         Token token = new Token("R_PARENTHESES", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "bool": {
+                        Token token = new Token("BOOL_T", temp);
                         tokens.add(token);
                         skip = true;
                         break;
@@ -91,7 +97,10 @@ public class Lexer {
                 if(temp.matches("(\".*\")") && !skip){
                     Token token = new Token("STRING", temp);
                     tokens.add(token);
-                } else if(temp.matches("\\d+") && !skip){
+                } else if(temp.equals("true") || temp.equals("false")){
+                    Token token = new Token("BOOL", temp);
+                    tokens.add(token);
+                }else if(temp.matches("\\d+") && !skip){
                     Token token = new Token("INT", temp);
                     tokens.add(token);
                 } else if(temp.matches("\\d+(\\.\\d{1,2})?") && !skip){

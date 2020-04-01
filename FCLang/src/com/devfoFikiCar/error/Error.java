@@ -18,6 +18,9 @@ public class Error {
             case 5:
                 System.out.println("Wrong expression.");
                 System.exit(0);
+            case 6:
+                System.out.println("Wrong bool declaration.");
+                System.exit(0);
         }
     }
 }

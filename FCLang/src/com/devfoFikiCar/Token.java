@@ -10,6 +10,8 @@ public class Token {
     *   STRING
     *   INT
     *   DECIMAL
+    *   BOOL
+    *   BOOL_T          |
     *   STRING_T        |
     *   INT_T           - TYPES
     *   DECIMAL_T       |

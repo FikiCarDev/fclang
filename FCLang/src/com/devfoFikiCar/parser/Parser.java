@@ -88,7 +88,7 @@ public class Parser {
     private static int[] fif(int index){
         int[] ret = new int[3];
         if(tokens.get(index + 1).key == "L_PARENTHESES"){
-            int[] ret_v = expression_bool(index);
+            int[] ret_v = expression_bool(++index);
             index = ret_v[0];
             if(index != 0) {
                 if (index + 1 < tokens.size() && tokens.get(index + 1).key == "R_PARENTHESES"){
@@ -129,19 +129,44 @@ public class Parser {
     }
 
     // expression_bool <- 1: index 2: true or false
-    // TODO: Finish this function for if
+    // just a test
     private static int[] expression_bool(int index){
         int[] ret = new int[2];
-        return ret;
+        if(tokens.get(index + 1).key == "INT"){
+            int l = Integer.parseInt(tokens.get(index + 1).value);
+            if(tokens.get(index + 2).key == "LESS_THAN"){
+                if(tokens.get(index + 3).key == "INT") {
+                    int r = Integer.parseInt(tokens.get(index + 3).value);
+                    if(l < r){
+                        ret[0] = index + 3;
+                        ret[1] = 1;
+                        return ret;
+                    } else {
+                        ret[0] = index + 3;
+                        ret[1] = 0;
+                        return ret;
+                    }
+                } else {
+                    ret[0] = 0;
+                    return ret;
+                }
+            } else {
+                ret[0] = 0;
+                return ret;
+            }
+        } else {
+            ret[0] = 0;
+            return ret;
+        }
     }
 
     // searches for } <- return index from }
     private static int search_r_b(int index){
         int r_pos = 0;
         int n_skip = 0;
-        for(int i = index; i < tokens.size(); i++){
-            if(tokens.get(index).key == "L_BRACES") n_skip++;
-            else if(tokens.get(index).key == "R_BRACES"){
+        for(int i = ++index; i < tokens.size(); i++){
+            if(tokens.get(i).key == "L_BRACES") n_skip++;
+            else if(tokens.get(i).key == "R_BRACES"){
                 if(n_skip == 0) {
                     return i;
                 } else {

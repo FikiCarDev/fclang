@@ -22,6 +22,9 @@ public class Token {
     *   DIVISION
     *   L_PARENTHESES   (
     *   R_PARENTHESES   )
+    *   IF
+    *   L_BRACES        {
+    *   R_BRACES        }
     * */
 
     public Token(String Key, String Value){

@@ -93,6 +93,24 @@ public class Lexer {
                         skip = true;
                         break;
                     }
+                    case "if":{
+                        Token token = new Token("IF", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "{": {
+                        Token token = new Token("L_BRACES", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "}": {
+                        Token token = new Token("R_BRACES", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
                 }
                 if(temp.matches("(\".*\")") && !skip){
                     Token token = new Token("STRING", temp);

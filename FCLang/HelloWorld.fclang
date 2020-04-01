@@ -1,16 +1,1 @@
-int b = 2
-int a = 2 + ( 100 + ( 5 * b ) )
-print 2 + ( 100 + ( 5 * 2 ) )
-decimal c = 2.0 + ( 100.0 + ( 5.0 * 2.0 ) )
-print c
-print a
-print b
-print "HI"
-print 10
-bool test = false
-bool test1 = true
-print false
-print test
-string s = "HI"
-print s
-print test1
+if ( ) { }

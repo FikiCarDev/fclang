@@ -111,6 +111,12 @@ public class Lexer {
                         skip = true;
                         break;
                     }
+                    case "<": {
+                        Token token = new Token("LESS_THAN", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
                 }
                 if(temp.matches("(\".*\")") && !skip){
                     Token token = new Token("STRING", temp);

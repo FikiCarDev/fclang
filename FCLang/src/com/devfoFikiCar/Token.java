@@ -25,6 +25,7 @@ public class Token {
     *   IF
     *   L_BRACES        {
     *   R_BRACES        }
+    *   LESS_THAN       <
     * */
 
     public Token(String Key, String Value){

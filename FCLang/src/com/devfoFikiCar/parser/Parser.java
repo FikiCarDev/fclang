@@ -8,6 +8,8 @@ import java.util.HashMap;
 
 public class Parser {
     private static ArrayList<Token> tokens = new ArrayList<>();
+    private static ArrayList<Integer> skip = new ArrayList<>();
+
     private static HashMap<String, Integer> int_store = new HashMap<>();
     private static HashMap<String, String> string_store = new HashMap<>();
     private static HashMap<String, Double> decimal_store = new HashMap<>();
@@ -16,6 +18,7 @@ public class Parser {
     public static void parse(ArrayList<Token> old){
         tokens = old;
         for(int index = 0; index < tokens.size(); index++){
+            if(skip.contains(index)) continue;
             String key = tokens.get(index).key;
             switch (key){
                 case "PRINT": {
@@ -48,6 +51,18 @@ public class Parser {
                     else index = result;
                     break;
                 }
+                case "IF":{
+                    int[] ret_v = fif(index);
+                    if(ret_v[0] == 0) Error.FatalError(7);
+                    else{
+                        if(ret_v[2] == 0) {
+                            skip.add(ret_v[1]);
+                            index = ret_v[0];
+                        }
+                        else index = ret_v[1];
+                    }
+                    break;
+                }
             }
         }
         // FOR DEBUGGING
@@ -66,6 +81,74 @@ public class Parser {
         bool_store.entrySet().forEach(entry->{
             System.out.println(entry.getKey() + " " + entry.getValue());
         });
+    }
+
+    // if -> 1: index
+    // if <- 1: index 2: index of } 3: 0 for skip } 1 for skip to pos } + 1
+    private static int[] fif(int index){
+        int[] ret = new int[3];
+        if(tokens.get(index + 1).key == "L_PARENTHESES"){
+            int[] ret_v = expression_bool(index);
+            index = ret_v[0];
+            if(index != 0) {
+                if (index + 1 < tokens.size() && tokens.get(index + 1).key == "R_PARENTHESES"){
+                    index++;
+                    if(index + 1 < tokens.size() && tokens.get(index + 1).key == "L_BRACES"){
+                        index++;
+                        int r_pos = search_r_b(index);
+                        if(r_pos != 0){
+                            if(ret_v[1] == 1){
+                                ret[0] = index;
+                                ret[1] = r_pos;
+                                ret[2] = 0;
+                            } else {
+                                ret[0] = index;
+                                ret[1] = r_pos;
+                                ret[2] = 1;
+                            }
+                        } else {
+                            ret[0] = 0;
+                            return ret;
+                        }
+                    } else {
+                        ret[0] = 0;
+                        return ret;
+                    }
+                } else {
+                    ret[0] = 0;
+                    return  ret;
+                }
+            } else {
+                ret[0] = 0;
+                return ret;
+            }
+        } else {
+            ret[0] = 0;
+        }
+        return ret;
+    }
+
+    // expression_bool <- 1: index 2: true or false
+    private static int[] expression_bool(int index){
+        int[] ret = new int[2];
+        return ret;
+    }
+
+    // searches for } <- return index from }
+    private static int search_r_b(int index){
+        int r_pos = 0;
+        int n_skip = 0;
+        for(int i = index; i < tokens.size(); i++){
+            if(tokens.get(index).key == "L_BRACES") n_skip++;
+            else if(tokens.get(index).key == "R_BRACES"){
+                if(n_skip == 0) {
+                    return i;
+                } else {
+                    n_skip--;
+                }
+            }
+        }
+        return r_pos;
     }
 
     // print: 'PRINT' STRING | INT | DECIMAL | NAME

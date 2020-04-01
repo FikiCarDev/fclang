@@ -21,6 +21,9 @@ public class Error {
             case 6:
                 System.out.println("Wrong bool declaration.");
                 System.exit(0);
+            case 7:
+                System.out.println("Wrong if statement.");
+                System.exit(0);
         }
     }
 }

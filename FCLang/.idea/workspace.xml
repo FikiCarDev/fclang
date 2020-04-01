@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b4adaf3-7f70-420c-b0d2-2535c66f872e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Grammar/v01.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Grammar/v01.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HelloWorld.fclang" beforeDir="false" afterPath="$PROJECT_DIR$/HelloWorld.fclang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/error/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/error/Error.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/lexer/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/lexer/Lexer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/parser/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -129,6 +129,7 @@ public class Parser {
     }
 
     // expression_bool <- 1: index 2: true or false
+    // TODO: Finish this function for if
     private static int[] expression_bool(int index){
         int[] ret = new int[2];
         return ret;

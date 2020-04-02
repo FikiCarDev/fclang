@@ -81,6 +81,7 @@ public class Parser {
         bool_store.entrySet().forEach(entry->{
             System.out.println(entry.getKey() + " " + entry.getValue());
         });
+        skip.forEach(System.out::println);
     }
 
     // if -> 1: index

@@ -14,7 +14,7 @@ public class main {
 
         ArrayList<Token> tokens = Lexer.lexer(data);
         int i = 0;
-        for(Token t : tokens){
+        for (Token t : tokens) {
             System.out.println(i + ". Token(" + t.key + ", " + t.value + ")");
             i++;
         }
@@ -26,14 +26,14 @@ public class main {
         System.out.println("Successful execution.");
     }
 
-    public static String readFile(){
+    public static String readFile() {
         String data = "";
         try {
             BufferedReader br = new BufferedReader(new FileReader("HelloWorld.fclang"));
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
 
-            while(line != null){
+            while (line != null) {
                 sb.append(line);
                 sb.append(" ");
                 line = br.readLine();
@@ -41,9 +41,9 @@ public class main {
 
             data = sb.toString();
             br.close();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return  data;
+        return data;
     }
 }

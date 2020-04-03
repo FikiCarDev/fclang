@@ -5,22 +5,22 @@ import com.devfoFikiCar.Token;
 import java.util.ArrayList;
 
 public class Lexer {
-    public static ArrayList<Token> lexer(String fileContents){
+    public static ArrayList<Token> lexer(String fileContents) {
         ArrayList<Token> tokens = new ArrayList<>();
         char[] data = fileContents.toCharArray();
         String temp = "";
         boolean inString = false;
 
-        for(int i = 0; i < data.length; i++){
-            if(data[i] == '"'){
-                if(!inString) inString = true;
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] == '"') {
+                if (!inString) inString = true;
                 else inString = false;
             }
-            if((data[i] != ' ') || (data[i] == ' ' && inString)){
+            if ((data[i] != ' ') || (data[i] == ' ' && inString)) {
                 temp += data[i];
             } else {
                 boolean skip = false;
-                switch (temp){
+                switch (temp) {
                     case "print": {
                         Token token = new Token("PRINT", temp);
                         tokens.add(token);
@@ -51,31 +51,31 @@ public class Lexer {
                         skip = true;
                         break;
                     }
-                    case "+":{
+                    case "+": {
                         Token token = new Token("ADDITION", temp);
                         tokens.add(token);
                         skip = true;
                         break;
                     }
-                    case "-":{
+                    case "-": {
                         Token token = new Token("SUBTRACTION", temp);
                         tokens.add(token);
                         skip = true;
                         break;
                     }
-                    case "*":{
+                    case "*": {
                         Token token = new Token("MULTIPLICATION", temp);
                         tokens.add(token);
                         skip = true;
                         break;
                     }
-                    case "/":{
+                    case "/": {
                         Token token = new Token("DIVISION", temp);
                         tokens.add(token);
-                        skip  = true;
+                        skip = true;
                         break;
                     }
-                    case "(":{
+                    case "(": {
                         Token token = new Token("L_PARENTHESES", temp);
                         tokens.add(token);
                         skip = true;
@@ -93,7 +93,7 @@ public class Lexer {
                         skip = true;
                         break;
                     }
-                    case "if":{
+                    case "if": {
                         Token token = new Token("IF", temp);
                         tokens.add(token);
                         skip = true;
@@ -111,43 +111,43 @@ public class Lexer {
                         skip = true;
                         break;
                     }
-                    case "&&":{
+                    case "&&": {
                         Token token = new Token("AND", temp);
                         tokens.add(token);
                         skip = true;
                         break;
                     }
-                    case "||":{
+                    case "||": {
                         Token token = new Token("OR", temp);
                         tokens.add(token);
                         skip = true;
                         break;
                     }
-                    case "==":{
+                    case "==": {
                         Token token = new Token("EQUAL_TO", temp);
                         tokens.add(token);
                         skip = true;
                         break;
                     }
-                    case "!=":{
+                    case "!=": {
                         Token token = new Token("NOT_EQUAL", temp);
                         tokens.add(token);
                         skip = true;
                         break;
                     }
-                    case ">=":{
+                    case ">=": {
                         Token token = new Token("GREATER_EQUAL", temp);
                         tokens.add(token);
                         skip = true;
                         break;
                     }
-                    case "<=":{
+                    case "<=": {
                         Token token = new Token("LESS_EQUAL", temp);
                         tokens.add(token);
                         skip = true;
                         break;
                     }
-                    case ">":{
+                    case ">": {
                         Token token = new Token("GREATER_THAN", temp);
                         tokens.add(token);
                         skip = true;
@@ -160,19 +160,19 @@ public class Lexer {
                         break;
                     }
                 }
-                if(temp.matches("(\".*\")") && !skip){
+                if (temp.matches("(\".*\")") && !skip) {
                     Token token = new Token("STRING", temp);
                     tokens.add(token);
-                } else if(temp.equals("true") || temp.equals("false")){
+                } else if (temp.equals("true") || temp.equals("false")) {
                     Token token = new Token("BOOL", temp);
                     tokens.add(token);
-                }else if(temp.matches("\\d+") && !skip){
+                } else if (temp.matches("\\d+") && !skip) {
                     Token token = new Token("INT", temp);
                     tokens.add(token);
-                } else if(temp.matches("\\d+(\\.\\d{1,2})?") && !skip){
+                } else if (temp.matches("\\d+(\\.\\d{1,2})?") && !skip) {
                     Token token = new Token("DECIMAL", temp);
                     tokens.add(token);
-                } else if(temp.matches(".*") && !skip && temp != ""){
+                } else if (temp.matches(".*") && !skip && temp != "") {
                     Token token = new Token("NAME", temp);
                     tokens.add(token);
                 }

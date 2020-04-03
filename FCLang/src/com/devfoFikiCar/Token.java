@@ -25,7 +25,14 @@ public class Token {
     *   IF
     *   L_BRACES        {
     *   R_BRACES        }
+    *   EQUAL_TO        ==
+    *   NOT_EQUAL       !=
+    *   GREATER_EQUAL   >=
+    *   LESS_EQUAL      <=
     *   LESS_THAN       <
+    *   GREATER_THAN    >
+    *   AND             &&
+    *   OR              ||
     * */
 
     public Token(String Key, String Value){

@@ -111,6 +111,48 @@ public class Lexer {
                         skip = true;
                         break;
                     }
+                    case "&&":{
+                        Token token = new Token("AND", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "||":{
+                        Token token = new Token("OR", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "==":{
+                        Token token = new Token("EQUAL_TO", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "!=":{
+                        Token token = new Token("NOT_EQUAL", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case ">=":{
+                        Token token = new Token("GREATER_EQUAL", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "<=":{
+                        Token token = new Token("LESS_EQUAL", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case ">":{
+                        Token token = new Token("GREATER_THAN", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
                     case "<": {
                         Token token = new Token("LESS_THAN", temp);
                         tokens.add(token);

@@ -63,9 +63,11 @@ public class Parser {
                     break;
                 }
                 default: {
-                    int result = expression_bool(index);
-                    if (result == 0) Error.FatalError(8);
-                    else index = result;
+                    int[] result = bool_expression(index);
+                    if (result[0] == 0) Error.FatalError(8);
+                    else index = result[0];
+                    System.out.println(result[1]);
+                    System.out.println(index);
                     break;
                 }
             }
@@ -183,64 +185,266 @@ public class Parser {
         return r_pos;
     }
 
-    private static int expression_bool(int index) {
-        if (base_bool(index) != 0) {
-            index = base_bool(index);
-            if (index + 1 < tokens.size() && (tokens.get(index + 1).key == "AND" || tokens.get(index + 1).key == "OR")) {
+    private static int[] bool_expression(int index){
+        int[] ret_v = {0, 0};
+        if(int_base(index)[0] != 0){
+            int[] ret = int_base(index);
+            ret_v[0] = ret[0];
+            ret_v[1] = ret[1];
+            index = ret[0];
+            if(index + 1 < tokens.size() && (tokens.get(index + 1).key == "AND" || tokens.get(index + 1).key == "OR")){
                 index++;
-                if (parentheses_bool(index) != 0) {
-                    index = parentheses_bool(index);
-                    return index;
-                } else if (tokens.get(index + 1).key == "BOOL") {
+                if(bool_base(index)[0] != 0){
+                    int[] ret_2 = bool_base(index);
+                    switch (tokens.get(index - 1).key){
+                        case "AND":{
+                            boolean a = false;
+                            if(ret[1] == 1) a = true;
+                            boolean b = false;
+                            if(ret_2[1] == 1) b = true;
+                            if(a && b){
+                                ret_v[0] = ret_2[0];
+                                ret_v[1] = 1;
+                            } else {
+                                ret_v[0] = ret_2[0];
+                                ret_v[1] = 0;
+                            }
+                            return ret_v;
+                        }
+                        case "OR":{
+                            boolean a = false;
+                            if(ret[1] == 1) a = true;
+                            boolean b = false;
+                            if(ret_2[1] == 1) b = true;
+                            if(a || b){
+                                ret_v[0] = ret_2[0];
+                                ret_v[1] = 1;
+                            } else {
+                                ret_v[0] = ret_2[0];
+                                ret_v[1] = 0;
+                            }
+                            return ret_v;
+                        }
+                    }
+                } else if(tokens.get(index + 1).key == "BOOL"){
                     index++;
-                    return index;
+                    ret_v[0] = index;
+                    switch (tokens.get(index - 1).key){
+                        case "AND":{
+                            boolean a = false;
+                            if(ret[1] == 1) a = true;
+                            boolean b = false;
+                            if(tokens.get(index).value.equals("true")) b = true;
+                            if(a && b){
+                                ret_v[1] = 1;
+                                return ret_v;
+                            } else {
+                                ret_v[1] = 0;
+                                return ret_v;
+                            }
+                        }
+                        case "OR":{
+                            boolean a = false;
+                            if(ret[1] == 1) a = true;
+                            boolean b = false;
+                            if(tokens.get(index).value.equals("true")) b = true;
+                            if(a || b){
+                                ret_v[1] = 1;
+                                return ret_v;
+                            } else {
+                                ret_v[1] = 0;
+                                return ret_v;
+                            }
+                        }
+                    }
                 }
-            }
-            return index;
-        } else if (tokens.get(index + 1).key == "BOOL") {
-            index = base_bool(index);
-            if (index + 1 < tokens.size() && (tokens.get(index + 1).key == "AND" || tokens.get(index + 1).key == "OR")) {
+            } return ret_v;
+        } else if(tokens.get(index).key == "BOOL"){
+            if(index + 1 < tokens.size() && (tokens.get(index + 1).key == "AND" || tokens.get(index + 1).key == "OR")){
                 index++;
-                if (parentheses_bool(index) != 0) {
-                    index = parentheses_bool(index);
-                    return index;
-                } else if (tokens.get(index + 1).key == "BOOL") {
+                if(bool_base(index)[0] != 0){
+                    int[] ret = bool_base(index);
+                    switch (tokens.get(index).key){
+                        case "AND":{
+                            boolean a = false;
+                            if(tokens.get(index - 1).value.equals("true")) a = true;
+                            boolean b = false;
+                            if(ret[1] == 1) b = true;
+                            if(a && b){
+                                ret_v[0] = ret[1];
+                                ret_v[1] = 1;
+                            } else {
+                                ret_v[0] = ret[1];
+                                ret_v[1] = 0;
+                            }
+                            return ret_v;
+                        }
+                        case "OR":{
+                            boolean a = false;
+                            if(tokens.get(index - 1).value.equals("true")) a = true;
+                            boolean b = false;
+                            if(ret[1] == 1) b = true;
+                            if(a || b){
+                                ret_v[0] = ret[1];
+                                ret_v[1] = 1;
+                            } else {
+                                ret_v[0] = ret[1];
+                                ret_v[1] = 0;
+                            }
+                            return ret_v;
+                        }
+                    }
+                } else if(tokens.get(index + 1).key == "BOOL"){
                     index++;
-                    return index;
+                    switch (tokens.get(index - 1).key){
+                        // Mislim da je ovde negde greska
+                        case "AND":{
+                            boolean a = false;
+                            if(tokens.get(index).value.equals("true")) a = true;
+                            boolean b = false;
+                            if(tokens.get(index - 2).value.equals("true")) b = true;
+                            if(a && b){
+                                ret_v[0] = index;
+                                ret_v[1] = 1;
+                            } else {
+                                ret_v[0] = index;
+                                ret_v[1] = 0;
+                            }
+                        }
+                        case "OR":{
+                            boolean a = false;
+                            if(tokens.get(index).value.equals("true")) a = true;
+                            boolean b = false;
+                            if(tokens.get(index - 2).value.equals("true")) b = true;
+                            if(a || b){
+                                ret_v[0] = index;
+                                ret_v[1] = 1;
+                            } else {
+                                ret_v[0] = index;
+                                ret_v[1] = 0;
+                            }
+                        }
+                    }
                 }
+            } else {
+                if(tokens.get(index).value == "true"){
+                    ret_v[0] = index;
+                    ret_v[1] = 1;
+                } else {
+                    ret_v[0] = index;
+                    ret_v[1] = 0;
+                }
+                return ret_v;
             }
-            return index;
         }
-        return 0;
+        return ret_v;
     }
 
-    private static int base_bool(int index) {
-        if (tokens.get(index).key == "INT") {
+    private static int[] int_base(int index){
+        int[] ret_v = {0, 0};
+        if(tokens.get(index).key == "INT"){
+            int a = Integer.parseInt(tokens.get(index).value);
             if (index + 1 < tokens.size() && (tokens.get(index + 1).key == "EQUAL_TO" || tokens.get(index + 1).key == "NOT_EQUAL"
                     || tokens.get(index + 1).key == "GREATER_EQUAL" || tokens.get(index + 1).key == "LESS_EQUAL"
                     || tokens.get(index + 1).key == "LESS_THAN" || tokens.get(index + 1).key == "GREATER_THAN")) {
                 index++;
                 if (index + 1 < tokens.size() && tokens.get(index + 1).key == "INT") {
                     index++;
-                    return index;
-                } else return 0;
-            } else return 0;
+                    int b = Integer.parseInt(tokens.get(index).value);
+                    switch (tokens.get(index - 1).key){
+                        case "EQUAL_TO":{
+                            if(a == b){
+                                ret_v[0] = index;
+                                ret_v[1] = 1;
+                            } else {
+                                ret_v[0] = index;
+                                ret_v[1] = 0;
+                            }
+                            return ret_v;
+                        }
+                        case "NOT_EQUAL":{
+                            if(a != b){
+                                ret_v[0] = index;
+                                ret_v[1] = 1;
+                            } else {
+                                ret_v[0] = index;
+                                ret_v[1] = 0;
+                            }
+                            return ret_v;
+                        }
+                        case "GREATER_EQUAL":{
+                            if(a >= b){
+                                ret_v[0] = index;
+                                ret_v[1] = 1;
+                            } else {
+                                ret_v[0] = index;
+                                ret_v[1] = 0;
+                            }
+                            return ret_v;
+                        }
+                        case "LESS_EQUAL":{
+                            if(a <= b){
+                                ret_v[0] = index;
+                                ret_v[1] = 1;
+                            } else {
+                                ret_v[0] = index;
+                                ret_v[1] = 0;
+                            }
+                            return ret_v;
+                        }
+                        case "LESS_THAN":{
+                            if(a < b){
+                                ret_v[0] = index;
+                                ret_v[1] = 1;
+                            } else {
+                                ret_v[0] = index;
+                                ret_v[1] = 0;
+                            }
+                            return ret_v;
+                        }
+                        case "GREATER_THAN":{
+                            if(a > b){
+                                ret_v[0] = index;
+                                ret_v[1] = 1;
+                            } else {
+                                ret_v[0] = index;
+                                ret_v[1] = 0;
+                            }
+                            return ret_v;
+                        }
+                    }
+                } else {
+                    ret_v[0] = 0;
+                    return ret_v;
+                }
+            } else {
+                ret_v[0] = 0;
+                return ret_v;
+            }
         }
-        return 0;
+        return ret_v;
     }
 
-    private static int parentheses_bool(int index) {
-        if (index + 1 < tokens.size() && tokens.get(index + 1).key == "L_PARENTHESES") {
+    private static int[] bool_base(int index){
+        int[] ret_v = {0, 0};
+        if(index + 1 < tokens.size() && tokens.get(index + 1).key == "L_PARENTHESES"){
             index++;
-            index = expression_bool(index + 1);
-            if (index != 0) {
-                if (index + 1 < tokens.size() && tokens.get(index + 1).key == "R_PARENTHESES") {
+            int[] ret = bool_expression(index);
+            index = ret[0];
+            if(index != 0){
+                if(index + 1 < tokens.size() && tokens.get(index + 1).key == "R_PARENTHESES"){
                     index++;
-                    return index;
-                } else return 0;
-            } else return 0;
-        }
-        return 0;
+                    ret_v[0] = index;
+                    ret_v[1] = ret[1];
+                } else {
+                    ret_v[0] = 0;
+                    return ret_v;
+                }
+            } else {
+                ret_v[0] = 0;
+                return ret_v;
+            }
+        } return ret_v;
     }
 
     // print: 'PRINT' STRING | INT | DECIMAL | NAME

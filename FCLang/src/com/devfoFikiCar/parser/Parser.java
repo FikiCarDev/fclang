@@ -62,12 +62,10 @@ public class Parser {
                     }
                     break;
                 }
-                default: {
-                    int[] result = bool_expression(index);
-                    if (result[0] == 0) Error.FatalError(8);
-                    else index = result[0];
-                    System.out.println(result[1]);
-                    System.out.println(index);
+                default:{
+                    int result = expression_bool(index);
+                    if(result == 0) Error.FatalError(8);
+                    else index = result;
                     break;
                 }
             }
@@ -185,266 +183,58 @@ public class Parser {
         return r_pos;
     }
 
-    private static int[] bool_expression(int index){
-        int[] ret_v = {0, 0};
-        if(int_base(index)[0] != 0){
-            int[] ret = int_base(index);
-            ret_v[0] = ret[0];
-            ret_v[1] = ret[1];
-            index = ret[0];
-            if(index + 1 < tokens.size() && (tokens.get(index + 1).key == "AND" || tokens.get(index + 1).key == "OR")){
-                index++;
-                if(bool_base(index)[0] != 0){
-                    int[] ret_2 = bool_base(index);
-                    switch (tokens.get(index - 1).key){
-                        case "AND":{
-                            boolean a = false;
-                            if(ret[1] == 1) a = true;
-                            boolean b = false;
-                            if(ret_2[1] == 1) b = true;
-                            if(a && b){
-                                ret_v[0] = ret_2[0];
-                                ret_v[1] = 1;
-                            } else {
-                                ret_v[0] = ret_2[0];
-                                ret_v[1] = 0;
-                            }
-                            return ret_v;
-                        }
-                        case "OR":{
-                            boolean a = false;
-                            if(ret[1] == 1) a = true;
-                            boolean b = false;
-                            if(ret_2[1] == 1) b = true;
-                            if(a || b){
-                                ret_v[0] = ret_2[0];
-                                ret_v[1] = 1;
-                            } else {
-                                ret_v[0] = ret_2[0];
-                                ret_v[1] = 0;
-                            }
-                            return ret_v;
-                        }
-                    }
-                } else if(tokens.get(index + 1).key == "BOOL"){
-                    index++;
-                    ret_v[0] = index;
-                    switch (tokens.get(index - 1).key){
-                        case "AND":{
-                            boolean a = false;
-                            if(ret[1] == 1) a = true;
-                            boolean b = false;
-                            if(tokens.get(index).value.equals("true")) b = true;
-                            if(a && b){
-                                ret_v[1] = 1;
-                                return ret_v;
-                            } else {
-                                ret_v[1] = 0;
-                                return ret_v;
-                            }
-                        }
-                        case "OR":{
-                            boolean a = false;
-                            if(ret[1] == 1) a = true;
-                            boolean b = false;
-                            if(tokens.get(index).value.equals("true")) b = true;
-                            if(a || b){
-                                ret_v[1] = 1;
-                                return ret_v;
-                            } else {
-                                ret_v[1] = 0;
-                                return ret_v;
-                            }
-                        }
-                    }
-                }
-            } return ret_v;
-        } else if(tokens.get(index).key == "BOOL"){
-            if(index + 1 < tokens.size() && (tokens.get(index + 1).key == "AND" || tokens.get(index + 1).key == "OR")){
-                index++;
-                if(bool_base(index)[0] != 0){
-                    int[] ret = bool_base(index);
-                    switch (tokens.get(index).key){
-                        case "AND":{
-                            boolean a = false;
-                            if(tokens.get(index - 1).value.equals("true")) a = true;
-                            boolean b = false;
-                            if(ret[1] == 1) b = true;
-                            if(a && b){
-                                ret_v[0] = ret[1];
-                                ret_v[1] = 1;
-                            } else {
-                                ret_v[0] = ret[1];
-                                ret_v[1] = 0;
-                            }
-                            return ret_v;
-                        }
-                        case "OR":{
-                            boolean a = false;
-                            if(tokens.get(index - 1).value.equals("true")) a = true;
-                            boolean b = false;
-                            if(ret[1] == 1) b = true;
-                            if(a || b){
-                                ret_v[0] = ret[1];
-                                ret_v[1] = 1;
-                            } else {
-                                ret_v[0] = ret[1];
-                                ret_v[1] = 0;
-                            }
-                            return ret_v;
-                        }
-                    }
-                } else if(tokens.get(index + 1).key == "BOOL"){
-                    index++;
-                    switch (tokens.get(index - 1).key){
-                        // Mislim da je ovde negde greska
-                        case "AND":{
-                            boolean a = false;
-                            if(tokens.get(index).value.equals("true")) a = true;
-                            boolean b = false;
-                            if(tokens.get(index - 2).value.equals("true")) b = true;
-                            if(a && b){
-                                ret_v[0] = index;
-                                ret_v[1] = 1;
-                            } else {
-                                ret_v[0] = index;
-                                ret_v[1] = 0;
-                            }
-                        }
-                        case "OR":{
-                            boolean a = false;
-                            if(tokens.get(index).value.equals("true")) a = true;
-                            boolean b = false;
-                            if(tokens.get(index - 2).value.equals("true")) b = true;
-                            if(a || b){
-                                ret_v[0] = index;
-                                ret_v[1] = 1;
-                            } else {
-                                ret_v[0] = index;
-                                ret_v[1] = 0;
-                            }
-                        }
-                    }
-                }
-            } else {
-                if(tokens.get(index).value == "true"){
-                    ret_v[0] = index;
-                    ret_v[1] = 1;
-                } else {
-                    ret_v[0] = index;
-                    ret_v[1] = 0;
-                }
-                return ret_v;
-            }
-        }
-        return ret_v;
-    }
-
-    private static int[] int_base(int index){
-        int[] ret_v = {0, 0};
-        if(tokens.get(index).key == "INT"){
-            int a = Integer.parseInt(tokens.get(index).value);
-            if (index + 1 < tokens.size() && (tokens.get(index + 1).key == "EQUAL_TO" || tokens.get(index + 1).key == "NOT_EQUAL"
-                    || tokens.get(index + 1).key == "GREATER_EQUAL" || tokens.get(index + 1).key == "LESS_EQUAL"
-                    || tokens.get(index + 1).key == "LESS_THAN" || tokens.get(index + 1).key == "GREATER_THAN")) {
-                index++;
-                if (index + 1 < tokens.size() && tokens.get(index + 1).key == "INT") {
-                    index++;
-                    int b = Integer.parseInt(tokens.get(index).value);
-                    switch (tokens.get(index - 1).key){
-                        case "EQUAL_TO":{
-                            if(a == b){
-                                ret_v[0] = index;
-                                ret_v[1] = 1;
-                            } else {
-                                ret_v[0] = index;
-                                ret_v[1] = 0;
-                            }
-                            return ret_v;
-                        }
-                        case "NOT_EQUAL":{
-                            if(a != b){
-                                ret_v[0] = index;
-                                ret_v[1] = 1;
-                            } else {
-                                ret_v[0] = index;
-                                ret_v[1] = 0;
-                            }
-                            return ret_v;
-                        }
-                        case "GREATER_EQUAL":{
-                            if(a >= b){
-                                ret_v[0] = index;
-                                ret_v[1] = 1;
-                            } else {
-                                ret_v[0] = index;
-                                ret_v[1] = 0;
-                            }
-                            return ret_v;
-                        }
-                        case "LESS_EQUAL":{
-                            if(a <= b){
-                                ret_v[0] = index;
-                                ret_v[1] = 1;
-                            } else {
-                                ret_v[0] = index;
-                                ret_v[1] = 0;
-                            }
-                            return ret_v;
-                        }
-                        case "LESS_THAN":{
-                            if(a < b){
-                                ret_v[0] = index;
-                                ret_v[1] = 1;
-                            } else {
-                                ret_v[0] = index;
-                                ret_v[1] = 0;
-                            }
-                            return ret_v;
-                        }
-                        case "GREATER_THAN":{
-                            if(a > b){
-                                ret_v[0] = index;
-                                ret_v[1] = 1;
-                            } else {
-                                ret_v[0] = index;
-                                ret_v[1] = 0;
-                            }
-                            return ret_v;
-                        }
-                    }
-                } else {
-                    ret_v[0] = 0;
-                    return ret_v;
-                }
-            } else {
-                ret_v[0] = 0;
-                return ret_v;
-            }
-        }
-        return ret_v;
-    }
-
-    private static int[] bool_base(int index){
-        int[] ret_v = {0, 0};
-        if(index + 1 < tokens.size() && tokens.get(index + 1).key == "L_PARENTHESES"){
+    private static int expression_bool(int index){
+        if(tokens.get(index).key == "NOT"){
             index++;
-            int[] ret = bool_expression(index);
-            index = ret[0];
-            if(index != 0){
-                if(index + 1 < tokens.size() && tokens.get(index + 1).key == "R_PARENTHESES"){
-                    index++;
-                    ret_v[0] = index;
-                    ret_v[1] = ret[1];
-                } else {
-                    ret_v[0] = 0;
-                    return ret_v;
-                }
-            } else {
-                ret_v[0] = 0;
-                return ret_v;
-            }
-        } return ret_v;
+            if(base_bool(index) != 0){
+                index = base_bool(index);
+            } else return 0;
+        } else if(base_bool(index) != 0){
+            index = base_bool(index);
+            if(index + 1 < tokens.size() && (tokens.get(index + 1).key == "OR" || tokens.get(index + 1).key == "AND")){
+                index++;
+                if(expression_bool(index) != 0){
+                    index = expression_bool(index);
+                    return index;
+                } else return 0;
+            } else return index;
+        }
+        return 0;
+    }
+
+    private static int base_bool(int index){
+        if(tokens.get(index).key == "NAME" && bool_store.containsKey(tokens.get(index).value)){
+            return ++index;
+        } else if(tokens.get(index).key == "BOOL" && (tokens.get(index).value.equals("true") || tokens.get(index).value.equals("false"))){
+            return ++index;
+        } else if(comp_int(index) != 0){
+            return comp_int(index);
+        } else if(tokens.get(index).key == "L_PARENTHESES"){
+            index++;
+            if(expression_bool(index) != 0){
+                index = expression_bool(index);
+                if(tokens.get(index).key == "R_PARENTHESES"){
+                    return ++index;
+                } else return 0;
+            } else return 0;
+        }
+        return 0;
+    }
+
+    private static int comp_int(int index){
+        int[] ret_1 = expression_int(index, 0);
+        if(ret_1[0] != 0){
+            index = ret_1[0];
+            if(tokens.get(index).key == "EQUAL_TO" || tokens.get(index).key == "NOT_EQUAL" || tokens.get(index).key == "GREATER_EQUAL"
+                    || tokens.get(index).key == "LESS_EQUAL" || tokens.get(index).key == "LESS_THAN" || tokens.get(index).key == "GREATER_THAN"){
+                int[] ret_2 = expression_int(++index, 0);
+                if(ret_2[0] != 0){
+                    index = ret_2[0];
+                    return index;
+                } else return 0;
+            } else return 0;
+        }
+        return 0;
     }
 
     // print: 'PRINT' STRING | INT | DECIMAL | NAME

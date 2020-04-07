@@ -33,6 +33,7 @@ public class Token {
     *   GREATER_THAN    >
     *   AND             &&
     *   OR              ||
+    *   NOT             !
     * */
 
     public Token(String Key, String Value){

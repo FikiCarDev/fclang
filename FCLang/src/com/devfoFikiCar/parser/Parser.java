@@ -188,6 +188,7 @@ public class Parser {
             index++;
             if(base_bool(index) != 0){
                 index = base_bool(index);
+                return index;
             } else return 0;
         } else if(base_bool(index) != 0){
             index = base_bool(index);

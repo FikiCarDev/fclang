@@ -68,6 +68,7 @@ public class Parser {
                     if(result == 0) Error.FatalError(8);
                     else index = result;
                     System.out.println(ret_v[1]);
+                    System.out.println(index);
                     break;
                 }
             }
@@ -96,11 +97,11 @@ public class Parser {
     private static int[] fif(int index) {
         int[] ret = new int[3];
         if (tokens.get(index + 1).key == "L_PARENTHESES") {
-            int[] ret_v = if_test(++index);
+            index += 2;
+            int[] ret_v = expression_bool(index);
             index = ret_v[0];
             if (index != 0) {
-                if (index + 1 < tokens.size() && tokens.get(index + 1).key == "R_PARENTHESES") {
-                    index++;
+                if (index < tokens.size() && tokens.get(index).key == "R_PARENTHESES") {
                     if (index + 1 < tokens.size() && tokens.get(index + 1).key == "L_BRACES") {
                         index++;
                         int r_pos = search_r_b(index);
@@ -134,38 +135,6 @@ public class Parser {
             ret[0] = 0;
         }
         return ret;
-    }
-
-    // expression_bool <- 1: index 2: true or false
-    // just a test
-    private static int[] if_test(int index) {
-        int[] ret = new int[2];
-        if (tokens.get(index + 1).key == "INT") {
-            int l = Integer.parseInt(tokens.get(index + 1).value);
-            if (tokens.get(index + 2).key == "LESS_THAN") {
-                if (tokens.get(index + 3).key == "INT") {
-                    int r = Integer.parseInt(tokens.get(index + 3).value);
-                    if (l < r) {
-                        ret[0] = index + 3;
-                        ret[1] = 1;
-                        return ret;
-                    } else {
-                        ret[0] = index + 3;
-                        ret[1] = 0;
-                        return ret;
-                    }
-                } else {
-                    ret[0] = 0;
-                    return ret;
-                }
-            } else {
-                ret[0] = 0;
-                return ret;
-            }
-        } else {
-            ret[0] = 0;
-            return ret;
-        }
     }
 
     // searches for } <- return index from }

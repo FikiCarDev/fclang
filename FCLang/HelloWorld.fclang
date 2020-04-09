@@ -1,1 +1,7 @@
-2 < 1 && 2 > 1
+if ( true ) {
+    print "Hi"
+}
+
+if ( false ) {
+    print "No"
+}

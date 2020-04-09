@@ -165,6 +165,12 @@ public class Lexer {
                         skip = true;
                         break;
                     }
+                    case "else":{
+                        Token token = new Token("ELSE", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
                 }
                 if (temp.matches("(\".*\")") && !skip) {
                     Token token = new Token("STRING", temp);

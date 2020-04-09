@@ -1,7 +1,11 @@
 if ( true ) {
     print "Hi"
+} else {
+    print "NO"
 }
 
 if ( false ) {
     print "No"
+} else {
+    print "YEEAAAA"
 }

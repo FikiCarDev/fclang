@@ -34,6 +34,7 @@ public class Token {
     *   AND             &&
     *   OR              ||
     *   NOT             !
+    *   ELSE            else
     * */
 
     public Token(String Key, String Value){

@@ -16,13 +16,6 @@ public class Parser {
     private static HashMap<String, Boolean> bool_store = new HashMap<>();
     private static HashMap<Integer, Integer> skip_store = new HashMap<>();
 
-    /*
-     *   TODO
-     *   goto
-     *   else
-     *   for
-     * */
-
     public static void parse(ArrayList<Token> old) {
         tokens = old;
         for (int index = 0; index < tokens.size(); index++) {

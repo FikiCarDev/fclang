@@ -63,9 +63,11 @@ public class Parser {
                     break;
                 }
                 default:{
-                    int result = expression_bool(index);
+                    int[] ret_v = expression_bool(index);
+                    int result = ret_v[0];
                     if(result == 0) Error.FatalError(8);
                     else index = result;
+                    System.out.println(ret_v[1]);
                     break;
                 }
             }
@@ -183,59 +185,158 @@ public class Parser {
         return r_pos;
     }
 
-    private static int expression_bool(int index){
+    // ret { index, value }
+    private static int[] expression_bool(int index){
+        int[] ret = {0, 0};
         if(tokens.get(index).key == "NOT"){
             index++;
-            if(base_bool(index) != 0){
-                index = base_bool(index);
-                return index;
-            } else return 0;
-        } else if(base_bool(index) != 0){
-            index = base_bool(index);
-            if(index + 1 < tokens.size() && (tokens.get(index + 1).key == "OR" || tokens.get(index + 1).key == "AND")){
+            if(base_bool(index)[0] != 0){
+                int[] ret_v = base_bool(index);
+                ret[0] = ret_v[0];
+                if(ret_v[1] == 1) ret[1] = 0;
+                else ret[1] = 1;
+                return ret;
+            } else {
+                ret[0] = 0;
+                return ret;
+            }
+        } else if(base_bool(index)[0] != 0){
+            int[] ret_1 = base_bool(index);
+            index = ret_1[0];
+            if(index < tokens.size() && (tokens.get(index).key.equals("OR") || tokens.get(index).key.equals("AND"))){
                 index++;
-                if(expression_bool(index) != 0){
-                    index = expression_bool(index);
-                    return index;
-                } else return 0;
-            } else return index;
+                int l_index = index - 1;
+                if(expression_bool(index)[0] != 0){
+                    int[] ret_2 = expression_bool(index);
+                    ret[0] = ret_2[0];
+                    switch (tokens.get(l_index).key){
+                        case "OR":{
+                            boolean a = false;
+                            boolean b = false;
+                            if(ret_1[0] == 1) a = true;
+                            if(ret_2[0] == 1) b = true;
+                            if(a || b) ret[1] = 1;
+                            else ret[1] = 0;
+                            break;
+                        }
+                        case "AND":{
+                            boolean a = false;
+                            boolean b = false;
+                            if(ret_1[0] == 1) a = true;
+                            if(ret_2[0] == 1) b = true;
+                            if(a && b) ret[1] = 1;
+                            else ret[1] = 0;
+                            break;
+                        }
+                    }
+                    return ret;
+                } else {
+                    ret[0] = 0;
+                    return ret;
+                }
+            } else {
+                ret[0] = index;
+                ret[1] = ret_1[1];
+                return ret;
+            }
         }
-        return 0;
+        return ret;
     }
 
-    private static int base_bool(int index){
+    // ret { index, value }
+    private static int[] base_bool(int index){
+        int[] ret = {0, 0};
         if(tokens.get(index).key == "NAME" && bool_store.containsKey(tokens.get(index).value)){
-            return ++index;
+            if(bool_store.get(tokens.get(index).value)) ret[1] = 1;
+            else ret[1] = 0;
+            ret[0] = ++index;
+            return ret;
         } else if(tokens.get(index).key == "BOOL" && (tokens.get(index).value.equals("true") || tokens.get(index).value.equals("false"))){
-            return ++index;
-        } else if(comp_int(index) != 0){
-            return comp_int(index);
+            if(tokens.get(index).value.equals("true")) ret[1] = 1;
+            else ret[1] = 0;
+            ret[0] = ++index;
+            return ret;
+        } else if(comp_int(index)[0] != 0){
+            int[] ret_v = comp_int(index);
+            ret[0] = ret_v[0];
+            ret[1] = ret_v[1];
+            return ret;
         } else if(tokens.get(index).key == "L_PARENTHESES"){
             index++;
-            if(expression_bool(index) != 0){
-                index = expression_bool(index);
+            if(expression_bool(index)[0] != 0){
+                int[] ret_v = expression_bool(index);
+                index = ret_v[0];
                 if(tokens.get(index).key == "R_PARENTHESES"){
-                    return ++index;
-                } else return 0;
-            } else return 0;
+                    ret[0] = ++index;
+                    return ret;
+                } else{
+                    ret[0] = 0;
+                    return ret;
+                }
+            } else {
+                ret[0] = 0;
+                return ret;
+            }
         }
-        return 0;
+        return ret;
     }
 
-    private static int comp_int(int index){
+    // ret { index, value }
+    private static int[] comp_int(int index){
+        int[] ret = {0, 0};
         int[] ret_1 = expression_int(index, 0);
         if(ret_1[0] != 0){
             index = ret_1[0];
+            int c_index = index;
             if(tokens.get(index).key == "EQUAL_TO" || tokens.get(index).key == "NOT_EQUAL" || tokens.get(index).key == "GREATER_EQUAL"
                     || tokens.get(index).key == "LESS_EQUAL" || tokens.get(index).key == "LESS_THAN" || tokens.get(index).key == "GREATER_THAN"){
                 int[] ret_2 = expression_int(++index, 0);
                 if(ret_2[0] != 0){
                     index = ret_2[0];
-                    return index;
-                } else return 0;
-            } else return 0;
+                    switch (tokens.get(c_index).key){
+                        case "EQUAL_TO":{
+                            if(ret_1[1] == ret_2[1]) ret[1] = 1;
+                            else ret[1] = 0;
+                            break;
+                        }
+                        case "NOT_EQUAL":{
+                            if(ret_1[1] != ret_2[1]) ret[1] = 1;
+                            else ret[1] = 0;
+                            break;
+                        }
+                        case "GREATER_EQUAL":{
+                            if(ret_1[1] >= ret_2[1]) ret[1] = 1;
+                            else ret[1] = 0;
+                            break;
+                        }
+                        case "LESS_EQUAL":{
+                            if(ret_1[1] <= ret_2[1]) ret[1] = 1;
+                            else ret[1] = 0;
+                            break;
+                        }
+                        case "LESS_THAN":{
+                            if(ret_1[1] < ret_2[1]) ret[1] = 1;
+                            else ret[1] = 0;
+                            break;
+                        }
+                        case "GREATER_THAN":{
+                            if(ret_1[1] > ret_2[1]) ret[1] = 1;
+                            else ret[1] = 0;
+                            break;
+                        }
+                    }
+                    ret[0] = index;
+                    return ret;
+                } else {
+                    ret[0] = 0;
+                    return ret;
+                }
+            } else {
+                ret[0] = 0;
+                return ret;
+            }
         }
-        return 0;
+        return ret;
     }
 
     // print: 'PRINT' STRING | INT | DECIMAL | NAME

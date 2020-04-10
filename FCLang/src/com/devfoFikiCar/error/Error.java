@@ -27,6 +27,9 @@ public class Error {
             case 8:
                 System.out.println("Wrong logical expression.");
                 System.exit(0);
+            case 9:
+                System.out.println("Wrong for loop.");
+                System.exit(0);
         }
     }
 }

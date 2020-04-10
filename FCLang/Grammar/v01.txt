@@ -17,8 +17,18 @@ eg.
 
 2 < 3 && ( 4 < 5 )
 
-logic = [ and, or ]
-compare = [ ==, !=, <=, >= ]
+BOOL_E -> BOOL_B (L_OP BOOL_E)?
+        | not BOOL_E
 
-expression: base | BOOL (logic base | BOOL)?
-base: INT compare INT | '(' expression ')'
+BOOL_B -> bool_var | true | false | REL | '(' BOOL_E ')'
+
+REL -> INT_E R_OP INT_E
+
+R_OP -> < | > | <= | >= | == | !=
+
+L_OP -> or | and
+
+======================
+
+for: for '(' temp_v '|' start_v '|' end_v '|' comp '|' sign '|' int_expression ')' '{' ... '}'
+                NAME     INT         INT        <       + - * /     INT

@@ -19,11 +19,11 @@ public class Parser {
     public static void parse(ArrayList<Token> old) {
         tokens = old;
         for (int index = 0; index < tokens.size(); index++) {
-            if(skip_store.containsKey(index)){
+            if (skip_store.containsKey(index)) {
                 index = skip_store.get(index);
                 continue;
             }
-            if(skip.contains(index)) continue;
+            if (skip.contains(index)) continue;
             String key = tokens.get(index).key;
             switch (key) {
                 case "PRINT": {
@@ -65,12 +65,18 @@ public class Parser {
                             skip_store.put(ret_v[1], ret_v[5]);
                             index = ret_v[0];
                         } else {
-                            if(ret_v[4] != 0){
+                            if (ret_v[4] != 0) {
                                 index = ret_v[4];
                                 skip.add(ret_v[5]);
                             } else index = ret_v[1];
                         }
                     }
+                    break;
+                }
+                case "FOR": {
+                    int result = ffor(index);
+                    if (result == 0) Error.FatalError(9);
+                    else index = result;
                     break;
                 }
             }
@@ -94,6 +100,73 @@ public class Parser {
         skip.forEach(System.out::println);
     }
 
+    private static int ffor(int index) {
+        if (tokens.get(index + 1).key == "L_PARENTHESES") {
+            index++;
+        } else return 0;
+
+        if (tokens.get(index + 1).key == "NAME") {
+            index++;
+        } else return 0;
+
+        if (tokens.get(index + 1).key == "SPLIT") {
+            index++;
+        } else return 0;
+
+        int[] ret_1 = expression_int(++index, 0);
+
+        if (ret_1[0] != 0) {
+            index = ret_1[0];
+        } else return 0;
+
+        if (tokens.get(index).key != "SPLIT") return 0;
+
+        int[] ret_2 = expression_int(++index, 0);
+
+        if (ret_2[0] != 0) {
+            index = ret_2[0];
+        } else return 0;
+
+        if (tokens.get(index).key != "SPLIT") return 0;
+
+        if (tokens.get(index + 1).key == "EQUAL_TO" || tokens.get(index + 1).key == "NOT_EQUAL" || tokens.get(index + 1).key == "GREATER_EQUAL"
+                || tokens.get(index + 1).key == "LESS_EQUAL" || tokens.get(index + 1).key == "LESS_THAN" || tokens.get(index + 1).key == "GREATER_THAN") {
+            index++;
+        } else return 0;
+
+        if (tokens.get(index + 1).key == "SPLIT") {
+            index++;
+        } else return 0;
+
+        if (tokens.get(index + 1).key == "ADDITION" || tokens.get(index + 1).key == "SUBTRACTION" || tokens.get(index + 1).key == "MULTIPLICATION" || tokens.get(index + 1).key == "DIVISION") {
+            index++;
+        } else return 0;
+
+        if (tokens.get(index + 1).key == "SPLIT") {
+            index++;
+        } else return 0;
+
+        int[] ret_3 = expression_int(++index, 0);
+
+        if (ret_3[0] != 0) {
+            index = ret_3[0];
+        } else return 0;
+
+        if (tokens.get(index).key != "R_PARENTHESES") return 0;
+
+        if (tokens.get(index + 1).key == "L_BRACES") {
+            index++;
+        } else return 0;
+
+        int r_pos = search_r_b(index);
+
+        if (r_pos != 0) {
+             index++;
+        } else return 0;
+
+        return index;
+    }
+
     // if -> 1: index
     // if <- 1: index 2: index of } 3: 0 for skip } 1 for skip to pos } + 1, execute else, begin else, end else
     private static int[] fif(int index) {
@@ -113,7 +186,7 @@ public class Parser {
                                 ret[0] = index;
                                 ret[1] = r_pos;
                                 ret[2] = 0;
-                                if(ret_1[0] != 0){
+                                if (ret_1[0] != 0) {
                                     ret[3] = 0;
                                     ret[4] = ret_1[0];
                                     ret[5] = ret_1[1];
@@ -126,7 +199,7 @@ public class Parser {
                                 ret[0] = index;
                                 ret[1] = r_pos;
                                 ret[2] = 1;
-                                if(ret_1[0] != 0){
+                                if (ret_1[0] != 0) {
                                     ret[3] = 1;
                                     ret[4] = ret_1[0];
                                     ret[5] = ret_1[1];
@@ -160,12 +233,12 @@ public class Parser {
 
     private static int[] felse(int index) {
         int[] ret = {0, 0};
-        if(index + 1 < tokens.size() && tokens.get(index + 1).key == "ELSE"){
+        if (index + 1 < tokens.size() && tokens.get(index + 1).key == "ELSE") {
             index++;
-            if(index + 1 < tokens.size() && tokens.get(index + 1).key == "L_BRACES"){
+            if (index + 1 < tokens.size() && tokens.get(index + 1).key == "L_BRACES") {
                 index++;
                 int r_pos = search_r_b(index);
-                if(r_pos != 0){
+                if (r_pos != 0) {
                     ret[0] = index;
                     ret[1] = r_pos;
                 } else {

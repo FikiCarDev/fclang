@@ -15,9 +15,11 @@ public class Parser {
     private static HashMap<String, Double> decimal_store = new HashMap<>();
     private static HashMap<String, Boolean> bool_store = new HashMap<>();
     private static HashMap<Integer, Integer> skip_store = new HashMap<>();
+    private static HashMap<String, Integer> goto_store = new HashMap<>();
 
     public static void parse(ArrayList<Token> old) {
         tokens = old;
+        safe_goto();
         for (int index = 0; index < tokens.size(); index++) {
             if (skip_store.containsKey(index)) {
                 index = skip_store.get(index);
@@ -79,6 +81,11 @@ public class Parser {
                     else index = result;
                     break;
                 }
+                case "GOTO":{
+                    int result = fgoto(index);
+                    if (result == -1) Error.FatalError(10);
+                    else index = result;
+                }
             }
         }
         // FOR DEBUGGING
@@ -98,6 +105,26 @@ public class Parser {
             System.out.println(entry.getKey() + " " + entry.getValue());
         });
         skip.forEach(System.out::println);
+    }
+
+    private static void safe_goto(){
+        for(int index = 0; index < tokens.size(); index++){
+            if(tokens.get(index).key == "L_GOTO"){
+                goto_store.put(tokens.get(index).value, index);
+            }
+        }
+    }
+
+    private static int fgoto(int index){
+        if(tokens.get(index + 1).key == "L_GOTO"){
+            index++;
+        } else return -1;
+
+        if(goto_store.containsKey(tokens.get(index).value)){
+            index = goto_store.get(tokens.get(index).value);
+        } else return -1;
+
+        return index;
     }
 
     private static int ffor(int index) {
@@ -192,7 +219,7 @@ public class Parser {
                     case "ADDITION": {
                         for (int i = v_start; i == v_end; i += v_step) {
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -203,7 +230,7 @@ public class Parser {
                     case "SUBTRACTION": {
                         for (int i = v_start; i == v_end; i -= v_step) {
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -215,7 +242,7 @@ public class Parser {
                         for (int i = v_start; i == v_end; i *= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -227,7 +254,7 @@ public class Parser {
                         for (int i = v_start; i == v_end; i /= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -243,7 +270,7 @@ public class Parser {
                         for (int i = v_start; i != v_end; i += v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -255,7 +282,7 @@ public class Parser {
                         for (int i = v_start; i != v_end; i -= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -267,7 +294,7 @@ public class Parser {
                         for (int i = v_start; i != v_end; i *= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -279,7 +306,7 @@ public class Parser {
                         for (int i = v_start; i != v_end; i /= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -295,7 +322,7 @@ public class Parser {
                         for (int i = v_start; i >= v_end; i += v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -307,7 +334,7 @@ public class Parser {
                         for (int i = v_start; i >= v_end; i -= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -319,7 +346,7 @@ public class Parser {
                         for (int i = v_start; i >= v_end; i *= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -331,7 +358,7 @@ public class Parser {
                         for (int i = v_start; i >= v_end; i /= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -347,7 +374,7 @@ public class Parser {
                         for (int i = v_start; i <= v_end; i += v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -359,7 +386,7 @@ public class Parser {
                         for (int i = v_start; i <= v_end; i -= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -371,7 +398,7 @@ public class Parser {
                         for (int i = v_start; i <= v_end; i *= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -383,7 +410,7 @@ public class Parser {
                         for (int i = v_start; i <= v_end; i /= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -399,7 +426,7 @@ public class Parser {
                         for (int i = v_start; i < v_end; i += v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -411,7 +438,7 @@ public class Parser {
                         for (int i = v_start; i < v_end; i -= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -423,7 +450,7 @@ public class Parser {
                         for (int i = v_start; i < v_end; i *= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -435,7 +462,7 @@ public class Parser {
                         for (int i = v_start; i < v_end; i /= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -451,7 +478,7 @@ public class Parser {
                         for (int i = v_start; i > v_end; i += v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -463,7 +490,7 @@ public class Parser {
                         for (int i = v_start; i > v_end; i -= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -475,7 +502,7 @@ public class Parser {
                         for (int i = v_start; i > v_end; i *= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -487,7 +514,7 @@ public class Parser {
                         for (int i = v_start; i > v_end; i /= v_step) {
                             int_store.put(name, i);
                             int index_t = for_execution(for_begin, for_end);
-                            if (index_t > for_end) {
+                            if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return for_end;
                             }
@@ -564,6 +591,11 @@ public class Parser {
                     if (result == 0) Error.FatalError(9);
                     else index = result;
                     break;
+                }
+                case "GOTO":{
+                    int result = fgoto(index);
+                    if (result == -1) Error.FatalError(10);
+                    else index = result;
                 }
             }
             index_r = index;

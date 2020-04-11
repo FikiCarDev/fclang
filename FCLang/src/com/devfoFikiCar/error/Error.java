@@ -30,6 +30,9 @@ public class Error {
             case 9:
                 System.out.println("Wrong for loop.");
                 System.exit(0);
+            case 10:
+                System.out.println("Wrong goto statement");
+                System.exit(0);
         }
     }
 }

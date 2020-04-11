@@ -183,6 +183,12 @@ public class Lexer {
                         skip = true;
                         break;
                     }
+                    case "goto":{
+                        Token token = new Token("GOTO", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
                 }
                 if (temp.matches("(\".*\")") && !skip) {
                     Token token = new Token("STRING", temp);
@@ -196,6 +202,9 @@ public class Lexer {
                 } else if (temp.matches("\\d+(\\.\\d{1,2})?") && !skip) {
                     Token token = new Token("DECIMAL", temp);
                     tokens.add(token);
+                } else if (temp.matches("^L-.*") && !skip){
+                    Token token = new Token("L_GOTO", temp);
+                    tokens.add(token);
                 } else if (temp.matches(".*") && !skip && temp != "") {
                     Token token = new Token("NAME", temp);
                     tokens.add(token);
@@ -203,6 +212,16 @@ public class Lexer {
                 temp = "";
             }
         }
+
+        /*
+        *   L-adada
+        *   dsdsd
+        *
+        *
+        *   L-dsds132s
+        *
+        *
+        * */
 
         return tokens;
     }

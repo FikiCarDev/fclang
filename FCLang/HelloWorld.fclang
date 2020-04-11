@@ -1,0 +1,6 @@
+for ( i | 0 | 10 | < | + | 1 ) {
+    print i
+    goto L-l
+}
+
+L-l

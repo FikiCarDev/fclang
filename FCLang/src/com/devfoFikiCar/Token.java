@@ -37,6 +37,8 @@ public class Token {
     *   ELSE            else
     *   FOR             for
     *   SPLIT           |
+    *   GOTO
+    *   L_GOTO          L-sth
     * */
 
     public Token(String Key, String Value){

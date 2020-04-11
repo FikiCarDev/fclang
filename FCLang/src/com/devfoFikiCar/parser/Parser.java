@@ -101,12 +101,24 @@ public class Parser {
     }
 
     private static int ffor(int index) {
+        int index_name = 0;
+        int v_start = 0;
+        int v_end = 0;
+        int index_c = 0;
+        int index_sg = 0;
+        int v_step = 0;
+        int for_begin = 0;
+        int for_end = 0;
+
+        String name = "";
+
         if (tokens.get(index + 1).key == "L_PARENTHESES") {
             index++;
         } else return 0;
 
         if (tokens.get(index + 1).key == "NAME") {
             index++;
+            index_name = index;
         } else return 0;
 
         if (tokens.get(index + 1).key == "SPLIT") {
@@ -117,6 +129,7 @@ public class Parser {
 
         if (ret_1[0] != 0) {
             index = ret_1[0];
+            v_start = ret_1[1];
         } else return 0;
 
         if (tokens.get(index).key != "SPLIT") return 0;
@@ -125,6 +138,7 @@ public class Parser {
 
         if (ret_2[0] != 0) {
             index = ret_2[0];
+            v_end = ret_2[1];
         } else return 0;
 
         if (tokens.get(index).key != "SPLIT") return 0;
@@ -132,6 +146,7 @@ public class Parser {
         if (tokens.get(index + 1).key == "EQUAL_TO" || tokens.get(index + 1).key == "NOT_EQUAL" || tokens.get(index + 1).key == "GREATER_EQUAL"
                 || tokens.get(index + 1).key == "LESS_EQUAL" || tokens.get(index + 1).key == "LESS_THAN" || tokens.get(index + 1).key == "GREATER_THAN") {
             index++;
+            index_c = index;
         } else return 0;
 
         if (tokens.get(index + 1).key == "SPLIT") {
@@ -140,6 +155,7 @@ public class Parser {
 
         if (tokens.get(index + 1).key == "ADDITION" || tokens.get(index + 1).key == "SUBTRACTION" || tokens.get(index + 1).key == "MULTIPLICATION" || tokens.get(index + 1).key == "DIVISION") {
             index++;
+            index_sg = index;
         } else return 0;
 
         if (tokens.get(index + 1).key == "SPLIT") {
@@ -150,21 +166,409 @@ public class Parser {
 
         if (ret_3[0] != 0) {
             index = ret_3[0];
+            v_step = ret_3[1];
         } else return 0;
 
         if (tokens.get(index).key != "R_PARENTHESES") return 0;
 
         if (tokens.get(index + 1).key == "L_BRACES") {
             index++;
+            for_begin = index;
         } else return 0;
 
         int r_pos = search_r_b(index);
 
         if (r_pos != 0) {
-             index++;
+            index++;
+            for_end = r_pos;
         } else return 0;
 
-        return index;
+        name = tokens.get(index_name).value;
+        int_store.put(name, v_start);
+
+        switch (tokens.get(index_c).key) {
+            case "EQUAL_TO": {
+                switch (tokens.get(index_sg).key) {
+                    case "ADDITION": {
+                        for (int i = v_start; i == v_end; i += v_step) {
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "SUBTRACTION": {
+                        for (int i = v_start; i == v_end; i -= v_step) {
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "MULTIPLICATION": {
+                        for (int i = v_start; i == v_end; i *= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "DIVISION": {
+                        for (int i = v_start; i == v_end; i /= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                }
+            }
+            case "NOT_EQUAL": {
+                switch (tokens.get(index_sg).key) {
+                    case "ADDITION": {
+                        for (int i = v_start; i != v_end; i += v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "SUBTRACTION": {
+                        for (int i = v_start; i != v_end; i -= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "MULTIPLICATION": {
+                        for (int i = v_start; i != v_end; i *= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "DIVISION": {
+                        for (int i = v_start; i != v_end; i /= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                }
+            }
+            case "GREATER_EQUAL": {
+                switch (tokens.get(index_sg).key) {
+                    case "ADDITION": {
+                        for (int i = v_start; i >= v_end; i += v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "SUBTRACTION": {
+                        for (int i = v_start; i >= v_end; i -= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "MULTIPLICATION": {
+                        for (int i = v_start; i >= v_end; i *= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "DIVISION": {
+                        for (int i = v_start; i >= v_end; i /= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                }
+            }
+            case "LESS_EQUAL": {
+                switch (tokens.get(index_sg).key) {
+                    case "ADDITION": {
+                        for (int i = v_start; i <= v_end; i += v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "SUBTRACTION": {
+                        for (int i = v_start; i <= v_end; i -= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "MULTIPLICATION": {
+                        for (int i = v_start; i <= v_end; i *= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "DIVISION": {
+                        for (int i = v_start; i <= v_end; i /= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                }
+            }
+            case "LESS_THAN": {
+                switch (tokens.get(index_sg).key) {
+                    case "ADDITION": {
+                        for (int i = v_start; i < v_end; i += v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "SUBTRACTION": {
+                        for (int i = v_start; i < v_end; i -= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "MULTIPLICATION": {
+                        for (int i = v_start; i < v_end; i *= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "DIVISION": {
+                        for (int i = v_start; i < v_end; i /= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                }
+            }
+            case "GREATER_THAN": {
+                switch (tokens.get(index_sg).key) {
+                    case "ADDITION": {
+                        for (int i = v_start; i > v_end; i += v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "SUBTRACTION": {
+                        for (int i = v_start; i > v_end; i -= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "MULTIPLICATION": {
+                        for (int i = v_start; i > v_end; i *= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                    case "DIVISION": {
+                        for (int i = v_start; i > v_end; i /= v_step) {
+                            int_store.put(name, i);
+                            int index_t = for_execution(for_begin, for_end);
+                            if (index_t > for_end) {
+                                int_store.remove(name);
+                                return for_end;
+                            }
+                        }
+                        int_store.remove(name);
+                        break;
+                    }
+                }
+            }
+        }
+
+        return for_end;
+    }
+
+    private static int for_execution(int for_begin, int for_end) {
+        int index_r = 0;
+        for (int index = for_begin; index < for_end; index++) {
+            if (skip_store.containsKey(index)) {
+                index = skip_store.get(index);
+                continue;
+            }
+            if (skip.contains(index)) continue;
+            String key = tokens.get(index).key;
+            switch (key) {
+                case "PRINT": {
+                    int result = fprint(index);
+                    if (result == 0) Error.FatalError(1);
+                    else index = result;
+                    break;
+                }
+                case "INT_T": {
+                    int result = int_d(index);
+                    if (result == 0) Error.FatalError(2);
+                    else index = result;
+                    break;
+                }
+                case "STRING_T": {
+                    int result = string_d(index);
+                    if (result == 0) Error.FatalError(3);
+                    else index = result;
+                    break;
+                }
+                case "DECIMAL_T": {
+                    int result = decimal_d(index);
+                    if (result == 0) Error.FatalError(4);
+                    else index = result;
+                    break;
+                }
+                case "BOOL_T": {
+                    int result = bool_d(index);
+                    if (result == 0) Error.FatalError(6);
+                    else index = result;
+                    break;
+                }
+                case "IF": {
+                    int[] ret_v = fif(index);
+                    if (ret_v[0] == 0) Error.FatalError(7);
+                    else {
+                        if (ret_v[2] == 0) {
+                            skip.add(ret_v[1]);
+                            skip_store.put(ret_v[1], ret_v[5]);
+                            index = ret_v[0];
+                        } else {
+                            if (ret_v[4] != 0) {
+                                index = ret_v[4];
+                                skip.add(ret_v[5]);
+                            } else index = ret_v[1];
+                        }
+                    }
+                    break;
+                }
+                case "FOR": {
+                    int result = ffor(index);
+                    if (result == 0) Error.FatalError(9);
+                    else index = result;
+                    break;
+                }
+            }
+            index_r = index;
+        }
+        return index_r;
     }
 
     // if -> 1: index

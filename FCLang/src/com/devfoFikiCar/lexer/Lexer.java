@@ -213,16 +213,6 @@ public class Lexer {
             }
         }
 
-        /*
-        *   L-adada
-        *   dsdsd
-        *
-        *
-        *   L-dsds132s
-        *
-        *
-        * */
-
         return tokens;
     }
 }

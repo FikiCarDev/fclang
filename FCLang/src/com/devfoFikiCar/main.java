@@ -13,23 +13,26 @@ public class main {
         System.out.println(data);
 
         ArrayList<Token> tokens = Lexer.lexer(data);
-        int i = 0;
+        // FOR DEBUGGING
+        /*int i = 0;
         for (Token t : tokens) {
             System.out.println(i + ". Token(" + t.key + ", " + t.value + ")");
             i++;
-        }
+        }*/
 
+        System.out.println("======================================");
         System.out.println("Beginning of FCLang execution: ");
         System.out.println("======================================");
         Parser.parse(tokens);
         System.out.println("======================================");
         System.out.println("Successful execution.");
+        System.out.println("======================================");
     }
 
     public static String readFile() {
         String data = "";
         try {
-            BufferedReader br = new BufferedReader(new FileReader("HelloWorld.fclang"));
+            BufferedReader br = new BufferedReader(new FileReader("./scripts/demo.fclang"));
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
 

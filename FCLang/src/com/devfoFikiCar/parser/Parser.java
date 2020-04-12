@@ -92,6 +92,7 @@ public class Parser {
             }
         }
         // FOR DEBUGGING
+        /*
         System.out.println("======================================");
         System.out.println("Value store check:");
         System.out.println("======================================");
@@ -108,6 +109,7 @@ public class Parser {
             System.out.println(entry.getKey() + " " + entry.getValue());
         });
         skip.forEach(System.out::println);
+        */
     }
 
     private static void safe_goto(){

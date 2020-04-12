@@ -64,7 +64,9 @@ public class Parser {
                     else {
                         if (ret_v[2] == 0) {
                             skip.add(ret_v[1]);
-                            skip_store.put(ret_v[1], ret_v[5]);
+                            if (ret_v[5] != 0) {
+                                skip_store.put(ret_v[1], ret_v[5]);
+                            }
                             index = ret_v[0];
                         } else {
                             if (ret_v[4] != 0) {
@@ -85,6 +87,7 @@ public class Parser {
                     int result = fgoto(index);
                     if (result == -1) Error.FatalError(10);
                     else index = result;
+                    break;
                 }
             }
         }
@@ -575,7 +578,9 @@ public class Parser {
                     else {
                         if (ret_v[2] == 0) {
                             skip.add(ret_v[1]);
-                            skip_store.put(ret_v[1], ret_v[5]);
+                            if (ret_v[5] != 0) {
+                                skip_store.put(ret_v[1], ret_v[5]);
+                            }
                             index = ret_v[0];
                         } else {
                             if (ret_v[4] != 0) {
@@ -596,6 +601,7 @@ public class Parser {
                     int result = fgoto(index);
                     if (result == -1) Error.FatalError(10);
                     else index = result;
+                    break;
                 }
             }
             index_r = index;

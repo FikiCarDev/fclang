@@ -14,7 +14,6 @@ public class main {
 
     public static void runParser(String fileName) {
         String data = readFile(fileName);
-        System.out.println(data);
 
         ArrayList<Token> tokens = Lexer.lexer(data);
         // FOR DEBUGGING

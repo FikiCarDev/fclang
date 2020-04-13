@@ -1,3 +1,4 @@
+import com.devfoFikiCar.main;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -16,5 +17,14 @@ public class for_test {
     public void overrideProperty() {
         System.out.println("hello world");
         Assert.assertEquals("hello world\n", systemOutRule.getLog());
+    }
+
+    @Test
+    public void test1(){
+        main m = new main();
+        main.runParser("HelloWorld.fclang");
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\nHello world!\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOutRule.getLog());
     }
 }

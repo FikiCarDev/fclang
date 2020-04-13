@@ -9,7 +9,11 @@ import java.util.ArrayList;
 
 public class main {
     public static void main(String[] args) {
-        String data = readFile();
+        runParser("demo.fclang");
+    }
+
+    public static void runParser(String fileName) {
+        String data = readFile(fileName);
         System.out.println(data);
 
         ArrayList<Token> tokens = Lexer.lexer(data);
@@ -23,16 +27,16 @@ public class main {
         System.out.println("======================================");
         System.out.println("Beginning of FCLang execution: ");
         System.out.println("======================================");
-        Parser.parse(tokens);
+        Parser.parse(tokens, 0, tokens.size());
         System.out.println("======================================");
         System.out.println("Successful execution.");
         System.out.println("======================================");
     }
 
-    public static String readFile() {
+    public static String readFile(String fileName) {
         String data = "";
         try {
-            BufferedReader br = new BufferedReader(new FileReader("./scripts/demo.fclang"));
+            BufferedReader br = new BufferedReader(new FileReader("./scripts/" + fileName));
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
 

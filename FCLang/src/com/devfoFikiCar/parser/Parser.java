@@ -17,10 +17,11 @@ public class Parser {
     private static HashMap<Integer, Integer> skip_store = new HashMap<>();
     private static HashMap<String, Integer> goto_store = new HashMap<>();
 
-    public static void parse(ArrayList<Token> old) {
+    public static int parse(ArrayList<Token> old, int begin, int end) {
         tokens = old;
+        int index_r = 0;
         safe_goto();
-        for (int index = 0; index < tokens.size(); index++) {
+        for (int index = begin; index < end; index++) {
             if (skip_store.containsKey(index)) {
                 index = skip_store.get(index);
                 continue;
@@ -90,7 +91,9 @@ public class Parser {
                     break;
                 }
             }
+            index_r = index;
         }
+        return index_r;
         // FOR DEBUGGING
         /*
         System.out.println("======================================");
@@ -223,7 +226,7 @@ public class Parser {
                 switch (tokens.get(index_sg).key) {
                     case "ADDITION": {
                         for (int i = v_start; i == v_end; i += v_step) {
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -234,7 +237,7 @@ public class Parser {
                     }
                     case "SUBTRACTION": {
                         for (int i = v_start; i == v_end; i -= v_step) {
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -246,7 +249,7 @@ public class Parser {
                     case "MULTIPLICATION": {
                         for (int i = v_start; i == v_end; i *= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -258,7 +261,7 @@ public class Parser {
                     case "DIVISION": {
                         for (int i = v_start; i == v_end; i /= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -274,7 +277,7 @@ public class Parser {
                     case "ADDITION": {
                         for (int i = v_start; i != v_end; i += v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -286,7 +289,7 @@ public class Parser {
                     case "SUBTRACTION": {
                         for (int i = v_start; i != v_end; i -= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -298,7 +301,7 @@ public class Parser {
                     case "MULTIPLICATION": {
                         for (int i = v_start; i != v_end; i *= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -310,7 +313,7 @@ public class Parser {
                     case "DIVISION": {
                         for (int i = v_start; i != v_end; i /= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -326,7 +329,7 @@ public class Parser {
                     case "ADDITION": {
                         for (int i = v_start; i >= v_end; i += v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -338,7 +341,7 @@ public class Parser {
                     case "SUBTRACTION": {
                         for (int i = v_start; i >= v_end; i -= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -350,7 +353,7 @@ public class Parser {
                     case "MULTIPLICATION": {
                         for (int i = v_start; i >= v_end; i *= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -362,7 +365,7 @@ public class Parser {
                     case "DIVISION": {
                         for (int i = v_start; i >= v_end; i /= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -378,7 +381,7 @@ public class Parser {
                     case "ADDITION": {
                         for (int i = v_start; i <= v_end; i += v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -390,7 +393,7 @@ public class Parser {
                     case "SUBTRACTION": {
                         for (int i = v_start; i <= v_end; i -= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -402,7 +405,7 @@ public class Parser {
                     case "MULTIPLICATION": {
                         for (int i = v_start; i <= v_end; i *= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -414,7 +417,7 @@ public class Parser {
                     case "DIVISION": {
                         for (int i = v_start; i <= v_end; i /= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -430,7 +433,7 @@ public class Parser {
                     case "ADDITION": {
                         for (int i = v_start; i < v_end; i += v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -442,7 +445,7 @@ public class Parser {
                     case "SUBTRACTION": {
                         for (int i = v_start; i < v_end; i -= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -454,7 +457,7 @@ public class Parser {
                     case "MULTIPLICATION": {
                         for (int i = v_start; i < v_end; i *= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -466,7 +469,7 @@ public class Parser {
                     case "DIVISION": {
                         for (int i = v_start; i < v_end; i /= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -482,7 +485,7 @@ public class Parser {
                     case "ADDITION": {
                         for (int i = v_start; i > v_end; i += v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -494,7 +497,7 @@ public class Parser {
                     case "SUBTRACTION": {
                         for (int i = v_start; i > v_end; i -= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -506,7 +509,7 @@ public class Parser {
                     case "MULTIPLICATION": {
                         for (int i = v_start; i > v_end; i *= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -518,7 +521,7 @@ public class Parser {
                     case "DIVISION": {
                         for (int i = v_start; i > v_end; i /= v_step) {
                             int_store.put(name, i);
-                            int index_t = for_execution(for_begin, for_end);
+                            int index_t = parse(tokens, for_begin, for_end);
                             if (index_t > for_end || index_t < for_begin) {
                                 int_store.remove(name);
                                 return index_t;
@@ -532,83 +535,6 @@ public class Parser {
         }
 
         return for_end;
-    }
-
-    private static int for_execution(int for_begin, int for_end) {
-        int index_r = 0;
-        for (int index = for_begin; index < for_end; index++) {
-            if (skip_store.containsKey(index)) {
-                index = skip_store.get(index);
-                continue;
-            }
-            if (skip.contains(index)) continue;
-            String key = tokens.get(index).key;
-            switch (key) {
-                case "PRINT": {
-                    int result = fprint(index);
-                    if (result == 0) Error.FatalError(1);
-                    else index = result;
-                    break;
-                }
-                case "INT_T": {
-                    int result = int_d(index);
-                    if (result == 0) Error.FatalError(2);
-                    else index = result;
-                    break;
-                }
-                case "STRING_T": {
-                    int result = string_d(index);
-                    if (result == 0) Error.FatalError(3);
-                    else index = result;
-                    break;
-                }
-                case "DECIMAL_T": {
-                    int result = decimal_d(index);
-                    if (result == 0) Error.FatalError(4);
-                    else index = result;
-                    break;
-                }
-                case "BOOL_T": {
-                    int result = bool_d(index);
-                    if (result == 0) Error.FatalError(6);
-                    else index = result;
-                    break;
-                }
-                case "IF": {
-                    int[] ret_v = fif(index);
-                    if (ret_v[0] == 0) Error.FatalError(7);
-                    else {
-                        if (ret_v[2] == 0) {
-                            skip.add(ret_v[1]);
-                            if (ret_v[5] != 0) {
-                                skip_store.put(ret_v[1], ret_v[5]);
-                            }
-                            index = ret_v[0];
-                        } else {
-                            if (ret_v[4] != 0) {
-                                index = ret_v[4];
-                                skip.add(ret_v[5]);
-                            } else index = ret_v[1];
-                        }
-                    }
-                    break;
-                }
-                case "FOR": {
-                    int result = ffor(index);
-                    if (result == 0) Error.FatalError(9);
-                    else index = result;
-                    break;
-                }
-                case "GOTO":{
-                    int result = fgoto(index);
-                    if (result == -1) Error.FatalError(10);
-                    else index = result;
-                    break;
-                }
-            }
-            index_r = index;
-        }
-        return index_r;
     }
 
     // if -> 1: index

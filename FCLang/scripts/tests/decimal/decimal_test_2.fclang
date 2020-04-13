@@ -1,0 +1,5 @@
+decimal r1_decimal = 3.0
+decimal alfa1_decimal = 60.0
+decimal pi1_decimal = 3.14
+decimal e2 = ( r1_decimal * pi1_decimal * alfa1_decimal ) / 180.0
+print e2

@@ -1,0 +1,4 @@
+decimal pi_decimal = 3.14
+decimal r_decimal = 2.0
+decimal ew = pi_decimal * r_decimal * 2.0
+print ew

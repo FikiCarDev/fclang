@@ -1,0 +1,4 @@
+int r_a = 14
+int r_b = 32
+int sd = r_a + r_b
+print sd

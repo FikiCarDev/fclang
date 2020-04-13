@@ -1,0 +1,4 @@
+int ba1 = 23
+int ba2 = 13
+int c = ( ba1 * ba2 ) / ba2
+print c

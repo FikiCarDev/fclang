@@ -1,0 +1,2 @@
+int cwe = ( 3 + ( 2 * 2  ) ) - 2
+print cwe

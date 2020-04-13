@@ -1,0 +1,5 @@
+string a_string = "FC Lang"
+string b_string = "-FikiCar"
+print a_string
+print b_string
+print "/\/\/\/\/\"

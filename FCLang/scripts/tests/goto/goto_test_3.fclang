@@ -1,0 +1,13 @@
+for ( i | 0 | 5 | < | + | 1 ) {
+    int sum = sum * i
+    for ( j | 0 | 5 | < | + | 1 ) {
+        int sum = sum + j
+        if ( sum >= 50 ) {
+            print sum
+            goto L-skip
+        }
+    }
+}
+
+L-skip
+print "Stopped for-loop on 50"

@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b4adaf3-7f70-420c-b0d2-2535c66f872e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/scripts/tests/goto/goto_test_1.fclang" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/tests/goto/goto_test_2.fclang" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/tests/goto/goto_test_3.fclang" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/tests/print/print_test_1.fclang" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/tests/print/print_test_2.fclang" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/tests/print/print_test_3.fclang" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/tests/print/print_test_4.fclang" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/tests/print/print_test_5.fclang" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/goto_test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FCLang/com/devfoFikiCar/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FCLang/com/devfoFikiCar/main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FCLang/for_test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/FCLang/for_test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/for_test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/for_test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/FCLang/for_test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/for_test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/print_test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,13 +38,16 @@
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1ZZaJZjfDmYxv3YNynmmVL9fiMr" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
@@ -48,7 +58,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/com/devfoFikiCar/tests" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/scripts/tests" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -57,6 +67,12 @@
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.devfoFikiCar.tests" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scripts/tests" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -265,6 +281,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Test" />
     <MESSAGE value="Lexer update for logic operators" />
     <MESSAGE value="bool expression" />
@@ -283,18 +300,18 @@
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="100" y="123" width="2360" height="1146" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1586784874421">
+    <state x="100" y="123" width="2360" height="1146" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1586787094152">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state x="100" y="123" width="2360" height="1146" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586784874421" />
+    <state x="100" y="123" width="2360" height="1146" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586787094152" />
     <state x="1003" y="496" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585049050584">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
     <state x="1003" y="496" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585049050584" />
-    <state x="1018" y="481" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1586775798842">
+    <state x="1018" y="481" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1586785921602">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state x="1018" y="481" key="#com.intellij.ide.util.PackageChooserDialog/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586775798842" />
+    <state x="1018" y="481" key="#com.intellij.ide.util.PackageChooserDialog/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586785921602" />
     <state x="923" y="299" key="CommitChangelistDialog2" timestamp="1586777213709">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
@@ -305,33 +322,33 @@
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
     <state x="100" y="123" width="2360" height="1146" key="DiffContextDialog/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1585775598167" />
-    <state width="2518" height="549" key="GridCell.Tab.0.bottom" timestamp="1586784881220">
+    <state width="2518" height="740" key="GridCell.Tab.0.bottom" timestamp="1586787113153">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
     <state width="2518" height="421" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1920.177.1920.1080@0.0.2560.1440" timestamp="1586682664736" />
     <state width="2518" height="518" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1920.200.1920.1057@0.0.2560.1440" timestamp="1586559613361" />
-    <state width="2518" height="549" key="GridCell.Tab.0.bottom/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586784881220" />
+    <state width="2518" height="740" key="GridCell.Tab.0.bottom/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586787113153" />
     <state width="2518" height="383" key="GridCell.Tab.0.bottom/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1586092309885" />
-    <state width="2518" height="549" key="GridCell.Tab.0.center" timestamp="1586784881219">
+    <state width="2518" height="740" key="GridCell.Tab.0.center" timestamp="1586787113152">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
     <state width="2518" height="421" key="GridCell.Tab.0.center/0.0.2560.1440/-1920.177.1920.1080@0.0.2560.1440" timestamp="1586682664734" />
     <state width="2518" height="518" key="GridCell.Tab.0.center/0.0.2560.1440/-1920.200.1920.1057@0.0.2560.1440" timestamp="1586559613360" />
-    <state width="2518" height="549" key="GridCell.Tab.0.center/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586784881219" />
+    <state width="2518" height="740" key="GridCell.Tab.0.center/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586787113152" />
     <state width="2518" height="383" key="GridCell.Tab.0.center/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1586092309885" />
-    <state width="2518" height="549" key="GridCell.Tab.0.left" timestamp="1586784881219">
+    <state width="2518" height="740" key="GridCell.Tab.0.left" timestamp="1586787113151">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
     <state width="2518" height="421" key="GridCell.Tab.0.left/0.0.2560.1440/-1920.177.1920.1080@0.0.2560.1440" timestamp="1586682664734" />
     <state width="2518" height="518" key="GridCell.Tab.0.left/0.0.2560.1440/-1920.200.1920.1057@0.0.2560.1440" timestamp="1586559613360" />
-    <state width="2518" height="549" key="GridCell.Tab.0.left/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586784881219" />
+    <state width="2518" height="740" key="GridCell.Tab.0.left/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586787113151" />
     <state width="2518" height="383" key="GridCell.Tab.0.left/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1586092309885" />
-    <state width="2518" height="549" key="GridCell.Tab.0.right" timestamp="1586784881220">
+    <state width="2518" height="740" key="GridCell.Tab.0.right" timestamp="1586787113152">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
     <state width="2518" height="421" key="GridCell.Tab.0.right/0.0.2560.1440/-1920.177.1920.1080@0.0.2560.1440" timestamp="1586682664735" />
     <state width="2518" height="518" key="GridCell.Tab.0.right/0.0.2560.1440/-1920.200.1920.1057@0.0.2560.1440" timestamp="1586559613361" />
-    <state width="2518" height="549" key="GridCell.Tab.0.right/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586784881220" />
+    <state width="2518" height="740" key="GridCell.Tab.0.right/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586787113152" />
     <state width="2518" height="383" key="GridCell.Tab.0.right/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1586092309885" />
     <state width="2518" height="471" key="GridCell.Tab.1.bottom" timestamp="1586698371187">
       <screen x="0" y="23" width="2560" height="1346" />
@@ -387,10 +404,10 @@
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
     <state x="1007" y="599" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586775756175" />
-    <state x="1059" y="432" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1586775820512">
+    <state x="1059" y="432" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1586785923875">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>
-    <state x="1059" y="432" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586775820512" />
+    <state x="1059" y="432" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586785923875" />
     <state x="854" y="457" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1586692439325">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>

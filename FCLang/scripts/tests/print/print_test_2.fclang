@@ -1,0 +1,5 @@
+int a_int = 12
+int b_int = 6
+print a_int
+print b_int
+print 7

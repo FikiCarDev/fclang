@@ -1,0 +1,5 @@
+decimal a_decimal = 12.0
+decimal b_decimal = 6.5
+print a_decimal
+print b_decimal
+print 3.14

@@ -1,0 +1,4 @@
+goto L-skip
+print "No"
+L-skip
+print "Yes"

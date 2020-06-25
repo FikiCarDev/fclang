@@ -84,7 +84,7 @@ public class Parser {
                     else index = result;
                     break;
                 }
-                case "GOTO":{
+                case "GOTO": {
                     int result = fgoto(index);
                     if (result == -1) Error.FatalError(10);
                     else index = result;
@@ -115,20 +115,20 @@ public class Parser {
         */
     }
 
-    private static void safe_goto(){
-        for(int index = 0; index < tokens.size(); index++){
-            if(tokens.get(index).key == "L_GOTO"){
+    private static void safe_goto() {
+        for (int index = 0; index < tokens.size(); index++) {
+            if (tokens.get(index).key == "L_GOTO") {
                 goto_store.put(tokens.get(index).value, index);
             }
         }
     }
 
-    private static int fgoto(int index){
-        if(tokens.get(index + 1).key == "L_GOTO"){
+    private static int fgoto(int index) {
+        if (tokens.get(index + 1).key == "L_GOTO") {
             index++;
         } else return -1;
 
-        if(goto_store.containsKey(tokens.get(index).value)){
+        if (goto_store.containsKey(tokens.get(index).value)) {
             index = goto_store.get(tokens.get(index).value);
         } else return -1;
 

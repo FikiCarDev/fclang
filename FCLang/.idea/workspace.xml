@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b4adaf3-7f70-420c-b0d2-2535c66f872e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/tests/decimal/decimal_test_1.fclang" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/tests/decimal/decimal_test_2.fclang" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/tests/decimal/decimal_test_3.fclang" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/tests/for/for_test_1.fclang" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/tests/for/for_test_2.fclang" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/tests/for/for_test_3.fclang" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/tests/if/if_test_1.fclang" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/tests/if/if_test_2.fclang" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/tests/if/if_test_3.fclang" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/tests/int/int_test_1.fclang" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/tests/int/int_test_2.fclang" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/tests/int/int_test_3.fclang" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/decimal_test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/for_test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/if_test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/int_test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +33,6 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -57,14 +41,15 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/com/devfoFikiCar/tests" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/scripts/tests" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -284,13 +269,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -313,6 +297,10 @@
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="768" y="279" key="#Project_Structure" timestamp="1593107505030">
+      <screen x="0" y="23" width="2560" height="1349" />
+    </state>
+    <state x="768" y="279" key="#Project_Structure/0.23.2560.1349/-1920.200.1920.1057@0.23.2560.1349" timestamp="1593107505030" />
     <state x="100" y="123" width="2360" height="1146" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1586804979591">
       <screen x="0" y="23" width="2560" height="1346" />
     </state>

@@ -159,31 +159,31 @@ public class Lexer {
                         skip = true;
                         break;
                     }
-                    case "!":{
+                    case "!": {
                         Token token = new Token("NOT", temp);
                         tokens.add(token);
                         skip = true;
                         break;
                     }
-                    case "else":{
+                    case "else": {
                         Token token = new Token("ELSE", temp);
                         tokens.add(token);
                         skip = true;
                         break;
                     }
-                    case "for":{
+                    case "for": {
                         Token token = new Token("FOR", temp);
                         tokens.add(token);
                         skip = true;
                         break;
                     }
-                    case "|":{
+                    case "|": {
                         Token token = new Token("SPLIT", temp);
                         tokens.add(token);
                         skip = true;
                         break;
                     }
-                    case "goto":{
+                    case "goto": {
                         Token token = new Token("GOTO", temp);
                         tokens.add(token);
                         skip = true;
@@ -202,7 +202,7 @@ public class Lexer {
                 } else if (temp.matches("\\d+(\\.\\d{1,2})?") && !skip) {
                     Token token = new Token("DECIMAL", temp);
                     tokens.add(token);
-                } else if (temp.matches("^L-.*") && !skip){
+                } else if (temp.matches("^L-.*") && !skip) {
                     Token token = new Token("L_GOTO", temp);
                     tokens.add(token);
                 } else if (temp.matches(".*") && !skip && temp != "") {

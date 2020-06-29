@@ -34,4 +34,13 @@ public class if_test {
                 "======================================\nYes\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
+
+    @Test
+    public void boolExpresionIf(){
+        main m = new main();
+        main.runParser("tests/if/if_test_4.fclang");
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\nYes\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
 }

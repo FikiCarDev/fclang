@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class main {
     public static void main(String[] args) {
-        runParser("demo.fclang");
+        runParser("tests/if/if_test_4.fclang");
     }
 
     public static void runParser(String fileName) {

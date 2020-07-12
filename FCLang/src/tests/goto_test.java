@@ -11,7 +11,8 @@ public class goto_test {
     @Test
     public void classicGoto() {
         main m = new main();
-        main.runParser("tests/goto/goto_test_1.fclang");
+        String[] t = {"tests/goto/goto_test_1.fclang"};
+        main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nYes\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -20,7 +21,8 @@ public class goto_test {
     @Test
     public void ifGoto() {
         main m = new main();
-        main.runParser("tests/goto/goto_test_2.fclang");
+        String[] t = {"tests/goto/goto_test_2.fclang"};
+        main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nSize doesn't matter\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -29,7 +31,8 @@ public class goto_test {
     @Test
     public void forGoto() {
         main m = new main();
-        main.runParser("tests/goto/goto_test_3.fclang");
+        String[] t = {"tests/goto/goto_test_3.fclang"};
+        main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n50\nStopped for-loop on 50\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());

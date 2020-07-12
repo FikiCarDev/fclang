@@ -1,5 +1,0 @@
-if ( 3 > 2 && ( true || false ) ) {
-    print "Yes"
-} else {
-    print "No"
-}

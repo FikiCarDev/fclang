@@ -11,7 +11,8 @@ public class decimal_test {
     @Test
     public void classicDecimal() {
         main m = new main();
-        main.runParser("tests/decimal/decimal_test_1.fclang");
+        String[] t = {"tests/decimal/decimal_test_1.fclang"};
+        main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n12.56\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -20,7 +21,8 @@ public class decimal_test {
     @Test
     public void intermediateDecimal() {
         main m = new main();
-        main.runParser("tests/decimal/decimal_test_2.fclang");
+        String[] t = {"tests/decimal/decimal_test_2.fclang"};
+        main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n3.14\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -29,7 +31,8 @@ public class decimal_test {
     @Test
     public void advanceDecimal() {
         main m = new main();
-        main.runParser("tests/decimal/decimal_test_3.fclang");
+        String[] t = {"tests/decimal/decimal_test_3.fclang"};
+        main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n5.75\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());

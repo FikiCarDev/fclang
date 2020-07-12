@@ -11,7 +11,8 @@ public class print_test {
     @Test
     public void classicPrint() {
         main m = new main();
-        main.runParser("tests/print/print_test_1.fclang");
+        String[] t = {"tests/print/print_test_1.fclang"};
+        main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nHello world!\nI love fclang\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -20,7 +21,8 @@ public class print_test {
     @Test
     public void intPrint() {
         main m = new main();
-        main.runParser("tests/print/print_test_2.fclang");
+        String[] t = {"tests/print/print_test_2.fclang"};
+        main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n12\n6\n7\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -29,7 +31,8 @@ public class print_test {
     @Test
     public void decimalPrint() {
         main m = new main();
-        main.runParser("tests/print/print_test_3.fclang");
+        String[] t = {"tests/print/print_test_3.fclang"};
+        main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n12.0\n6.5\n3.14\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -38,7 +41,8 @@ public class print_test {
     @Test
     public void stringPrint() {
         main m = new main();
-        main.runParser("tests/print/print_test_4.fclang");
+        String[] t = {"tests/print/print_test_4.fclang"};
+        main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nFC Lang\n-FikiCar\n/\\/\\/\\/\\/\\\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -47,7 +51,8 @@ public class print_test {
     @Test
     public void boolPrint() {
         main m = new main();
-        main.runParser("tests/print/print_test_5.fclang");
+        String[] t = {"tests/print/print_test_5.fclang"};
+        main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\ntrue\nfalse\ntrue\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());

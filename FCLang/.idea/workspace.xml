@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="FCLang:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -21,21 +26,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6b4adaf3-7f70-420c-b0d2-2535c66f872e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/FCLang_jar/FCLang.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/FCLang_jar/FCLang.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FCLang/com/devfoFikiCar/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FCLang/com/devfoFikiCar/main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FCLang/decimal_test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/FCLang/decimal_test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FCLang/for_test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/FCLang/for_test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FCLang/goto_test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/FCLang/goto_test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FCLang/if_test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/FCLang/if_test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FCLang/int_test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/FCLang/int_test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FCLang/print_test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/FCLang/print_test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/tests/if/if_test_4.fclang" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/devfoFikiCar/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/devfoFikiCar/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/decimal_test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/decimal_test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/for_test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/for_test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/goto_test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/goto_test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/if_test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/if_test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/int_test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/int_test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/print_test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/print_test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -334,11 +327,11 @@
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
     <state x="768" y="279" key="#Project_Structure/0.23.2560.1349/-1920.200.1920.1057@0.23.2560.1349" timestamp="1593107505030" />
-    <state x="1105" y="163" width="1247" height="1098" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1594548944429">
+    <state x="1010" y="163" width="1247" height="1098" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1594668653824">
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
     <state x="100" y="123" width="2360" height="1146" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586804979591" />
-    <state x="1105" y="163" width="1247" height="1098" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.23.2560.1349/-1920.200.1920.1057@0.23.2560.1349" timestamp="1594548944429" />
+    <state x="1010" y="163" width="1247" height="1098" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.23.2560.1349/-1920.200.1920.1057@0.23.2560.1349" timestamp="1594668653824" />
     <state x="1003" y="497" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593382814118">
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
@@ -357,38 +350,38 @@
     <state x="923" y="295" key="CommitChangelistDialog2/0.0.2560.1440/-1920.177.1920.1080@0.0.2560.1440" timestamp="1586682739500" />
     <state x="923" y="299" key="CommitChangelistDialog2/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586787176045" />
     <state x="923" y="299" key="CommitChangelistDialog2/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1586092089646" />
-    <state width="2518" height="864" key="GridCell.Tab.0.bottom" timestamp="1594548772649">
+    <state width="2518" height="864" key="GridCell.Tab.0.bottom" timestamp="1594668751850">
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
     <state width="2518" height="421" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1920.177.1920.1080@0.0.2560.1440" timestamp="1586682664736" />
     <state width="2518" height="518" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1920.200.1920.1057@0.0.2560.1440" timestamp="1586559613361" />
     <state width="2518" height="460" key="GridCell.Tab.0.bottom/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586805102147" />
     <state width="2518" height="383" key="GridCell.Tab.0.bottom/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1586092309885" />
-    <state width="2518" height="864" key="GridCell.Tab.0.bottom/0.23.2560.1349/-1920.200.1920.1057@0.23.2560.1349" timestamp="1594548772649" />
-    <state width="2518" height="864" key="GridCell.Tab.0.center" timestamp="1594548772648">
+    <state width="2518" height="864" key="GridCell.Tab.0.bottom/0.23.2560.1349/-1920.200.1920.1057@0.23.2560.1349" timestamp="1594668751850" />
+    <state width="2518" height="864" key="GridCell.Tab.0.center" timestamp="1594668751849">
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
     <state width="2518" height="421" key="GridCell.Tab.0.center/0.0.2560.1440/-1920.177.1920.1080@0.0.2560.1440" timestamp="1586682664734" />
     <state width="2518" height="518" key="GridCell.Tab.0.center/0.0.2560.1440/-1920.200.1920.1057@0.0.2560.1440" timestamp="1586559613360" />
     <state width="2518" height="460" key="GridCell.Tab.0.center/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586805102146" />
     <state width="2518" height="383" key="GridCell.Tab.0.center/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1586092309885" />
-    <state width="2518" height="864" key="GridCell.Tab.0.center/0.23.2560.1349/-1920.200.1920.1057@0.23.2560.1349" timestamp="1594548772648" />
-    <state width="2518" height="864" key="GridCell.Tab.0.left" timestamp="1594548772647">
+    <state width="2518" height="864" key="GridCell.Tab.0.center/0.23.2560.1349/-1920.200.1920.1057@0.23.2560.1349" timestamp="1594668751849" />
+    <state width="2518" height="864" key="GridCell.Tab.0.left" timestamp="1594668751849">
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
     <state width="2518" height="421" key="GridCell.Tab.0.left/0.0.2560.1440/-1920.177.1920.1080@0.0.2560.1440" timestamp="1586682664734" />
     <state width="2518" height="518" key="GridCell.Tab.0.left/0.0.2560.1440/-1920.200.1920.1057@0.0.2560.1440" timestamp="1586559613360" />
     <state width="2518" height="460" key="GridCell.Tab.0.left/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586805102145" />
     <state width="2518" height="383" key="GridCell.Tab.0.left/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1586092309885" />
-    <state width="2518" height="864" key="GridCell.Tab.0.left/0.23.2560.1349/-1920.200.1920.1057@0.23.2560.1349" timestamp="1594548772647" />
-    <state width="2518" height="864" key="GridCell.Tab.0.right" timestamp="1594548772649">
+    <state width="2518" height="864" key="GridCell.Tab.0.left/0.23.2560.1349/-1920.200.1920.1057@0.23.2560.1349" timestamp="1594668751849" />
+    <state width="2518" height="864" key="GridCell.Tab.0.right" timestamp="1594668751849">
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
     <state width="2518" height="421" key="GridCell.Tab.0.right/0.0.2560.1440/-1920.177.1920.1080@0.0.2560.1440" timestamp="1586682664735" />
     <state width="2518" height="518" key="GridCell.Tab.0.right/0.0.2560.1440/-1920.200.1920.1057@0.0.2560.1440" timestamp="1586559613361" />
     <state width="2518" height="460" key="GridCell.Tab.0.right/0.23.2560.1346/-1920.200.1920.1057@0.23.2560.1346" timestamp="1586805102146" />
     <state width="2518" height="383" key="GridCell.Tab.0.right/0.23.2560.1346/2560.-161.1080.1897@0.23.2560.1346" timestamp="1586092309885" />
-    <state width="2518" height="864" key="GridCell.Tab.0.right/0.23.2560.1349/-1920.200.1920.1057@0.23.2560.1349" timestamp="1594548772649" />
+    <state width="2518" height="864" key="GridCell.Tab.0.right/0.23.2560.1349/-1920.200.1920.1057@0.23.2560.1349" timestamp="1594668751849" />
     <state width="2518" height="839" key="GridCell.Tab.1.bottom" timestamp="1593385578793">
       <screen x="0" y="23" width="2560" height="1349" />
     </state>

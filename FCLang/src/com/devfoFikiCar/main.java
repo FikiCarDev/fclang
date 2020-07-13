@@ -4,6 +4,7 @@ import com.devfoFikiCar.lexer.Lexer;
 import com.devfoFikiCar.parser.Parser;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
@@ -26,21 +27,21 @@ public class main {
                 break;
             }
             case 2: {
-                System.out.println("Invalid oprion " + args[0]);
+                System.out.println("Invalid option " + args[0]);
                 break;
             }
             case 3: {
                 if (args[0].equals("-dev")) {
                     switch (args[1]) {
                         case "-m": {
-                            setData(args[2]);
+                            setData(new File(args[2]).getAbsolutePath());
                             setTokens();
                             devM();
                             runParser();
                             break;
                         }
                         case "-f": {
-                            setData(args[2]);
+                            setData(new File(args[2]).getAbsolutePath());
                             setTokens();
                             devF();
                             runParser();
@@ -93,7 +94,7 @@ public class main {
     public static String readFile(String fileName) {
         String data = "";
         try {
-            BufferedReader br = new BufferedReader(new FileReader("./scripts/" + fileName));
+            BufferedReader br = new BufferedReader(new FileReader(new File(fileName)));
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
 
@@ -111,3 +112,6 @@ public class main {
         return data;
     }
 }
+/*
+* After getting file path with ```new File(args[2]).getAbsolutePath() ``` when I try to read it with ```BufferedReader br = new BufferedReader(new FileReader(new File(fileName)));``` it gives me and error like it doesn't exist but I got the path with java function.
+* */

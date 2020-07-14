@@ -112,6 +112,3 @@ public class main {
         return data;
     }
 }
-/*
-* After getting file path with ```new File(args[2]).getAbsolutePath() ``` when I try to read it with ```BufferedReader br = new BufferedReader(new FileReader(new File(fileName)));``` it gives me and error like it doesn't exist but I got the path with java function.
-* */

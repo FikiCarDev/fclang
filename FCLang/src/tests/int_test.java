@@ -11,7 +11,7 @@ public class int_test {
     @Test
     public void classicInt() {
         main m = new main();
-        String[] t = {"tests/int/int_test_1.fclang"};
+        String[] t = {"./scripts/tests/int/int_test_1.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n46\n======================================\n" +
@@ -21,7 +21,7 @@ public class int_test {
     @Test
     public void intermediateInt() {
         main m = new main();
-        String[] t = {"tests/int/int_test_2.fclang"};
+        String[] t = {"./scripts/tests/int/int_test_2.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n23\n======================================\n" +
@@ -31,7 +31,7 @@ public class int_test {
     @Test
     public void advanceInt() {
         main m = new main();
-        String[] t = {"tests/int/int_test_3.fclang"};
+        String[] t = {"./scripts/tests/int/int_test_3.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n5\n======================================\n" +

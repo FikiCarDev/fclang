@@ -848,6 +848,27 @@ public class Parser {
                 }
                 return index + 1;
             } else return 0;
+        } else if (tokens.get(index + 1).key == "L_PARENTHESES") {
+            index++;
+            int tempIndex = 0;
+            for (int i = index; i < tokens.size(); i++)
+                if (tokens.get(i).key != "L_PARENTHESES") {
+                    tempIndex = i;
+                    break;
+                }
+            switch (tokens.get(tempIndex).key) {
+                case "INT": {
+                    int[] ret_v_int = expression_int(index, 0);
+                    System.out.println(ret_v_int[1]);
+                    return --ret_v_int[0];
+                }
+                case "DECIMAL": {
+                    double[] ret_v_double = expression_decimal(index * 1.0, 0.0);
+                    System.out.println(ret_v_double[1]);
+                    return (int) --ret_v_double[0];
+                }
+            }
+            return 0;
         } else return 0;
     }
 

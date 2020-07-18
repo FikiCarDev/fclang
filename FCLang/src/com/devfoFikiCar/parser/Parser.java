@@ -93,11 +93,12 @@ public class Parser {
                 }
             }
             index_r = index;
+
         }
-        return index_r;
+
         // FOR DEBUGGING
-        /*
-        System.out.println("======================================");
+
+        /*System.out.println("======================================");
         System.out.println("Value store check:");
         System.out.println("======================================");
         int_store.entrySet().forEach(entry -> {
@@ -112,8 +113,9 @@ public class Parser {
         bool_store.entrySet().forEach(entry -> {
             System.out.println(entry.getKey() + " " + entry.getValue());
         });
-        skip.forEach(System.out::println);
-        */
+        skip.forEach(System.out::println);*/
+        return index_r;
+
     }
 
     // if -> 1: index

@@ -1,0 +1,2 @@
+bool b = 10 + 10 < 20
+print b

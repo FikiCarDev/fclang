@@ -52,6 +52,9 @@ public class main {
                 break;
             }
         }
+        //setData("./scripts/tests/bool/bool_test_1.fclang");
+        //setTokens();
+        //runParser();
     }
 
     public static void runParser() {

@@ -94,6 +94,12 @@ public class Integers {
                     return ret;
                 }
             }
+        } else if (Parser.tokens.get(index).key == "EQUAL_TO" || Parser.tokens.get(index).key == "NOT_EQUAL"
+                || Parser.tokens.get(index).key == "GREATER_EQUAL" || Parser.tokens.get(index).key == "LESS_EQUAL"
+                || Parser.tokens.get(index).key == "LESS_THAN" || Parser.tokens.get(index).key == "GREATER_THAN") {
+            ret[0] = index;
+            ret[1] = value;
+            return ret;
         } else {
             ret[0] = 0;
             return ret;

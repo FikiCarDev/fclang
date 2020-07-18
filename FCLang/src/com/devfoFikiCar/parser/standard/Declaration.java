@@ -36,6 +36,13 @@ public class Declaration {
         if (Parser.tokens.get(index + 1).key == "NAME") {
             if (Parser.tokens.get(index + 2).key == "EQUALS") {
                 index = declare_v(index + 3, Parser.tokens.get(index).key, Parser.tokens.get(index + 1).value);
+                if (index == 0 && Bools.fcompare(index + 3)[0] != 0) {
+                    if (Bools.fcompare(index + 3)[1] == 1)
+                        Parser.bool_store.put(Parser.tokens.get(index + 1).value, Boolean.valueOf("true"));
+                    else
+                        Parser.bool_store.put(Parser.tokens.get(index + 1).value, Boolean.valueOf("false"));
+                    return Bools.fcompare(index + 3)[0];
+                }
                 return index;
             } else return 0;
         } else return 0;

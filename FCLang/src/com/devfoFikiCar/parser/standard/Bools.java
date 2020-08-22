@@ -189,4 +189,93 @@ public class Bools {
         }
         return ret;
     }
+
+    public static int[] expression_bool(int index, int value) {
+        int[] ret = new int[2];
+        if (term_bool(index, value)[0] != 0) {
+            int[] ret_v = term_bool(index, value);
+            index = ret_v[0];
+            value = ret_v[1];
+            if (index < Parser.tokens.size() && (Parser.tokens.get(index).key == "OR" || Parser.tokens.get(index).key == "AND")) {
+                ret_v = expression_bool(index + 1, value);
+                switch (Parser.tokens.get(index).key) {
+                    case "AND": {
+                        boolean a = false;
+                        boolean b = false;
+                        if (value != 0) a = true;
+                        if (ret_v[1] != 0) b = true;
+                        if (a && b) value = 1;
+                        else value = 0;
+                        break;
+                    }
+                    case "OR": {
+                        boolean a = false;
+                        boolean b = false;
+                        if (value != 0) a = true;
+                        if (ret_v[1] != 0) b = true;
+                        if (a || b) value = 1;
+                        else value = 0;
+                        break;
+                    }
+                }
+                if (ret_v[0] != 0) index = ret_v[0];
+                ret[0] = index;
+                ret[1] = value;
+                System.out.println("Index end:" + index);
+                return ret;
+            }
+        }
+        return ret;
+    }
+
+    public static int[] term_bool(int index, int value) {
+        int[] ret = new int[2];
+        if (Parser.tokens.get(index).key == "BOOL") {
+            if (Parser.tokens.get(index).value.equals("true")) {
+                ret[1] = 1;
+                System.out.println("true " + index);
+            } else {
+                ret[1] = 0;
+                System.out.println("false " + index);
+            }
+            ret[0] = index + 1;
+            return ret;
+        }
+        return ret;
+    }
+
+    public static int bool(int index) {
+        if (smallBool(index) != 0) {
+            index = smallBool(index);
+            if (Parser.tokens.get(index).key == "OR" || Parser.tokens.get(index).key == "AND") {
+                index++;
+                if (smallBool(index) != 0) {
+                    bool(index);
+                }
+                return index;
+            }
+            return index;
+        }
+        return 0;
+    }
+
+    public static int smallBool(int index) {
+        if (Parser.tokens.get(index).key == "BOOL") {
+            return ++index;
+        } else if (1 == 1) {
+            // add fcompare
+            return 0;
+        } else return 0;
+    }
+
 }
+
+/*
+ *
+ * BOOL - true | false
+ * SIG - < | <= | > | >= | =
+ * CH - || | &&
+ * SBOOL (CH SBOOL)*
+ * SBOOL: BOOL | INT CH INT
+ *
+ * */

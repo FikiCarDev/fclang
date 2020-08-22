@@ -52,7 +52,7 @@ public class main {
                 break;
             }
         }
-        //setData("./scripts/tests/bool/bool_test_1.fclang");
+        //setData("./scripts/tests/bool/bool_test_4.fclang");
         //setTokens();
         //runParser();
     }

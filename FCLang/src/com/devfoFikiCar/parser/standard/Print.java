@@ -19,8 +19,9 @@ public class Print {
                     return (int) --ret_v_double[0];
                 }
                 case "BOOL": {
-                    System.out.println(Parser.tokens.get(index + 1).value);
-                    break;
+                    int[] ret_v_bool = Bools.bool(index + 1);
+                    System.out.println(ret_v_bool[1] == 1);
+                    return ret_v_bool[0];
                 }
                 default: {
                     String toPrint = Parser.tokens.get(index + 1).value;

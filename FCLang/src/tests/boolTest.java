@@ -11,7 +11,7 @@ public class boolTest {
     @Test
     public void compareIntBool() {
         main m = new main();
-        String[] t = {"./scripts/tests/bool/bool_test_1.fclang"};
+        String[] t = {"./scripts/tests/bool/boolTest1.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\ntrue\n======================================\n" +
@@ -21,7 +21,7 @@ public class boolTest {
     @Test
     public void compareIntSimpleBool() {
         main m = new main();
-        String[] t = {"./scripts/tests/bool/bool_test_2.fclang"};
+        String[] t = {"./scripts/tests/bool/boolTest2.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nfalse\n======================================\n" +
@@ -31,7 +31,7 @@ public class boolTest {
     @Test
     public void compareIntAdvancedBool() {
         main m = new main();
-        String[] t = {"./scripts/tests/bool/bool_test_3.fclang"};
+        String[] t = {"./scripts/tests/bool/boolTest3.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\ntrue\n======================================\n" +

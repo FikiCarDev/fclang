@@ -11,7 +11,7 @@ public class ifTest {
     @Test
     public void classicIf() {
         main m = new main();
-        String[] t = {"./scripts/tests/if/if_test_1.fclang"};
+        String[] t = {"./scripts/tests/if/ifTest1.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nFive\n======================================\n" +
@@ -21,7 +21,7 @@ public class ifTest {
     @Test
     public void elseIf() {
         main m = new main();
-        String[] t = {"./scripts/tests/if/if_test_2.fclang"};
+        String[] t = {"./scripts/tests/if/ifTest2.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nThree\n======================================\n" +
@@ -31,7 +31,7 @@ public class ifTest {
     @Test
     public void advanceIf() {
         main m = new main();
-        String[] t = {"./scripts/tests/if/if_test_3.fclang"};
+        String[] t = {"./scripts/tests/if/ifTest3.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nYes\n======================================\n" +

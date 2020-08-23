@@ -11,7 +11,7 @@ public class forTest {
     @Test
     public void classicFor() {
         main m = new main();
-        String[] t = {"./scripts/tests/for/for_test_1.fclang"};
+        String[] t = {"./scripts/tests/for/forTest1.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n0\n1\n2\n3\n4\n======================================\n" +
@@ -21,7 +21,7 @@ public class forTest {
     @Test
     public void minusFor() {
         main m = new main();
-        String[] t = {"./scripts/tests/for/for_test_2.fclang"};
+        String[] t = {"./scripts/tests/for/forTest2.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n5\n4\n3\n2\n1\n======================================\n" +
@@ -31,7 +31,7 @@ public class forTest {
     @Test
     public void sumFor() {
         main m = new main();
-        String[] t = {"./scripts/tests/for/for_test_3.fclang"};
+        String[] t = {"./scripts/tests/for/forTest3.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n60\n======================================\n" +

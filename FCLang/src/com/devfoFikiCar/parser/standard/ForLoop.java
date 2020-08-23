@@ -1,8 +1,6 @@
 package com.devfoFikiCar.parser.standard;
 
 import com.devfoFikiCar.parser.Parser;
-import com.devfoFikiCar.parser.standard.HelperFunctions;
-import com.devfoFikiCar.parser.standard.Integers;
 
 public class ForLoop {
     public static int ffor(int index) {

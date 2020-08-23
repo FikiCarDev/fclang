@@ -13,8 +13,7 @@ public class Lexer {
 
         for (int i = 0; i < data.length; i++) {
             if (data[i] == '"') {
-                if (!inString) inString = true;
-                else inString = false;
+                inString = !inString;
             }
             if ((data[i] != ' ') || (data[i] == ' ' && inString)) {
                 temp += data[i];

@@ -9,7 +9,7 @@ public class for_test {
     public final SystemOutRule systemOut = new SystemOutRule().enableLog();
 
     @Test
-    public void classicGoto() {
+    public void classicFor() {
         main m = new main();
         String[] t = {"./scripts/tests/for/for_test_1.fclang"};
         main.main(t);
@@ -19,7 +19,7 @@ public class for_test {
     }
 
     @Test
-    public void ifGoto() {
+    public void minusFor() {
         main m = new main();
         String[] t = {"./scripts/tests/for/for_test_2.fclang"};
         main.main(t);
@@ -29,7 +29,7 @@ public class for_test {
     }
 
     @Test
-    public void forGoto() {
+    public void sumFor() {
         main m = new main();
         String[] t = {"./scripts/tests/for/for_test_3.fclang"};
         main.main(t);

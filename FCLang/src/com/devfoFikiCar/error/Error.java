@@ -19,7 +19,7 @@ public class Error {
                 System.out.println("Wrong expression.");
                 System.exit(0);
             case 6:
-                System.out.println("Wrong bool declaration.");
+                System.out.println("Wrong bool expression.");
                 System.exit(0);
             case 7:
                 System.out.println("Wrong if statement.");

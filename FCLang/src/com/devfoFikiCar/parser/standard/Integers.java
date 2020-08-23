@@ -4,25 +4,25 @@ import com.devfoFikiCar.parser.Parser;
 
 public class Integers {
     // expression: term (('-' | '+') term)?
-    public static int[] expression_int(int index, int value) {
+    public static int[] expressionInt(int index, int value) {
         int[] ret = {index, value};
-        if (term_int(index, value)[0] != 0) {
-            int[] ret_v = term_int(index, value);
-            index = ret_v[0];
-            value = ret_v[1];
+        if (termInt(index, value)[0] != 0) {
+            int[] retV = termInt(index, value);
+            index = retV[0];
+            value = retV[1];
             if (index < Parser.tokens.size() && (Parser.tokens.get(index).key == "ADDITION" || Parser.tokens.get(index).key == "SUBTRACTION")) {
-                ret_v = expression_int(index + 1, value);
+                retV = expressionInt(index + 1, value);
                 switch (Parser.tokens.get(index).key) {
                     case "SUBTRACTION": {
-                        value -= ret_v[1];
+                        value -= retV[1];
                         break;
                     }
                     case "ADDITION": {
-                        value += ret_v[1];
+                        value += retV[1];
                         break;
                     }
                 }
-                index = ret_v[0];
+                index = retV[0];
             }
             ret[0] = index;
             ret[1] = value;
@@ -34,25 +34,25 @@ public class Integers {
     }
 
     // term: factor (('/' | '*') factor)?
-    private static int[] term_int(int index, int value) {
+    private static int[] termInt(int index, int value) {
         int[] ret = {index, value};
-        if (factor_int(index, value)[0] != 0) {
-            int[] ret_v = factor_int(index, value);
-            index = ret_v[0];
-            value = ret_v[1];
+        if (factorInt(index, value)[0] != 0) {
+            int[] retV = factorInt(index, value);
+            index = retV[0];
+            value = retV[1];
             if (index < Parser.tokens.size() && (Parser.tokens.get(index).key == "MULTIPLICATION" || Parser.tokens.get(index).key == "DIVISION")) {
-                ret_v = expression_int(index + 1, value);
+                retV = expressionInt(index + 1, value);
                 switch (Parser.tokens.get(index).key) {
                     case "DIVISION": {
-                        value /= ret_v[1];
+                        value /= retV[1];
                         break;
                     }
                     case "MULTIPLICATION": {
-                        value *= ret_v[1];
+                        value *= retV[1];
                         break;
                     }
                 }
-                index = ret_v[0];
+                index = retV[0];
             }
             ret[0] = index;
             ret[1] = value;
@@ -64,11 +64,11 @@ public class Integers {
     }
 
     // factor: NUMBER | '(' expression ')'
-    private static int[] factor_int(int index, int value) {
+    private static int[] factorInt(int index, int value) {
         int[] ret = {index, value};
         if (Parser.tokens.get(index).key == "INT" || Parser.tokens.get(index).key == "NAME") {
-            if (Parser.int_store.containsKey(Parser.tokens.get(index).value)) {
-                ret[1] = Parser.int_store.get(Parser.tokens.get(index).value);
+            if (Parser.intStore.containsKey(Parser.tokens.get(index).value)) {
+                ret[1] = Parser.intStore.get(Parser.tokens.get(index).value);
             } else {
                 try {
                     ret[1] = Integer.parseInt(Parser.tokens.get(index).value);
@@ -78,9 +78,9 @@ public class Integers {
             ret[0] = index + 1;
             return ret;
         } else if (Parser.tokens.get(index).key == "L_PARENTHESES") {
-            int[] ret_v = expression_int(index + 1, ret[1]);
-            index = ret_v[0];
-            value = ret_v[1];
+            int[] retV = expressionInt(index + 1, ret[1]);
+            index = retV[0];
+            value = retV[1];
             if (index == 0) {
                 ret[0] = 0;
                 return ret;

@@ -4,37 +4,37 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 
-public class int_test {
+public class forTest {
     @Rule
     public final SystemOutRule systemOut = new SystemOutRule().enableLog();
 
     @Test
-    public void classicInt() {
+    public void classicFor() {
         main m = new main();
-        String[] t = {"./scripts/tests/int/int_test_1.fclang"};
+        String[] t = {"./scripts/tests/for/for_test_1.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
-                "======================================\n46\n======================================\n" +
+                "======================================\n0\n1\n2\n3\n4\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
 
     @Test
-    public void intermediateInt() {
+    public void minusFor() {
         main m = new main();
-        String[] t = {"./scripts/tests/int/int_test_2.fclang"};
+        String[] t = {"./scripts/tests/for/for_test_2.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
-                "======================================\n23\n======================================\n" +
+                "======================================\n5\n4\n3\n2\n1\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
 
     @Test
-    public void advanceInt() {
+    public void sumFor() {
         main m = new main();
-        String[] t = {"./scripts/tests/int/int_test_3.fclang"};
+        String[] t = {"./scripts/tests/for/for_test_3.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
-                "======================================\n5\n======================================\n" +
+                "======================================\n60\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
 }

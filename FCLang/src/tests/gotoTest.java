@@ -4,37 +4,37 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 
-public class decimal_test {
+public class gotoTest {
     @Rule
     public final SystemOutRule systemOut = new SystemOutRule().enableLog();
 
     @Test
-    public void classicDecimal() {
+    public void classicGoto() {
         main m = new main();
-        String[] t = {"./scripts/tests/decimal/decimal_test_1.fclang"};
+        String[] t = {"./scripts/tests/goto/goto_test_1.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
-                "======================================\n12.56\n======================================\n" +
+                "======================================\nYes\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
 
     @Test
-    public void intermediateDecimal() {
+    public void ifGoto() {
         main m = new main();
-        String[] t = {"./scripts/tests/decimal/decimal_test_2.fclang"};
+        String[] t = {"./scripts/tests/goto/goto_test_2.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
-                "======================================\n3.14\n======================================\n" +
+                "======================================\nSize doesn't matter\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
 
     @Test
-    public void advanceDecimal() {
+    public void forGoto() {
         main m = new main();
-        String[] t = {"./scripts/tests/decimal/decimal_test_3.fclang"};
+        String[] t = {"./scripts/tests/goto/goto_test_3.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
-                "======================================\n5.75\n======================================\n" +
+                "======================================\n50\nStopped for-loop on 50\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
 }

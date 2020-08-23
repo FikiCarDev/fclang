@@ -4,7 +4,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 
-public class print_test {
+public class printTest {
     @Rule
     public final SystemOutRule systemOut = new SystemOutRule().enableLog();
 

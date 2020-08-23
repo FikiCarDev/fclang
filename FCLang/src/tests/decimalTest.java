@@ -4,37 +4,37 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 
-public class if_test {
+public class decimalTest {
     @Rule
     public final SystemOutRule systemOut = new SystemOutRule().enableLog();
 
     @Test
-    public void classicIf() {
+    public void classicDecimal() {
         main m = new main();
-        String[] t = {"./scripts/tests/if/if_test_1.fclang"};
+        String[] t = {"./scripts/tests/decimal/decimal_test_1.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
-                "======================================\nFive\n======================================\n" +
+                "======================================\n12.56\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
 
     @Test
-    public void elseIf() {
+    public void intermediateDecimal() {
         main m = new main();
-        String[] t = {"./scripts/tests/if/if_test_2.fclang"};
+        String[] t = {"./scripts/tests/decimal/decimal_test_2.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
-                "======================================\nThree\n======================================\n" +
+                "======================================\n3.14\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
 
     @Test
-    public void advanceIf() {
+    public void advanceDecimal() {
         main m = new main();
-        String[] t = {"./scripts/tests/if/if_test_3.fclang"};
+        String[] t = {"./scripts/tests/decimal/decimal_test_3.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
-                "======================================\nYes\n======================================\n" +
+                "======================================\n5.75\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
 }

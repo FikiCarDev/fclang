@@ -4,25 +4,25 @@ import com.devfoFikiCar.parser.Parser;
 
 public class Decimals {
     // expression for decimal
-    public static double[] expression_decimal(double index, double value) {
+    public static double[] expressionDecimal(double index, double value) {
         double[] ret = {index, value};
-        if (term_decimal(index, value)[0] != 0) {
-            double[] ret_v = term_decimal(index, value);
-            index = ret_v[0];
-            value = ret_v[1];
+        if (termDecimal(index, value)[0] != 0) {
+            double[] retV = termDecimal(index, value);
+            index = retV[0];
+            value = retV[1];
             if (index < Parser.tokens.size() && (Parser.tokens.get((int) index).key == "ADDITION" || Parser.tokens.get((int) index).key == "SUBTRACTION")) {
-                ret_v = expression_decimal(index + 1, value);
+                retV = expressionDecimal(index + 1, value);
                 switch (Parser.tokens.get((int) index).key) {
                     case "SUBTRACTION": {
-                        value -= ret_v[1];
+                        value -= retV[1];
                         break;
                     }
                     case "ADDITION": {
-                        value += ret_v[1];
+                        value += retV[1];
                         break;
                     }
                 }
-                index = ret_v[0];
+                index = retV[0];
             }
             ret[0] = index;
             ret[1] = value;
@@ -34,25 +34,25 @@ public class Decimals {
     }
 
     // term for decimal
-    private static double[] term_decimal(double index, double value) {
+    private static double[] termDecimal(double index, double value) {
         double[] ret = {index, value};
-        if (factor_decimal(index, value)[0] != 0) {
-            double[] ret_v = factor_decimal(index, value);
-            index = ret_v[0];
-            value = ret_v[1];
+        if (factorDecimal(index, value)[0] != 0) {
+            double[] retV = factorDecimal(index, value);
+            index = retV[0];
+            value = retV[1];
             if (index < Parser.tokens.size() && (Parser.tokens.get((int) index).key == "MULTIPLICATION" || Parser.tokens.get((int) index).key == "DIVISION")) {
-                ret_v = expression_decimal(index + 1, value);
+                retV = expressionDecimal(index + 1, value);
                 switch (Parser.tokens.get((int) index).key) {
                     case "DIVISION": {
-                        value /= ret_v[1];
+                        value /= retV[1];
                         break;
                     }
                     case "MULTIPLICATION": {
-                        value *= ret_v[1];
+                        value *= retV[1];
                         break;
                     }
                 }
-                index = ret_v[0];
+                index = retV[0];
             }
             ret[0] = index;
             ret[1] = value;
@@ -64,11 +64,11 @@ public class Decimals {
     }
 
     // factor for decimal
-    private static double[] factor_decimal(double index, double value) {
+    private static double[] factorDecimal(double index, double value) {
         double[] ret = {index, value};
         if (Parser.tokens.get((int) index).key == "DECIMAL" || Parser.tokens.get((int) index).key == "NAME") {
-            if (Parser.decimal_store.containsKey(Parser.tokens.get((int) index).value)) {
-                ret[1] = Parser.decimal_store.get(Parser.tokens.get((int) index).value);
+            if (Parser.decimalStore.containsKey(Parser.tokens.get((int) index).value)) {
+                ret[1] = Parser.decimalStore.get(Parser.tokens.get((int) index).value);
             } else {
                 try {
                     ret[1] = Double.parseDouble(Parser.tokens.get((int) index).value);
@@ -78,9 +78,9 @@ public class Decimals {
             ret[0] = index + 1;
             return ret;
         } else if (Parser.tokens.get((int) index).key == "L_PARENTHESES") {
-            double[] ret_v = expression_decimal(index + 1, ret[1]);
-            index = ret_v[0];
-            value = ret_v[1];
+            double[] retV = expressionDecimal(index + 1, ret[1]);
+            index = retV[0];
+            value = retV[1];
             if (index == 0) {
                 ret[0] = 0;
                 return ret;

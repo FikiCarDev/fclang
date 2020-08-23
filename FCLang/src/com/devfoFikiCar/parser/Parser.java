@@ -11,51 +11,51 @@ public class Parser {
     public static ArrayList<Token> tokens = new ArrayList<>();
     public static ArrayList<Integer> skip = new ArrayList<>();
 
-    public static HashMap<String, Integer> int_store = new HashMap<>();
-    public static HashMap<String, String> string_store = new HashMap<>();
-    public static HashMap<String, Double> decimal_store = new HashMap<>();
-    public static HashMap<String, Boolean> bool_store = new HashMap<>();
-    public static HashMap<Integer, Integer> skip_store = new HashMap<>();
-    public static HashMap<String, Integer> goto_store = new HashMap<>();
+    public static HashMap<String, Integer> intStore = new HashMap<>();
+    public static HashMap<String, String> stringStore = new HashMap<>();
+    public static HashMap<String, Double> decimalStore = new HashMap<>();
+    public static HashMap<String, Boolean> boolStore = new HashMap<>();
+    public static HashMap<Integer, Integer> skipStore = new HashMap<>();
+    public static HashMap<String, Integer> gotoStore = new HashMap<>();
 
     public static int parse(ArrayList<Token> old, int begin, int end) {
         tokens = old;
-        int index_r = 0;
-        Goto.safe_goto();
+        int indexR = 0;
+        Goto.safeGoto();
         for (int index = begin; index < end; index++) {
-            if (skip_store.containsKey(index)) {
-                index = skip_store.get(index);
+            if (skipStore.containsKey(index)) {
+                index = skipStore.get(index);
                 continue;
             }
             if (skip.contains(index)) continue;
             String key = tokens.get(index).key;
             switch (key) {
                 case "PRINT": {
-                    int result = Print.fprint(index);
+                    int result = Print.printFunction(index);
                     if (result == 0) Error.FatalError(1);
                     else index = result;
                     break;
                 }
                 case "INT_T": {
-                    int result = Declaration.int_d(index);
+                    int result = Declaration.declareInt(index);
                     if (result == 0) Error.FatalError(2);
                     else index = result;
                     break;
                 }
                 case "STRING_T": {
-                    int result = Declaration.string_d(index);
+                    int result = Declaration.declareString(index);
                     if (result == 0) Error.FatalError(3);
                     else index = result;
                     break;
                 }
                 case "DECIMAL_T": {
-                    int result = Declaration.decimal_d(index);
+                    int result = Declaration.declareDecimal(index);
                     if (result == 0) Error.FatalError(4);
                     else index = result;
                     break;
                 }
                 case "BOOL_T": {
-                    int result = Declaration.bool_d(index);
+                    int result = Declaration.declareBool(index);
                     if (result == 0) Error.FatalError(6);
                     else index = result;
                     break;
@@ -67,7 +67,7 @@ public class Parser {
                         if (ret_v[2] == 0) {
                             skip.add(ret_v[1]);
                             if (ret_v[5] != 0) {
-                                skip_store.put(ret_v[1], ret_v[5]);
+                                skipStore.put(ret_v[1], ret_v[5]);
                             }
                             index = ret_v[0];
                         } else {
@@ -80,20 +80,19 @@ public class Parser {
                     break;
                 }
                 case "FOR": {
-                    int result = ForLoop.ffor(index);
+                    int result = ForLoop.forLoop(index);
                     if (result == 0) Error.FatalError(9);
                     else index = result;
                     break;
                 }
                 case "GOTO": {
-                    int result = Goto.fgoto(index);
+                    int result = Goto.gotoFunction(index);
                     if (result == -1) Error.FatalError(10);
                     else index = result;
                     break;
                 }
             }
-            index_r = index;
-
+            indexR = index;
         }
 
         // FOR DEBUGGING
@@ -114,7 +113,7 @@ public class Parser {
             System.out.println(entry.getKey() + " " + entry.getValue());
         });
         skip.forEach(System.out::println);*/
-        return index_r;
+        return indexR;
 
     }
 
@@ -130,7 +129,7 @@ public class Parser {
                 if (index < tokens.size() && tokens.get(index).key == "R_PARENTHESES") {
                     if (index + 1 < tokens.size() && tokens.get(index + 1).key == "L_BRACES") {
                         index++;
-                        int r_pos = HelperFunctions.search_r_b(index);
+                        int r_pos = HelperFunctions.searchRightBracket(index);
                         int[] ret_1 = felse(r_pos);
                         if (r_pos != 0) {
                             if (ret_v[1] == 1) {
@@ -188,7 +187,7 @@ public class Parser {
             index++;
             if (index + 1 < tokens.size() && tokens.get(index + 1).key == "L_BRACES") {
                 index++;
-                int r_pos = HelperFunctions.search_r_b(index);
+                int r_pos = HelperFunctions.searchRightBracket(index);
                 if (r_pos != 0) {
                     ret[0] = index;
                     ret[1] = r_pos;
@@ -263,8 +262,8 @@ public class Parser {
     // ret { index, value }
     private static int[] base_bool(int index) {
         int[] ret = {0, 0};
-        if (tokens.get(index).key == "NAME" && bool_store.containsKey(tokens.get(index).value)) {
-            if (bool_store.get(tokens.get(index).value)) ret[1] = 1;
+        if (tokens.get(index).key == "NAME" && boolStore.containsKey(tokens.get(index).value)) {
+            if (boolStore.get(tokens.get(index).value)) ret[1] = 1;
             else ret[1] = 0;
             ret[0] = ++index;
             return ret;
@@ -301,13 +300,13 @@ public class Parser {
     // ret { index, value }
     private static int[] comp_int(int index) {
         int[] ret = {0, 0};
-        int[] ret_1 = Integers.expression_int(index, 0);
+        int[] ret_1 = Integers.expressionInt(index, 0);
         if (ret_1[0] != 0) {
             index = ret_1[0];
             int c_index = index;
             if (tokens.get(index).key == "EQUAL_TO" || tokens.get(index).key == "NOT_EQUAL" || tokens.get(index).key == "GREATER_EQUAL"
                     || tokens.get(index).key == "LESS_EQUAL" || tokens.get(index).key == "LESS_THAN" || tokens.get(index).key == "GREATER_THAN") {
-                int[] ret_2 = Integers.expression_int(++index, 0);
+                int[] ret_2 = Integers.expressionInt(++index, 0);
                 if (ret_2[0] != 0) {
                     index = ret_2[0];
                     switch (tokens.get(c_index).key) {

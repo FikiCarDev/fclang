@@ -3,6 +3,84 @@ package com.devfoFikiCar.parser.standard;
 import com.devfoFikiCar.parser.Parser;
 
 public class Bools {
+
+    public static int[] bool(int index) {
+        int[] ret = new int[2];
+        if (smallBool(index)[0] != 0) {
+            int[] ret_v = smallBool(index);
+            ret[0] = ret_v[0];
+            ret[1] = ret_v[1];
+            index = ret[0];
+            if (index < Parser.tokens.size() && (Parser.tokens.get(index).key == "OR" || Parser.tokens.get(index).key == "AND")) {
+                switch (Parser.tokens.get(index).key) {
+                    case "OR": {
+                        index++;
+                        ret_v = bool(index);
+                        index = ret_v[0];
+                        ret[0] = index;
+                        boolean a = ret[1] == 1;
+                        boolean b = ret_v[1] == 1;
+                        ret[1] = (a || b) ? 1 : 0;
+                        break;
+                    }
+                    case "AND": {
+                        index++;
+                        ret_v = bool(index);
+                        index = ret_v[0];
+                        ret[0] = index;
+                        boolean a = ret[1] == 1;
+                        boolean b = ret_v[1] == 1;
+                        ret[1] = (a && b) ? 1 : 0;
+                        break;
+                    }
+                }
+                return ret;
+            }
+            return ret;
+        }
+        return ret;
+    }
+
+    public static int[] smallBool(int index) {
+        int[] ret = new int[2];
+        if (index < Parser.tokens.size() && Parser.tokens.get(index).key == "BOOL") {
+            switch (Parser.tokens.get(index).value) {
+                case "true": {
+                    ret[1] = 1;
+                    break;
+                }
+                case "false": {
+                    ret[1] = 0;
+                    break;
+                }
+            }
+            ret[0] = ++index;
+            return ret;
+        } else if (fcompare(index)[0] != 0) {
+            int[] ret_v = fcompare(index);
+            ret[0] = ret_v[0];
+            ret[1] = ret_v[1];
+            return ret;
+        } else if (Parser.tokens.get(index).key == "L_PARENTHESES") {
+            int[] ret_v = bool(index + 1);
+            ret[0] = ret_v[0];
+            ret[1] = ret_v[1];
+            index = ret[0];
+            if (index == 0) {
+                ret[0] = 0;
+                return ret;
+            } else {
+                if (index < Parser.tokens.size() && Parser.tokens.get(index).key == "R_PARENTHESES") {
+                    ret[0] = ++index;
+                    return ret;
+                } else {
+                    ret[0] = 0;
+                    return ret;
+                }
+            }
+        } else return ret;
+    }
+
     // expresion_int | expresion_decimal ( < | > | <= | >= | == | != ) expresion_int | expresion_decimal
     // index value(1 ok, 0 no)
     public static int[] fcompare(int index) {
@@ -24,19 +102,19 @@ public class Bools {
                 if (ret_double1[0] != 0) {
                     double[] ret_double2 = Decimals.expression_decimal(signPos * 1.0 + 1.0, 0.0);
                     if (ret_double1[1] == ret_double2[1]) {
-                        ret[0] = (int) --ret_double2[0];
+                        ret[0] = (int) ret_double2[0];
                         ret[1] = 1;
                     } else {
-                        ret[0] = (int) --ret_double2[0];
+                        ret[0] = (int) ret_double2[0];
                         ret[1] = 0;
                     }
                 } else if (ret_int1[0] != 0) {
                     int[] ret_int2 = Integers.expression_int(signPos + 1, 0);
                     if (ret_int1[1] == ret_int2[1]) {
-                        ret[0] = --ret_int2[0];
+                        ret[0] = ret_int2[0];
                         ret[1] = 1;
                     } else {
-                        ret[0] = --ret_int2[0];
+                        ret[0] = ret_int2[0];
                         ret[1] = 0;
                     }
                 } else {
@@ -52,19 +130,19 @@ public class Bools {
                 if (ret_double1[0] != 0) {
                     double[] ret_double2 = Decimals.expression_decimal(signPos * 1.0 + 1.0, 0.0);
                     if (ret_double1[1] != ret_double2[1]) {
-                        ret[0] = (int) --ret_double2[0];
+                        ret[0] = (int) ret_double2[0];
                         ret[1] = 1;
                     } else {
-                        ret[0] = (int) --ret_double2[0];
+                        ret[0] = (int) ret_double2[0];
                         ret[1] = 0;
                     }
                 } else if (ret_int1[0] != 0) {
                     int[] ret_int2 = Integers.expression_int(signPos + 1, 0);
                     if (ret_int1[1] != ret_int2[1]) {
-                        ret[0] = --ret_int2[0];
+                        ret[0] = ret_int2[0];
                         ret[1] = 1;
                     } else {
-                        ret[0] = --ret_int2[0];
+                        ret[0] = ret_int2[0];
                         ret[1] = 0;
                     }
                 } else {
@@ -80,19 +158,19 @@ public class Bools {
                 if (ret_double1[0] != 0) {
                     double[] ret_double2 = Decimals.expression_decimal(signPos * 1.0 + 1.0, 0.0);
                     if (ret_double1[1] >= ret_double2[1]) {
-                        ret[0] = (int) --ret_double2[0];
+                        ret[0] = (int) ret_double2[0];
                         ret[1] = 1;
                     } else {
-                        ret[0] = (int) --ret_double2[0];
+                        ret[0] = (int) ret_double2[0];
                         ret[1] = 0;
                     }
                 } else if (ret_int1[0] != 0) {
                     int[] ret_int2 = Integers.expression_int(signPos + 1, 0);
                     if (ret_int1[1] >= ret_int2[1]) {
-                        ret[0] = --ret_int2[0];
+                        ret[0] = ret_int2[0];
                         ret[1] = 1;
                     } else {
-                        ret[0] = --ret_int2[0];
+                        ret[0] = ret_int2[0];
                         ret[1] = 0;
                     }
                 } else {
@@ -108,19 +186,19 @@ public class Bools {
                 if (ret_double1[0] != 0) {
                     double[] ret_double2 = Decimals.expression_decimal(signPos * 1.0 + 1.0, 0.0);
                     if (ret_double1[1] <= ret_double2[1]) {
-                        ret[0] = (int) --ret_double2[0];
+                        ret[0] = (int) ret_double2[0];
                         ret[1] = 1;
                     } else {
-                        ret[0] = (int) --ret_double2[0];
+                        ret[0] = (int) ret_double2[0];
                         ret[1] = 0;
                     }
                 } else if (ret_int1[0] != 0) {
                     int[] ret_int2 = Integers.expression_int(signPos + 1, 0);
                     if (ret_int1[1] <= ret_int2[1]) {
-                        ret[0] = --ret_int2[0];
+                        ret[0] = ret_int2[0];
                         ret[1] = 1;
                     } else {
-                        ret[0] = --ret_int2[0];
+                        ret[0] = ret_int2[0];
                         ret[1] = 0;
                     }
                 } else {
@@ -136,19 +214,19 @@ public class Bools {
                 if (ret_double1[0] != 0) {
                     double[] ret_double2 = Decimals.expression_decimal(signPos * 1.0 + 1.0, 0.0);
                     if (ret_double1[1] < ret_double2[1]) {
-                        ret[0] = (int) --ret_double2[0];
+                        ret[0] = (int) ret_double2[0];
                         ret[1] = 1;
                     } else {
-                        ret[0] = (int) --ret_double2[0];
+                        ret[0] = (int) ret_double2[0];
                         ret[1] = 0;
                     }
                 } else if (ret_int1[0] != 0) {
                     int[] ret_int2 = Integers.expression_int(signPos + 1, 0);
                     if (ret_int1[1] < ret_int2[1]) {
-                        ret[0] = --ret_int2[0];
+                        ret[0] = ret_int2[0];
                         ret[1] = 1;
                     } else {
-                        ret[0] = --ret_int2[0];
+                        ret[0] = ret_int2[0];
                         ret[1] = 0;
                     }
                 } else {
@@ -164,19 +242,19 @@ public class Bools {
                 if (ret_double1[0] != 0) {
                     double[] ret_double2 = Decimals.expression_decimal(signPos * 1.0 + 1.0, 0.0);
                     if (ret_double1[1] > ret_double2[1]) {
-                        ret[0] = (int) --ret_double2[0];
+                        ret[0] = (int) ret_double2[0];
                         ret[1] = 1;
                     } else {
-                        ret[0] = (int) --ret_double2[0];
+                        ret[0] = (int) ret_double2[0];
                         ret[1] = 0;
                     }
                 } else if (ret_int1[0] != 0) {
                     int[] ret_int2 = Integers.expression_int(signPos + 1, 0);
                     if (ret_int1[1] > ret_int2[1]) {
-                        ret[0] = --ret_int2[0];
+                        ret[0] = ret_int2[0];
                         ret[1] = 1;
                     } else {
-                        ret[0] = --ret_int2[0];
+                        ret[0] = ret_int2[0];
                         ret[1] = 0;
                     }
                 } else {
@@ -189,93 +267,4 @@ public class Bools {
         }
         return ret;
     }
-
-    public static int[] expression_bool(int index, int value) {
-        int[] ret = new int[2];
-        if (term_bool(index, value)[0] != 0) {
-            int[] ret_v = term_bool(index, value);
-            index = ret_v[0];
-            value = ret_v[1];
-            if (index < Parser.tokens.size() && (Parser.tokens.get(index).key == "OR" || Parser.tokens.get(index).key == "AND")) {
-                ret_v = expression_bool(index + 1, value);
-                switch (Parser.tokens.get(index).key) {
-                    case "AND": {
-                        boolean a = false;
-                        boolean b = false;
-                        if (value != 0) a = true;
-                        if (ret_v[1] != 0) b = true;
-                        if (a && b) value = 1;
-                        else value = 0;
-                        break;
-                    }
-                    case "OR": {
-                        boolean a = false;
-                        boolean b = false;
-                        if (value != 0) a = true;
-                        if (ret_v[1] != 0) b = true;
-                        if (a || b) value = 1;
-                        else value = 0;
-                        break;
-                    }
-                }
-                if (ret_v[0] != 0) index = ret_v[0];
-                ret[0] = index;
-                ret[1] = value;
-                System.out.println("Index end:" + index);
-                return ret;
-            }
-        }
-        return ret;
-    }
-
-    public static int[] term_bool(int index, int value) {
-        int[] ret = new int[2];
-        if (Parser.tokens.get(index).key == "BOOL") {
-            if (Parser.tokens.get(index).value.equals("true")) {
-                ret[1] = 1;
-                System.out.println("true " + index);
-            } else {
-                ret[1] = 0;
-                System.out.println("false " + index);
-            }
-            ret[0] = index + 1;
-            return ret;
-        }
-        return ret;
-    }
-
-    public static int bool(int index) {
-        if (smallBool(index) != 0) {
-            index = smallBool(index);
-            if (Parser.tokens.get(index).key == "OR" || Parser.tokens.get(index).key == "AND") {
-                index++;
-                if (smallBool(index) != 0) {
-                    bool(index);
-                }
-                return index;
-            }
-            return index;
-        }
-        return 0;
-    }
-
-    public static int smallBool(int index) {
-        if (Parser.tokens.get(index).key == "BOOL") {
-            return ++index;
-        } else if (1 == 1) {
-            // add fcompare
-            return 0;
-        } else return 0;
-    }
-
 }
-
-/*
- *
- * BOOL - true | false
- * SIG - < | <= | > | >= | =
- * CH - || | &&
- * SBOOL (CH SBOOL)*
- * SBOOL: BOOL | INT CH INT
- *
- * */

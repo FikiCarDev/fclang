@@ -202,7 +202,7 @@ public class Parser {
     }
 
     // ret { index, value }
-    private static int[] expression_bool(int index) {
+    public static int[] expression_bool(int index) {
         int[] ret = {0, 0};
         if (tokens.get(index).key == "NOT") {
             index++;

@@ -9,8 +9,8 @@ public class IfStatement {
         int[] ret = new int[6];
         if (Parser.tokens.get(index + 1).key == "L_PARENTHESES") {
             index += 2;
-            //int[] ret_v = Parser.expression_bool(index);
-            int[] ret_v = Bools.bool(index);
+            int[] ret_v = Parser.expression_bool(index);
+            //int[] ret_v = Bools.bool(index);
             index = ret_v[0];
             if (index != 0) {
                 if (index < Parser.tokens.size() && Parser.tokens.get(index).key == "R_PARENTHESES") {

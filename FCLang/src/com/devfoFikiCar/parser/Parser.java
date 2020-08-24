@@ -61,7 +61,7 @@ public class Parser {
                     break;
                 }
                 case "IF": {
-                    int[] ret_v = fif(index);
+                    int[] ret_v = IfStatement.ifStatement(index);
                     if (ret_v[0] == 0) Error.FatalError(7);
                     else {
                         if (ret_v[2] == 0) {

@@ -98,169 +98,211 @@ public class Bools {
         switch (Parser.tokens.get(signPos).key) {
             case "EQUAL_TO": {
                 int[] retInt1 = Integers.expressionInt(index, 0);
-                double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
-                if (retdouble1[0] != 0) {
-                    double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
-                    if (retdouble1[1] == retdouble2[1]) {
-                        ret[0] = (int) retdouble2[0];
-                        ret[1] = 1;
-                    } else {
-                        ret[0] = (int) retdouble2[0];
-                        ret[1] = 0;
-                    }
-                } else if (retInt1[0] != 0) {
+                if(retInt1[0] != 0){
                     int[] retInt2 = Integers.expressionInt(signPos + 1, 0);
-                    if (retInt1[1] == retInt2[1]) {
-                        ret[0] = retInt2[0];
-                        ret[1] = 1;
-                    } else {
-                        ret[0] = retInt2[0];
-                        ret[1] = 0;
+                    if(retInt2[0] != 0) {
+                        if (retInt1[1] == retInt2[1]) {
+                            ret[0] = retInt2[0];
+                            ret[1] = 1;
+                        } else {
+                            ret[0] = retInt2[0];
+                            ret[1] = 0;
+                        }
                     }
                 } else {
-                    ret[0] = 0;
-                    ret[1] = 0;
-                    return ret;
+                    double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
+                    if (retdouble1[0] != 0) {
+                        double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
+                        if(retdouble2[0] != 0) {
+                            if (retdouble1[1] == retdouble2[1]) {
+                                ret[0] = (int) retdouble2[0];
+                                ret[1] = 1;
+                            } else {
+                                ret[0] = (int) retdouble2[0];
+                                ret[1] = 0;
+
+                            }
+                        } else {
+                            ret[0] = 0;
+                            ret[1] = 0;
+                            return ret;
+                        }
+                    }
                 }
                 break;
             }
             case "NOT_EQUAL": {
                 int[] retInt1 = Integers.expressionInt(index, 0);
-                double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
-                if (retdouble1[0] != 0) {
-                    double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
-                    if (retdouble1[1] != retdouble2[1]) {
-                        ret[0] = (int) retdouble2[0];
-                        ret[1] = 1;
-                    } else {
-                        ret[0] = (int) retdouble2[0];
-                        ret[1] = 0;
-                    }
-                } else if (retInt1[0] != 0) {
+                if(retInt1[0] != 0){
                     int[] retInt2 = Integers.expressionInt(signPos + 1, 0);
-                    if (retInt1[1] != retInt2[1]) {
-                        ret[0] = retInt2[0];
-                        ret[1] = 1;
-                    } else {
-                        ret[0] = retInt2[0];
-                        ret[1] = 0;
+                    if(retInt2[0] != 0) {
+                        if (retInt1[1] != retInt2[1]) {
+                            ret[0] = retInt2[0];
+                            ret[1] = 1;
+                        } else {
+                            ret[0] = retInt2[0];
+                            ret[1] = 0;
+                        }
                     }
                 } else {
-                    ret[0] = 0;
-                    ret[1] = 0;
-                    return ret;
+                    double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
+                    if (retdouble1[0] != 0) {
+                        double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
+                        if(retdouble2[0] != 0) {
+                            if (retdouble1[1] != retdouble2[1]) {
+                                ret[0] = (int) retdouble2[0];
+                                ret[1] = 1;
+                            } else {
+                                ret[0] = (int) retdouble2[0];
+                                ret[1] = 0;
+
+                            }
+                        } else {
+                            ret[0] = 0;
+                            ret[1] = 0;
+                            return ret;
+                        }
+                    }
                 }
                 break;
             }
             case "GREATER_EQUAL": {
                 int[] retInt1 = Integers.expressionInt(index, 0);
-                double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
-                if (retdouble1[0] != 0) {
-                    double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
-                    if (retdouble1[1] >= retdouble2[1]) {
-                        ret[0] = (int) retdouble2[0];
-                        ret[1] = 1;
-                    } else {
-                        ret[0] = (int) retdouble2[0];
-                        ret[1] = 0;
-                    }
-                } else if (retInt1[0] != 0) {
+                if(retInt1[0] != 0){
                     int[] retInt2 = Integers.expressionInt(signPos + 1, 0);
-                    if (retInt1[1] >= retInt2[1]) {
-                        ret[0] = retInt2[0];
-                        ret[1] = 1;
-                    } else {
-                        ret[0] = retInt2[0];
-                        ret[1] = 0;
+                    if(retInt2[0] != 0) {
+                        if (retInt1[1] >= retInt2[1]) {
+                            ret[0] = retInt2[0];
+                            ret[1] = 1;
+                        } else {
+                            ret[0] = retInt2[0];
+                            ret[1] = 0;
+                        }
                     }
                 } else {
-                    ret[0] = 0;
-                    ret[1] = 0;
-                    return ret;
+                    double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
+                    if (retdouble1[0] != 0) {
+                        double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
+                        if(retdouble2[0] != 0) {
+                            if (retdouble1[1] >= retdouble2[1]) {
+                                ret[0] = (int) retdouble2[0];
+                                ret[1] = 1;
+                            } else {
+                                ret[0] = (int) retdouble2[0];
+                                ret[1] = 0;
+
+                            }
+                        } else {
+                            ret[0] = 0;
+                            ret[1] = 0;
+                            return ret;
+                        }
+                    }
                 }
                 break;
             }
             case "LESS_EQUAL": {
                 int[] retInt1 = Integers.expressionInt(index, 0);
-                double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
-                if (retdouble1[0] != 0) {
-                    double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
-                    if (retdouble1[1] <= retdouble2[1]) {
-                        ret[0] = (int) retdouble2[0];
-                        ret[1] = 1;
-                    } else {
-                        ret[0] = (int) retdouble2[0];
-                        ret[1] = 0;
-                    }
-                } else if (retInt1[0] != 0) {
+                if(retInt1[0] != 0){
                     int[] retInt2 = Integers.expressionInt(signPos + 1, 0);
-                    if (retInt1[1] <= retInt2[1]) {
-                        ret[0] = retInt2[0];
-                        ret[1] = 1;
-                    } else {
-                        ret[0] = retInt2[0];
-                        ret[1] = 0;
+                    if(retInt2[0] != 0) {
+                        if (retInt1[1] <= retInt2[1]) {
+                            ret[0] = retInt2[0];
+                            ret[1] = 1;
+                        } else {
+                            ret[0] = retInt2[0];
+                            ret[1] = 0;
+                        }
                     }
                 } else {
-                    ret[0] = 0;
-                    ret[1] = 0;
-                    return ret;
+                    double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
+                    if (retdouble1[0] != 0) {
+                        double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
+                        if(retdouble2[0] != 0) {
+                            if (retdouble1[1] <= retdouble2[1]) {
+                                ret[0] = (int) retdouble2[0];
+                                ret[1] = 1;
+                            } else {
+                                ret[0] = (int) retdouble2[0];
+                                ret[1] = 0;
+
+                            }
+                        } else {
+                            ret[0] = 0;
+                            ret[1] = 0;
+                            return ret;
+                        }
+                    }
                 }
                 break;
             }
             case "LESS_THAN": {
                 int[] retInt1 = Integers.expressionInt(index, 0);
-                double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
-                if (retdouble1[0] != 0) {
-                    double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
-                    if (retdouble1[1] < retdouble2[1]) {
-                        ret[0] = (int) retdouble2[0];
-                        ret[1] = 1;
-                    } else {
-                        ret[0] = (int) retdouble2[0];
-                        ret[1] = 0;
-                    }
-                } else if (retInt1[0] != 0) {
+                if(retInt1[0] != 0){
                     int[] retInt2 = Integers.expressionInt(signPos + 1, 0);
-                    if (retInt1[1] < retInt2[1]) {
-                        ret[0] = retInt2[0];
-                        ret[1] = 1;
-                    } else {
-                        ret[0] = retInt2[0];
-                        ret[1] = 0;
+                    if(retInt2[0] != 0) {
+                        if (retInt1[1] < retInt2[1]) {
+                            ret[0] = retInt2[0];
+                            ret[1] = 1;
+                        } else {
+                            ret[0] = retInt2[0];
+                            ret[1] = 0;
+                        }
                     }
                 } else {
-                    ret[0] = 0;
-                    ret[1] = 0;
-                    return ret;
+                    double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
+                    if (retdouble1[0] != 0) {
+                        double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
+                        if(retdouble2[0] != 0) {
+                            if (retdouble1[1] < retdouble2[1]) {
+                                ret[0] = (int) retdouble2[0];
+                                ret[1] = 1;
+                            } else {
+                                ret[0] = (int) retdouble2[0];
+                                ret[1] = 0;
+
+                            }
+                        } else {
+                            ret[0] = 0;
+                            ret[1] = 0;
+                            return ret;
+                        }
+                    }
                 }
                 break;
             }
             case "GREATER_THAN": {
                 int[] retInt1 = Integers.expressionInt(index, 0);
-                double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
-                if (retdouble1[0] != 0) {
-                    double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
-                    if (retdouble1[1] > retdouble2[1]) {
-                        ret[0] = (int) retdouble2[0];
-                        ret[1] = 1;
-                    } else {
-                        ret[0] = (int) retdouble2[0];
-                        ret[1] = 0;
-                    }
-                } else if (retInt1[0] != 0) {
+                if(retInt1[0] != 0){
                     int[] retInt2 = Integers.expressionInt(signPos + 1, 0);
-                    if (retInt1[1] > retInt2[1]) {
-                        ret[0] = retInt2[0];
-                        ret[1] = 1;
-                    } else {
-                        ret[0] = retInt2[0];
-                        ret[1] = 0;
+                    if(retInt2[0] != 0) {
+                        if (retInt1[1] > retInt2[1]) {
+                            ret[0] = retInt2[0];
+                            ret[1] = 1;
+                        } else {
+                            ret[0] = retInt2[0];
+                            ret[1] = 0;
+                        }
                     }
                 } else {
-                    ret[0] = 0;
-                    ret[1] = 0;
-                    return ret;
+                    double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
+                    if (retdouble1[0] != 0) {
+                        double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
+                        if(retdouble2[0] != 0) {
+                            if (retdouble1[1] > retdouble2[1]) {
+                                ret[0] = (int) retdouble2[0];
+                                ret[1] = 1;
+                            } else {
+                                ret[0] = (int) retdouble2[0];
+                                ret[1] = 0;
+
+                            }
+                        } else {
+                            ret[0] = 0;
+                            ret[1] = 0;
+                            return ret;
+                        }
+                    }
                 }
                 break;
             }

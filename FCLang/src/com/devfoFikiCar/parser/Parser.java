@@ -7,6 +7,8 @@ import com.devfoFikiCar.parser.standard.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.devfoFikiCar.parser.IO.Print;
+
 public class Parser {
     public static ArrayList<Token> tokens = new ArrayList<>();
     public static ArrayList<Integer> skip = new ArrayList<>();

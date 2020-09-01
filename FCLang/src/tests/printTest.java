@@ -77,4 +77,14 @@ public class printTest {
                 "======================================\n5.75\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
+
+    @Test
+    public void stringPlusInt() {
+        main m = new main();
+        String[] t = {"./scripts/tests/print/printTest8.fclang"};
+        main.main(t);
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\nA: \n0\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
 }

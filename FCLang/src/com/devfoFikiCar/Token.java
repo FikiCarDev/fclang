@@ -39,6 +39,10 @@ public class Token {
      *   SPLIT           |
      *   GOTO
      *   L_GOTO          L-sth
+     *   GET_INT         getInt
+     *   GET_STRING
+     *   GET_DECIMAL
+     *   GET_BOOL
      * */
 
     public Token(String Key, String Value) {

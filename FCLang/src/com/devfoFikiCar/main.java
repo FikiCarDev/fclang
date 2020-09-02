@@ -52,9 +52,9 @@ public class main {
                 break;
             }
         }
-        //setData("./scripts/tests/bool/bool_test_4.fclang");
-        //setTokens();
-        //runParser();
+        setData("./scripts/tests/input/inputTest4.fclang");
+        setTokens();
+        runParser();
     }
 
     public static void runParser() {

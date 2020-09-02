@@ -188,6 +188,30 @@ public class Lexer {
                         skip = true;
                         break;
                     }
+                    case "getInt": {
+                        Token token = new Token("GET_INT", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "getDecimal": {
+                        Token token = new Token("GET_DECIMAL", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "getString": {
+                        Token token = new Token("GET_STRING", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
+                    case "getBool": {
+                        Token token = new Token("GET_BOOL", temp);
+                        tokens.add(token);
+                        skip = true;
+                        break;
+                    }
                 }
                 if (temp.matches("(\".*\")") && !skip) {
                     Token token = new Token("STRING", temp);

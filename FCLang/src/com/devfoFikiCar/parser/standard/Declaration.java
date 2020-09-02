@@ -1,5 +1,6 @@
 package com.devfoFikiCar.parser.standard;
 
+import com.devfoFikiCar.parser.IO.GetInput;
 import com.devfoFikiCar.parser.Parser;
 
 public class Declaration {
@@ -12,6 +13,9 @@ public class Declaration {
                     Parser.intStore.put(Parser.tokens.get(index + 1).value, retV[1]);
                     index = retV[0];
                     return --index;
+                } else if(Parser.tokens.get(index + 3).key == "GET_INT"){
+                    int res = GetInput.getInputInt(index + 3);
+                    return res;
                 } else {
                     index = declareValue(index + 3, Parser.tokens.get(index).key, Parser.tokens.get(index + 1).value);
                     return index;
@@ -25,10 +29,14 @@ public class Declaration {
     public static int declareString(int index) {
         if (Parser.tokens.get(index + 1).key == "NAME") {
             if (Parser.tokens.get(index + 2).key == "EQUALS") {
+                if (Parser.tokens.get(index + 3).key == "GET_STRING") {
+                    int res = GetInput.getInputString(index + 3);
+                    return res;
+                }
                 index = declareValue(index + 3, Parser.tokens.get(index).key, Parser.tokens.get(index + 1).value);
                 return index;
             } else return 0;
-        } else return 0;
+        } return 0;
     }
 
     // bool declaration
@@ -40,7 +48,10 @@ public class Declaration {
                     Parser.boolStore.put(Parser.tokens.get(index + 1).value, retV[1] == 1);
                     index = retV[0];
                     return --index;
-                } else {
+                } else if(Parser.tokens.get(index + 3).key == "GET_BOOL"){
+                    int res = GetInput.getInputBool(index + 3);
+                    return res;
+                }else {
                     index = declareValue(index + 3, Parser.tokens.get(index).key, Parser.tokens.get(index + 1).value);
                     return index;
                 }
@@ -57,7 +68,10 @@ public class Declaration {
                     Parser.decimalStore.put(Parser.tokens.get(index + 1).value, retV[1]);
                     index = (int) retV[0];
                     return --index;
-                } else {
+                } else if(Parser.tokens.get(index + 3).key == "GET_DECIMAL"){
+                    int res = GetInput.getInputDecimal(index + 3);
+                    return res;
+                }else {
                     index = declareValue(index + 3, Parser.tokens.get(index).key, Parser.tokens.get(index + 1).value);
                     return index;
                 }

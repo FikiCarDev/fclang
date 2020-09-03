@@ -3,6 +3,7 @@ package com.devfoFikiCar;
 public class Token {
     public String key;
     public String value;
+    public int posInLine = 1;
 
     /*
      *   Possible token keys:

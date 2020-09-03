@@ -6,6 +6,7 @@ import com.devfoFikiCar.main;
 import java.util.ArrayList;
 
 public class Lexer {
+    public static int posInLine = 0;
 
     public static ArrayList<Token> lexer(){
         ArrayList<Token> tokens = new ArrayList<>();
@@ -14,6 +15,7 @@ public class Lexer {
             String temp = "";
             boolean skip = false;
             for(int i = 0; i < currentLine.length(); i++){
+                posInLine = i;
                 skip = false;
                 switch (currentLine.charAt(i)){
                     case ' ': {
@@ -236,6 +238,8 @@ public class Lexer {
         } else if (temp.matches("^L-.*")) {
             return new Token("L_GOTO", temp);
         } else if (temp.matches(".*") &&temp != "") {
+            Token token1 = new Token("NAME", temp);
+            token1.posInLine = posInLine;
             return new Token("NAME", temp);
         }
         return token;

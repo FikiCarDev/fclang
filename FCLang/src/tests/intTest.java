@@ -34,7 +34,7 @@ public class intTest {
         String[] t = {"./scripts/tests/int/intTest3.fclang"};
         main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
-                "======================================\n5\n======================================\n" +
+                "======================================\n5\n2\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
 }

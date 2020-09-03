@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class main {
 
     public static ArrayList<Token> tokens = new ArrayList<>();
+    public static ArrayList<String> code = new ArrayList<>();
 
     public static String data;
 
@@ -52,9 +53,13 @@ public class main {
                 break;
             }
         }
-        setData("./scripts/tests/input/inputTest4.fclang");
-        setTokens();
-        runParser();
+        //setData("./scripts/tests/goto/gotoTest2.fclang");
+        /*ArrayList<Token> tokens = Lexer.lexerMain();
+        for(Token t : tokens){
+            System.out.println(t.key + " " + t.value);
+        }*/
+        //setTokens();
+        //runParser();
     }
 
     public static void runParser() {
@@ -65,6 +70,7 @@ public class main {
         System.out.println("======================================");
         System.out.println("Successful execution.");
         System.out.println("======================================");
+        clearLists();
     }
 
     public static void setData(String filePath) {
@@ -72,7 +78,7 @@ public class main {
     }
 
     public static void setTokens() {
-        main.tokens = Lexer.lexer(data);
+        main.tokens = Lexer.lexer();
     }
 
     public static void devM() {
@@ -84,10 +90,8 @@ public class main {
         System.out.println("Beginning of FCLang dev debug: ");
         System.out.println("======================================");
         System.out.println("Size of tokens after lexing: " + tokens.size());
-        int i = 0;
         for (Token t : tokens) {
-            System.out.println(i + ". Token(" + t.key + ", " + t.value + ")");
-            i++;
+            System.out.println(t.toString());
         }
         System.out.println("======================================");
         System.out.println("Ending of FCLang dev debug: ");
@@ -98,20 +102,29 @@ public class main {
         String data = "";
         try {
             BufferedReader br = new BufferedReader(new FileReader(new File(fileName)));
-            StringBuilder sb = new StringBuilder();
             String line = br.readLine();
 
             while (line != null) {
-                sb.append(line);
-                sb.append(" ");
+                code.add(line);
                 line = br.readLine();
             }
 
-            data = sb.toString();
             br.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return data;
+    }
+
+    public static void clearLists(){
+        tokens.clear();
+        Parser.intStore.clear();
+        Parser.boolStore.clear();
+        Parser.tokens.clear();
+        Parser.stringStore.clear();
+        Parser.gotoStore.clear();
+        Parser.skipStore.clear();
+        Parser.decimalStore.clear();
+        code.clear();
     }
 }

@@ -49,4 +49,12 @@ public class Token {
         key = Key;
         value = Value;
     }
+
+    @Override
+    public String toString() {
+        return "Token{" +
+                "key='" + key + '\'' +
+                ", value='" + value + '\'' +
+                '}';
+    }
 }

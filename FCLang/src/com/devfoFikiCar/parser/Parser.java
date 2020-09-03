@@ -93,6 +93,14 @@ public class Parser {
                     else index = result;
                     break;
                 }
+                case "NAME": {
+                    if(tokens.get(index).posInLine == 0) {
+                        int result = Names.redeclareNames(index);
+                        if (result == 0) Error.FatalError(2);
+                        else index = result;
+                    }
+                    break;
+                }
             }
             indexR = index;
         }

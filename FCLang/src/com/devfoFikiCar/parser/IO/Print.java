@@ -8,8 +8,8 @@ import com.devfoFikiCar.parser.standard.Integers;
 public class Print {
     // print: 'PRINT' STRING | INT | DECIMAL | NAME
     public static int printFunction(int index) {
-        if (Parser.tokens.get(index + 1).key == "STRING" || Parser.tokens.get(index + 1).key == "INT"
-                || Parser.tokens.get(index + 1).key == "DECIMAL" || Parser.tokens.get(index + 1).key == "BOOL") {
+        if (Parser.tokens.size() > index + 1 && (Parser.tokens.get(index + 1).key == "STRING" || Parser.tokens.get(index + 1).key == "INT"
+                || Parser.tokens.get(index + 1).key == "DECIMAL" || Parser.tokens.get(index + 1).key == "BOOL")) {
             switch (Parser.tokens.get(index + 1).key) {
                 case "INT": {
                     int[] retInt = Integers.expressionInt(index + 1, 0);
@@ -35,7 +35,7 @@ public class Print {
                 }
             }
             return basePrint(index + 2); //1
-        } else if (Parser.tokens.get(index + 1).key == "NAME") {
+        } else if (Parser.tokens.size() > index + 1 && Parser.tokens.get(index + 1).key == "NAME") {
             if (Parser.intStore.containsKey(Parser.tokens.get(index + 1).value) || Parser.stringStore.containsKey(Parser.tokens.get(index + 1).value)
                     || Parser.decimalStore.containsKey(Parser.tokens.get(index + 1).value) || Parser.boolStore.containsKey(Parser.tokens.get(index + 1).value)) {
                 int store = 0;
@@ -65,7 +65,7 @@ public class Print {
                 }
                 return basePrint(index + 1); //2
             } else return 0;
-        } else if (Parser.tokens.get(index + 1).key == "L_PARENTHESES") {
+        } else if (Parser.tokens.size() > index + 1 && Parser.tokens.get(index + 1).key == "L_PARENTHESES") {
             index++;
             int tempIndex = 0;
             for (int i = index; i < Parser.tokens.size(); i++)

@@ -1,5 +1,5 @@
 .DS_Store
 
-FCLang/.idea/
-FCLang/out/
-FCLang/FCLang.iml
+.idea/
+out/
+fclang.iml

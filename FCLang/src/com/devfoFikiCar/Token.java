@@ -3,7 +3,8 @@ package com.devfoFikiCar;
 public class Token {
     public String key;
     public String value;
-    public int posInLine = 1;
+    public int posInLine = -1;
+    public int lineNumber = -1;
 
     /*
      *   Possible token keys:
@@ -51,11 +52,19 @@ public class Token {
         value = Value;
     }
 
+    public Token(String Key, String Value, int LineNumber) {
+        key = Key;
+        value = Value;
+        lineNumber = LineNumber;
+    }
+
     @Override
     public String toString() {
         return "Token{" +
                 "key='" + key + '\'' +
                 ", value='" + value + '\'' +
+                ", posInLine=" + posInLine +
+                ", lineNumber=" + lineNumber +
                 '}';
     }
 }

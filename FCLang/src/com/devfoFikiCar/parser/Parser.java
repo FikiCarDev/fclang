@@ -34,37 +34,37 @@ public class Parser {
             switch (key) {
                 case "PRINT": {
                     int result = Print.printFunction(index);
-                    if (result == 0) Error.FatalError(1);
+                    if (result == 0) Error.FatalError(1, index);
                     else index = result;
                     break;
                 }
                 case "INT_T": {
                     int result = Declaration.declareInt(index);
-                    if (result == 0) Error.FatalError(2);
+                    if (result == 0) Error.FatalError(2, index);
                     else index = result;
                     break;
                 }
                 case "STRING_T": {
                     int result = Declaration.declareString(index);
-                    if (result == 0) Error.FatalError(3);
+                    if (result == 0) Error.FatalError(3, index);
                     else index = result;
                     break;
                 }
                 case "DECIMAL_T": {
                     int result = Declaration.declareDecimal(index);
-                    if (result == 0) Error.FatalError(4);
+                    if (result == 0) Error.FatalError(4, index);
                     else index = result;
                     break;
                 }
                 case "BOOL_T": {
                     int result = Declaration.declareBool(index);
-                    if (result == 0) Error.FatalError(6);
+                    if (result == 0) Error.FatalError(6, index);
                     else index = result;
                     break;
                 }
                 case "IF": {
                     int[] ret_v = IfStatement.ifStatement(index);
-                    if (ret_v[0] == 0) Error.FatalError(7);
+                    if (ret_v[0] == 0) Error.FatalError(7, index);
                     else {
                         if (ret_v[2] == 0) {
                             skip.add(ret_v[1]);
@@ -83,20 +83,20 @@ public class Parser {
                 }
                 case "FOR": {
                     int result = ForLoop.forLoop(index);
-                    if (result == 0) Error.FatalError(9);
+                    if (result == 0) Error.FatalError(9, index);
                     else index = result;
                     break;
                 }
                 case "GOTO": {
                     int result = Goto.gotoFunction(index);
-                    if (result == -1) Error.FatalError(10);
+                    if (result == -1) Error.FatalError(10, index);
                     else index = result;
                     break;
                 }
                 case "NAME": {
                     if(tokens.get(index).posInLine == 0) {
                         int result = Names.redeclareNames(index);
-                        if (result == 0) Error.FatalError(2);
+                        if (result == 0) Error.FatalError(2, index);
                         else index = result;
                     }
                     break;

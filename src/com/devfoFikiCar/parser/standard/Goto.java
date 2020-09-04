@@ -3,6 +3,10 @@ package com.devfoFikiCar.parser.standard;
 import com.devfoFikiCar.parser.Parser;
 
 public class Goto {
+
+    /**
+     * safeGoto detects all end goto labels, and stores their position.
+     */
     public static void safeGoto() {
         for (int index = 0; index < Parser.tokens.size(); index++) {
             if (Parser.tokens.get(index).key == "L_GOTO") {
@@ -11,6 +15,11 @@ public class Goto {
         }
     }
 
+    /**
+     * gotoFunction skips to the correct goto label.
+     * @param index begin position for parsing
+     * @return index to continue parsing from
+     */
     public static int gotoFunction(int index) {
         if (Parser.tokens.get(index + 1).key == "L_GOTO") {
             index++;

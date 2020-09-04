@@ -15,6 +15,9 @@ public class main {
 
     public static String data;
 
+    /**
+     * @param args filePath required, -dev with -m for minimal debug and -f for full
+     */
     public static void main(String[] args) {
         switch (args.length) {
             case 0: {
@@ -98,17 +101,20 @@ public class main {
         System.out.println("======================================");
     }
 
+    /**
+     * readFile safes code in string and ArrayList.
+     * @param fileName path relative to jar file
+     * @return code backup
+     */
     public static String readFile(String fileName) {
         String data = "";
         try {
             BufferedReader br = new BufferedReader(new FileReader(new File(fileName)));
             String line = br.readLine();
-
             while (line != null) {
                 code.add(line);
                 line = br.readLine();
             }
-
             br.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,6 +122,9 @@ public class main {
         return data;
     }
 
+    /**
+     * Always clear memory.
+     */
     public static void clearLists(){
         tokens.clear();
         Parser.intStore.clear();

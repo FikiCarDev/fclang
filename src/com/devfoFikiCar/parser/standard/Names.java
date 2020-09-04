@@ -1,6 +1,12 @@
 package com.devfoFikiCar.parser.standard;
 
 public class Names {
+
+    /**
+     * redeclareNames detects the correct datatype and reassigns value
+     * @param index begin position for parsing
+     * @return index to continue parsing from
+     */
     public static int redeclareNames(int index){
         --index;
         int intReturn = Declaration.declareInt(index);

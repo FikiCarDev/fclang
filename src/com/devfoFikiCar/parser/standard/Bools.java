@@ -4,6 +4,12 @@ import com.devfoFikiCar.parser.Parser;
 
 public class Bools {
 
+    /**
+     * bool alidates and calculates boolean expressions.
+     * @param index begin position for parsing
+     * @return index to continue parsing from and value of expression
+     * @grammar smallBool (('||' | '&&') smallBool)?
+     */
     public static int[] bool(int index) {
         int[] ret = new int[2];
         if (smallBool(index)[0] != 0) {
@@ -41,6 +47,11 @@ public class Bools {
         return ret;
     }
 
+    /**
+     * smallBool simplifies parts of bool expressions and calculates them to true or false.
+     * @param index begin position for parsing
+     * @return index to continue parsing from and value of smallBool expression
+     */
     public static int[] smallBool(int index) {
         int[] ret = new int[2];
         if (index < Parser.tokens.size() && Parser.tokens.get(index).key == "BOOL") {
@@ -81,8 +92,12 @@ public class Bools {
         } else return ret;
     }
 
-    // expresion_int | expresion_decimal ( < | > | <= | >= | == | != ) expresion_int | expresion_decimal
-    // index value(1 ok, 0 no)
+    /**
+     * fcompare compares int expressions and decimal expressions.
+     * @param index begin position for parsing
+     * @return index to continue parsing from and value of compared ints or decimals
+     * @grammar expresion_int | expresion_decimal ( < | > | <= | >= | == | != ) expresion_int | expresion_decimal
+     */
     public static int[] fcompare(int index) {
         int[] ret = new int[2];
         int signPos = 0;

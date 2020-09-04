@@ -6,7 +6,12 @@ import com.devfoFikiCar.parser.standard.Decimals;
 import com.devfoFikiCar.parser.standard.Integers;
 
 public class Print {
-    // print: 'PRINT' STRING | INT | DECIMAL | NAME
+    /**
+     * Print function.
+     * @param index begin position for parsing
+     * @return index to continue parsing from
+     * @grammar print: 'PRINT' STRING | INT | DECIMAL | NAME (basePrint)?
+     */
     public static int printFunction(int index) {
         if (Parser.tokens.size() > index + 1 && (Parser.tokens.get(index + 1).key == "STRING" || Parser.tokens.get(index + 1).key == "INT"
                 || Parser.tokens.get(index + 1).key == "DECIMAL" || Parser.tokens.get(index + 1).key == "BOOL")) {
@@ -89,6 +94,11 @@ public class Print {
         }else return 0;
     }
 
+    /**
+     * basePrint checks for extra one-line print.
+     * @param index begin position for parsing
+     * @return index to continue parsing from
+     */
     public static int basePrint(int index){
         if(index + 1 < Parser.tokens.size() && Parser.tokens.get(index).key.equals("SPLIT")){
             int res = printFunction(index);

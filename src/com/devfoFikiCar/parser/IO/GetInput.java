@@ -7,9 +7,11 @@ import java.util.Scanner;
 public class GetInput {
     static final Scanner scanner = new Scanner(System.in);
 
-    // Cannot write test for this since JUnit4 does not support input
-    // To test use main method
-    
+    /**
+     * Single int input.
+     * @param index begin position for parsing
+     * @return index to continue parsing from
+     */
     public static int getInputInt(int index) {
         if (index + 1 < Parser.tokens.size() && Parser.tokens.get(index).key == "GET_INT" && Parser.tokens.get(index + 1).key == "LESS_THAN") {
             int input = scanner.nextInt();
@@ -19,6 +21,11 @@ public class GetInput {
         return 0;
     }
 
+    /**
+     * Single double/decimal input.
+     * @param index begin position for parsing
+     * @return index to continue parsing from
+     */
     public static int getInputDecimal(int index) {
         if (index + 1 < Parser.tokens.size() && Parser.tokens.get(index).key == "GET_DECIMAL" && Parser.tokens.get(index + 1).key == "LESS_THAN") {
             double input = scanner.nextDouble();
@@ -28,6 +35,11 @@ public class GetInput {
         return 0;
     }
 
+    /**
+     * Single string input.
+     * @param index begin position for parsing
+     * @return index to continue parsing from
+     */
     public static int getInputString(int index) {
         if (index + 1 < Parser.tokens.size() && Parser.tokens.get(index).key == "GET_STRING" && Parser.tokens.get(index + 1).key == "LESS_THAN") {
             String input = scanner.nextLine();
@@ -38,6 +50,11 @@ public class GetInput {
         return 0;
     }
 
+    /**
+     * Single bool input.
+     * @param index begin position for parsing
+     * @return index to continue parsing from
+     */
     public static int getInputBool(int index) {
         if (index + 1 < Parser.tokens.size() && Parser.tokens.get(index).key == "GET_BOOL" && Parser.tokens.get(index + 1).key == "LESS_THAN") {
             boolean input = scanner.nextBoolean();

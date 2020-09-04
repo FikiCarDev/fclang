@@ -3,7 +3,14 @@ package com.devfoFikiCar.parser.standard;
 import com.devfoFikiCar.parser.Parser;
 
 public class Decimals {
-    // expression for decimal
+
+    /**
+     * expressionDecimals validates and calculates decimal expressions.
+     * @param index begin position for parsing
+     * @param value beginning value for operations to start on
+     * @return index to continue parsing from and value of expression
+     * @grammar expression: term (('-' | '+') term)?
+     */
     public static double[] expressionDecimal(double index, double value) {
         double[] ret = {index, value};
         if (termDecimal(index, value)[0] != 0) {
@@ -33,7 +40,13 @@ public class Decimals {
         }
     }
 
-    // term for decimal
+    /**
+     * termDecimal divides and multiplies decimals.
+     * @param index begin position for parsing
+     * @param value beginning value for operations to start on
+     * @return index to continue parsing from and value of expression
+     * @grammar term: factor (('/' | '*') factor)?
+     */
     private static double[] termDecimal(double index, double value) {
         double[] ret = {index, value};
         if (factorDecimal(index, value)[0] != 0) {
@@ -63,7 +76,13 @@ public class Decimals {
         }
     }
 
-    // factor for decimal
+    /**
+     * factorDecimal checks for int and base of decimal expressions.
+     * @param index begin position for parsing
+     * @param value beginning value for operations to start on
+     * @return index to continue parsing from and value of expression
+     * @grammar factor: NUMBER | '(' expression ')'
+     */
     private static double[] factorDecimal(double index, double value) {
         double[] ret = {index, value};
         if (Parser.tokens.get((int) index).key == "DECIMAL" || Parser.tokens.get((int) index).key == "NAME") {

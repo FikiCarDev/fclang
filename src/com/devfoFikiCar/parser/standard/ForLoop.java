@@ -3,6 +3,12 @@ package com.devfoFikiCar.parser.standard;
 import com.devfoFikiCar.parser.Parser;
 
 public class ForLoop {
+
+    /**
+     * forLoop parses parts of code correct amount of time.
+     * @param index begin position for parsing
+     * @return index to continue parsing from
+     */
     public static int forLoop(int index) {
         int indexName = 0;
         int startValue = 0;

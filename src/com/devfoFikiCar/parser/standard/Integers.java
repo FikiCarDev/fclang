@@ -3,7 +3,14 @@ package com.devfoFikiCar.parser.standard;
 import com.devfoFikiCar.parser.Parser;
 
 public class Integers {
-    // expression: term (('-' | '+') term)?
+
+    /**
+     * expressionInt validates and calculates int expressions.
+     * @param index begin position for parsing
+     * @param value beginning value for operations to start on
+     * @return index to continue parsing from and value of expression
+     * @grammar expression: term (('-' | '+') term)?
+     */
     public static int[] expressionInt(int index, int value) {
         int[] ret = {index, value};
         if (termInt(index, value)[0] != 0) {
@@ -33,7 +40,13 @@ public class Integers {
         }
     }
 
-    // term: factor (('/' | '*') factor)?
+    /**
+     * termInt divides and multiplies ints.
+     * @param index begin position for parsing
+     * @param value beginning value for operations to start on
+     * @return index to continue parsing from and value of expression
+     * @grammar term: factor (('/' | '*') factor)?
+     */
     private static int[] termInt(int index, int value) {
         int[] ret = {index, value};
         if (factorInt(index, value)[0] != 0) {
@@ -63,7 +76,13 @@ public class Integers {
         }
     }
 
-    // factor: NUMBER | '(' expression ')'
+    /**
+     * factorInt checks for int and base of int expressions.
+     * @param index begin position for parsing
+     * @param value beginning value for operations to start on
+     * @return index to continue parsing from and value of expression
+     * @grammar factor: NUMBER | '(' expression ')'
+     */
     private static int[] factorInt(int index, int value) {
         int[] ret = {index, value};
         if (Parser.tokens.get(index).key == "INT" || Parser.tokens.get(index).key == "NAME") {

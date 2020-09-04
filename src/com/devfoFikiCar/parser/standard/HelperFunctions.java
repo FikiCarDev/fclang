@@ -3,7 +3,12 @@ package com.devfoFikiCar.parser.standard;
 import com.devfoFikiCar.parser.Parser;
 
 public class HelperFunctions {
-    // searches for } <- return index from }
+
+    /**
+     * searchRightBracket is a helper function used to detect right bracket
+     * @param index position to start the search from
+     * @return position of last correct right bracket
+     */
     public static int searchRightBracket(int index) {
         int rPos = 0;
         int nSkip = 0;

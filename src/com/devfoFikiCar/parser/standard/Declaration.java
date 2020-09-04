@@ -4,7 +4,12 @@ import com.devfoFikiCar.parser.IO.GetInput;
 import com.devfoFikiCar.parser.Parser;
 
 public class Declaration {
-    // int declaration
+
+    /**
+     * declareInt declares new int variable by expression or input.
+     * @param index begin position for parsing
+     * @return index to continue parsing from
+     */
     public static int declareInt(int index) {
         if (Parser.tokens.get(index + 1).key == "NAME") {
             if (Parser.tokens.get(index + 2).key == "EQUALS") {
@@ -25,7 +30,11 @@ public class Declaration {
         return 0;
     }
 
-    // string declaration
+    /**
+     * declareString declares new string variable by code or input.
+     * @param index begin position for parsing
+     * @return index to continue parsing from
+     */
     public static int declareString(int index) {
         if (Parser.tokens.get(index + 1).key == "NAME") {
             if (Parser.tokens.get(index + 2).key == "EQUALS") {
@@ -39,7 +48,11 @@ public class Declaration {
         } return 0;
     }
 
-    // bool declaration
+    /**
+     * declareBool declares new boolean variable by expression or input.
+     * @param index begin position for parsing
+     * @return index to continue parsing from
+     */
     public static int declareBool(int index) {
         if (Parser.tokens.get(index + 1).key == "NAME") {
             if (Parser.tokens.get(index + 2).key == "EQUALS") {
@@ -59,7 +72,11 @@ public class Declaration {
         } else return 0;
     }
 
-    // decimal declaration
+    /**
+     * declareDecimal declares new decimal variable by expression or input.
+     * @param index begin position for parsing
+     * @return index to continue parsing from
+     */
     public static int declareDecimal(int index) {
         if (Parser.tokens.get(index + 1).key == "NAME") {
             if (Parser.tokens.get(index + 2).key == "EQUALS") {
@@ -79,7 +96,13 @@ public class Declaration {
         } else return 0;
     }
 
-    // declares
+    /**
+     * declareValue declares simple new variables using correct functions.
+     * @param index begin position for parsing
+     * @param type new variable type
+     * @param name new variable name
+     * @return index to continue parsing from
+     */
     public static int declareValue(int index, String type, String name) {
         String valueType = Parser.tokens.get(index).key + "_T";
         if (type.equals(valueType)) {

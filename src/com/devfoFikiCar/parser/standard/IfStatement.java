@@ -3,8 +3,12 @@ package com.devfoFikiCar.parser.standard;
 import com.devfoFikiCar.parser.Parser;
 
 public class IfStatement {
-    // if -> 1: index
-    // if <- 1: index 2: index of } 3: 0 for skip } 1 for skip to pos } + 1, execute else, begin else, end else
+
+    /**
+     * ifStatement decides to execute if or not.
+     * @param index  begin position for parsing
+     * @return 0: index 1: index of right bracket 2: skip right bracket 3: execute else 4: begin else 5: end else
+     */
     public static int[] ifStatement(int index) {
         int[] ret = new int[6];
         if (Parser.tokens.get(index + 1).key == "L_PARENTHESES") {
@@ -67,6 +71,11 @@ public class IfStatement {
         return ret;
     }
 
+    /**
+     * elseStatement safes start and end of else block.
+     * @param index begin position for parsing
+     * @return index of left bracket and right bracket
+     */
     public static int[] elseStatement(int index) {
         int[] ret = {0, 0};
         if (index + 1 < Parser.tokens.size() && Parser.tokens.get(index + 1).key == "ELSE") {

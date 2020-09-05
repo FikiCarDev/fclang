@@ -1,0 +1,5 @@
+IntArray testInt = new IntArray{10}
+DecimalArray testDecimal = new DecimalArray{10}
+StringArray testString = new StringArray{10}
+BoolArray testBool = new BoolArray{10}
+print "DONE"

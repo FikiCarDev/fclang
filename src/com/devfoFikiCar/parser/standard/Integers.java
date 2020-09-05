@@ -2,6 +2,9 @@ package com.devfoFikiCar.parser.standard;
 
 import com.devfoFikiCar.parser.Parser;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Integers {
 
     /**
@@ -88,6 +91,8 @@ public class Integers {
         if (Parser.tokens.get(index).key == "INT" || Parser.tokens.get(index).key == "NAME") {
             if (Parser.intStore.containsKey(Parser.tokens.get(index).value)) {
                 ret[1] = Parser.intStore.get(Parser.tokens.get(index).value);
+            } else if(Arrays.arraySize(index)[0] != 0){
+                ret = Arrays.arraySize(index);
             } else {
                 try {
                     ret[1] = Integer.parseInt(Parser.tokens.get(index).value);

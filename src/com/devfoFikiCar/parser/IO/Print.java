@@ -1,9 +1,12 @@
 package com.devfoFikiCar.parser.IO;
 
 import com.devfoFikiCar.parser.Parser;
+import com.devfoFikiCar.parser.standard.Arrays;
 import com.devfoFikiCar.parser.standard.Bools;
 import com.devfoFikiCar.parser.standard.Decimals;
 import com.devfoFikiCar.parser.standard.Integers;
+
+import java.lang.reflect.Array;
 
 public class Print {
     /**
@@ -69,6 +72,10 @@ public class Print {
                     }
                 }
                 return basePrint(index + 1); //2
+            } else if(Arrays.arraySize(index + 1)[0] != 0){
+                int[] ret = Arrays.arraySize(index + 1);
+                System.out.println(ret[1]);
+                return ret[0];
             } else return 0;
         } else if (Parser.tokens.size() > index + 1 && Parser.tokens.get(index + 1).key == "L_PARENTHESES") {
             index++;
@@ -91,7 +98,7 @@ public class Print {
                 }
             }
             return 0;
-        }else return 0;
+        } else return 0;
     }
 
     /**

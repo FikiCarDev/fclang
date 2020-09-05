@@ -69,6 +69,15 @@ public class Lexer {
                         skip = true;
                         break;
                     }
+                    case '.': {
+                        if(!temp.matches("\\d+")) {
+                            tokens.add(lexTemp(temp));
+                            tokens.add(new Token("DOT", ".", lineNumber));
+                            temp = "";
+                            skip = true;
+                        }
+                        break;
+                    }
                     case '(': {
                         tokens.add(lexTemp(temp));
                         tokens.add(new Token("L_PARENTHESES", "(",  lineNumber));
@@ -214,6 +223,8 @@ public class Lexer {
             return new Token("BOOL_T", "bool",  lineNumber);
         } else if (temp.equals("if")) {
             return new Token("IF", "if",  lineNumber);
+        } else if (temp.equals("size")) {
+            return new Token("SIZE", "SIZE",  lineNumber);
         } else if (temp.equals("else")) {
             return new Token("ELSE", "else",  lineNumber);
         } else if (temp.equals("for")) {

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.devfoFikiCar.parser.IO.Print;
+import javafx.util.Pair;
 
 public class Parser {
     public static ArrayList<Token> tokens = new ArrayList<>();
@@ -21,10 +22,10 @@ public class Parser {
     public static HashMap<Integer, Integer> skipStore = new HashMap<>();
     public static HashMap<String, Integer> gotoStore = new HashMap<>();
 
-    public static HashMap<String, ArrayList<Integer>> intArrayStore = new HashMap<>();
-    public static HashMap<String, ArrayList<Double>> decimalArrayStore = new HashMap<>();
-    public static HashMap<String, ArrayList<String>> stringArrayStore = new HashMap<>();
-    public static HashMap<String, ArrayList<Boolean>> boolArrayStore = new HashMap<>();
+    public static HashMap<String, Pair<ArrayList<Integer>, Integer>> intArrayStore = new HashMap<>();
+    public static HashMap<String, Pair<ArrayList<Double>, Integer>> decimalArrayStore = new HashMap<>();
+    public static HashMap<String, Pair<ArrayList<String>, Integer>> stringArrayStore = new HashMap<>();
+    public static HashMap<String, Pair<ArrayList<Boolean>, Integer>> boolArrayStore = new HashMap<>();
 
     /**
      * parse parses tokens and manages memory

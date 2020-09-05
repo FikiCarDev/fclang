@@ -47,6 +47,8 @@ public class Token {
      *   GET_BOOL
      *   {TYPE}_ARRAY    {Type}Array
      *   NEW             new
+     *   DOT             .
+     *   SIZE            size
      * */
 
     public Token(String Key, String Value) {

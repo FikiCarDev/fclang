@@ -17,4 +17,14 @@ public class arrayTest {
                 "======================================\nDONE\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
+
+    @Test
+    public void arraySize() {
+        main m = new main();
+        String[] t = {"./scripts/tests/array/arrayTest2.fclang"};
+        main.main(t);
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\n10\n10\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
 }

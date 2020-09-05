@@ -1,0 +1,4 @@
+IntArray intTest = new IntArray{10}
+int a = intTest.size()
+print a
+print intTest.size()

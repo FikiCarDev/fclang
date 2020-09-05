@@ -127,13 +127,18 @@ public class main {
      */
     public static void clearLists(){
         tokens.clear();
-        Parser.intStore.clear();
-        Parser.boolStore.clear();
+        code.clear();
         Parser.tokens.clear();
+        Parser.skip.clear();
+        Parser.intStore.clear();
+        Parser.decimalStore.clear();
         Parser.stringStore.clear();
+        Parser.boolStore.clear();
         Parser.gotoStore.clear();
         Parser.skipStore.clear();
+        Parser.intArrayStore.clear();
         Parser.decimalStore.clear();
-        code.clear();
+        Parser.stringArrayStore.clear();
+        Parser.boolArrayStore.clear();
     }
 }

@@ -14,14 +14,27 @@ public class Parser {
     public static ArrayList<Integer> skip = new ArrayList<>();
 
     public static HashMap<String, Integer> intStore = new HashMap<>();
-    public static HashMap<String, String> stringStore = new HashMap<>();
     public static HashMap<String, Double> decimalStore = new HashMap<>();
+    public static HashMap<String, String> stringStore = new HashMap<>();
     public static HashMap<String, Boolean> boolStore = new HashMap<>();
+
     public static HashMap<Integer, Integer> skipStore = new HashMap<>();
     public static HashMap<String, Integer> gotoStore = new HashMap<>();
 
-    public static int parse(ArrayList<Token> old, int begin, int end) {
-        tokens = old;
+    public static HashMap<String, ArrayList<Integer>> intArrayStore = new HashMap<>();
+    public static HashMap<String, ArrayList<Double>> decimalArrayStore = new HashMap<>();
+    public static HashMap<String, ArrayList<String>> stringArrayStore = new HashMap<>();
+    public static HashMap<String, ArrayList<Boolean>> boolArrayStore = new HashMap<>();
+
+    /**
+     * parse parses tokens and manages memory
+     * @param tokenData tokens to parse
+     * @param begin starting index
+     * @param end ending index
+     * @return size of tokens if everything was fine
+     */
+    public static int parse(ArrayList<Token> tokenData, int begin, int end) {
+        tokens = tokenData;
         int indexR = 0;
         Goto.safeGoto();
         for (int index = begin; index < end; index++) {
@@ -93,6 +106,30 @@ public class Parser {
                     else index = result;
                     break;
                 }
+                case "INT_ARRAY":{
+                    int result = Arrays.declareIntArray(index);
+                    if(result == 0) Error.FatalError(11, index);
+                    else index = result;
+                    break;
+                }
+                case "DECIMAL_ARRAY":{
+                    int result = Arrays.declareDecimalArray(index);
+                    if(result == 0) Error.FatalError(11, index);
+                    else index = result;
+                    break;
+                }
+                case "STRING_ARRAY":{
+                    int result = Arrays.declareStringArray(index);
+                    if(result == 0) Error.FatalError(11, index);
+                    else index = result;
+                    break;
+                }
+                case "BOOL_ARRAY":{
+                    int result = Arrays.declareBoolArray(index);
+                    if(result == 0) Error.FatalError(11, index);
+                    else index = result;
+                    break;
+                }
                 case "NAME": {
                     if(tokens.get(index).posInLine == 0) {
                         int result = Names.redeclareNames(index);
@@ -124,6 +161,5 @@ public class Parser {
         });
         skip.forEach(System.out::println);*/
         return indexR;
-
     }
 }

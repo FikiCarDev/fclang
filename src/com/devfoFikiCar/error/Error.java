@@ -166,6 +166,22 @@ public class Error {
                 System.out.println("Wrong goto statement");
                 System.exit(0);
             }
+            case 11: {
+                int line = Parser.tokens.get(index).lineNumber;
+                int lineSize = main.code.get(line).length();
+                int middle = lineSize / 2;
+                System.out.println(main.code.get(line));
+                for(int i = 0; i < middle; i++){
+                    System.out.print("-");
+                }
+                System.out.print("^");
+                for(int i = middle + 1; i < lineSize; i++){
+                    System.out.print("-");
+                }
+                System.out.println();
+                System.out.println("Wrong array declaration.");
+                System.exit(0);
+            }
         }
     }
 }

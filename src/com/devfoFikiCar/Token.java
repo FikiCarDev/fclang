@@ -45,6 +45,8 @@ public class Token {
      *   GET_STRING
      *   GET_DECIMAL
      *   GET_BOOL
+     *   {TYPE}_ARRAY    {Type}Array
+     *   NEW             new
      * */
 
     public Token(String Key, String Value) {

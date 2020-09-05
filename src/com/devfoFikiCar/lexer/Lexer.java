@@ -224,6 +224,16 @@ public class Lexer {
             return new Token("GET_INT", "getInt",  lineNumber);
         } else if (temp.equals("getDecimal")) {
             return new Token("GET_DECIMAL", "getDecimal",  lineNumber);
+        } else if (temp.equals("IntArray")) {
+            return new Token("INT_ARRAY", "IntArray", lineNumber);
+        } else if (temp.equals("DecimalArray")) {
+            return new Token("DECIMAL_ARRAY", "DecimalArray", lineNumber);
+        } else if (temp.equals("StringArray")) {
+            return new Token("STRING_ARRAY", "StringArray", lineNumber);
+        } else if (temp.equals("BoolArray")) {
+            return new Token("BOOL_ARRAY", "BoolArray", lineNumber);
+        }  else if (temp.equals("new")) {
+            return new Token("NEW", "new", lineNumber);
         } else if (temp.equals("getString")) {
             return new Token("GET_STRING", "getString",  lineNumber);
         } else if (temp.equals("getBool")) {
@@ -246,3 +256,4 @@ public class Lexer {
         return token;
     }
 }
+//1D_ARRAY       1DArray

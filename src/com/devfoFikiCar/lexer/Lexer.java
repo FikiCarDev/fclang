@@ -120,6 +120,13 @@ public class Lexer {
                         }
                         break;
                     }
+                    case ',': {
+                        tokens.add(lexTemp(temp));
+                        tokens.add(new Token("COMMA", ",",  lineNumber));
+                        temp = "";
+                        skip = true;
+                        break;
+                    }
                     case '>': {
                         if (currentLine.charAt(i + 1) == '=') {
                             i++;
@@ -228,7 +235,9 @@ public class Lexer {
         } else if (temp.equals("if")) {
             return new Token("IF", "if",  lineNumber);
         } else if (temp.equals("size")) {
-            return new Token("SIZE", "SIZE",  lineNumber);
+            return new Token("SIZE", "size",  lineNumber);
+        } else if (temp.equals("set")) {
+            return new Token("SET", "set",  lineNumber);
         } else if (temp.equals("else")) {
             return new Token("ELSE", "else",  lineNumber);
         } else if (temp.equals("for")) {

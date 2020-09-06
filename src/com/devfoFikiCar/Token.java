@@ -50,6 +50,8 @@ public class Token {
      *   DOT             .
      *   SIZE            size
      *   SORT            sort
+     *   SET             set
+     *   COMMA           ,
      * */
 
     public Token(String Key, String Value) {

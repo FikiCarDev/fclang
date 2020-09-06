@@ -19,7 +19,15 @@ public class Names {
         if(stringReturn != 0) return stringReturn;
         ++index;
         int arraySortReturn = Arrays.arraySort(index);
+        int setIntArray = Arrays.setArrayValueInt(index);
+        int setDecimalArray = Arrays.setArrayValueDecimal(index);
+        int setStringArray = Arrays.setArrayValueString(index);
+        int setBoolArray = Arrays.setArrayValueBool(index);
         if(arraySortReturn != 0) return arraySortReturn;
+        if(setIntArray != 0) return setIntArray;
+        if(setDecimalArray != 0) return setDecimalArray;
+        if(setStringArray != 0) return setStringArray;
+        if(setBoolArray != 0) return setBoolArray;
         return 0;
     }
 }

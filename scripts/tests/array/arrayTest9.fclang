@@ -1,0 +1,4 @@
+DecimalArray decimalTest = new DecimalArray{10}
+decimalTest.set(0, 3.0)
+decimal a = 1.0 + decimalTest.get(0)
+print a

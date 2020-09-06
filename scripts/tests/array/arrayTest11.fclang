@@ -1,0 +1,4 @@
+StringArray stringTest = new StringArray{10}
+stringTest.set(0, "Test")
+string a = stringTest.get(0)
+print a

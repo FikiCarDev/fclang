@@ -77,4 +77,54 @@ public class arrayTest {
                 "======================================\nDONE\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
+
+    @Test
+    public void getIntArray() {
+        main m = new main();
+        String[] t = {"./scripts/tests/array/arrayTest8.fclang"};
+        main.main(t);
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\n4\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
+
+    @Test
+    public void getDecimalArray() {
+        main m = new main();
+        String[] t = {"./scripts/tests/array/arrayTest9.fclang"};
+        main.main(t);
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\n4.0\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
+
+    @Test
+    public void getStringArray() {
+        main m = new main();
+        String[] t = {"./scripts/tests/array/arrayTest11.fclang"};
+        main.main(t);
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\nTest\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
+
+    @Test
+    public void getBoolArray() {
+        main m = new main();
+        String[] t = {"./scripts/tests/array/arrayTest10.fclang"};
+        main.main(t);
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\ntrue\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
+
+    @Test
+    public void getUndefinedArrayPrint() {
+        main m = new main();
+        String[] t = {"./scripts/tests/array/arrayTest12.fclang"};
+        main.main(t);
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\n3\nDONE\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
 }

@@ -1,0 +1,4 @@
+IntArray intTest = new IntArray{10}
+intTest.set(0, 3)
+int a = 1 + intTest.get(0)
+print a

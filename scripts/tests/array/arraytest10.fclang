@@ -1,0 +1,4 @@
+BoolArray boolTest = new BoolArray{10}
+boolTest.set(0, true)
+bool a = boolTest.get(0)
+print a

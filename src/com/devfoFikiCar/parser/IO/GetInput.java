@@ -9,6 +9,7 @@ public class GetInput {
 
     /**
      * Single int input.
+     *
      * @param index begin position for parsing
      * @return index to continue parsing from
      */
@@ -23,6 +24,7 @@ public class GetInput {
 
     /**
      * Single double/decimal input.
+     *
      * @param index begin position for parsing
      * @return index to continue parsing from
      */
@@ -37,6 +39,7 @@ public class GetInput {
 
     /**
      * Single string input.
+     *
      * @param index begin position for parsing
      * @return index to continue parsing from
      */
@@ -52,6 +55,7 @@ public class GetInput {
 
     /**
      * Single bool input.
+     *
      * @param index begin position for parsing
      * @return index to continue parsing from
      */

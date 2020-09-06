@@ -2,13 +2,12 @@ package com.devfoFikiCar.parser;
 
 import com.devfoFikiCar.Token;
 import com.devfoFikiCar.error.Error;
+import com.devfoFikiCar.parser.IO.Print;
 import com.devfoFikiCar.parser.standard.*;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import com.devfoFikiCar.parser.IO.Print;
-import javafx.util.Pair;
 
 public class Parser {
     public static ArrayList<Token> tokens = new ArrayList<>();
@@ -29,9 +28,10 @@ public class Parser {
 
     /**
      * parse parses tokens and manages memory
+     *
      * @param tokenData tokens to parse
-     * @param begin starting index
-     * @param end ending index
+     * @param begin     starting index
+     * @param end       ending index
      * @return size of tokens if everything was fine
      */
     public static int parse(ArrayList<Token> tokenData, int begin, int end) {
@@ -107,32 +107,32 @@ public class Parser {
                     else index = result;
                     break;
                 }
-                case "INT_ARRAY":{
+                case "INT_ARRAY": {
                     int result = Arrays.declareIntArray(index);
-                    if(result == 0) Error.FatalError(11, index);
+                    if (result == 0) Error.FatalError(11, index);
                     else index = result;
                     break;
                 }
-                case "DECIMAL_ARRAY":{
+                case "DECIMAL_ARRAY": {
                     int result = Arrays.declareDecimalArray(index);
-                    if(result == 0) Error.FatalError(11, index);
+                    if (result == 0) Error.FatalError(11, index);
                     else index = result;
                     break;
                 }
-                case "STRING_ARRAY":{
+                case "STRING_ARRAY": {
                     int result = Arrays.declareStringArray(index);
-                    if(result == 0) Error.FatalError(11, index);
+                    if (result == 0) Error.FatalError(11, index);
                     else index = result;
                     break;
                 }
-                case "BOOL_ARRAY":{
+                case "BOOL_ARRAY": {
                     int result = Arrays.declareBoolArray(index);
-                    if(result == 0) Error.FatalError(11, index);
+                    if (result == 0) Error.FatalError(11, index);
                     else index = result;
                     break;
                 }
                 case "NAME": {
-                    if(tokens.get(index).posInLine == 0) {
+                    if (tokens.get(index).posInLine == 0) {
                         int result = Names.redeclareNames(index);
                         if (result == 0) Error.FatalError(2, index);
                         else index = result;

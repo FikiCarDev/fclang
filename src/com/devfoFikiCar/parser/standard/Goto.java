@@ -17,6 +17,7 @@ public class Goto {
 
     /**
      * gotoFunction skips to the correct goto label.
+     *
      * @param index begin position for parsing
      * @return index to continue parsing from
      */

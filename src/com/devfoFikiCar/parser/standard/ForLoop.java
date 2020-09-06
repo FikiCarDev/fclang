@@ -6,6 +6,7 @@ public class ForLoop {
 
     /**
      * forLoop parses parts of code correct amount of time.
+     *
      * @param index begin position for parsing
      * @return index to continue parsing from
      */

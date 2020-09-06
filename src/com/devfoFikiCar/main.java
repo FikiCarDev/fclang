@@ -103,6 +103,7 @@ public class main {
 
     /**
      * readFile safes code in string and ArrayList.
+     *
      * @param fileName path relative to jar file
      * @return code backup
      */
@@ -125,7 +126,7 @@ public class main {
     /**
      * Always clear memory.
      */
-    public static void clearLists(){
+    public static void clearLists() {
         tokens.clear();
         code.clear();
         Parser.tokens.clear();

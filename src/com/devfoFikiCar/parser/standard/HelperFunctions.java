@@ -6,6 +6,7 @@ public class HelperFunctions {
 
     /**
      * searchRightBracket is a helper function used to detect right bracket
+     *
      * @param index position to start the search from
      * @return position of last correct right bracket
      */

@@ -6,7 +6,8 @@ public class IfStatement {
 
     /**
      * ifStatement decides to execute if or not.
-     * @param index  begin position for parsing
+     *
+     * @param index begin position for parsing
      * @return 0: index 1: index of right bracket 2: skip right bracket 3: execute else 4: begin else 5: end else
      */
     public static int[] ifStatement(int index) {
@@ -73,6 +74,7 @@ public class IfStatement {
 
     /**
      * elseStatement safes start and end of else block.
+     *
      * @param index begin position for parsing
      * @return index of left bracket and right bracket
      */

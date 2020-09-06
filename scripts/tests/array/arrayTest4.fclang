@@ -1,0 +1,3 @@
+IntArray intTest = new IntArray{10}
+intTest.set(0, 3)
+print "DONE"

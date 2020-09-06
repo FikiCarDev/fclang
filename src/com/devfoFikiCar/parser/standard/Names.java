@@ -17,6 +17,9 @@ public class Names {
         if(decimalReturn != 0) return decimalReturn;
         if(boolReturn != 0) return boolReturn;
         if(stringReturn != 0) return stringReturn;
+        ++index;
+        int arraySortReturn = Arrays.arraySort(index);
+        if(arraySortReturn != 0) return arraySortReturn;
         return 0;
     }
 }

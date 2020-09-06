@@ -4,6 +4,7 @@ import com.devfoFikiCar.parser.Parser;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Arrays {
     /* TODO:
@@ -122,6 +123,11 @@ public class Arrays {
         return index;
     }
 
+    /**
+     * arraySize parses {Array}.size() requests.
+     * @param index position of array name
+     * @return index to continue parsing from or 0 if error occurred
+     */
     public static int[] arraySize(int index){
         int[] ret = new int[2];
         int store = 0;
@@ -144,7 +150,7 @@ public class Arrays {
             return ret;
         }
         index++;
-        if(Parser.tokens.get(index + 1).key != "L_PARENTHESES" && Parser.tokens.get(index + 1).key != "R_PARENTHESES"){
+        if(Parser.tokens.get(index + 1).key != "L_PARENTHESES" && Parser.tokens.get(index + 2).key != "R_PARENTHESES"){
             ret[0] = 0;
             return ret;
         }
@@ -169,5 +175,45 @@ public class Arrays {
             }
         }
         return ret;
+    }
+
+    /**
+     * arraySort parses {Array}.sort() requests.
+     * @param index position of array name
+     * @return index to continue parsing from or 0 if error occurred
+     */
+    public static int arraySort(int index){
+        int store = 0;
+        String name = Parser.tokens.get(index).value;
+        if(Parser.intArrayStore.containsKey(name)) store = 1;
+        else if(Parser.decimalArrayStore.containsKey(name)) store = 2;
+        else if(Parser.stringArrayStore.containsKey(name)) store = 3;
+        else if(Parser.boolArrayStore.containsKey(name)) store = 4;
+        else return 0;
+        if(Parser.tokens.get(index + 1).key != "DOT") return 0;
+        index++;
+        if(Parser.tokens.get(index + 1).key != "SORT") return 0;
+        index++;
+        if(Parser.tokens.get(index + 1).key != "L_PARENTHESES" && Parser.tokens.get(index + 2).key != "R_PARENTHESES") return 0;
+        index+=2;
+        switch (store){
+            case 1:{
+                Collections.sort(Parser.intArrayStore.get(name).getKey());
+                return index;
+            }
+            case 2:{
+                Collections.sort(Parser.decimalArrayStore.get(name).getKey());
+                return index;
+            }
+            case 3:{
+                Collections.sort(Parser.stringArrayStore.get(name).getKey());
+                return index;
+            }
+            case 4:{
+                Collections.sort(Parser.boolArrayStore.get(name).getKey());
+                return index;
+            }
+        }
+        return index;
     }
 }

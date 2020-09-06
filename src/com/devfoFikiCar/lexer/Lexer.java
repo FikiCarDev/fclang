@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class Lexer {
     public static int lineNumber = -1;
+    private static int curSum = 0;
+    private static int oldSum = 0;
 
     public static ArrayList<Token> lexer() {
         ArrayList<Token> tokens = new ArrayList<>();
@@ -15,7 +17,9 @@ public class Lexer {
             String currentLine = main.code.get(line) + " ";
             String temp = "";
             boolean skip = false;
+            oldSum = tokens.size();
             for (int i = 0; i < currentLine.length(); i++) {
+                curSum = tokens.size();
                 skip = false;
                 switch (currentLine.charAt(i)) {
                     case ' ': {
@@ -229,6 +233,8 @@ public class Lexer {
             return new Token("ELSE", "else",  lineNumber);
         } else if (temp.equals("for")) {
             return new Token("FOR", "for",  lineNumber);
+        } else if (temp.equals("sort")) {
+            return new Token("SORT", "sort",  lineNumber);
         } else if (temp.equals("goto")) {
             return new Token("GOTO", "goto",  lineNumber);
         } else if (temp.equals("getInt")) {
@@ -261,7 +267,8 @@ public class Lexer {
             return new Token("L_GOTO", temp,  lineNumber);
         } else if (temp.matches(".*") && temp != "") {
             Token token1 = new Token("NAME", temp,  lineNumber);
-            token1.posInLine = 1;
+            if(Math.abs(curSum - oldSum) == 0) token1.posInLine = 0;
+            else token1.posInLine = 1;
             return token1;
         }
         return token;

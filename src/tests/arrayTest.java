@@ -27,4 +27,14 @@ public class arrayTest {
                 "======================================\n10\n10\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
+
+    @Test
+    public void arraySort() {
+        main m = new main();
+        String[] t = {"./scripts/tests/array/arrayTest3.fclang"};
+        main.main(t);
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\nDONE\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
 }

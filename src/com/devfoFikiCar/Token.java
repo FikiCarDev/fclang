@@ -49,6 +49,7 @@ public class Token {
      *   NEW             new
      *   DOT             .
      *   SIZE            size
+     *   SORT            sort
      * */
 
     public Token(String Key, String Value) {

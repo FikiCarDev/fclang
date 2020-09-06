@@ -2,11 +2,13 @@ package com.devfoFikiCar.parser.standard;
 
 import com.devfoFikiCar.parser.IO.GetInput;
 import com.devfoFikiCar.parser.Parser;
+import javafx.util.Pair;
 
 public class Declaration {
 
     /**
      * declareInt declares new int variable by expression or input.
+     *
      * @param index begin position for parsing
      * @return index to continue parsing from
      */
@@ -18,7 +20,7 @@ public class Declaration {
                     Parser.intStore.put(Parser.tokens.get(index + 1).value, retV[1]);
                     index = retV[0];
                     return --index;
-                } else if(Parser.tokens.get(index + 3).key == "GET_INT"){
+                } else if (Parser.tokens.get(index + 3).key == "GET_INT") {
                     int res = GetInput.getInputInt(index + 3);
                     return res;
                 } else {
@@ -32,6 +34,7 @@ public class Declaration {
 
     /**
      * declareString declares new string variable by code or input.
+     *
      * @param index begin position for parsing
      * @return index to continue parsing from
      */
@@ -42,14 +45,23 @@ public class Declaration {
                     int res = GetInput.getInputString(index + 3);
                     return res;
                 }
+                if (index + 7 < Parser.tokens.size()) {
+                    Pair<Integer, String> retPair = Arrays.getArrayValue(index + 3, 3);
+                    if (retPair.getKey() != 0) {
+                        Parser.stringStore.put(Parser.tokens.get(index + 1).value, retPair.getValue());
+                        return retPair.getKey();
+                    }
+                }
                 index = declareValue(index + 3, Parser.tokens.get(index).key, Parser.tokens.get(index + 1).value);
                 return index;
             } else return 0;
-        } return 0;
+        }
+        return 0;
     }
 
     /**
      * declareBool declares new boolean variable by expression or input.
+     *
      * @param index begin position for parsing
      * @return index to continue parsing from
      */
@@ -61,10 +73,10 @@ public class Declaration {
                     Parser.boolStore.put(Parser.tokens.get(index + 1).value, retV[1] == 1);
                     index = retV[0];
                     return --index;
-                } else if(Parser.tokens.get(index + 3).key == "GET_BOOL"){
+                } else if (Parser.tokens.get(index + 3).key == "GET_BOOL") {
                     int res = GetInput.getInputBool(index + 3);
                     return res;
-                }else {
+                } else {
                     index = declareValue(index + 3, Parser.tokens.get(index).key, Parser.tokens.get(index + 1).value);
                     return index;
                 }
@@ -74,6 +86,7 @@ public class Declaration {
 
     /**
      * declareDecimal declares new decimal variable by expression or input.
+     *
      * @param index begin position for parsing
      * @return index to continue parsing from
      */
@@ -85,10 +98,10 @@ public class Declaration {
                     Parser.decimalStore.put(Parser.tokens.get(index + 1).value, retV[1]);
                     index = (int) retV[0];
                     return --index;
-                } else if(Parser.tokens.get(index + 3).key == "GET_DECIMAL"){
+                } else if (Parser.tokens.get(index + 3).key == "GET_DECIMAL") {
                     int res = GetInput.getInputDecimal(index + 3);
                     return res;
-                }else {
+                } else {
                     index = declareValue(index + 3, Parser.tokens.get(index).key, Parser.tokens.get(index + 1).value);
                     return index;
                 }
@@ -98,9 +111,10 @@ public class Declaration {
 
     /**
      * declareValue declares simple new variables using correct functions.
+     *
      * @param index begin position for parsing
-     * @param type new variable type
-     * @param name new variable name
+     * @param type  new variable type
+     * @param name  new variable name
      * @return index to continue parsing from
      */
     public static int declareValue(int index, String type, String name) {

@@ -1,14 +1,13 @@
 package com.devfoFikiCar.parser.standard;
 
 import com.devfoFikiCar.parser.Parser;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import javafx.util.Pair;
 
 public class Integers {
 
     /**
      * expressionInt validates and calculates int expressions.
+     *
      * @param index begin position for parsing
      * @param value beginning value for operations to start on
      * @return index to continue parsing from and value of expression
@@ -45,6 +44,7 @@ public class Integers {
 
     /**
      * termInt divides and multiplies ints.
+     *
      * @param index begin position for parsing
      * @param value beginning value for operations to start on
      * @return index to continue parsing from and value of expression
@@ -81,6 +81,7 @@ public class Integers {
 
     /**
      * factorInt checks for int and base of int expressions.
+     *
      * @param index begin position for parsing
      * @param value beginning value for operations to start on
      * @return index to continue parsing from and value of expression
@@ -91,8 +92,12 @@ public class Integers {
         if (Parser.tokens.get(index).key == "INT" || Parser.tokens.get(index).key == "NAME") {
             if (Parser.intStore.containsKey(Parser.tokens.get(index).value)) {
                 ret[1] = Parser.intStore.get(Parser.tokens.get(index).value);
-            } else if(Arrays.arraySize(index)[0] != 0){
+            } else if (Arrays.arraySize(index)[0] != 0) {
                 ret = Arrays.arraySize(index);
+            } else if (index + 5 < Parser.tokens.size() && (int) Arrays.getArrayValue(index, 1).getKey() != 0) {
+                Pair<Integer, Integer> retPair = Arrays.getArrayValue(index, 1);
+                ret[0] = retPair.getKey();
+                ret[1] = retPair.getValue();
             } else {
                 try {
                     ret[1] = Integer.parseInt(Parser.tokens.get(index).value);

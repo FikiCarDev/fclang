@@ -1,11 +1,13 @@
 package com.devfoFikiCar.parser.standard;
 
 import com.devfoFikiCar.parser.Parser;
+import javafx.util.Pair;
 
 public class Decimals {
 
     /**
      * expressionDecimals validates and calculates decimal expressions.
+     *
      * @param index begin position for parsing
      * @param value beginning value for operations to start on
      * @return index to continue parsing from and value of expression
@@ -42,6 +44,7 @@ public class Decimals {
 
     /**
      * termDecimal divides and multiplies decimals.
+     *
      * @param index begin position for parsing
      * @param value beginning value for operations to start on
      * @return index to continue parsing from and value of expression
@@ -78,6 +81,7 @@ public class Decimals {
 
     /**
      * factorDecimal checks for int and base of decimal expressions.
+     *
      * @param index begin position for parsing
      * @param value beginning value for operations to start on
      * @return index to continue parsing from and value of expression
@@ -88,6 +92,10 @@ public class Decimals {
         if (Parser.tokens.get((int) index).key == "DECIMAL" || Parser.tokens.get((int) index).key == "NAME") {
             if (Parser.decimalStore.containsKey(Parser.tokens.get((int) index).value)) {
                 ret[1] = Parser.decimalStore.get(Parser.tokens.get((int) index).value);
+            } else if (index + 5 < Parser.tokens.size() && (int) Arrays.getArrayValue((int) index, 2).getKey() != 0) {
+                Pair<Integer, Double> retPair = Arrays.getArrayValue((int) index, 2);
+                ret[0] = retPair.getKey();
+                ret[1] = retPair.getValue();
             } else {
                 try {
                     ret[1] = Double.parseDouble(Parser.tokens.get((int) index).value);

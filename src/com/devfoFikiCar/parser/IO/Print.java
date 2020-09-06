@@ -5,12 +5,12 @@ import com.devfoFikiCar.parser.standard.Arrays;
 import com.devfoFikiCar.parser.standard.Bools;
 import com.devfoFikiCar.parser.standard.Decimals;
 import com.devfoFikiCar.parser.standard.Integers;
-
-import java.lang.reflect.Array;
+import javafx.util.Pair;
 
 public class Print {
     /**
      * Print function.
+     *
      * @param index begin position for parsing
      * @return index to continue parsing from
      * @grammar print: 'PRINT' STRING | INT | DECIMAL | NAME (basePrint)?
@@ -72,10 +72,17 @@ public class Print {
                     }
                 }
                 return basePrint(index + 1); //2
-            } else if(Arrays.arraySize(index + 1)[0] != 0){
+            } else if (Arrays.arraySize(index + 1)[0] != 0) {
                 int[] ret = Arrays.arraySize(index + 1);
                 System.out.println(ret[1]);
                 return ret[0];
+            } else if (index + 6 < Parser.tokens.size()) {
+                Pair retPair = Arrays.getArrayValue(index + 1, 0);
+                if ((int) retPair.getKey() != 0) {
+                    System.out.println(retPair.getValue());
+                    return (int) retPair.getKey();
+                }
+                return 0;
             } else return 0;
         } else if (Parser.tokens.size() > index + 1 && Parser.tokens.get(index + 1).key == "L_PARENTHESES") {
             index++;
@@ -103,13 +110,15 @@ public class Print {
 
     /**
      * basePrint checks for extra one-line print.
+     *
      * @param index begin position for parsing
      * @return index to continue parsing from
      */
-    public static int basePrint(int index){
-        if(index + 1 < Parser.tokens.size() && Parser.tokens.get(index).key.equals("SPLIT")){
+    public static int basePrint(int index) {
+        if (index + 1 < Parser.tokens.size() && Parser.tokens.get(index).key.equals("SPLIT")) {
             int res = printFunction(index);
             return (res == 0) ? --index : res;
-        } return --index;
+        }
+        return --index;
     }
 }

@@ -1,11 +1,13 @@
 package com.devfoFikiCar.parser.standard;
 
 import com.devfoFikiCar.parser.Parser;
+import javafx.util.Pair;
 
 public class Bools {
 
     /**
      * bool alidates and calculates boolean expressions.
+     *
      * @param index begin position for parsing
      * @return index to continue parsing from and value of expression
      * @grammar smallBool (('||' | '&&') smallBool)?
@@ -49,20 +51,29 @@ public class Bools {
 
     /**
      * smallBool simplifies parts of bool expressions and calculates them to true or false.
+     *
      * @param index begin position for parsing
      * @return index to continue parsing from and value of smallBool expression
      */
     public static int[] smallBool(int index) {
         int[] ret = new int[2];
-        if (index < Parser.tokens.size() && Parser.tokens.get(index).key == "BOOL") {
-            switch (Parser.tokens.get(index).value) {
-                case "true": {
-                    ret[1] = 1;
-                    break;
-                }
-                case "false": {
-                    ret[1] = 0;
-                    break;
+        if (index < Parser.tokens.size() && (Parser.tokens.get(index).key == "BOOL" || Parser.boolStore.containsKey(Parser.tokens.get(index).value) || Parser.boolArrayStore.containsKey(Parser.tokens.get(index).value))) {
+            if (Parser.boolStore.containsKey(Parser.tokens.get(index).value)) {
+                ret[1] = (Parser.boolStore.containsKey(Parser.tokens.get(index).value)) ? 1 : 0;
+            } else if (index + 5 < Parser.tokens.size() && (int) Arrays.getArrayValue(index, 4).getKey() != 0) {
+                Pair<Integer, Boolean> retPair = Arrays.getArrayValue(index, 4);
+                ret[0] = retPair.getKey();
+                ret[1] = (retPair.getValue()) ? 1 : 0;
+            } else {
+                switch (Parser.tokens.get(index).value) {
+                    case "true": {
+                        ret[1] = 1;
+                        break;
+                    }
+                    case "false": {
+                        ret[1] = 0;
+                        break;
+                    }
                 }
             }
             ret[0] = ++index;
@@ -94,6 +105,7 @@ public class Bools {
 
     /**
      * fcompare compares int expressions and decimal expressions.
+     *
      * @param index begin position for parsing
      * @return index to continue parsing from and value of compared ints or decimals
      * @grammar expresion_int | expresion_decimal ( < | > | <= | >= | == | != ) expresion_int | expresion_decimal
@@ -113,9 +125,9 @@ public class Bools {
         switch (Parser.tokens.get(signPos).key) {
             case "EQUAL_TO": {
                 int[] retInt1 = Integers.expressionInt(index, 0);
-                if(retInt1[0] != 0){
+                if (retInt1[0] != 0) {
                     int[] retInt2 = Integers.expressionInt(signPos + 1, 0);
-                    if(retInt2[0] != 0) {
+                    if (retInt2[0] != 0) {
                         if (retInt1[1] == retInt2[1]) {
                             ret[0] = retInt2[0];
                             ret[1] = 1;
@@ -128,7 +140,7 @@ public class Bools {
                     double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
                     if (retdouble1[0] != 0) {
                         double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
-                        if(retdouble2[0] != 0) {
+                        if (retdouble2[0] != 0) {
                             if (retdouble1[1] == retdouble2[1]) {
                                 ret[0] = (int) retdouble2[0];
                                 ret[1] = 1;
@@ -148,9 +160,9 @@ public class Bools {
             }
             case "NOT_EQUAL": {
                 int[] retInt1 = Integers.expressionInt(index, 0);
-                if(retInt1[0] != 0){
+                if (retInt1[0] != 0) {
                     int[] retInt2 = Integers.expressionInt(signPos + 1, 0);
-                    if(retInt2[0] != 0) {
+                    if (retInt2[0] != 0) {
                         if (retInt1[1] != retInt2[1]) {
                             ret[0] = retInt2[0];
                             ret[1] = 1;
@@ -163,7 +175,7 @@ public class Bools {
                     double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
                     if (retdouble1[0] != 0) {
                         double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
-                        if(retdouble2[0] != 0) {
+                        if (retdouble2[0] != 0) {
                             if (retdouble1[1] != retdouble2[1]) {
                                 ret[0] = (int) retdouble2[0];
                                 ret[1] = 1;
@@ -183,9 +195,9 @@ public class Bools {
             }
             case "GREATER_EQUAL": {
                 int[] retInt1 = Integers.expressionInt(index, 0);
-                if(retInt1[0] != 0){
+                if (retInt1[0] != 0) {
                     int[] retInt2 = Integers.expressionInt(signPos + 1, 0);
-                    if(retInt2[0] != 0) {
+                    if (retInt2[0] != 0) {
                         if (retInt1[1] >= retInt2[1]) {
                             ret[0] = retInt2[0];
                             ret[1] = 1;
@@ -198,7 +210,7 @@ public class Bools {
                     double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
                     if (retdouble1[0] != 0) {
                         double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
-                        if(retdouble2[0] != 0) {
+                        if (retdouble2[0] != 0) {
                             if (retdouble1[1] >= retdouble2[1]) {
                                 ret[0] = (int) retdouble2[0];
                                 ret[1] = 1;
@@ -218,9 +230,9 @@ public class Bools {
             }
             case "LESS_EQUAL": {
                 int[] retInt1 = Integers.expressionInt(index, 0);
-                if(retInt1[0] != 0){
+                if (retInt1[0] != 0) {
                     int[] retInt2 = Integers.expressionInt(signPos + 1, 0);
-                    if(retInt2[0] != 0) {
+                    if (retInt2[0] != 0) {
                         if (retInt1[1] <= retInt2[1]) {
                             ret[0] = retInt2[0];
                             ret[1] = 1;
@@ -233,7 +245,7 @@ public class Bools {
                     double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
                     if (retdouble1[0] != 0) {
                         double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
-                        if(retdouble2[0] != 0) {
+                        if (retdouble2[0] != 0) {
                             if (retdouble1[1] <= retdouble2[1]) {
                                 ret[0] = (int) retdouble2[0];
                                 ret[1] = 1;
@@ -253,9 +265,9 @@ public class Bools {
             }
             case "LESS_THAN": {
                 int[] retInt1 = Integers.expressionInt(index, 0);
-                if(retInt1[0] != 0){
+                if (retInt1[0] != 0) {
                     int[] retInt2 = Integers.expressionInt(signPos + 1, 0);
-                    if(retInt2[0] != 0) {
+                    if (retInt2[0] != 0) {
                         if (retInt1[1] < retInt2[1]) {
                             ret[0] = retInt2[0];
                             ret[1] = 1;
@@ -268,7 +280,7 @@ public class Bools {
                     double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
                     if (retdouble1[0] != 0) {
                         double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
-                        if(retdouble2[0] != 0) {
+                        if (retdouble2[0] != 0) {
                             if (retdouble1[1] < retdouble2[1]) {
                                 ret[0] = (int) retdouble2[0];
                                 ret[1] = 1;
@@ -288,9 +300,9 @@ public class Bools {
             }
             case "GREATER_THAN": {
                 int[] retInt1 = Integers.expressionInt(index, 0);
-                if(retInt1[0] != 0){
+                if (retInt1[0] != 0) {
                     int[] retInt2 = Integers.expressionInt(signPos + 1, 0);
-                    if(retInt2[0] != 0) {
+                    if (retInt2[0] != 0) {
                         if (retInt1[1] > retInt2[1]) {
                             ret[0] = retInt2[0];
                             ret[1] = 1;
@@ -303,7 +315,7 @@ public class Bools {
                     double[] retdouble1 = Decimals.expressionDecimal(index * 1.0, 0.0);
                     if (retdouble1[0] != 0) {
                         double[] retdouble2 = Decimals.expressionDecimal(signPos * 1.0 + 1.0, 0.0);
-                        if(retdouble2[0] != 0) {
+                        if (retdouble2[0] != 0) {
                             if (retdouble1[1] > retdouble2[1]) {
                                 ret[0] = (int) retdouble2[0];
                                 ret[1] = 1;

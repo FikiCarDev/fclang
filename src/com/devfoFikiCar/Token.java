@@ -52,6 +52,7 @@ public class Token {
      *   SORT            sort
      *   SET             set
      *   COMMA           ,
+     *   GET             get
      * */
 
     public Token(String Key, String Value) {

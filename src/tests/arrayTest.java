@@ -37,4 +37,44 @@ public class arrayTest {
                 "======================================\nDONE\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
+
+    @Test
+    public void setIntArray() {
+        main m = new main();
+        String[] t = {"./scripts/tests/array/arrayTest4.fclang"};
+        main.main(t);
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\nDONE\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
+
+    @Test
+    public void setDecimalArray() {
+        main m = new main();
+        String[] t = {"./scripts/tests/array/arrayTest5.fclang"};
+        main.main(t);
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\nDONE\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
+
+    @Test
+    public void setStringArray() {
+        main m = new main();
+        String[] t = {"./scripts/tests/array/arrayTest6.fclang"};
+        main.main(t);
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\nDONE\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
+
+    @Test
+    public void setBoolArray() {
+        main m = new main();
+        String[] t = {"./scripts/tests/array/arrayTest7.fclang"};
+        main.main(t);
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\nDONE\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
 }

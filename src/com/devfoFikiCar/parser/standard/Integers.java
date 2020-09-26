@@ -1,6 +1,6 @@
 package com.devfoFikiCar.parser.standard;
 
-import com.devfoFikiCar.parser.Math.*;
+import com.devfoFikiCar.parser.math.*;
 import com.devfoFikiCar.parser.Parser;
 import javafx.util.Pair;
 

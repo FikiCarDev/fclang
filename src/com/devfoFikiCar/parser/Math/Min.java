@@ -1,4 +1,4 @@
-package com.devfoFikiCar.parser.Math;
+package com.devfoFikiCar.parser.math;
 
 import com.devfoFikiCar.parser.Parser;
 

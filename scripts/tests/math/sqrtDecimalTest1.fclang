@@ -1,0 +1,4 @@
+decimal a = 16.0
+decimal b = sqrt(a)
+decimal c = 0.0 + sqrt(4.0 * b) * 1.0
+print c

@@ -1,0 +1,4 @@
+int a = 16
+int b = sqrt(a)
+int c = 0 + sqrt(4 * b) * 1
+print c

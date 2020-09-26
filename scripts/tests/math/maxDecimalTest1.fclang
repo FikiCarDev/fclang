@@ -1,0 +1,4 @@
+decimal a = 10.0
+decimal b = max(a, 10.0 + 20.0)
+decimal c = 0.0 + max(a, b) * 1.0
+print c

@@ -53,6 +53,12 @@ public class Token {
      *   SET             set
      *   COMMA           ,
      *   GET             get
+     *   ABS
+     *   POW
+     *   SQRT
+     *   MIN
+     *   MAX
+     *   COMMENT
      * */
 
     public Token(String Key, String Value) {

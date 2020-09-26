@@ -1,5 +1,6 @@
 package com.devfoFikiCar.parser.standard;
 
+import com.devfoFikiCar.parser.Math.*;
 import com.devfoFikiCar.parser.Parser;
 import javafx.util.Pair;
 
@@ -103,6 +104,21 @@ public class Decimals {
                 }
             }
             ret[0] = index + 1;
+            return ret;
+        } else if(Parser.tokens.get((int)index).key.equals("MAX")){
+            ret = Max.mathMaxDecimal((int) index);
+            return ret;
+        } else if(Parser.tokens.get((int)index).key.equals("MIN")){
+            ret = Min.mathMinDecimal((int) index);
+            return ret;
+        } else if(Parser.tokens.get((int)index).key.equals("POW")){
+            ret = Pow.mathPowDecimal((int) index);
+            return ret;
+        } else if(Parser.tokens.get((int)index).key.equals("SQRT")){
+            ret = Sqrt.mathSqrtDecimal((int) index);
+            return ret;
+        } else if(Parser.tokens.get((int)index).key.equals("ABS")){
+            ret = Abs.mathAbsDecimal((int) index);
             return ret;
         } else if (Parser.tokens.get((int) index).key == "L_PARENTHESES") {
             double[] retV = expressionDecimal(index + 1, ret[1]);

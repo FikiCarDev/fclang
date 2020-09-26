@@ -67,10 +67,18 @@ public class Lexer {
                         break;
                     }
                     case '/': {
-                        tokens.add(lexTemp(temp));
-                        tokens.add(new Token("DIVISION", "/", lineNumber));
-                        temp = "";
-                        skip = true;
+                        if (currentLine.charAt(i + 1) == '/') {
+                            i = currentLine.length() - 1;
+                            tokens.add(lexTemp(temp));
+                            tokens.add(new Token("COMMENT", "", lineNumber));
+                            temp = "";
+                            skip = true;
+                        } else {
+                            tokens.add(lexTemp(temp));
+                            tokens.add(new Token("DIVISION", "/", lineNumber));
+                            temp = "";
+                            skip = true;
+                        }
                         break;
                     }
                     case '.': {
@@ -230,10 +238,18 @@ public class Lexer {
             return new Token("DECIMAL_T", "decimal", lineNumber);
         } else if (temp.equals("string")) {
             return new Token("STRING_T", "string", lineNumber);
+        } else if (temp.equals("max")) {
+            return new Token("MAX", "max", lineNumber);
+        } else if (temp.equals("min")) {
+            return new Token("MIN", "min", lineNumber);
         } else if (temp.equals("get")) {
             return new Token("GET", "get", lineNumber);
         } else if (temp.equals("bool")) {
             return new Token("BOOL_T", "bool", lineNumber);
+        } else if (temp.equals("pow")) {
+            return new Token("POW", "pow", lineNumber);
+        } else if (temp.equals("sqrt")) {
+            return new Token("SQRT", "sqrt", lineNumber);
         } else if (temp.equals("if")) {
             return new Token("IF", "if", lineNumber);
         } else if (temp.equals("size")) {
@@ -254,6 +270,8 @@ public class Lexer {
             return new Token("GET_DECIMAL", "getDecimal", lineNumber);
         } else if (temp.equals("IntArray")) {
             return new Token("INT_ARRAY", "IntArray", lineNumber);
+        } else if (temp.equals("abs")) {
+            return new Token("ABS", "abs", lineNumber);
         } else if (temp.equals("DecimalArray")) {
             return new Token("DECIMAL_ARRAY", "DecimalArray", lineNumber);
         } else if (temp.equals("StringArray")) {
@@ -285,4 +303,3 @@ public class Lexer {
         return token;
     }
 }
-//1D_ARRAY       1DArray

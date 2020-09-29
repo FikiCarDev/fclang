@@ -26,6 +26,11 @@ public class Parser {
     public static HashMap<String, Pair<ArrayList<String>, Integer>> stringArrayStore = new HashMap<>();
     public static HashMap<String, Pair<ArrayList<Boolean>, Integer>> boolArrayStore = new HashMap<>();
 
+    public static HashMap<String, Pair<ArrayList<ArrayList<Integer>>, Pair<Integer, Integer>>> intMatrixStore = new HashMap<>();
+    public static HashMap<String, Pair<ArrayList<ArrayList<Double>>, Pair<Integer, Integer>>> decimalMatrixStore = new HashMap<>();
+    public static HashMap<String, Pair<ArrayList<ArrayList<String>>, Pair<Integer, Integer>>> stringMatrixStore = new HashMap<>();
+    public static HashMap<String, Pair<ArrayList<ArrayList<Boolean>>, Pair<Integer, Integer>>> boolMatrixStore = new HashMap<>();
+
     /**
      * parse parses tokens and manages memory
      *
@@ -131,6 +136,30 @@ public class Parser {
                     else index = result;
                     break;
                 }
+                case "INT_MATRIX": {
+                    int result = Matrixes.declareIntMatrix(index);
+                    if (result == 0) Error.FatalError(11, index);
+                    else index = result;
+                    break;
+                }
+                case "DECIMAL_MATRIX": {
+                    int result = Matrixes.declareDecimalMatrix(index);
+                    if (result == 0) Error.FatalError(11, index);
+                    else index = result;
+                    break;
+                }
+                case "STRING_MATRIX": {
+                    int result = Matrixes.declareStringMatrix(index);
+                    if (result == 0) Error.FatalError(11, index);
+                    else index = result;
+                    break;
+                }
+                case "BOOL_MATRIX": {
+                    int result = Matrixes.declareBoolMatrix(index);
+                    if (result == 0) Error.FatalError(11, index);
+                    else index = result;
+                    break;
+                }
                 case "NAME": {
                     if (tokens.get(index).posInLine == 0) {
                         int result = Names.redeclareNames(index);
@@ -142,7 +171,6 @@ public class Parser {
             }
             indexR = index;
         }
-
         // FOR DEBUGGING
 
         /*System.out.println("======================================");

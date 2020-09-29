@@ -138,8 +138,12 @@ public class main {
         Parser.gotoStore.clear();
         Parser.skipStore.clear();
         Parser.intArrayStore.clear();
-        Parser.decimalStore.clear();
+        Parser.decimalArrayStore.clear();
         Parser.stringArrayStore.clear();
         Parser.boolArrayStore.clear();
+        Parser.intMatrixStore.clear();
+        Parser.decimalMatrixStore.clear();
+        Parser.stringMatrixStore.clear();
+        Parser.boolMatrixStore.clear();
     }
 }

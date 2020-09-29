@@ -268,6 +268,14 @@ public class Lexer {
             return new Token("GET_INT", "getInt", lineNumber);
         } else if (temp.equals("getDecimal")) {
             return new Token("GET_DECIMAL", "getDecimal", lineNumber);
+        } else if (temp.equals("IntMatrix")) {
+            return new Token("INT_MATRIX", "IntArray", lineNumber);
+        } else if (temp.equals("DecimalMatrix")) {
+            return new Token("DECIMAL_MATRIX", "IntArray", lineNumber);
+        } else if (temp.equals("StringMatrix")) {
+            return new Token("STRING_MATRIX", "IntArray", lineNumber);
+        } else if (temp.equals("BoolMatrix")) {
+            return new Token("BOOL_MATRIX", "IntArray", lineNumber);
         } else if (temp.equals("IntArray")) {
             return new Token("INT_ARRAY", "IntArray", lineNumber);
         } else if (temp.equals("abs")) {

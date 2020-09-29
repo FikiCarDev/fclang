@@ -1,0 +1,5 @@
+IntMatrix testInt = new IntMatrix{2, 5}
+DecimalMatrix testDecimal = new DecimalMatrix{2, 5}
+StringMatrix testInt = new StringMatrix{2, 5}
+BoolMatrix testInt = new BoolMatrix{2, 5}
+print "DONE"

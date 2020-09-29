@@ -1,7 +1,7 @@
 package com.devfoFikiCar.parser.standard;
 
-import com.devfoFikiCar.parser.math.*;
 import com.devfoFikiCar.parser.Parser;
+import com.devfoFikiCar.parser.math.*;
 import javafx.util.Pair;
 
 public class Decimals {
@@ -105,19 +105,19 @@ public class Decimals {
             }
             ret[0] = index + 1;
             return ret;
-        } else if(Parser.tokens.get((int)index).key.equals("MAX")){
+        } else if (Parser.tokens.get((int) index).key.equals("MAX")) {
             ret = Max.mathMaxDecimal((int) index);
             return ret;
-        } else if(Parser.tokens.get((int)index).key.equals("MIN")){
+        } else if (Parser.tokens.get((int) index).key.equals("MIN")) {
             ret = Min.mathMinDecimal((int) index);
             return ret;
-        } else if(Parser.tokens.get((int)index).key.equals("POW")){
+        } else if (Parser.tokens.get((int) index).key.equals("POW")) {
             ret = Pow.mathPowDecimal((int) index);
             return ret;
-        } else if(Parser.tokens.get((int)index).key.equals("SQRT")){
+        } else if (Parser.tokens.get((int) index).key.equals("SQRT")) {
             ret = Sqrt.mathSqrtDecimal((int) index);
             return ret;
-        } else if(Parser.tokens.get((int)index).key.equals("ABS")){
+        } else if (Parser.tokens.get((int) index).key.equals("ABS")) {
             ret = Abs.mathAbsDecimal((int) index);
             return ret;
         } else if (Parser.tokens.get((int) index).key == "L_PARENTHESES") {

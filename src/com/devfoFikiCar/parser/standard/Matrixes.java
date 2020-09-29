@@ -3,7 +3,6 @@ package com.devfoFikiCar.parser.standard;
 import com.devfoFikiCar.parser.Parser;
 import javafx.util.Pair;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Matrixes {
@@ -32,27 +31,27 @@ public class Matrixes {
     }
     * */
 
-    public static int[] getTwoIntExpressions(int index){
+    public static int[] getTwoIntExpressions(int index) {
         int[] ret = new int[3];
-        if(!Parser.tokens.get(index).key.equals("L_BRACES")) {
+        if (!Parser.tokens.get(index).key.equals("L_BRACES")) {
             return ret;
         }
         index++;
         int[] retV = Integers.expressionInt(index, 0);
-        if(retV[0] == 0) {
+        if (retV[0] == 0) {
             return ret;
         }
         index = retV[0];
-        if(!Parser.tokens.get(index).key.equals("COMMA")) {
+        if (!Parser.tokens.get(index).key.equals("COMMA")) {
             return ret;
         }
         index++;
         int[] retV2 = Integers.expressionInt(index, 0);
-        if(retV2[0] == 0) {
+        if (retV2[0] == 0) {
             return ret;
         }
         index = retV2[0];
-        if(!Parser.tokens.get(index).key.equals("R_BRACES")) {
+        if (!Parser.tokens.get(index).key.equals("R_BRACES")) {
             return ret;
         }
         ret[0] = index;
@@ -61,22 +60,22 @@ public class Matrixes {
         return ret;
     }
 
-    public static int declareIntMatrix(int index){
+    public static int declareIntMatrix(int index) {
         String name = "";
-        if(!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
         name = Parser.tokens.get(index + 1).value;
         index++;
-        if(!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
         index++;
         if (!Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
         index++;
         if (!Parser.tokens.get(index + 1).key.equals("INT_MATRIX")) return 0;
         index++;
         int[] ret = getTwoIntExpressions(++index);
-        if(ret[0] == 0) return 0;
+        if (ret[0] == 0) return 0;
         index = ret[0];
         Parser.intMatrixStore.put(name, new Pair<>(new ArrayList<ArrayList<Integer>>(), new Pair<>(ret[1], ret[2])));
-        for (int i = 0; i < ret[1]; i++){
+        for (int i = 0; i < ret[1]; i++) {
             ArrayList<Integer> tmp = new ArrayList<>();
             for (int j = 0; j < ret[2]; j++) {
                 tmp.add(0);
@@ -87,22 +86,22 @@ public class Matrixes {
         return index;
     }
 
-    public static int declareDecimalMatrix(int index){
+    public static int declareDecimalMatrix(int index) {
         String name = "";
-        if(!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
         name = Parser.tokens.get(index + 1).value;
         index++;
-        if(!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
         index++;
         if (!Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
         index++;
         if (!Parser.tokens.get(index + 1).key.equals("DECIMAL_MATRIX")) return 0;
         index++;
         int[] ret = getTwoIntExpressions(++index);
-        if(ret[0] == 0) return 0;
+        if (ret[0] == 0) return 0;
         index = ret[0];
         Parser.decimalMatrixStore.put(name, new Pair<>(new ArrayList<ArrayList<Double>>(), new Pair<>(ret[1], ret[2])));
-        for (int i = 0; i < ret[1]; i++){
+        for (int i = 0; i < ret[1]; i++) {
             ArrayList<Double> tmp = new ArrayList<>();
             for (int j = 0; j < ret[2]; j++) {
                 tmp.add(0.0);
@@ -113,22 +112,22 @@ public class Matrixes {
         return index;
     }
 
-    public static int declareBoolMatrix(int index){
+    public static int declareBoolMatrix(int index) {
         String name = "";
-        if(!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
         name = Parser.tokens.get(index + 1).value;
         index++;
-        if(!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
         index++;
         if (!Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
         index++;
         if (!Parser.tokens.get(index + 1).key.equals("BOOL_MATRIX")) return 0;
         index++;
         int[] ret = getTwoIntExpressions(++index);
-        if(ret[0] == 0) return 0;
+        if (ret[0] == 0) return 0;
         index = ret[0];
         Parser.boolMatrixStore.put(name, new Pair<>(new ArrayList<ArrayList<Boolean>>(), new Pair<>(ret[1], ret[2])));
-        for (int i = 0; i < ret[1]; i++){
+        for (int i = 0; i < ret[1]; i++) {
             ArrayList<Boolean> tmp = new ArrayList<>();
             for (int j = 0; j < ret[2]; j++) {
                 tmp.add(false);
@@ -139,22 +138,22 @@ public class Matrixes {
         return index;
     }
 
-    public static int declareStringMatrix(int index){
+    public static int declareStringMatrix(int index) {
         String name = "";
-        if(!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
         name = Parser.tokens.get(index + 1).value;
         index++;
-        if(!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
         index++;
         if (!Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
         index++;
         if (!Parser.tokens.get(index + 1).key.equals("STRING_MATRIX")) return 0;
         index++;
         int[] ret = getTwoIntExpressions(++index);
-        if(ret[0] == 0) return 0;
+        if (ret[0] == 0) return 0;
         index = ret[0];
         Parser.stringMatrixStore.put(name, new Pair<>(new ArrayList<ArrayList<String>>(), new Pair<>(ret[1], ret[2])));
-        for (int i = 0; i < ret[1]; i++){
+        for (int i = 0; i < ret[1]; i++) {
             ArrayList<String> tmp = new ArrayList<>();
             for (int j = 0; j < ret[2]; j++) {
                 tmp.add("");

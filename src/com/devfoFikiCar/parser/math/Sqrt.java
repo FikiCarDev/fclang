@@ -2,7 +2,7 @@ package com.devfoFikiCar.parser.math;
 
 import com.devfoFikiCar.parser.Parser;
 
-public class Sqrt extends OneExpression{
+public class Sqrt extends OneExpression {
     public static int[] mathSqrtInt(int index) {
         int[] ret = new int[2];
         if (!Parser.tokens.get(index).key.equals("SQRT")) {

@@ -2,7 +2,7 @@ package com.devfoFikiCar.parser.math;
 
 import com.devfoFikiCar.parser.Parser;
 
-public class Abs extends OneExpression{
+public class Abs extends OneExpression {
     public static int[] mathAbsInt(int index) {
         int[] ret = new int[2];
         if (!Parser.tokens.get(index).key.equals("ABS")) {

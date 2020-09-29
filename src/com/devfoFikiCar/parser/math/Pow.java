@@ -2,7 +2,7 @@ package com.devfoFikiCar.parser.math;
 
 import com.devfoFikiCar.parser.Parser;
 
-public class Pow extends TwoExpressions{
+public class Pow extends TwoExpressions {
     public static int[] mathPowInt(int index) {
         int[] ret = new int[2];
         if (!Parser.tokens.get(index).key.equals("POW")) {

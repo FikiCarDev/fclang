@@ -1,5 +1,11 @@
 IntMatrix testInt = new IntMatrix{2, 5}
+testInt.set(1, 1, 10)
 DecimalMatrix testDecimal = new DecimalMatrix{2, 5}
+testDecimal.set(1, 1, 10.0)
 StringMatrix testString = new StringMatrix{2, 5}
+string a = "World"
+testString.set(1, 1, "Hello")
+testString.set(1, 2, a)
 BoolMatrix testBool = new BoolMatrix{2, 5}
+testBool.set(1, 1, true)
 print "DONE"

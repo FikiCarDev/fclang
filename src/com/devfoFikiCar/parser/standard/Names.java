@@ -28,6 +28,14 @@ public class Names {
         if (setIntArray != 0) return setIntArray;
         if (setDecimalArray != 0) return setDecimalArray;
         if (setStringArray != 0) return setStringArray;
-        return setBoolArray;
+        if (setBoolArray != 0) return setBoolArray;
+        int setIntMatrix = Matrixes.setMatrixValueInt(index);
+        int setDecimalMatrix = Matrixes.setMatrixValueDecimal(index);
+        int setStringMatrix = Matrixes.setMatrixValueString(index);
+        int setBoolMatrix = Matrixes.setMatrixValueBool(index);
+        if (setIntMatrix != 0) return setIntMatrix;
+        if (setDecimalMatrix != 0) return setDecimalMatrix;
+        if (setStringMatrix != 0) return setStringMatrix;
+        return setBoolMatrix;
     }
 }

@@ -17,4 +17,14 @@ public class matrixTest {
                 "======================================\nDONE\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
+
+    @Test
+    public void matrixSet() {
+        main m = new main();
+        String[] t = {"./scripts/tests/matrix/matrixTest2.fclang"};
+        main.main(t);
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\nDONE\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
 }

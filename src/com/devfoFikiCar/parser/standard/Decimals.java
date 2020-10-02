@@ -95,7 +95,11 @@ public class Decimals {
                 ret[1] = Parser.decimalStore.get(Parser.tokens.get((int) index).value);
             } else if (index + 5 < Parser.tokens.size() && (int) Arrays.getArrayValue((int) index, 2).getKey() != 0) {
                 Pair<Integer, Double> retPair = Arrays.getArrayValue((int) index, 2);
-                ret[0] = retPair.getKey();
+                index = retPair.getKey();
+                ret[1] = retPair.getValue();
+            } else if (index + 7 < Parser.tokens.size() && (int) Matrixes.getMatrixValue((int) index, 2).getKey() != 0) {
+                Pair<Integer, Double> retPair = Matrixes.getMatrixValue((int) index, 2);
+                index = retPair.getKey();
                 ret[1] = retPair.getValue();
             } else {
                 try {

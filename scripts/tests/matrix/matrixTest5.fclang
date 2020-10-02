@@ -1,0 +1,25 @@
+IntMatrix testInt = new IntMatrix{2, 5}
+testInt.set(1, 1, 10)
+
+DecimalMatrix testDecimal = new DecimalMatrix{2, 5}
+testDecimal.set(1, 1, 10.0)
+
+StringMatrix testString = new StringMatrix{2, 5}
+string a = "World"
+testString.set(1, 1, "Hello")
+testString.set(1, 2, a)
+
+BoolMatrix testBool = new BoolMatrix{2, 5}
+testBool.set(1, 1, true)
+
+print testInt.get(1, 1)
+int aa = testInt.get(1, 1) + 1
+print aa
+decimal a = testDecimal.get(1, 1) + 1.0
+print a
+string s = testString.get(1, 1)
+print s
+testString.set(1, 2, testString.get(1, 1))
+if(testBool.get(1, 1)) {
+    print "DONE"
+}

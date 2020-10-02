@@ -62,6 +62,29 @@ public class Matrixes {
         return ret;
     }
 
+    public static int[] checkPositionNoComma(int index) {
+        int[] ret = new int[3];
+        int[] retV = Integers.expressionInt(index, 0);
+        if (retV[0] == 0) {
+            return ret;
+        }
+        index = retV[0];
+        if (!Parser.tokens.get(index).key.equals("COMMA")) {
+            return ret;
+        }
+        index++;
+        int[] retV2 = Integers.expressionInt(index, 0);
+        if (retV2[0] == 0) {
+            return ret;
+        }
+        index = retV2[0];
+        ret[0] = index;
+        ret[1] = retV[1];
+        ret[2] = retV2[1];
+        return ret;
+    }
+
+
     public static int declareIntMatrix(int index) {
         String name = "";
         if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
@@ -334,5 +357,43 @@ public class Matrixes {
             }
         }
         return ret;
+    }
+
+    public static Pair getMatrixValue(int index, int store) {
+        Pair<Integer, Integer> retError = new Pair<>(0, 0);
+        String name = Parser.tokens.get(index).value;
+        if (store == 0) {
+            if (Parser.intMatrixStore.containsKey(name)) store = 1;
+            else if (Parser.decimalMatrixStore.containsKey(name)) store = 2;
+            else if (Parser.stringMatrixStore.containsKey(name)) store = 3;
+            else if (Parser.boolMatrixStore.containsKey(name)) store = 4;
+        }
+        if (store == 0) return retError;
+        if (Parser.tokens.get(index + 1).key != "DOT") return retError;
+        index++;
+        if (Parser.tokens.get(index + 1).key != "GET") return retError;
+        index++;
+        if (Parser.tokens.get(index + 1).key != "L_PARENTHESES") return retError;
+        index++;
+        index++;
+        int[] retV = checkPositionNoComma(index);
+        if (retV[0] == 0) return retError;
+        index = retV[0];
+        if (Parser.tokens.get(index).key != "R_PARENTHESES") return retError;
+        switch (store) {
+            case 1: {
+                return new Pair<>(index, Parser.intMatrixStore.get(name).getKey().get(retV[1]).get(retV[2]));
+            }
+            case 2: {
+                return new Pair<>(index, Parser.decimalMatrixStore.get(name).getKey().get(retV[1]).get(retV[2]));
+            }
+            case 3: {
+                return new Pair<>(index, Parser.stringMatrixStore.get(name).getKey().get(retV[1]).get(retV[2]));
+            }
+            case 4: {
+                return new Pair<>(index, Parser.boolMatrixStore.get(name).getKey().get(retV[1]).get(retV[2]));
+            }
+        }
+        return retError;
     }
 }

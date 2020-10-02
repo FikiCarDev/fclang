@@ -21,6 +21,14 @@ public class Strings {
             Pair ret1 = new Pair(index, Parser.stringStore.get(Parser.tokens.get(index).value));
             return ret1;
         }
+        if (index + 5 < Parser.tokens.size() && (int) Arrays.getArrayValue(index, 3).getKey() != 0){
+            Pair ret1 = new Pair(Arrays.getArrayValue(index, 3).getKey(), Arrays.getArrayValue(index, 3).getValue());
+            return ret1;
+        }
+        if (index + 7 < Parser.tokens.size() && (int) Matrixes.getMatrixValue(index, 3).getKey() != 0){
+            Pair ret1 = new Pair(Matrixes.getMatrixValue(index, 3).getKey(), Matrixes.getMatrixValue(index, 3).getValue());
+            return ret1;
+        }
         return ret;
     }
 }

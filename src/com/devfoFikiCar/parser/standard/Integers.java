@@ -101,7 +101,11 @@ public class Integers {
                 ret = Matrixes.matrixColumnSize(index);
             } else if (index + 5 < Parser.tokens.size() && (int) Arrays.getArrayValue(index, 1).getKey() != 0) {
                 Pair<Integer, Integer> retPair = Arrays.getArrayValue(index, 1);
-                ret[0] = retPair.getKey();
+                index = retPair.getKey();
+                ret[1] = retPair.getValue();
+            }  else if (index + 7 < Parser.tokens.size() && (int) Matrixes.getMatrixValue(index, 1).getKey() != 0) {
+                Pair<Integer, Integer> retPair = Matrixes.getMatrixValue(index, 1);
+                index = retPair.getKey();
                 ret[1] = retPair.getValue();
             } else {
                 try {

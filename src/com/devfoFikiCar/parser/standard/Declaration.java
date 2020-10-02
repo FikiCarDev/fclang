@@ -52,6 +52,13 @@ public class Declaration {
                         return retPair.getKey();
                     }
                 }
+                if (index + 8 < Parser.tokens.size()) {
+                    Pair<Integer, String> retPair = Matrixes.getMatrixValue(index + 3, 3);
+                    if (retPair.getKey() != 0) {
+                        Parser.stringStore.put(Parser.tokens.get(index + 1).value, retPair.getValue());
+                        return retPair.getKey();
+                    }
+                }
                 index = declareValue(index + 3, Parser.tokens.get(index).key, Parser.tokens.get(index + 1).value);
                 return index;
             } else return 0;

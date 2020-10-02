@@ -57,13 +57,22 @@ public class Bools {
      */
     public static int[] smallBool(int index) {
         int[] ret = new int[2];
-        if (index < Parser.tokens.size() && (Parser.tokens.get(index).key == "BOOL" || Parser.boolStore.containsKey(Parser.tokens.get(index).value) || Parser.boolArrayStore.containsKey(Parser.tokens.get(index).value))) {
+        if (index < Parser.tokens.size() && (Parser.tokens.get(index).key == "BOOL" || Parser.boolStore.containsKey(Parser.tokens.get(index).value) ||
+                Parser.boolArrayStore.containsKey(Parser.tokens.get(index).value) || Parser.boolMatrixStore.containsKey(Parser.tokens.get(index).value))) {
             if (Parser.boolStore.containsKey(Parser.tokens.get(index).value)) {
                 ret[1] = (Parser.boolStore.containsKey(Parser.tokens.get(index).value)) ? 1 : 0;
             } else if (index + 5 < Parser.tokens.size() && (int) Arrays.getArrayValue(index, 4).getKey() != 0) {
                 Pair<Integer, Boolean> retPair = Arrays.getArrayValue(index, 4);
                 ret[0] = retPair.getKey();
                 ret[1] = (retPair.getValue()) ? 1 : 0;
+                ret[0]++;
+                return ret;
+            } else if (index + 7 < Parser.tokens.size() && (int) Matrixes.getMatrixValue(index, 4).getKey() != 0) {
+                Pair<Integer, Boolean> retPair = Matrixes.getMatrixValue(index, 4);
+                ret[0] = retPair.getKey();
+                ret[1] = (retPair.getValue()) ? 1 : 0;
+                ret[0]++;
+                return ret;
             } else {
                 switch (Parser.tokens.get(index).value) {
                     case "true": {

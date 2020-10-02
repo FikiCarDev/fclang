@@ -81,8 +81,21 @@ public class Print {
                 int[] ret = Matrixes.matrixColumnSize(index + 1);
                 System.out.println(ret[1]);
                 return ret[0];
-            } else if (index + 6 < Parser.tokens.size()) {
+            } else if (index + 6 < Parser.tokens.size() && (Parser.boolArrayStore.containsKey(Parser.tokens.get(index + 1).value)
+                    || Parser.intArrayStore.containsKey(Parser.tokens.get(index + 1).value)
+                    || Parser.decimalArrayStore.containsKey(Parser.tokens.get(index + 1).value)
+                    || Parser.stringMatrixStore.containsKey(Parser.tokens.get(index + 1).value))) {
                 Pair retPair = Arrays.getArrayValue(index + 1, 0);
+                if ((int) retPair.getKey() != 0) {
+                    System.out.println(retPair.getValue());
+                    return (int) retPair.getKey();
+                }
+                return 0;
+            } else if (index + 8 < Parser.tokens.size() && (Parser.boolMatrixStore.containsKey(Parser.tokens.get(index + 1).value)
+                    || Parser.intMatrixStore.containsKey(Parser.tokens.get(index + 1).value)
+                    || Parser.decimalMatrixStore.containsKey(Parser.tokens.get(index + 1).value)
+                    || Parser.stringMatrixStore.containsKey(Parser.tokens.get(index + 1).value))) {
+                Pair retPair = Matrixes.getMatrixValue(index + 1, 0);
                 if ((int) retPair.getKey() != 0) {
                     System.out.println(retPair.getValue());
                     return (int) retPair.getKey();

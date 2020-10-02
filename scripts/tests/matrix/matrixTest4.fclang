@@ -1,0 +1,20 @@
+IntMatrix testInt = new IntMatrix{2, 5}
+DecimalMatrix testDecimal = new DecimalMatrix{2, 5}
+StringMatrix testString = new StringMatrix{2, 5}
+BoolMatrix testBool = new BoolMatrix{2, 5}
+
+int a = testInt.columnSize()
+print a
+print testInt.columnSize()
+
+int b = testDecimal.columnSize()
+print b
+print testDecimal.columnSize()
+
+int c = testString.columnSize()
+print c
+print testString.columnSize()
+
+int d = testBool.columnSize()
+print d
+print testBool.columnSize()

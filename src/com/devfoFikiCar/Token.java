@@ -59,6 +59,8 @@ public class Token {
      *   MIN
      *   MAX
      *   COMMENT
+     *   ROW_SIZE
+     *   COLUMN_SIZE
      * */
 
     public Token(String Key, String Value) {

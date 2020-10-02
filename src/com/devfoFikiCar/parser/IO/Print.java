@@ -1,10 +1,7 @@
 package com.devfoFikiCar.parser.IO;
 
 import com.devfoFikiCar.parser.Parser;
-import com.devfoFikiCar.parser.standard.Arrays;
-import com.devfoFikiCar.parser.standard.Bools;
-import com.devfoFikiCar.parser.standard.Decimals;
-import com.devfoFikiCar.parser.standard.Integers;
+import com.devfoFikiCar.parser.standard.*;
 import javafx.util.Pair;
 
 public class Print {
@@ -74,6 +71,14 @@ public class Print {
                 return basePrint(index + 1); //2
             } else if (Arrays.arraySize(index + 1)[0] != 0) {
                 int[] ret = Arrays.arraySize(index + 1);
+                System.out.println(ret[1]);
+                return ret[0];
+            } else if (Matrixes.matrixRowSize(index + 1)[0] != 0) {
+                int[] ret = Matrixes.matrixRowSize(index + 1);
+                System.out.println(ret[1]);
+                return ret[0];
+            } else if (Matrixes.matrixColumnSize(index + 1)[0] != 0) {
+                int[] ret = Matrixes.matrixColumnSize(index + 1);
                 System.out.println(ret[1]);
                 return ret[0];
             } else if (index + 6 < Parser.tokens.size()) {

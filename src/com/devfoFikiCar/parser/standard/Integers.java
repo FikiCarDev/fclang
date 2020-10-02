@@ -95,6 +95,10 @@ public class Integers {
                 ret[1] = Parser.intStore.get(Parser.tokens.get(index).value);
             } else if (Arrays.arraySize(index)[0] != 0) {
                 ret = Arrays.arraySize(index);
+            } else if (Matrixes.matrixRowSize(index)[0] != 0) {
+                ret = Matrixes.matrixRowSize(index);
+            } else if (Matrixes.matrixColumnSize(index)[0] != 0) {
+                ret = Matrixes.matrixColumnSize(index);
             } else if (index + 5 < Parser.tokens.size() && (int) Arrays.getArrayValue(index, 1).getKey() != 0) {
                 Pair<Integer, Integer> retPair = Arrays.getArrayValue(index, 1);
                 ret[0] = retPair.getKey();

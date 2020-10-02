@@ -27,4 +27,24 @@ public class matrixTest {
                 "======================================\nDONE\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
+
+    @Test
+    public void matrixRowSize() {
+        main m = new main();
+        String[] t = {"./scripts/tests/matrix/matrixTest3.fclang"};
+        main.main(t);
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\n2\n2\n2\n2\n2\n2\n2\n2\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
+
+    @Test
+    public void matrixColumnSize() {
+        main m = new main();
+        String[] t = {"./scripts/tests/matrix/matrixTest4.fclang"};
+        main.main(t);
+        Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
+                "======================================\n5\n5\n5\n5\n5\n5\n5\n5\n======================================\n" +
+                "Successful execution.\n======================================\n", systemOut.getLog());
+    }
 }

@@ -249,4 +249,90 @@ public class Matrixes {
         Parser.boolMatrixStore.get(name).getKey().get(retV[1]).set(retV[2], value == 1);
         return index;
     }
+
+    public static int[] matrixRowSize(int index) {
+        int ret[] = new int[2];
+        int store = 0;
+        String name = Parser.tokens.get(index).value;
+        if (Parser.intMatrixStore.containsKey(name)) store = 1;
+        else if (Parser.decimalMatrixStore.containsKey(name)) store = 2;
+        else if (Parser.stringMatrixStore.containsKey(name)) store = 3;
+        else if (Parser.boolMatrixStore.containsKey(name)) store = 4;
+        else return ret;
+        if (!Parser.tokens.get(index + 1).key.equals("DOT")) {
+            return ret;
+        }
+        index++;
+        if (!Parser.tokens.get(index + 1).key.equals("ROW_SIZE")) {
+            return ret;
+        }
+        index++;
+        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES") && !Parser.tokens.get(index + 2).key.equals("R_PARENTHESES")) {
+            return ret;
+        }
+        index++;
+        ret[0] = index;
+        switch (store) {
+            case 1: {
+                ret[1] = Parser.intMatrixStore.get(name).getKey().size();
+                return ret;
+            }
+            case 2: {
+                ret[1] = Parser.decimalMatrixStore.get(name).getKey().size();
+                return ret;
+            }
+            case 3: {
+                ret[1] = Parser.stringMatrixStore.get(name).getKey().size();
+                return ret;
+            }
+            case 4: {
+                ret[1] = Parser.boolMatrixStore.get(name).getKey().size();
+                return ret;
+            }
+        }
+        return ret;
+    }
+
+    public static int[] matrixColumnSize(int index) {
+        int ret[] = new int[2];
+        int store = 0;
+        String name = Parser.tokens.get(index).value;
+        if (Parser.intMatrixStore.containsKey(name)) store = 1;
+        else if (Parser.decimalMatrixStore.containsKey(name)) store = 2;
+        else if (Parser.stringMatrixStore.containsKey(name)) store = 3;
+        else if (Parser.boolMatrixStore.containsKey(name)) store = 4;
+        else return ret;
+        if (!Parser.tokens.get(index + 1).key.equals("DOT")) {
+            return ret;
+        }
+        index++;
+        if (!Parser.tokens.get(index + 1).key.equals("COLUMN_SIZE")) {
+            return ret;
+        }
+        index++;
+        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES") && !Parser.tokens.get(index + 2).key.equals("R_PARENTHESES")) {
+            return ret;
+        }
+        index++;
+        ret[0] = index;
+        switch (store) {
+            case 1: {
+                ret[1] = Parser.intMatrixStore.get(name).getKey().get(0).size();
+                return ret;
+            }
+            case 2: {
+                ret[1] = Parser.decimalMatrixStore.get(name).getKey().get(0).size();
+                return ret;
+            }
+            case 3: {
+                ret[1] = Parser.stringMatrixStore.get(name).getKey().get(0).size();
+                return ret;
+            }
+            case 4: {
+                ret[1] = Parser.boolMatrixStore.get(name).getKey().get(0).size();
+                return ret;
+            }
+        }
+        return ret;
+    }
 }

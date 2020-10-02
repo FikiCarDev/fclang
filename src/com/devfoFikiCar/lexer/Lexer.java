@@ -276,6 +276,10 @@ public class Lexer {
             return new Token("STRING_MATRIX", "IntArray", lineNumber);
         } else if (temp.equals("BoolMatrix")) {
             return new Token("BOOL_MATRIX", "IntArray", lineNumber);
+        } else if (temp.equals("rowSize")) {
+            return new Token("ROW_SIZE", "rowSize", lineNumber);
+        } else if (temp.equals("columnSize")) {
+            return new Token("COLUMN_SIZE", "columnSize", lineNumber);
         } else if (temp.equals("IntArray")) {
             return new Token("INT_ARRAY", "IntArray", lineNumber);
         } else if (temp.equals("abs")) {

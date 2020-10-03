@@ -3,6 +3,13 @@ package com.devfoFikiCar.parser.math;
 import com.devfoFikiCar.parser.Parser;
 
 public class Max extends TwoExpressions {
+
+    /**
+     * mathMaxInt checks if series of tokens fits type int max function.
+     *
+     * @param index position of MAX token
+     * @return index to continue parsing from and value
+     */
     public static int[] mathMaxInt(int index) {
         int[] ret = new int[2];
         if (!Parser.tokens.get(index).key.equals("MAX")) {
@@ -15,6 +22,12 @@ public class Max extends TwoExpressions {
         return ret;
     }
 
+    /**
+     * mathMaxDecimal checks if series of tokens fits type decimal max function.
+     *
+     * @param index position of MAX token
+     * @return index to continue parsing from and value
+     */
     public static double[] mathMaxDecimal(int index) {
         double[] ret = new double[2];
         if (!Parser.tokens.get(index).key.equals("MAX")) {

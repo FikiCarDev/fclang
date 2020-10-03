@@ -15,23 +15,23 @@ public class Arrays {
      * @return index to continue parsing from or 0 if error occurred
      */
     public static int declareIntArray(int index) {
-        String name = "";
-        if (Parser.tokens.get(index + 1).key != "NAME") return 0;
+        String name;
+        if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
         name = Parser.tokens.get(index + 1).value;
         index++;
-        if (Parser.tokens.get(index + 1).key != "EQUALS") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "NEW") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "INT_ARRAY") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("INT_ARRAY")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "L_BRACES") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("L_BRACES")) return 0;
         index++;
         int[] ret = Integers.expressionInt(index + 1, 0);
         if (ret[0] == 0) return 0;
         index = ret[0];
-        if (Parser.tokens.get(index).key != "R_BRACES") return 0;
-        Parser.intArrayStore.put(name, new Pair<>(new ArrayList<Integer>(ret[1]), ret[1]));
+        if (!Parser.tokens.get(index).key.equals("R_BRACES")) return 0;
+        Parser.intArrayStore.put(name, new Pair<>(new ArrayList<>(ret[1]), ret[1]));
         for (int i = 0; i < ret[1]; i++) Parser.intArrayStore.get(name).getKey().add(0);
         return index;
     }
@@ -43,23 +43,23 @@ public class Arrays {
      * @return index to continue parsing from or 0 if error occurred
      */
     public static int declareDecimalArray(int index) {
-        String name = "";
-        if (Parser.tokens.get(index + 1).key != "NAME") return 0;
+        String name;
+        if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
         name = Parser.tokens.get(index + 1).value;
         index++;
-        if (Parser.tokens.get(index + 1).key != "EQUALS") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "NEW") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "DECIMAL_ARRAY") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("DECIMAL_ARRAY")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "L_BRACES") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("L_BRACES")) return 0;
         index++;
         int[] ret = Integers.expressionInt(index + 1, 0);
         if (ret[0] == 0) return 0;
         index = ret[0];
-        if (Parser.tokens.get(index).key != "R_BRACES") return 0;
-        Parser.decimalArrayStore.put(name, new Pair<>(new ArrayList<Double>(ret[1]), ret[1]));
+        if (!Parser.tokens.get(index).key.equals("R_BRACES")) return 0;
+        Parser.decimalArrayStore.put(name, new Pair<>(new ArrayList<>(ret[1]), ret[1]));
         for (int i = 0; i < ret[1]; i++) Parser.decimalArrayStore.get(name).getKey().add(0.0);
         return index;
     }
@@ -71,23 +71,23 @@ public class Arrays {
      * @return index to continue parsing from or 0 if error occurred
      */
     public static int declareStringArray(int index) {
-        String name = "";
-        if (Parser.tokens.get(index + 1).key != "NAME") return 0;
+        String name;
+        if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
         name = Parser.tokens.get(index + 1).value;
         index++;
-        if (Parser.tokens.get(index + 1).key != "EQUALS") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "NEW") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "STRING_ARRAY") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("STRING_ARRAY")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "L_BRACES") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("L_BRACES")) return 0;
         index++;
         int[] ret = Integers.expressionInt(index + 1, 0);
         if (ret[0] == 0) return 0;
         index = ret[0];
-        if (Parser.tokens.get(index).key != "R_BRACES") return 0;
-        Parser.stringArrayStore.put(name, new Pair<>(new ArrayList<String>(ret[1]), ret[1]));
+        if (!Parser.tokens.get(index).key.equals("R_BRACES")) return 0;
+        Parser.stringArrayStore.put(name, new Pair<>(new ArrayList<>(ret[1]), ret[1]));
         for (int i = 0; i < ret[1]; i++) Parser.stringArrayStore.get(name).getKey().add("");
         return index;
     }
@@ -99,23 +99,23 @@ public class Arrays {
      * @return index to continue parsing from or 0 if error occurred
      */
     public static int declareBoolArray(int index) {
-        String name = "";
-        if (Parser.tokens.get(index + 1).key != "NAME") return 0;
+        String name;
+        if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
         name = Parser.tokens.get(index + 1).value;
         index++;
-        if (Parser.tokens.get(index + 1).key != "EQUALS") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "NEW") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "BOOL_ARRAY") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("BOOL_ARRAY")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "L_BRACES") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("L_BRACES")) return 0;
         index++;
         int[] ret = Integers.expressionInt(index + 1, 0);
         if (ret[0] == 0) return 0;
         index = ret[0];
-        if (Parser.tokens.get(index).key != "R_BRACES") return 0;
-        Parser.boolArrayStore.put(name, new Pair<>(new ArrayList<Boolean>(ret[1]), ret[1]));
+        if (!Parser.tokens.get(index).key.equals("R_BRACES")) return 0;
+        Parser.boolArrayStore.put(name, new Pair<>(new ArrayList<>(ret[1]), ret[1]));
         for (int i = 0; i < ret[1]; i++) Parser.boolArrayStore.get(name).getKey().add(false);
         return index;
     }
@@ -128,28 +128,22 @@ public class Arrays {
      */
     public static int[] arraySize(int index) {
         int[] ret = new int[2];
-        int store = 0;
+        int store;
         String name = Parser.tokens.get(index).value;
         if (Parser.intArrayStore.containsKey(name)) store = 1;
         else if (Parser.decimalArrayStore.containsKey(name)) store = 2;
         else if (Parser.stringArrayStore.containsKey(name)) store = 3;
         else if (Parser.boolArrayStore.containsKey(name)) store = 4;
-        else {
-            ret[0] = 0;
-            return ret;
-        }
-        if (Parser.tokens.get(index + 1).key != "DOT") {
-            ret[0] = 0;
+        else return ret;
+        if (!Parser.tokens.get(index + 1).key.equals("DOT")) {
             return ret;
         }
         index++;
-        if (Parser.tokens.get(index + 1).key != "SIZE") {
-            ret[0] = 0;
+        if (!Parser.tokens.get(index + 1).key.equals("SIZE")) {
             return ret;
         }
         index++;
-        if (Parser.tokens.get(index + 1).key != "L_PARENTHESES" && Parser.tokens.get(index + 2).key != "R_PARENTHESES") {
-            ret[0] = 0;
+        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES") && !Parser.tokens.get(index + 2).key.equals("R_PARENTHESES")) {
             return ret;
         }
         index++;
@@ -182,18 +176,18 @@ public class Arrays {
      * @return index to continue parsing from or 0 if error occurred
      */
     public static int arraySort(int index) {
-        int store = 0;
+        int store;
         String name = Parser.tokens.get(index).value;
         if (Parser.intArrayStore.containsKey(name)) store = 1;
         else if (Parser.decimalArrayStore.containsKey(name)) store = 2;
         else if (Parser.stringArrayStore.containsKey(name)) store = 3;
         else if (Parser.boolArrayStore.containsKey(name)) store = 4;
         else return 0;
-        if (Parser.tokens.get(index + 1).key != "DOT") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("DOT")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "SORT") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("SORT")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "L_PARENTHESES" && Parser.tokens.get(index + 2).key != "R_PARENTHESES")
+        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES") && !Parser.tokens.get(index + 2).key.equals("R_PARENTHESES"))
             return 0;
         index += 2;
         switch (store) {
@@ -226,22 +220,22 @@ public class Arrays {
     public static int setArrayValueInt(int index) {
         String name = Parser.tokens.get(index).value;
         if (!Parser.intArrayStore.containsKey(name)) return 0;
-        int size = Parser.intArrayStore.get(name).getValue();
-        if (Parser.tokens.get(index + 1).key != "DOT") return 0;
+        int size;
+        if (!Parser.tokens.get(index + 1).key.equals("DOT")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "SET") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("SET")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "L_PARENTHESES") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return 0;
         index++;
         int[] ret = Integers.expressionInt(index + 1, 0);
         if (ret[0] == 0) return 0;
         index = ret[0];
-        if (Parser.tokens.get(index).key != "COMMA") return 0;
+        if (!Parser.tokens.get(index).key.equals("COMMA")) return 0;
         index++;
         int[] ret1 = Integers.expressionInt(index, 0);
         if (ret1[0] == 0) return 0;
         index = ret1[0];
-        if (Parser.tokens.get(index).key != "R_PARENTHESES") return 0;
+        if (!Parser.tokens.get(index).key.equals("R_PARENTHESES")) return 0;
         size = Parser.intArrayStore.get(name).getValue();
         if (ret[1] >= size) return 0;
         Parser.intArrayStore.get(name).getKey().set(ret[1], ret1[1]);
@@ -257,22 +251,22 @@ public class Arrays {
     public static int setArrayValueDecimal(int index) {
         String name = Parser.tokens.get(index).value;
         if (!Parser.decimalArrayStore.containsKey(name)) return 0;
-        int size = Parser.decimalArrayStore.get(name).getValue();
-        if (Parser.tokens.get(index + 1).key != "DOT") return 0;
+        int size;
+        if (!Parser.tokens.get(index + 1).key.equals("DOT")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "SET") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("SET")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "L_PARENTHESES") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return 0;
         index++;
         int[] ret = Integers.expressionInt(index + 1, 0);
         if (ret[0] == 0) return 0;
         index = ret[0];
-        if (Parser.tokens.get(index).key != "COMMA") return 0;
+        if (!Parser.tokens.get(index).key.equals("COMMA")) return 0;
         index++;
         double[] ret1 = Decimals.expressionDecimal(index, 0);
         if (ret1[0] == 0) return 0;
         index = (int) ret1[0];
-        if (Parser.tokens.get(index).key != "R_PARENTHESES") return 0;
+        if (!Parser.tokens.get(index).key.equals("R_PARENTHESES")) return 0;
         size = Parser.decimalArrayStore.get(name).getValue();
         if (ret[1] >= size) return 0;
         Parser.decimalArrayStore.get(name).getKey().set(ret[1], ret1[1]);
@@ -288,22 +282,22 @@ public class Arrays {
     public static int setArrayValueString(int index) {
         String name = Parser.tokens.get(index).value;
         if (!Parser.stringArrayStore.containsKey(name)) return 0;
-        int size = Parser.stringArrayStore.get(name).getValue();
-        if (Parser.tokens.get(index + 1).key != "DOT") return 0;
+        int size;
+        if (!Parser.tokens.get(index + 1).key.equals("DOT")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "SET") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("SET")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "L_PARENTHESES") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return 0;
         index++;
         int[] ret = Integers.expressionInt(index + 1, 0);
         if (ret[0] == 0) return 0;
         index = ret[0];
-        if (Parser.tokens.get(index).key != "COMMA") return 0;
+        if (!Parser.tokens.get(index).key.equals("COMMA")) return 0;
         index++;
         Pair<Integer, String> retPair = Strings.isString(index++);
         if (retPair.getKey() == 0) return 0;
         index = retPair.getKey();
-        if (Parser.tokens.get(index + 1).key != "R_PARENTHESES") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("R_PARENTHESES")) return 0;
         size = Parser.stringArrayStore.get(name).getValue();
         if (ret[1] >= size) return 0;
         Parser.stringArrayStore.get(name).getKey().set(ret[1], retPair.getValue());
@@ -320,21 +314,21 @@ public class Arrays {
         String name = Parser.tokens.get(index).value;
         if (!Parser.boolArrayStore.containsKey(name)) return 0;
         int size = Parser.boolArrayStore.get(name).getValue();
-        if (Parser.tokens.get(index + 1).key != "DOT") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("DOT")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "SET") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("SET")) return 0;
         index++;
-        if (Parser.tokens.get(index + 1).key != "L_PARENTHESES") return 0;
+        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return 0;
         index++;
         int[] ret = Integers.expressionInt(index + 1, 0);
         if (ret[0] == 0) return 0;
         index = ret[0];
-        if (Parser.tokens.get(index).key != "COMMA") return 0;
+        if (!Parser.tokens.get(index).key.equals("COMMA")) return 0;
         index++;
         int[] ret1 = Bools.bool(index);
         if (ret1[0] == 0) return 0;
         index = ret1[0];
-        if (Parser.tokens.get(index).key != "R_PARENTHESES") return 0;
+        if (!Parser.tokens.get(index).key.equals("R_PARENTHESES")) return 0;
         size = Parser.boolArrayStore.get(name).getValue();
         if (ret[1] >= size) return 0;
         Parser.boolArrayStore.get(name).getKey().set(ret[1], ret1[1] == 1);
@@ -358,16 +352,16 @@ public class Arrays {
             else if (Parser.boolArrayStore.containsKey(name)) store = 4;
         }
         if (store == 0) return retError;
-        if (Parser.tokens.get(index + 1).key != "DOT") return retError;
+        if (!Parser.tokens.get(index + 1).key.equals("DOT")) return retError;
         index++;
-        if (Parser.tokens.get(index + 1).key != "GET") return retError;
+        if (!Parser.tokens.get(index + 1).key.equals("GET")) return retError;
         index++;
-        if (Parser.tokens.get(index + 1).key != "L_PARENTHESES") return retError;
+        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return retError;
         index++;
         int[] ret = Integers.expressionInt(index + 1, 0);
         if (ret[0] == 0) return retError;
         index = ret[0];
-        if (Parser.tokens.get(index).key != "R_PARENTHESES") return retError;
+        if (!Parser.tokens.get(index).key.equals("R_PARENTHESES")) return retError;
         switch (store) {
             case 1: {
                 if (ret[1] < Parser.intArrayStore.get(name).getValue()) {

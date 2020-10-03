@@ -12,13 +12,13 @@ public class IfStatement {
      */
     public static int[] ifStatement(int index) {
         int[] ret = new int[6];
-        if (Parser.tokens.get(index + 1).key == "L_PARENTHESES") {
+        if (Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) {
             index += 2;
             int[] ret_v = Bools.bool(index);
             index = ret_v[0];
             if (index != 0) {
-                if (index < Parser.tokens.size() && Parser.tokens.get(index).key == "R_PARENTHESES") {
-                    if (index + 1 < Parser.tokens.size() && Parser.tokens.get(index + 1).key == "L_BRACES") {
+                if (index < Parser.tokens.size() && Parser.tokens.get(index).key.equals("R_PARENTHESES")) {
+                    if (index + 1 < Parser.tokens.size() && Parser.tokens.get(index + 1).key.equals("L_BRACES")) {
                         index++;
                         int r_pos = HelperFunctions.searchRightBracket(index);
                         int[] ret_1 = elseStatement(r_pos);
@@ -80,9 +80,9 @@ public class IfStatement {
      */
     public static int[] elseStatement(int index) {
         int[] ret = {0, 0};
-        if (index + 1 < Parser.tokens.size() && Parser.tokens.get(index + 1).key == "ELSE") {
+        if (index + 1 < Parser.tokens.size() && Parser.tokens.get(index + 1).key.equals("ELSE")) {
             index++;
-            if (index + 1 < Parser.tokens.size() && Parser.tokens.get(index + 1).key == "L_BRACES") {
+            if (index + 1 < Parser.tokens.size() && Parser.tokens.get(index + 1).key.equals("L_BRACES")) {
                 index++;
                 int r_pos = HelperFunctions.searchRightBracket(index);
                 if (r_pos != 0) {

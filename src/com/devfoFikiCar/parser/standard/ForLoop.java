@@ -22,16 +22,16 @@ public class ForLoop {
 
         String name = "";
 
-        if (Parser.tokens.get(index + 1).key == "L_PARENTHESES") {
+        if (Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) {
             index++;
         } else return 0;
 
-        if (Parser.tokens.get(index + 1).key == "NAME") {
+        if (Parser.tokens.get(index + 1).key.equals("NAME")) {
             index++;
             indexName = index;
         } else return 0;
 
-        if (Parser.tokens.get(index + 1).key == "SPLIT") {
+        if (Parser.tokens.get(index + 1).key.equals("SPLIT")) {
             index++;
         } else return 0;
 
@@ -42,7 +42,7 @@ public class ForLoop {
             startValue = ret1[1];
         } else return 0;
 
-        if (Parser.tokens.get(index).key != "SPLIT") return 0;
+        if (!Parser.tokens.get(index).key.equals("SPLIT")) return 0;
 
         int[] ret2 = Integers.expressionInt(++index, 0);
 
@@ -51,24 +51,25 @@ public class ForLoop {
             endValue = ret2[1];
         } else return 0;
 
-        if (Parser.tokens.get(index).key != "SPLIT") return 0;
+        if (!Parser.tokens.get(index).key.equals("SPLIT")) return 0;
 
-        if (Parser.tokens.get(index + 1).key == "EQUAL_TO" || Parser.tokens.get(index + 1).key == "NOT_EQUAL" || Parser.tokens.get(index + 1).key == "GREATER_EQUAL"
-                || Parser.tokens.get(index + 1).key == "LESS_EQUAL" || Parser.tokens.get(index + 1).key == "LESS_THAN" || Parser.tokens.get(index + 1).key == "GREATER_THAN") {
+        if (Parser.tokens.get(index + 1).key.equals("EQUAL_TO") || Parser.tokens.get(index + 1).key.equals("NOT_EQUAL") || Parser.tokens.get(index + 1).key.equals("GREATER_EQUAL")
+                || Parser.tokens.get(index + 1).key.equals("LESS_EQUAL") || Parser.tokens.get(index + 1).key.equals("LESS_THAN") || Parser.tokens.get(index + 1).key.equals("GREATER_THAN")) {
             index++;
             currIndex = index;
         } else return 0;
 
-        if (Parser.tokens.get(index + 1).key == "SPLIT") {
+        if (Parser.tokens.get(index + 1).key.equals("SPLIT")) {
             index++;
         } else return 0;
 
-        if (Parser.tokens.get(index + 1).key == "ADDITION" || Parser.tokens.get(index + 1).key == "SUBTRACTION" || Parser.tokens.get(index + 1).key == "MULTIPLICATION" || Parser.tokens.get(index + 1).key == "DIVISION") {
+        if (Parser.tokens.get(index + 1).key.equals("ADDITION") || Parser.tokens.get(index + 1).key.equals("SUBTRACTION")
+                || Parser.tokens.get(index + 1).key.equals("MULTIPLICATION") || Parser.tokens.get(index + 1).key.equals("DIVISION")) {
             index++;
             signIndex = index;
         } else return 0;
 
-        if (Parser.tokens.get(index + 1).key == "SPLIT") {
+        if (Parser.tokens.get(index + 1).key.equals("SPLIT")) {
             index++;
         } else return 0;
 
@@ -79,9 +80,9 @@ public class ForLoop {
             stepValue = ret3[1];
         } else return 0;
 
-        if (Parser.tokens.get(index).key != "R_PARENTHESES") return 0;
+        if (!Parser.tokens.get(index).key.equals("R_PARENTHESES")) return 0;
 
-        if (Parser.tokens.get(index + 1).key == "L_BRACES") {
+        if (Parser.tokens.get(index + 1).key.equals("L_BRACES")) {
             index++;
             forBegin = index;
         } else return 0;

@@ -5,6 +5,14 @@ import com.devfoFikiCar.parser.standard.Decimals;
 import com.devfoFikiCar.parser.standard.Integers;
 
 public class OneExpression {
+
+    /**
+     * getOneIntExpression is helper function that checks if '(' INT ')' is next
+     * sequence of tokens.
+     *
+     * @param index position of (
+     * @return index to continue parsing from and value
+     */
     public static int[] getOneIntExpression(int index) {
         int[] ret = new int[2];
         if (!Parser.tokens.get(index).key.equals("L_PARENTHESES")) {
@@ -24,6 +32,13 @@ public class OneExpression {
         return ret;
     }
 
+    /**
+     * getOneDecimalExpression is helper function that checks if '(' DECIMAL ')' is next
+     * sequence of tokens.
+     *
+     * @param index position of (
+     * @return index to continue parsing from and value
+     */
     public static double[] getOneDecimalExpression(int index) {
         double[] ret = new double[2];
         if (!Parser.tokens.get(index).key.equals("L_PARENTHESES")) {

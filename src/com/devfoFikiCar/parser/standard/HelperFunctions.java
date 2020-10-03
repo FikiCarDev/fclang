@@ -14,8 +14,8 @@ public class HelperFunctions {
         int rPos = 0;
         int nSkip = 0;
         for (int i = ++index; i < Parser.tokens.size(); i++) {
-            if (Parser.tokens.get(i).key == "L_BRACES") nSkip++;
-            else if (Parser.tokens.get(i).key == "R_BRACES") {
+            if (Parser.tokens.get(i).key.equals("L_BRACES")) nSkip++;
+            else if (Parser.tokens.get(i).key.equals("R_BRACES")) {
                 if (nSkip == 0) {
                     return i;
                 } else {

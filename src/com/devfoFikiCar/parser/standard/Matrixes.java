@@ -7,6 +7,13 @@ import java.util.ArrayList;
 
 public class Matrixes {
 
+    /**
+     * getTwoIntExpression is helper function that checks if '(' INT ',' INT ')' is next
+     * sequence of tokens.
+     *
+     * @param index position of (
+     * @return index to continue parsing from and values
+     */
     public static int[] getTwoIntExpressions(int index) {
         int[] ret = new int[3];
         if (!Parser.tokens.get(index).key.equals("L_BRACES")) {
@@ -36,6 +43,12 @@ public class Matrixes {
         return ret;
     }
 
+    /**
+     * checkPosition checks if syntax is INT ',' INT ','
+     *
+     * @param index position of first int
+     * @return index to continue parsing from or 0 if error occurred and correct values
+     */
     public static int[] checkPosition(int index) {
         int[] ret = new int[3];
         int[] retV = Integers.expressionInt(index, 0);
@@ -62,6 +75,12 @@ public class Matrixes {
         return ret;
     }
 
+    /**
+     * checkPositionNoComma checks if syntax is INT ',' INT
+     *
+     * @param index position of first int
+     * @return index to continue parsing from or 0 if error occurred and correct values
+     */
     public static int[] checkPositionNoComma(int index) {
         int[] ret = new int[3];
         int[] retV = Integers.expressionInt(index, 0);
@@ -84,7 +103,12 @@ public class Matrixes {
         return ret;
     }
 
-
+    /**
+     * declareIntMatrix declares int matrix, checks syntax and ensures capacity.
+     *
+     * @param index position to start parsing from
+     * @return index to continue parsing from or 0 if error occurred
+     */
     public static int declareIntMatrix(int index) {
         String name = "";
         if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
@@ -99,7 +123,7 @@ public class Matrixes {
         int[] ret = getTwoIntExpressions(++index);
         if (ret[0] == 0) return 0;
         index = ret[0];
-        Parser.intMatrixStore.put(name, new Pair<>(new ArrayList<ArrayList<Integer>>(), new Pair<>(ret[1], ret[2])));
+        Parser.intMatrixStore.put(name, new Pair<>(new ArrayList<>(), new Pair<>(ret[1], ret[2])));
         for (int i = 0; i < ret[1]; i++) {
             ArrayList<Integer> tmp = new ArrayList<>();
             for (int j = 0; j < ret[2]; j++) {
@@ -111,6 +135,12 @@ public class Matrixes {
         return index;
     }
 
+    /**
+     * declareDecimalMatrix declares decimal matrix, checks syntax and ensures capacity.
+     *
+     * @param index position to start parsing from
+     * @return index to continue parsing from or 0 if error occurred
+     */
     public static int declareDecimalMatrix(int index) {
         String name = "";
         if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
@@ -125,7 +155,7 @@ public class Matrixes {
         int[] ret = getTwoIntExpressions(++index);
         if (ret[0] == 0) return 0;
         index = ret[0];
-        Parser.decimalMatrixStore.put(name, new Pair<>(new ArrayList<ArrayList<Double>>(), new Pair<>(ret[1], ret[2])));
+        Parser.decimalMatrixStore.put(name, new Pair<>(new ArrayList<>(), new Pair<>(ret[1], ret[2])));
         for (int i = 0; i < ret[1]; i++) {
             ArrayList<Double> tmp = new ArrayList<>();
             for (int j = 0; j < ret[2]; j++) {
@@ -137,6 +167,12 @@ public class Matrixes {
         return index;
     }
 
+    /**
+     * declareBoolMatrix declares bool matrix, checks syntax and ensures capacity.
+     *
+     * @param index position to start parsing from
+     * @return index to continue parsing from or 0 if error occurred
+     */
     public static int declareBoolMatrix(int index) {
         String name = "";
         if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
@@ -151,7 +187,7 @@ public class Matrixes {
         int[] ret = getTwoIntExpressions(++index);
         if (ret[0] == 0) return 0;
         index = ret[0];
-        Parser.boolMatrixStore.put(name, new Pair<>(new ArrayList<ArrayList<Boolean>>(), new Pair<>(ret[1], ret[2])));
+        Parser.boolMatrixStore.put(name, new Pair<>(new ArrayList<>(), new Pair<>(ret[1], ret[2])));
         for (int i = 0; i < ret[1]; i++) {
             ArrayList<Boolean> tmp = new ArrayList<>();
             for (int j = 0; j < ret[2]; j++) {
@@ -163,6 +199,12 @@ public class Matrixes {
         return index;
     }
 
+    /**
+     * declareStringMatrix declares string matrix, checks syntax and ensures capacity.
+     *
+     * @param index position to start parsing from
+     * @return index to continue parsing from or 0 if error occurred
+     */
     public static int declareStringMatrix(int index) {
         String name = "";
         if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
@@ -177,7 +219,7 @@ public class Matrixes {
         int[] ret = getTwoIntExpressions(++index);
         if (ret[0] == 0) return 0;
         index = ret[0];
-        Parser.stringMatrixStore.put(name, new Pair<>(new ArrayList<ArrayList<String>>(), new Pair<>(ret[1], ret[2])));
+        Parser.stringMatrixStore.put(name, new Pair<>(new ArrayList<>(), new Pair<>(ret[1], ret[2])));
         for (int i = 0; i < ret[1]; i++) {
             ArrayList<String> tmp = new ArrayList<>();
             for (int j = 0; j < ret[2]; j++) {
@@ -189,6 +231,12 @@ public class Matrixes {
         return index;
     }
 
+    /**
+     * setMatrixValueInt validates expression and sets value to intMatrixStore.
+     *
+     * @param index position of matrix name
+     * @return index to continue parsing from or 0 if error occurred
+     */
     public static int setMatrixValueInt(int index) {
         String name = Parser.tokens.get(index).value;
         if (!Parser.intMatrixStore.containsKey(name)) return 0;
@@ -210,6 +258,12 @@ public class Matrixes {
         return index;
     }
 
+    /**
+     * setMatrixValueDecimal validates expression and sets value to decimalMatrixStore.
+     *
+     * @param index position of matrix name
+     * @return index to continue parsing from or 0 if error occurred
+     */
     public static int setMatrixValueDecimal(int index) {
         String name = Parser.tokens.get(index).value;
         if (!Parser.decimalMatrixStore.containsKey(name)) return 0;
@@ -231,6 +285,12 @@ public class Matrixes {
         return index;
     }
 
+    /**
+     * setMatrixValueString validates expression and sets value to stringMatrixStore.
+     *
+     * @param index position of matrix name
+     * @return index to continue parsing from or 0 if error occurred
+     */
     public static int setMatrixValueString(int index) {
         String name = Parser.tokens.get(index).value;
         if (!Parser.stringMatrixStore.containsKey(name)) return 0;
@@ -252,6 +312,12 @@ public class Matrixes {
         return index;
     }
 
+    /**
+     * setMatrixValueBool validates expression and sets value to boolMatrixStore.
+     *
+     * @param index position of matrix name
+     * @return index to continue parsing from or 0 if error occurred
+     */
     public static int setMatrixValueBool(int index) {
         String name = Parser.tokens.get(index).value;
         if (!Parser.boolMatrixStore.containsKey(name)) return 0;
@@ -273,8 +339,14 @@ public class Matrixes {
         return index;
     }
 
+    /**
+     * matrixRowSize parses {Matrix}.rowSize() requests.
+     *
+     * @param index position of matrix name
+     * @return index to continue parsing from or 0 if error occurred
+     */
     public static int[] matrixRowSize(int index) {
-        int ret[] = new int[2];
+        int[] ret = new int[2];
         int store = 0;
         String name = Parser.tokens.get(index).value;
         if (Parser.intMatrixStore.containsKey(name)) store = 1;
@@ -316,8 +388,14 @@ public class Matrixes {
         return ret;
     }
 
+    /**
+     * matrixColumnSize parses {Matrix}.columnSize() requests.
+     *
+     * @param index position of matrix name
+     * @return index to continue parsing from or 0 if error occurred
+     */
     public static int[] matrixColumnSize(int index) {
-        int ret[] = new int[2];
+        int[] ret = new int[2];
         int store = 0;
         String name = Parser.tokens.get(index).value;
         if (Parser.intMatrixStore.containsKey(name)) store = 1;
@@ -359,6 +437,14 @@ public class Matrixes {
         return ret;
     }
 
+
+    /**
+     * getMatrixValue validates expression and gets value from correct matrix.
+     *
+     * @param index position of matrix name
+     * @param store matrix type 0 if unknown
+     * @return pair with key 0 if error or with key index and value correct matrix value
+     */
     public static Pair getMatrixValue(int index, int store) {
         Pair<Integer, Integer> retError = new Pair<>(0, 0);
         String name = Parser.tokens.get(index).value;
@@ -369,17 +455,17 @@ public class Matrixes {
             else if (Parser.boolMatrixStore.containsKey(name)) store = 4;
         }
         if (store == 0) return retError;
-        if (Parser.tokens.get(index + 1).key != "DOT") return retError;
+        if (!Parser.tokens.get(index + 1).key.equals("DOT")) return retError;
         index++;
-        if (Parser.tokens.get(index + 1).key != "GET") return retError;
+        if (!Parser.tokens.get(index + 1).key.equals("GET")) return retError;
         index++;
-        if (Parser.tokens.get(index + 1).key != "L_PARENTHESES") return retError;
+        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return retError;
         index++;
         index++;
         int[] retV = checkPositionNoComma(index);
         if (retV[0] == 0) return retError;
         index = retV[0];
-        if (Parser.tokens.get(index).key != "R_PARENTHESES") return retError;
+        if (!Parser.tokens.get(index).key.equals("R_PARENTHESES")) return retError;
         switch (store) {
             case 1: {
                 return new Pair<>(index, Parser.intMatrixStore.get(name).getKey().get(retV[1]).get(retV[2]));

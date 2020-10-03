@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Parser {
+    public static boolean error = false;
+
     public static ArrayList<Token> tokens = new ArrayList<>();
     public static ArrayList<Integer> skip = new ArrayList<>();
 
@@ -53,38 +55,57 @@ public class Parser {
             switch (key) {
                 case "PRINT": {
                     int result = Print.printFunction(index);
-                    if (result == 0) Error.FatalError(1, index);
-                    else index = result;
+                    if (result == 0) {
+                        Error.FatalError(1, index);
+                        index = tokens.size();
+                        error = true;
+                    } else index = result;
+                    System.out.println();
                     break;
                 }
                 case "INT_T": {
                     int result = Declaration.declareInt(index);
-                    if (result == 0) Error.FatalError(2, index);
-                    else index = result;
+                    if (result == 0) {
+                        Error.FatalError(2, index);
+                        index = tokens.size();
+                        error = true;
+                    } else index = result;
                     break;
                 }
                 case "STRING_T": {
                     int result = Declaration.declareString(index);
-                    if (result == 0) Error.FatalError(3, index);
-                    else index = result;
+                    if (result == 0) {
+                        Error.FatalError(3, index);
+                        index = tokens.size();
+                        error = true;
+                    } else index = result;
                     break;
                 }
                 case "DECIMAL_T": {
                     int result = Declaration.declareDecimal(index);
-                    if (result == 0) Error.FatalError(4, index);
-                    else index = result;
+                    if (result == 0) {
+                        Error.FatalError(4, index);
+                        index = tokens.size();
+                        error = true;
+                    } else index = result;
                     break;
                 }
                 case "BOOL_T": {
                     int result = Declaration.declareBool(index);
-                    if (result == 0) Error.FatalError(6, index);
-                    else index = result;
+                    if (result == 0) {
+                        Error.FatalError(6, index);
+                        index = tokens.size();
+                        error = true;
+                    } else index = result;
                     break;
                 }
                 case "IF": {
                     int[] ret_v = IfStatement.ifStatement(index);
-                    if (ret_v[0] == 0) Error.FatalError(7, index);
-                    else {
+                    if (ret_v[0] == 0) {
+                        Error.FatalError(7, index);
+                        index = tokens.size();
+                        error = true;
+                    } else {
                         if (ret_v[2] == 0) {
                             skip.add(ret_v[1]);
                             if (ret_v[5] != 0) {
@@ -102,93 +123,108 @@ public class Parser {
                 }
                 case "FOR": {
                     int result = ForLoop.forLoop(index);
-                    if (result == 0) Error.FatalError(9, index);
-                    else index = result;
+                    if (result == 0) {
+                        Error.FatalError(9, index);
+                        index = tokens.size();
+                        error = true;
+                    } else index = result;
                     break;
                 }
                 case "GOTO": {
                     int result = Goto.gotoFunction(index);
-                    if (result == -1) Error.FatalError(10, index);
-                    else index = result;
+                    if (result == -1) {
+                        Error.FatalError(10, index);
+                        index = tokens.size();
+                        error = true;
+                    } else index = result;
                     break;
                 }
                 case "INT_ARRAY": {
                     int result = Arrays.declareIntArray(index);
-                    if (result == 0) Error.FatalError(11, index);
-                    else index = result;
+                    if (result == 0) {
+                        Error.FatalError(11, index);
+                        index = tokens.size();
+                        error = true;
+                    } else index = result;
                     break;
                 }
                 case "DECIMAL_ARRAY": {
                     int result = Arrays.declareDecimalArray(index);
-                    if (result == 0) Error.FatalError(11, index);
-                    else index = result;
+                    if (result == 0) {
+                        Error.FatalError(11, index);
+                        index = tokens.size();
+                        error = true;
+                    } else index = result;
                     break;
                 }
                 case "STRING_ARRAY": {
                     int result = Arrays.declareStringArray(index);
-                    if (result == 0) Error.FatalError(11, index);
-                    else index = result;
+                    if (result == 0) {
+                        Error.FatalError(11, index);
+                        index = tokens.size();
+                        error = true;
+                    } else index = result;
                     break;
                 }
                 case "BOOL_ARRAY": {
                     int result = Arrays.declareBoolArray(index);
-                    if (result == 0) Error.FatalError(11, index);
-                    else index = result;
+                    if (result == 0) {
+                        Error.FatalError(11, index);
+                        index = tokens.size();
+                        error = true;
+                    } else index = result;
                     break;
                 }
                 case "INT_MATRIX": {
                     int result = Matrixes.declareIntMatrix(index);
-                    if (result == 0) Error.FatalError(11, index);
-                    else index = result;
+                    if (result == 0) {
+                        Error.FatalError(12, index);
+                        index = tokens.size();
+                        error = true;
+                    } else index = result;
                     break;
                 }
                 case "DECIMAL_MATRIX": {
                     int result = Matrixes.declareDecimalMatrix(index);
-                    if (result == 0) Error.FatalError(11, index);
-                    else index = result;
+                    if (result == 0) {
+                        Error.FatalError(12, index);
+                        index = tokens.size();
+                        error = true;
+                    } else index = result;
                     break;
                 }
                 case "STRING_MATRIX": {
                     int result = Matrixes.declareStringMatrix(index);
-                    if (result == 0) Error.FatalError(11, index);
-                    else index = result;
+                    if (result == 0) {
+                        Error.FatalError(12, index);
+                        index = tokens.size();
+                        error = true;
+                    } else index = result;
                     break;
                 }
                 case "BOOL_MATRIX": {
                     int result = Matrixes.declareBoolMatrix(index);
-                    if (result == 0) Error.FatalError(11, index);
-                    else index = result;
+                    if (result == 0) {
+                        Error.FatalError(12, index);
+                        index = tokens.size();
+                        error = true;
+                    } else index = result;
                     break;
                 }
                 case "NAME": {
                     if (tokens.get(index).posInLine == 0) {
                         int result = Names.redeclareNames(index);
-                        if (result == 0) Error.FatalError(2, index);
-                        else index = result;
+                        if (result == 0) {
+                            Error.FatalError(13, index);
+                            index = tokens.size();
+                            error = true;
+                        } else index = result;
                     }
                     break;
                 }
             }
             indexR = index;
         }
-        // FOR DEBUGGING
-
-        /*System.out.println("======================================");
-        System.out.println("Value store check:");
-        System.out.println("======================================");
-        int_store.entrySet().forEach(entry -> {
-            System.out.println(entry.getKey() + " " + entry.getValue());
-        });
-        string_store.entrySet().forEach(entry -> {
-            System.out.println(entry.getKey() + " " + entry.getValue());
-        });
-        decimal_store.entrySet().forEach(entry -> {
-            System.out.println(entry.getKey() + " " + entry.getValue());
-        });
-        bool_store.entrySet().forEach(entry -> {
-            System.out.println(entry.getKey() + " " + entry.getValue());
-        });
-        skip.forEach(System.out::println);*/
         return indexR;
     }
 }

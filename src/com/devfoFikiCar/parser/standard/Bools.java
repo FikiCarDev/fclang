@@ -7,10 +7,10 @@ public class Bools {
 
     /**
      * bool alidates and calculates boolean expressions.
+     * smallBool (('||' | '&&') smallBool)?
      *
      * @param index begin position for parsing
      * @return index to continue parsing from and value of expression
-     * @grammar smallBool (('||' | '&&') smallBool)?
      */
     public static int[] bool(int index) {
         int[] ret = new int[2];
@@ -19,7 +19,7 @@ public class Bools {
             ret[0] = retV[0];
             ret[1] = retV[1];
             index = ret[0];
-            if (index < Parser.tokens.size() && (Parser.tokens.get(index).key == "OR" || Parser.tokens.get(index).key == "AND")) {
+            if (index < Parser.tokens.size() && (Parser.tokens.get(index).key.equals("OR") || Parser.tokens.get(index).key.equals("AND"))) {
                 switch (Parser.tokens.get(index).key) {
                     case "OR": {
                         index++;
@@ -57,7 +57,7 @@ public class Bools {
      */
     public static int[] smallBool(int index) {
         int[] ret = new int[2];
-        if (index < Parser.tokens.size() && (Parser.tokens.get(index).key == "BOOL" || Parser.boolStore.containsKey(Parser.tokens.get(index).value) ||
+        if (index < Parser.tokens.size() && (Parser.tokens.get(index).key.equals("BOOL") || Parser.boolStore.containsKey(Parser.tokens.get(index).value) ||
                 Parser.boolArrayStore.containsKey(Parser.tokens.get(index).value) || Parser.boolMatrixStore.containsKey(Parser.tokens.get(index).value))) {
             if (Parser.boolStore.containsKey(Parser.tokens.get(index).value)) {
                 ret[1] = (Parser.boolStore.containsKey(Parser.tokens.get(index).value)) ? 1 : 0;
@@ -74,15 +74,8 @@ public class Bools {
                 ret[0]++;
                 return ret;
             } else {
-                switch (Parser.tokens.get(index).value) {
-                    case "true": {
-                        ret[1] = 1;
-                        break;
-                    }
-                    case "false": {
-                        ret[1] = 0;
-                        break;
-                    }
+                if (Parser.tokens.get(index).value.equals("true")) {
+                    ret[1] = 1;
                 }
             }
             ret[0] = ++index;
@@ -92,16 +85,15 @@ public class Bools {
             ret[0] = retV[0];
             ret[1] = retV[1];
             return ret;
-        } else if (Parser.tokens.get(index).key == "L_PARENTHESES") {
+        } else if (Parser.tokens.get(index).key.equals("L_PARENTHESES")) {
             int[] retV = bool(index + 1);
             ret[0] = retV[0];
             ret[1] = retV[1];
             index = ret[0];
             if (index == 0) {
-                ret[0] = 0;
                 return ret;
             } else {
-                if (index < Parser.tokens.size() && Parser.tokens.get(index).key == "R_PARENTHESES") {
+                if (index < Parser.tokens.size() && Parser.tokens.get(index).key.equals("R_PARENTHESES")) {
                     ret[0] = ++index;
                     return ret;
                 } else {
@@ -114,18 +106,18 @@ public class Bools {
 
     /**
      * fcompare compares int expressions and decimal expressions.
+     * expresion_int | expresion_decimal ( < | > | <= | >= | == | != ) expresion_int | expresion_decimal
      *
      * @param index begin position for parsing
      * @return index to continue parsing from and value of compared ints or decimals
-     * @grammar expresion_int | expresion_decimal ( < | > | <= | >= | == | != ) expresion_int | expresion_decimal
      */
     public static int[] fcompare(int index) {
         int[] ret = new int[2];
         int signPos = 0;
         for (int i = index + 1; i < Parser.tokens.size(); i++) {
-            if (Parser.tokens.get(i).key == "EQUAL_TO" || Parser.tokens.get(i).key == "NOT_EQUAL"
-                    || Parser.tokens.get(i).key == "GREATER_EQUAL" || Parser.tokens.get(i).key == "LESS_EQUAL"
-                    || Parser.tokens.get(i).key == "LESS_THAN" || Parser.tokens.get(i).key == "GREATER_THAN") {
+            if (Parser.tokens.get(i).key.equals("EQUAL_TO") || Parser.tokens.get(i).key.equals("NOT_EQUAL")
+                    || Parser.tokens.get(i).key.equals("GREATER_EQUAL") || Parser.tokens.get(i).key.equals("LESS_EQUAL")
+                    || Parser.tokens.get(i).key.equals("LESS_THAN") || Parser.tokens.get(i).key.equals("GREATER_THAN")) {
                 signPos = i;
                 break;
             }
@@ -142,7 +134,6 @@ public class Bools {
                             ret[1] = 1;
                         } else {
                             ret[0] = retInt2[0];
-                            ret[1] = 0;
                         }
                     }
                 } else {
@@ -155,12 +146,9 @@ public class Bools {
                                 ret[1] = 1;
                             } else {
                                 ret[0] = (int) retdouble2[0];
-                                ret[1] = 0;
 
                             }
                         } else {
-                            ret[0] = 0;
-                            ret[1] = 0;
                             return ret;
                         }
                     }
@@ -177,7 +165,6 @@ public class Bools {
                             ret[1] = 1;
                         } else {
                             ret[0] = retInt2[0];
-                            ret[1] = 0;
                         }
                     }
                 } else {
@@ -190,12 +177,9 @@ public class Bools {
                                 ret[1] = 1;
                             } else {
                                 ret[0] = (int) retdouble2[0];
-                                ret[1] = 0;
 
                             }
                         } else {
-                            ret[0] = 0;
-                            ret[1] = 0;
                             return ret;
                         }
                     }
@@ -212,7 +196,6 @@ public class Bools {
                             ret[1] = 1;
                         } else {
                             ret[0] = retInt2[0];
-                            ret[1] = 0;
                         }
                     }
                 } else {
@@ -225,12 +208,9 @@ public class Bools {
                                 ret[1] = 1;
                             } else {
                                 ret[0] = (int) retdouble2[0];
-                                ret[1] = 0;
 
                             }
                         } else {
-                            ret[0] = 0;
-                            ret[1] = 0;
                             return ret;
                         }
                     }
@@ -247,7 +227,6 @@ public class Bools {
                             ret[1] = 1;
                         } else {
                             ret[0] = retInt2[0];
-                            ret[1] = 0;
                         }
                     }
                 } else {
@@ -260,12 +239,9 @@ public class Bools {
                                 ret[1] = 1;
                             } else {
                                 ret[0] = (int) retdouble2[0];
-                                ret[1] = 0;
 
                             }
                         } else {
-                            ret[0] = 0;
-                            ret[1] = 0;
                             return ret;
                         }
                     }
@@ -282,7 +258,6 @@ public class Bools {
                             ret[1] = 1;
                         } else {
                             ret[0] = retInt2[0];
-                            ret[1] = 0;
                         }
                     }
                 } else {
@@ -295,12 +270,9 @@ public class Bools {
                                 ret[1] = 1;
                             } else {
                                 ret[0] = (int) retdouble2[0];
-                                ret[1] = 0;
 
                             }
                         } else {
-                            ret[0] = 0;
-                            ret[1] = 0;
                             return ret;
                         }
                     }
@@ -317,7 +289,6 @@ public class Bools {
                             ret[1] = 1;
                         } else {
                             ret[0] = retInt2[0];
-                            ret[1] = 0;
                         }
                     }
                 } else {
@@ -330,12 +301,9 @@ public class Bools {
                                 ret[1] = 1;
                             } else {
                                 ret[0] = (int) retdouble2[0];
-                                ret[1] = 0;
 
                             }
                         } else {
-                            ret[0] = 0;
-                            ret[1] = 0;
                             return ret;
                         }
                     }

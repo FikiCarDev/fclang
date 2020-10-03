@@ -1,4 +1,4 @@
-import com.devfoFikiCar.main;
+import com.devfoFikiCar.Main;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -10,9 +10,8 @@ public class intTest {
 
     @Test
     public void classicInt() {
-        main m = new main();
         String[] t = {"./scripts/tests/int/intTest1.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n46\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -20,9 +19,8 @@ public class intTest {
 
     @Test
     public void intermediateInt() {
-        main m = new main();
         String[] t = {"./scripts/tests/int/intTest2.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n23\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -30,9 +28,8 @@ public class intTest {
 
     @Test
     public void advanceInt() {
-        main m = new main();
         String[] t = {"./scripts/tests/int/intTest3.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n5\n2\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());

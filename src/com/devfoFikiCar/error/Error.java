@@ -1,187 +1,100 @@
 package com.devfoFikiCar.error;
 
-import com.devfoFikiCar.main;
+import com.devfoFikiCar.Main;
 import com.devfoFikiCar.parser.Parser;
 
 public class Error {
+
+    /**
+     * FatalError stops program from executing, usually when syntax error occurs.
+     *
+     * @param code  error id
+     * @param index index of error so that the line can be found
+     */
     public static void FatalError(int code, int index) {
         switch (code) {
             case 1: {
-                int line = Parser.tokens.get(index).lineNumber;
-                int lineSize = main.code.get(line).length();
-                int middle = lineSize / 2;
-                System.out.println(main.code.get(line));
-                for (int i = 0; i < middle; i++) {
-                    System.out.print("-");
-                }
-                System.out.print("^");
-                for (int i = middle + 1; i < lineSize; i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
+                printError(index);
                 System.out.println("After print method you need to use a string, int, decimal or valid variable name.");
-                System.exit(0);
+                break;
             }
             case 2: {
-                int line = Parser.tokens.get(index).lineNumber;
-                int lineSize = main.code.get(line).length();
-                int middle = lineSize / 2;
-                System.out.println(main.code.get(line));
-                for (int i = 0; i < middle; i++) {
-                    System.out.print("-");
-                }
-                System.out.print("^");
-                for (int i = middle + 1; i < lineSize; i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
+                printError(index);
                 System.out.println("Wrong int declaration.");
-                System.exit(0);
+                break;
             }
             case 3: {
-                int line = Parser.tokens.get(index).lineNumber;
-                int lineSize = main.code.get(line).length();
-                int middle = lineSize / 2;
-                System.out.println(main.code.get(line));
-                for (int i = 0; i < middle; i++) {
-                    System.out.print("-");
-                }
-                System.out.print("^");
-                for (int i = middle + 1; i < lineSize; i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
+                printError(index);
                 System.out.println("Wrong string declaration.");
-                System.exit(0);
+                break;
             }
             case 4: {
-                int line = Parser.tokens.get(index).lineNumber;
-                int lineSize = main.code.get(line).length();
-                int middle = lineSize / 2;
-                System.out.println(main.code.get(line));
-                for (int i = 0; i < middle; i++) {
-                    System.out.print("-");
-                }
-                System.out.print("^");
-                for (int i = middle + 1; i < lineSize; i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
+                printError(index);
                 System.out.println("Wrong decimal declaration.");
-                System.exit(0);
+                break;
             }
             case 5: {
-                int line = Parser.tokens.get(index).lineNumber;
-                int lineSize = main.code.get(line).length();
-                int middle = lineSize / 2;
-                System.out.println(main.code.get(line));
-                for (int i = 0; i < middle; i++) {
-                    System.out.print("-");
-                }
-                System.out.print("^");
-                for (int i = middle + 1; i < lineSize; i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
+                printError(index);
                 System.out.println("Wrong expression.");
-                System.exit(0);
+                break;
             }
             case 6: {
-                int line = Parser.tokens.get(index).lineNumber;
-                int lineSize = main.code.get(line).length();
-                int middle = lineSize / 2;
-                System.out.println(main.code.get(line));
-                for (int i = 0; i < middle; i++) {
-                    System.out.print("-");
-                }
-                System.out.print("^");
-                for (int i = middle + 1; i < lineSize; i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
+                printError(index);
                 System.out.println("Wrong bool expression.");
-                System.exit(0);
+                break;
             }
             case 7: {
-                int line = Parser.tokens.get(index).lineNumber;
-                int lineSize = main.code.get(line).length();
-                int middle = lineSize / 2;
-                System.out.println(main.code.get(line));
-                for (int i = 0; i < middle; i++) {
-                    System.out.print("-");
-                }
-                System.out.print("^");
-                for (int i = middle + 1; i < lineSize; i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
+                printError(index);
                 System.out.println("Wrong if statement.");
-                System.exit(0);
+                break;
             }
             case 8: {
-                int line = Parser.tokens.get(index).lineNumber;
-                int lineSize = main.code.get(line).length();
-                int middle = lineSize / 2;
-                System.out.println(main.code.get(line));
-                for (int i = 0; i < middle; i++) {
-                    System.out.print("-");
-                }
-                System.out.print("^");
-                for (int i = middle + 1; i < lineSize; i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
+                printError(index);
                 System.out.println("Wrong logical expression.");
-                System.exit(0);
+                break;
             }
             case 9: {
-                int line = Parser.tokens.get(index).lineNumber;
-                int lineSize = main.code.get(line).length();
-                int middle = lineSize / 2;
-                System.out.println(main.code.get(line));
-                for (int i = 0; i < middle; i++) {
-                    System.out.print("-");
-                }
-                System.out.print("^");
-                for (int i = middle + 1; i < lineSize; i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
+                printError(index);
                 System.out.println("Wrong for loop.");
-                System.exit(0);
+                break;
             }
             case 10: {
-                int line = Parser.tokens.get(index).lineNumber;
-                int lineSize = main.code.get(line).length();
-                int middle = lineSize / 2;
-                System.out.println(main.code.get(line));
-                for (int i = 0; i < middle; i++) {
-                    System.out.print("-");
-                }
-                System.out.print("^");
-                for (int i = middle + 1; i < lineSize; i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
+                printError(index);
                 System.out.println("Wrong goto statement");
-                System.exit(0);
+                break;
             }
             case 11: {
-                int line = Parser.tokens.get(index).lineNumber;
-                int lineSize = main.code.get(line).length();
-                int middle = lineSize / 2;
-                System.out.println(main.code.get(line));
-                for (int i = 0; i < middle; i++) {
-                    System.out.print("-");
-                }
-                System.out.print("^");
-                for (int i = middle + 1; i < lineSize; i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
+                printError(index);
                 System.out.println("Wrong array declaration.");
-                System.exit(0);
+                break;
+            }
+            case 12: {
+                printError(index);
+                System.out.println("Wrong matrix declaration.");
+                break;
+            }
+            case 13: {
+                printError(index);
+                System.out.println("Wrong name usage.");
             }
         }
+    }
+
+    /**
+     * printError finds the line in question based on index provided. Prints the line and
+     * suggests the error.
+     *
+     * @param index position of token
+     */
+    private static void printError(int index) {
+        int line = Parser.tokens.get(index).lineNumber;
+        int lineSize = Main.code.get(line).length();
+        System.out.println(Main.code.get(line));
+        for (int i = 0; i < lineSize; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+        System.out.println("At the line above you made mistake!");
+        System.out.println("Possible reason:");
     }
 }

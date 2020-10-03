@@ -9,7 +9,7 @@ public class Goto {
      */
     public static void safeGoto() {
         for (int index = 0; index < Parser.tokens.size(); index++) {
-            if (Parser.tokens.get(index).key == "L_GOTO") {
+            if (Parser.tokens.get(index).key.equals("L_GOTO")) {
                 Parser.gotoStore.put(Parser.tokens.get(index).value, index);
             }
         }
@@ -22,7 +22,7 @@ public class Goto {
      * @return index to continue parsing from
      */
     public static int gotoFunction(int index) {
-        if (Parser.tokens.get(index + 1).key == "L_GOTO") {
+        if (Parser.tokens.get(index + 1).key.equals("L_GOTO")) {
             index++;
         } else return -1;
 

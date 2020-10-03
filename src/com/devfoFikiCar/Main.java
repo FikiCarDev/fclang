@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-public class main {
+public class Main {
 
     public static ArrayList<Token> tokens = new ArrayList<>();
     public static ArrayList<String> code = new ArrayList<>();
@@ -56,38 +56,52 @@ public class main {
                 break;
             }
         }
-        //setData("./scripts/tests/goto/gotoTest2.fclang");
-        /*ArrayList<Token> tokens = Lexer.lexerMain();
-        for(Token t : tokens){
-            System.out.println(t.key + " " + t.value);
-        }*/
-        //setTokens();
-        //runParser();
     }
 
+    /**
+     * runParser executes code and checks for errors.
+     */
     public static void runParser() {
-        System.out.println("======================================");
-        System.out.println("Beginning of FCLang execution: ");
-        System.out.println("======================================");
-        Parser.parse(tokens, 0, tokens.size());
-        System.out.println("======================================");
-        System.out.println("Successful execution.");
-        System.out.println("======================================");
+        try {
+            System.out.println("======================================");
+            System.out.println("Beginning of FCLang execution: ");
+            System.out.println("======================================");
+            Parser.parse(tokens, 0, tokens.size());
+            if (!Parser.error) {
+                System.out.println("======================================");
+                System.out.println("Successful execution.");
+                System.out.println("======================================");
+            } else {
+                System.out.println("======================================");
+                System.out.println("Error occurred.");
+                System.out.println("======================================");
+            }
+        } catch (Exception ex) {
+            System.out.println("======================================");
+            System.out.println("Error occurred.");
+            System.out.println("======================================");
+        }
         clearLists();
     }
 
     public static void setData(String filePath) {
-        main.data = readFile(filePath);
+        Main.data = readFile(filePath);
     }
 
     public static void setTokens() {
-        main.tokens = Lexer.lexer();
+        Main.tokens = Lexer.lexer();
     }
 
+    /**
+     * devM developer minimal prints size of tokens.
+     */
     public static void devM() {
         System.out.println("Size of tokens after lexing: " + tokens.size());
     }
 
+    /**
+     * devF developer full prints size of tokens and each of them.
+     */
     public static void devF() {
         System.out.println("======================================");
         System.out.println("Beginning of FCLang dev debug: ");
@@ -145,5 +159,6 @@ public class main {
         Parser.decimalMatrixStore.clear();
         Parser.stringMatrixStore.clear();
         Parser.boolMatrixStore.clear();
+        Parser.error = false;
     }
 }

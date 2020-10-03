@@ -1,4 +1,4 @@
-import com.devfoFikiCar.main;
+import com.devfoFikiCar.Main;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -10,9 +10,8 @@ public class printTest {
 
     @Test
     public void classicPrint() {
-        main m = new main();
         String[] t = {"./scripts/tests/print/printTest1.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nHello world!\nI love fclang\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -20,9 +19,8 @@ public class printTest {
 
     @Test
     public void intPrint() {
-        main m = new main();
         String[] t = {"./scripts/tests/print/printTest2.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n12\n6\n7\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -30,9 +28,8 @@ public class printTest {
 
     @Test
     public void decimalPrint() {
-        main m = new main();
         String[] t = {"./scripts/tests/print/printTest3.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n12.0\n6.5\n3.14\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -40,9 +37,8 @@ public class printTest {
 
     @Test
     public void stringPrint() {
-        main m = new main();
         String[] t = {"./scripts/tests/print/printTest4.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nFC Lang\n-FikiCar\n/\\/\\/\\/\\/\\\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -50,9 +46,8 @@ public class printTest {
 
     @Test
     public void boolPrint() {
-        main m = new main();
         String[] t = {"./scripts/tests/print/printTest5.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\ntrue\nfalse\ntrue\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -60,9 +55,8 @@ public class printTest {
 
     @Test
     public void intExpressionPrint() {
-        main m = new main();
         String[] t = {"./scripts/tests/print/printTest6.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n5\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -70,9 +64,8 @@ public class printTest {
 
     @Test
     public void decimalExpressionPrint() {
-        main m = new main();
         String[] t = {"./scripts/tests/print/printTest7.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n5.75\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -80,11 +73,10 @@ public class printTest {
 
     @Test
     public void stringPlusInt() {
-        main m = new main();
         String[] t = {"./scripts/tests/print/printTest8.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
-                "======================================\nA: \n0\n======================================\n" +
+                "======================================\nA: 0\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
     }
 }

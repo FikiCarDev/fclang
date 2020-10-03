@@ -5,6 +5,14 @@ import com.devfoFikiCar.parser.standard.Decimals;
 import com.devfoFikiCar.parser.standard.Integers;
 
 public class TwoExpressions {
+
+    /**
+     * getTwoIntExpression is helper function that checks if '(' INT ',' INT ')' is next
+     * sequence of tokens.
+     *
+     * @param index position of (
+     * @return index to continue parsing from and values
+     */
     public static int[] getTwoIntExpressions(int index) {
         int[] ret = new int[3];
         if (!Parser.tokens.get(index).key.equals("L_PARENTHESES")) {
@@ -34,6 +42,13 @@ public class TwoExpressions {
         return ret;
     }
 
+    /**
+     * getTwoDecimalExpression is helper function that checks if '(' DECIMAL ',' DECIMAL ')' is next
+     * sequence of tokens.
+     *
+     * @param index position of (
+     * @return index to continue parsing from and values
+     */
     public static double[] getTwoDecimalExpressions(int index) {
         double[] ret = new double[3];
         if (!Parser.tokens.get(index).key.equals("L_PARENTHESES")) {

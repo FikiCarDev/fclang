@@ -11,23 +11,19 @@ public class Strings {
      * @param index supposed position of string
      * @return Pair with key of 0 if its not a string or index if its a string and value of string
      */
-    public static Pair<Integer, String> isString(int index) {
+    public static Pair isString(int index) {
         Pair ret = new Pair(0, "");
-        if (Parser.tokens.get(index).key == "STRING") {
-            Pair ret1 = new Pair(index, Parser.tokens.get(index).value);
-            return ret1;
+        if (Parser.tokens.get(index).key.equals("STRING")) {
+            return new Pair(index, Parser.tokens.get(index).value);
         }
         if (Parser.stringStore.containsKey(Parser.tokens.get(index).value)) {
-            Pair ret1 = new Pair(index, Parser.stringStore.get(Parser.tokens.get(index).value));
-            return ret1;
+            return new Pair(index, Parser.stringStore.get(Parser.tokens.get(index).value));
         }
-        if (index + 5 < Parser.tokens.size() && (int) Arrays.getArrayValue(index, 3).getKey() != 0){
-            Pair ret1 = new Pair(Arrays.getArrayValue(index, 3).getKey(), Arrays.getArrayValue(index, 3).getValue());
-            return ret1;
+        if (index + 5 < Parser.tokens.size() && (int) Arrays.getArrayValue(index, 3).getKey() != 0) {
+            return new Pair(Arrays.getArrayValue(index, 3).getKey(), Arrays.getArrayValue(index, 3).getValue());
         }
-        if (index + 7 < Parser.tokens.size() && (int) Matrixes.getMatrixValue(index, 3).getKey() != 0){
-            Pair ret1 = new Pair(Matrixes.getMatrixValue(index, 3).getKey(), Matrixes.getMatrixValue(index, 3).getValue());
-            return ret1;
+        if (index + 7 < Parser.tokens.size() && (int) Matrixes.getMatrixValue(index, 3).getKey() != 0) {
+            return new Pair(Matrixes.getMatrixValue(index, 3).getKey(), Matrixes.getMatrixValue(index, 3).getValue());
         }
         return ret;
     }

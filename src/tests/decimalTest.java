@@ -1,4 +1,4 @@
-import com.devfoFikiCar.main;
+import com.devfoFikiCar.Main;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -10,9 +10,8 @@ public class decimalTest {
 
     @Test
     public void classicDecimal() {
-        main m = new main();
         String[] t = {"./scripts/tests/decimal/decimalTest1.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n12.56\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -20,9 +19,8 @@ public class decimalTest {
 
     @Test
     public void intermediateDecimal() {
-        main m = new main();
         String[] t = {"./scripts/tests/decimal/decimalTest2.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n3.14\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -30,9 +28,8 @@ public class decimalTest {
 
     @Test
     public void advanceDecimal() {
-        main m = new main();
         String[] t = {"./scripts/tests/decimal/decimalTest3.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n5.75\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());

@@ -1,4 +1,4 @@
-import com.devfoFikiCar.main;
+import com.devfoFikiCar.Main;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -10,9 +10,8 @@ public class ifTest {
 
     @Test
     public void classicIf() {
-        main m = new main();
         String[] t = {"./scripts/tests/if/ifTest1.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nFive\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -20,9 +19,8 @@ public class ifTest {
 
     @Test
     public void elseIf() {
-        main m = new main();
         String[] t = {"./scripts/tests/if/ifTest2.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nThree\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -30,9 +28,8 @@ public class ifTest {
 
     @Test
     public void advanceIf() {
-        main m = new main();
         String[] t = {"./scripts/tests/if/ifTest3.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nYes\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());

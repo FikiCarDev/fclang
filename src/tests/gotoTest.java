@@ -1,4 +1,4 @@
-import com.devfoFikiCar.main;
+import com.devfoFikiCar.Main;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -10,9 +10,8 @@ public class gotoTest {
 
     @Test
     public void classicGoto() {
-        main m = new main();
         String[] t = {"./scripts/tests/goto/gotoTest1.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nYes\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -20,9 +19,8 @@ public class gotoTest {
 
     @Test
     public void ifGoto() {
-        main m = new main();
         String[] t = {"./scripts/tests/goto/gotoTest2.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nSize doesn't matter\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -30,9 +28,8 @@ public class gotoTest {
 
     @Test
     public void forGoto() {
-        main m = new main();
         String[] t = {"./scripts/tests/goto/gotoTest3.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n50\nStopped for-loop on 50\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());

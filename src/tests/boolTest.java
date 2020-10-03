@@ -1,4 +1,4 @@
-import com.devfoFikiCar.main;
+import com.devfoFikiCar.Main;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -10,9 +10,8 @@ public class boolTest {
 
     @Test
     public void compareIntBool() {
-        main m = new main();
         String[] t = {"./scripts/tests/bool/boolTest1.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\ntrue\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -20,9 +19,8 @@ public class boolTest {
 
     @Test
     public void compareIntSimpleBool() {
-        main m = new main();
         String[] t = {"./scripts/tests/bool/boolTest2.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nfalse\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -30,9 +28,8 @@ public class boolTest {
 
     @Test
     public void compareIntAdvancedBool() {
-        main m = new main();
         String[] t = {"./scripts/tests/bool/boolTest3.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\ntrue\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());

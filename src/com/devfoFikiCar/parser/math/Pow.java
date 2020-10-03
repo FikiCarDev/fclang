@@ -3,6 +3,13 @@ package com.devfoFikiCar.parser.math;
 import com.devfoFikiCar.parser.Parser;
 
 public class Pow extends TwoExpressions {
+
+    /**
+     * mathPowInt checks if series of tokens fits type int pow function.
+     *
+     * @param index position of POW token
+     * @return index to continue parsing from and value
+     */
     public static int[] mathPowInt(int index) {
         int[] ret = new int[2];
         if (!Parser.tokens.get(index).key.equals("POW")) {
@@ -15,6 +22,12 @@ public class Pow extends TwoExpressions {
         return ret;
     }
 
+    /**
+     * mathPowDecimal checks if series of tokens fits type decimal pow function.
+     *
+     * @param index position of POW token
+     * @return index to continue parsing from and value
+     */
     public static double[] mathPowDecimal(int index) {
         double[] ret = new double[2];
         if (!Parser.tokens.get(index).key.equals("POW")) {

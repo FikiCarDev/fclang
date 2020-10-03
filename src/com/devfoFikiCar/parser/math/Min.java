@@ -3,6 +3,13 @@ package com.devfoFikiCar.parser.math;
 import com.devfoFikiCar.parser.Parser;
 
 public class Min extends TwoExpressions {
+
+    /**
+     * mathMinInt checks if series of tokens fits type int min function.
+     *
+     * @param index position of MIN token
+     * @return index to continue parsing from and value
+     */
     public static int[] mathMinInt(int index) {
         int[] ret = new int[2];
         if (!Parser.tokens.get(index).key.equals("MIN")) {
@@ -15,6 +22,12 @@ public class Min extends TwoExpressions {
         return ret;
     }
 
+    /**
+     * mathMinDecimal checks if series of tokens fits type decimal min function.
+     *
+     * @param index position of MIN token
+     * @return index to continue parsing from and value
+     */
     public static double[] mathMinDecimal(int index) {
         double[] ret = new double[2];
         if (!Parser.tokens.get(index).key.equals("MIN")) {

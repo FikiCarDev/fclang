@@ -1,4 +1,4 @@
-import com.devfoFikiCar.main;
+import com.devfoFikiCar.Main;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -10,9 +10,8 @@ public class matrixTest {
 
     @Test
     public void matrixDeclaration() {
-        main m = new main();
         String[] t = {"./scripts/tests/matrix/matrixTest1.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nDONE\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -20,9 +19,8 @@ public class matrixTest {
 
     @Test
     public void matrixSet() {
-        main m = new main();
         String[] t = {"./scripts/tests/matrix/matrixTest2.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\nDONE\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -30,9 +28,8 @@ public class matrixTest {
 
     @Test
     public void matrixRowSize() {
-        main m = new main();
         String[] t = {"./scripts/tests/matrix/matrixTest3.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n2\n2\n2\n2\n2\n2\n2\n2\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -40,9 +37,8 @@ public class matrixTest {
 
     @Test
     public void matrixColumnSize() {
-        main m = new main();
         String[] t = {"./scripts/tests/matrix/matrixTest4.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n5\n5\n5\n5\n5\n5\n5\n5\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());
@@ -50,9 +46,8 @@ public class matrixTest {
 
     @Test
     public void matrixGet() {
-        main m = new main();
         String[] t = {"./scripts/tests/matrix/matrixTest5.fclang"};
-        main.main(t);
+        Main.main(t);
         Assert.assertEquals("======================================\nBeginning of FCLang execution: \n" +
                 "======================================\n10\n11\n11.0\nHello\nDONE\n======================================\n" +
                 "Successful execution.\n======================================\n", systemOut.getLog());

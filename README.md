@@ -9,9 +9,9 @@ FikiCar Lang, or short fclang, is interpreted programming language, with interpr
 
 ### Installing
 
-#### Releas
+#### Release
 
-  * Dowload jar file from releas
+  * Dowload jar file from release
   
 #### Developer
 
@@ -20,7 +20,7 @@ FikiCar Lang, or short fclang, is interpreted programming language, with interpr
 
 ### Executing
 
-#### Releas
+#### Release
 
   * Run jar file from terminal with fclang script path as argument
   

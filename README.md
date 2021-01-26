@@ -9,12 +9,24 @@ FikiCar Lang, or short fclang, is interpreted programming language, with interpr
 
 ### Installing
 
-* Clone this repository to your computer
-* With your IDE or text editor open the folder
+#### Realise
+
+  * Dowload jar file from realise
+  
+#### Developer
+
+  * Clone this repository to your computer
+  * With your IDE or text editor open the folder
 
 ### Executing
-* Run with built in IDE options or custom terminal command
 
+#### Realise
+
+  * Run jar file from terminal with fclang script path as argument
+  
+#### Developer
+
+  * Run with built in IDE options or custom terminal command
 
 ## Help
 

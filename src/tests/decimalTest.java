@@ -1,4 +1,4 @@
-import com.devfoFikiCar.Main;
+import com.fikicar.Main;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;

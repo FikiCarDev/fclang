@@ -1,5 +1,5 @@
-# FikiCar Lang
-FikiCar Lang, or short fclang, is interpreted programming language, with interpreter written in Java.
+# FCLang interpreter
+FCLang interpreter is interpreter for fclang, written in java.
 
 ## Getting started
 ### Requirements
@@ -9,35 +9,10 @@ FikiCar Lang, or short fclang, is interpreted programming language, with interpr
 
 ### Installing
 
-#### Release
-
-  * Download jar file from release
-  
-#### Developer
-
   * Clone this repository to your computer
   * With your IDE or text editor open the folder
 
-### Executing
 
-#### Release
-
-  * Run jar file from terminal with fclang script path as argument
-  
-#### Developer
-
-  * Run with built in IDE options or custom terminal command
-
-## Help
-
-Some of common issues:
-* Make sure that you have java installed, check with:
-```
-javac
-```
-* If you are unable to run it using terminal commands, download Intellij
-
-
-## Authors
+## Original author
 
 [@devfoFikiCar](https://github.com/devfoFikiCar)

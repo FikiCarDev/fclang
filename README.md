@@ -13,6 +13,6 @@ FCLang interpreter is interpreter for fclang, written in java.
   * With your IDE or text editor open the folder
 
 
-## Original author
+## Author
 
 [@FikiCarDev](https://github.com/FikiCarDev)

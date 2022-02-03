@@ -15,4 +15,4 @@ FCLang interpreter is interpreter for fclang, written in java.
 
 ## Original author
 
-[@devfoFikiCar](https://github.com/devfoFikiCar)
+[@FikiCarDev](https://github.com/FikiCarDev)

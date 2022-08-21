@@ -1,5 +1,5 @@
 # FCLang interpreter
-FCLang interpreter is interpreter for fclang, written in java.
+FCLang interpreter is interpreter for a new programming language fclang, optimized for usage and execution on the mobile phones.
 
 ## Getting started
 ### Requirements

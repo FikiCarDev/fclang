@@ -21,9 +21,7 @@ The following code is displaying some of the features that fclang supports.
 More code snippets are found in [scripts folder](https://github.com/FikiCarDev/fclang/tree/master/scripts).
 
 ```py
-print "Pocetak"
-
-print "Tipovi podataka"
+print "Data types"
 
 string str_1 = "Hello world!"
 int int_1 = 16
@@ -37,68 +35,46 @@ print pi
 print true
 print ""
 
-print "Izrazi"
+print "Expressions"
 
 decimal r = 3.5
 decimal alfa = 60.0
-decimal obim_kruga = 2.0 * r * pi
-decimal povrsina_kruga = r * r * pi
-decimal duzina_luka = ( r * pi * alfa ) / 180.0
+decimal circle_circumference = 2.0 * r * pi
+decimal circle_area = r * r * pi
+decimal arc_length = ( r * pi * alfa ) / 180.0
 
-print obim_kruga
-print povrsina_kruga
-print duzina_luka
+print circle_circumference
+print circle_area
+print arc_length
 print ""
 
 
 print "If else"
 
-int aleksine_jabuke = 6
-int jovanove_jabuke = 9
+bool sunny = true
+bool cloudy = false
+bool warm = true
+bool cold = false
 
-if ( aleksine_jabuke > jovanove_jabuke ) {
-    print "Aleksa ima vise jabuka od Jovana"
-} else {
-    print "Jovan ima vise jabuka od Alekse"
-}
-
-bool suncano = true
-bool oblacno = false
-bool toplo = true
-bool hladno = false
-
-if ( ! oblacno ) {
-    print "Suncano je."
-    if ( toplo ) {
-        print "Toplo je."
+if ( !cloudy ) {
+    print "It is sunny"
+    if ( warm ) {
+        print "It is warm"
     } else {
-        print "Hladno je."
+        print "It is cold"
     }
 } else {
-    print "Oblacno je."
-    if ( toplo ) {
-        print "Toplo je."
+    print "It is cloudy"
+    if ( warm ) {
+        print "It is warm"
     } else {
-        print "Hladno je."
+        print "It is cold"
     }
 }
 print ""
 
 
-print "Petlje"
-
-for ( i | 0 | 5 | < | + | 1 ) {
-    print i
-}
-
-int faktorijal = 1
-int broj = 5
-
-for ( j | 1 | broj + 1 | < | + | 1 ) {
-    int faktorijal = faktorijal * j
-}
-
-print faktorijal
+print "For loops"
 
 int sum = 0
 
@@ -114,18 +90,8 @@ for ( i | 0 | 5 | < | + | 1 ) {
 }
 
 L-exit_1
-print "Izasao sam iz petlji."
-print ""
 
-print "Dobio sam:"
-
-goto L-spasi_me
-print 1
-
-L-spasi_me
-print 5
-
-print "Kraj"
+print "Exit out of loop"
 ```
 
 ### Author

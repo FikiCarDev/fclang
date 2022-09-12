@@ -20,7 +20,7 @@ documentation and comments in the appropriate classes.
 The following code is displaying some of the features that fclang supports.
 More code snippets are found in [scripts folder](https://github.com/FikiCarDev/fclang/tree/master/scripts).
 
-```azure
+```py
 print "Pocetak"
 
 print "Tipovi podataka"

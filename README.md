@@ -30,7 +30,7 @@ bool ok = true
 
 print ""
 print str_1
-print int_1 = 16
+print int_1
 print pi
 print true
 print ""

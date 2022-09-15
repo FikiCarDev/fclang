@@ -37,7 +37,7 @@ print ""
 
 print "IO"
 
-// On Desktop port it will wait for console input
+//# On Desktop port it will wait for console input
 string input_string = getString <
 decimal input_decimal = getDecimal <
 

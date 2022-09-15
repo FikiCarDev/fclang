@@ -29,10 +29,21 @@ decimal pi = 3.1415926535
 bool ok = true
 
 print ""
-print str_1
+print "String is " | str_1
 print int_1
 print pi
 print true
+print ""
+
+print "IO"
+
+// On Desktop port it will wait for console input
+string input_string = getString <
+decimal input_decimal = getDecimal <
+
+print ""
+print "Input string is: " | input_string
+print "Input decimal is: " | input_decimal
 print ""
 
 print "Expressions"
@@ -73,7 +84,6 @@ if ( !cloudy ) {
 }
 print ""
 
-
 print "For loops"
 
 int sum = 0
@@ -92,6 +102,45 @@ for ( i | 0 | 5 | < | + | 1 ) {
 L-exit_1
 
 print "Exit out of loop"
+print ""
+
+print "Arrays"
+
+IntArray int_array = new IntArray{5}
+
+for ( i | 0 | int_array.size() | < | + | 1 ) {
+    int_array.set(i, i+1)
+}
+
+print int_array.get(2)
+print ""
+
+print "Matrices"
+
+IntMatrix int_matrix = new IntMatrix{2, 5}
+int_matrix.set(1, 1, 10)
+
+for ( i | 0 | int_test.rowSize() | < | + | 1 ) {
+    for ( j | 0 | int_test.columnSize() | < | + | 1 ) {
+        print int_matrix.get(i, j)
+    }
+}
+
+print ""
+
+print "Math functions"
+
+int int_two = 2
+int int_five = 5
+
+print max(int_two, int_five)
+print min(int_two, int_five)
+print abs(int_five - int_two)
+print pow(int_two, int_five)
+
+decimal decimal_square = 16.0
+print "Root of 16 is " | sqrt(decimal_square)
+
 ```
 
 ### Author

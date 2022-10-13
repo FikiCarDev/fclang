@@ -11,31 +11,43 @@ public class Names {
     public static int redeclareNames(int index) {
         --index;
         int intReturn = Declaration.declareInt(index);
-        int decimalReturn = Declaration.declareDecimal(index);
-        int boolReturn = Declaration.declareBool(index);
-        int stringReturn = Declaration.declareString(index);
         if (intReturn != 0) return intReturn;
+
+        int decimalReturn = Declaration.declareDecimal(index);
         if (decimalReturn != 0) return decimalReturn;
+
+        int boolReturn = Declaration.declareBool(index);
         if (boolReturn != 0) return boolReturn;
+
+        int stringReturn = Declaration.declareString(index);
         if (stringReturn != 0) return stringReturn;
+
         ++index;
         int arraySortReturn = Arrays.arraySort(index);
-        int setIntArray = Arrays.setArrayValueInt(index);
-        int setDecimalArray = Arrays.setArrayValueDecimal(index);
-        int setStringArray = Arrays.setArrayValueString(index);
-        int setBoolArray = Arrays.setArrayValueBool(index);
         if (arraySortReturn != 0) return arraySortReturn;
+
+        int setIntArray = Arrays.setArrayValueInt(index);
         if (setIntArray != 0) return setIntArray;
+
+        int setDecimalArray = Arrays.setArrayValueDecimal(index);
         if (setDecimalArray != 0) return setDecimalArray;
+
+        int setStringArray = Arrays.setArrayValueString(index);
         if (setStringArray != 0) return setStringArray;
+
+        int setBoolArray = Arrays.setArrayValueBool(index);
         if (setBoolArray != 0) return setBoolArray;
+
         int setIntMatrix = Matrixes.setMatrixValueInt(index);
-        int setDecimalMatrix = Matrixes.setMatrixValueDecimal(index);
-        int setStringMatrix = Matrixes.setMatrixValueString(index);
-        int setBoolMatrix = Matrixes.setMatrixValueBool(index);
         if (setIntMatrix != 0) return setIntMatrix;
+
+        int setDecimalMatrix = Matrixes.setMatrixValueDecimal(index);
         if (setDecimalMatrix != 0) return setDecimalMatrix;
+
+        int setStringMatrix = Matrixes.setMatrixValueString(index);
         if (setStringMatrix != 0) return setStringMatrix;
+
+        int setBoolMatrix = Matrixes.setMatrixValueBool(index);
         return setBoolMatrix;
     }
 }

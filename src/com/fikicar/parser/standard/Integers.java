@@ -2,7 +2,7 @@ package com.fikicar.parser.standard;
 
 import com.fikicar.parser.Parser;
 import com.fikicar.parser.math.*;
-import javafx.util.Pair;
+import com.fikicar.util.Pair;
 
 public class Integers {
 

@@ -4,7 +4,7 @@ import com.fikicar.Token;
 import com.fikicar.error.Error;
 import com.fikicar.parser.IO.Print;
 import com.fikicar.parser.standard.*;
-import javafx.util.Pair;
+import com.fikicar.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;

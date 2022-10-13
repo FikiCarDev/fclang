@@ -1,7 +1,7 @@
 package com.fikicar.parser.standard;
 
 import com.fikicar.parser.Parser;
-import javafx.util.Pair;
+import com.fikicar.util.Pair;
 
 import java.util.ArrayList;
 

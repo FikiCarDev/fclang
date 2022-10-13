@@ -2,7 +2,7 @@ package com.fikicar.parser.IO;
 
 import com.fikicar.parser.Parser;
 import com.fikicar.parser.standard.*;
-import javafx.util.Pair;
+import com.fikicar.util.Pair;
 
 public class Print {
     /**

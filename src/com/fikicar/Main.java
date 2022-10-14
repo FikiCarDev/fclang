@@ -16,6 +16,14 @@ public class Main {
     public static String data;
 
     /**
+     * You can run interpreter with following arguments:
+     *  1. filePath
+     *  2. filePath -dev -m
+     *  3. filePath -dev -f
+     * Running 1. will run only the fclang program. Running interpreter with either 2. or 3. will result in developer
+     * debug output. 2. will output minimal debug information with just the size of the tokens list, while running 3.
+     * will output all the information about the token list, including tokens themselves.
+     *
      * @param args filePath required, -dev with -m for minimal debug and -f for full
      */
     public static void main(String[] args) {

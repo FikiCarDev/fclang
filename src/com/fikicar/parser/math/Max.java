@@ -12,7 +12,7 @@ public class Max extends TwoExpressions {
      */
     public static int[] mathMaxInt(int index) {
         int[] ret = new int[2];
-        if (!Parser.tokens.get(index).key.equals("MAX")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("MAX")) {
             return ret;
         }
         index++;
@@ -30,7 +30,7 @@ public class Max extends TwoExpressions {
      */
     public static double[] mathMaxDecimal(int index) {
         double[] ret = new double[2];
-        if (!Parser.tokens.get(index).key.equals("MAX")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("MAX")) {
             return ret;
         }
         index++;

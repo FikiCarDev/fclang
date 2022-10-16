@@ -22,7 +22,7 @@ public class Goto {
      * @return index to continue parsing from
      */
     public static int gotoFunction(int index) {
-        if (Parser.tokens.get(index + 1).key.equals("L_GOTO")) {
+        if (Parser.tokens.size() > index + 1 && Parser.tokens.get(index + 1).key.equals("L_GOTO")) {
             index++;
         } else return -1;
 

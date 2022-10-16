@@ -12,7 +12,7 @@ public class Abs extends OneExpression {
      */
     public static int[] mathAbsInt(int index) {
         int[] ret = new int[2];
-        if (!Parser.tokens.get(index).key.equals("ABS")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("ABS")) {
             return ret;
         }
         index++;
@@ -30,7 +30,7 @@ public class Abs extends OneExpression {
      */
     public static double[] mathAbsDecimal(int index) {
         double[] ret = new double[2];
-        if (!Parser.tokens.get(index).key.equals("ABS")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("ABS")) {
             return ret;
         }
         index++;

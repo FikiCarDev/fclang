@@ -13,6 +13,9 @@ public class Strings {
      */
     public static Pair isString(int index) {
         Pair ret = new Pair(0, "");
+        if (Parser.tokens.size() <= index) {
+            return ret;
+        }
         if (Parser.tokens.get(index).key.equals("STRING")) {
             return new Pair(index, Parser.tokens.get(index).value);
         }

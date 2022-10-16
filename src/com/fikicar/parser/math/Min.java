@@ -12,7 +12,7 @@ public class Min extends TwoExpressions {
      */
     public static int[] mathMinInt(int index) {
         int[] ret = new int[2];
-        if (!Parser.tokens.get(index).key.equals("MIN")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("MIN")) {
             return ret;
         }
         index++;
@@ -30,7 +30,7 @@ public class Min extends TwoExpressions {
      */
     public static double[] mathMinDecimal(int index) {
         double[] ret = new double[2];
-        if (!Parser.tokens.get(index).key.equals("MIN")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("MIN")) {
             return ret;
         }
         index++;

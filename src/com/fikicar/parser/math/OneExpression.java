@@ -15,7 +15,7 @@ public class OneExpression {
      */
     public static int[] getOneIntExpression(int index) {
         int[] ret = new int[2];
-        if (!Parser.tokens.get(index).key.equals("L_PARENTHESES")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("L_PARENTHESES")) {
             return ret;
         }
         index++;
@@ -24,7 +24,7 @@ public class OneExpression {
             return ret;
         }
         index = retV[0];
-        if (!Parser.tokens.get(index).key.equals("R_PARENTHESES")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("R_PARENTHESES")) {
             return ret;
         }
         ret[0] = index;
@@ -41,7 +41,7 @@ public class OneExpression {
      */
     public static double[] getOneDecimalExpression(int index) {
         double[] ret = new double[2];
-        if (!Parser.tokens.get(index).key.equals("L_PARENTHESES")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("L_PARENTHESES")) {
             return ret;
         }
         index++;
@@ -50,7 +50,7 @@ public class OneExpression {
             return ret;
         }
         index = (int) retV[0];
-        if (!Parser.tokens.get(index).key.equals("R_PARENTHESES")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("R_PARENTHESES")) {
             return ret;
         }
         ret[0] = index;

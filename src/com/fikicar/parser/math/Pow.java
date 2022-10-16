@@ -12,7 +12,7 @@ public class Pow extends TwoExpressions {
      */
     public static int[] mathPowInt(int index) {
         int[] ret = new int[2];
-        if (!Parser.tokens.get(index).key.equals("POW")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("POW")) {
             return ret;
         }
         index++;
@@ -30,7 +30,7 @@ public class Pow extends TwoExpressions {
      */
     public static double[] mathPowDecimal(int index) {
         double[] ret = new double[2];
-        if (!Parser.tokens.get(index).key.equals("POW")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("POW")) {
             return ret;
         }
         index++;

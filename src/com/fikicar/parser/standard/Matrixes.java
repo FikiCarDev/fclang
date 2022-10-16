@@ -16,7 +16,7 @@ public class Matrixes {
      */
     public static int[] getTwoIntExpressions(int index) {
         int[] ret = new int[3];
-        if (!Parser.tokens.get(index).key.equals("L_BRACES")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("L_BRACES")) {
             return ret;
         }
         index++;
@@ -25,7 +25,7 @@ public class Matrixes {
             return ret;
         }
         index = retV[0];
-        if (!Parser.tokens.get(index).key.equals("COMMA")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("COMMA")) {
             return ret;
         }
         index++;
@@ -34,7 +34,7 @@ public class Matrixes {
             return ret;
         }
         index = retV2[0];
-        if (!Parser.tokens.get(index).key.equals("R_BRACES")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("R_BRACES")) {
             return ret;
         }
         ret[0] = index;
@@ -56,7 +56,7 @@ public class Matrixes {
             return ret;
         }
         index = retV[0];
-        if (!Parser.tokens.get(index).key.equals("COMMA")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("COMMA")) {
             return ret;
         }
         index++;
@@ -65,7 +65,7 @@ public class Matrixes {
             return ret;
         }
         index = retV2[0];
-        if (!Parser.tokens.get(index).key.equals("COMMA")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("COMMA")) {
             return ret;
         }
         index++;
@@ -88,7 +88,7 @@ public class Matrixes {
             return ret;
         }
         index = retV[0];
-        if (!Parser.tokens.get(index).key.equals("COMMA")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("COMMA")) {
             return ret;
         }
         index++;
@@ -111,14 +111,14 @@ public class Matrixes {
      */
     public static int declareIntMatrix(int index) {
         String name = "";
-        if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
         name = Parser.tokens.get(index + 1).value;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("INT_MATRIX")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("INT_MATRIX")) return 0;
         index++;
         int[] ret = getTwoIntExpressions(++index);
         if (ret[0] == 0) return 0;
@@ -143,14 +143,14 @@ public class Matrixes {
      */
     public static int declareDecimalMatrix(int index) {
         String name = "";
-        if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
         name = Parser.tokens.get(index + 1).value;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("DECIMAL_MATRIX")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("DECIMAL_MATRIX")) return 0;
         index++;
         int[] ret = getTwoIntExpressions(++index);
         if (ret[0] == 0) return 0;
@@ -175,14 +175,14 @@ public class Matrixes {
      */
     public static int declareBoolMatrix(int index) {
         String name = "";
-        if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
         name = Parser.tokens.get(index + 1).value;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("BOOL_MATRIX")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("BOOL_MATRIX")) return 0;
         index++;
         int[] ret = getTwoIntExpressions(++index);
         if (ret[0] == 0) return 0;
@@ -207,14 +207,14 @@ public class Matrixes {
      */
     public static int declareStringMatrix(int index) {
         String name = "";
-        if (!Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("NAME")) return 0;
         name = Parser.tokens.get(index + 1).value;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("EQUALS")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("NEW")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("STRING_MATRIX")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("STRING_MATRIX")) return 0;
         index++;
         int[] ret = getTwoIntExpressions(++index);
         if (ret[0] == 0) return 0;
@@ -240,11 +240,11 @@ public class Matrixes {
     public static int setMatrixValueInt(int index) {
         String name = Parser.tokens.get(index).value;
         if (!Parser.intMatrixStore.containsKey(name)) return 0;
-        if (!Parser.tokens.get(index + 1).key.equals("DOT")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("DOT")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("SET")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("SET")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return 0;
         index++;
         int[] retV = checkPosition(++index);
         if (retV[0] == 0) return 0;
@@ -253,7 +253,7 @@ public class Matrixes {
         if (retV2[0] == 0) return 0;
         index = retV2[0];
         int value = retV2[1];
-        if (!Parser.tokens.get(index).key.equals("R_PARENTHESES")) return 0;
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("R_PARENTHESES")) return 0;
         Parser.intMatrixStore.get(name).getKey().get(retV[1]).set(retV[2], value);
         return index;
     }
@@ -267,11 +267,11 @@ public class Matrixes {
     public static int setMatrixValueDecimal(int index) {
         String name = Parser.tokens.get(index).value;
         if (!Parser.decimalMatrixStore.containsKey(name)) return 0;
-        if (!Parser.tokens.get(index + 1).key.equals("DOT")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("DOT")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("SET")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("SET")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return 0;
         index++;
         int[] retV = checkPosition(++index);
         if (retV[0] == 0) return 0;
@@ -280,7 +280,7 @@ public class Matrixes {
         if (retV2[0] == 0) return 0;
         index = (int) retV2[0];
         double value = retV2[1];
-        if (!Parser.tokens.get(index).key.equals("R_PARENTHESES")) return 0;
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("R_PARENTHESES")) return 0;
         Parser.decimalMatrixStore.get(name).getKey().get(retV[1]).set(retV[2], value);
         return index;
     }
@@ -294,11 +294,11 @@ public class Matrixes {
     public static int setMatrixValueString(int index) {
         String name = Parser.tokens.get(index).value;
         if (!Parser.stringMatrixStore.containsKey(name)) return 0;
-        if (!Parser.tokens.get(index + 1).key.equals("DOT")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("DOT")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("SET")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("SET")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return 0;
         index++;
         int[] retV = checkPosition(++index);
         if (retV[0] == 0) return 0;
@@ -307,7 +307,7 @@ public class Matrixes {
         if (retPair.getKey() == 0) return 0;
         index = retPair.getKey();
         String value = retPair.getValue();
-        if (!Parser.tokens.get(++index).key.equals("R_PARENTHESES")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(++index).key.equals("R_PARENTHESES")) return 0;
         Parser.stringMatrixStore.get(name).getKey().get(retV[1]).set(retV[2], value);
         return index;
     }
@@ -321,11 +321,11 @@ public class Matrixes {
     public static int setMatrixValueBool(int index) {
         String name = Parser.tokens.get(index).value;
         if (!Parser.boolMatrixStore.containsKey(name)) return 0;
-        if (!Parser.tokens.get(index + 1).key.equals("DOT")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("DOT")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("SET")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("SET")) return 0;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return 0;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return 0;
         index++;
         int[] retV = checkPosition(++index);
         if (retV[0] == 0) return 0;
@@ -334,7 +334,7 @@ public class Matrixes {
         if (retV2[0] == 0) return 0;
         index = retV2[0];
         int value = retV2[1];
-        if (!Parser.tokens.get(index).key.equals("R_PARENTHESES")) return 0;
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("R_PARENTHESES")) return 0;
         Parser.boolMatrixStore.get(name).getKey().get(retV[1]).set(retV[2], value == 1);
         return index;
     }
@@ -354,15 +354,15 @@ public class Matrixes {
         else if (Parser.stringMatrixStore.containsKey(name)) store = 3;
         else if (Parser.boolMatrixStore.containsKey(name)) store = 4;
         else return ret;
-        if (!Parser.tokens.get(index + 1).key.equals("DOT")) {
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("DOT")) {
             return ret;
         }
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("ROW_SIZE")) {
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("ROW_SIZE")) {
             return ret;
         }
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES") && !Parser.tokens.get(index + 2).key.equals("R_PARENTHESES")) {
+        if (Parser.tokens.size() > index + 2 && !Parser.tokens.get(index + 1).key.equals("L_PARENTHESES") && !Parser.tokens.get(index + 2).key.equals("R_PARENTHESES")) {
             return ret;
         }
         index++;
@@ -403,15 +403,15 @@ public class Matrixes {
         else if (Parser.stringMatrixStore.containsKey(name)) store = 3;
         else if (Parser.boolMatrixStore.containsKey(name)) store = 4;
         else return ret;
-        if (!Parser.tokens.get(index + 1).key.equals("DOT")) {
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("DOT")) {
             return ret;
         }
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("COLUMN_SIZE")) {
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("COLUMN_SIZE")) {
             return ret;
         }
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES") && !Parser.tokens.get(index + 2).key.equals("R_PARENTHESES")) {
+        if (Parser.tokens.size() > index + 2 && !Parser.tokens.get(index + 1).key.equals("L_PARENTHESES") && !Parser.tokens.get(index + 2).key.equals("R_PARENTHESES")) {
             return ret;
         }
         index++;
@@ -455,11 +455,11 @@ public class Matrixes {
             else if (Parser.boolMatrixStore.containsKey(name)) store = 4;
         }
         if (store == 0) return retError;
-        if (!Parser.tokens.get(index + 1).key.equals("DOT")) return retError;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("DOT")) return retError;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("GET")) return retError;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("GET")) return retError;
         index++;
-        if (!Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return retError;
+        if (Parser.tokens.size() > index + 1 && !Parser.tokens.get(index + 1).key.equals("L_PARENTHESES")) return retError;
         index++;
         index++;
         int[] retV = checkPositionNoComma(index);

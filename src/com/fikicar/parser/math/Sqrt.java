@@ -12,7 +12,7 @@ public class Sqrt extends OneExpression {
      */
     public static int[] mathSqrtInt(int index) {
         int[] ret = new int[2];
-        if (!Parser.tokens.get(index).key.equals("SQRT")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("SQRT")) {
             return ret;
         }
         index++;
@@ -30,7 +30,7 @@ public class Sqrt extends OneExpression {
      */
     public static double[] mathSqrtDecimal(int index) {
         double[] ret = new double[2];
-        if (!Parser.tokens.get(index).key.equals("SQRT")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("SQRT")) {
             return ret;
         }
         index++;

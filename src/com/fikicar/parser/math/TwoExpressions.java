@@ -15,7 +15,7 @@ public class TwoExpressions {
      */
     public static int[] getTwoIntExpressions(int index) {
         int[] ret = new int[3];
-        if (!Parser.tokens.get(index).key.equals("L_PARENTHESES")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("L_PARENTHESES")) {
             return ret;
         }
         index++;
@@ -24,7 +24,7 @@ public class TwoExpressions {
             return ret;
         }
         index = retV[0];
-        if (!Parser.tokens.get(index).key.equals("COMMA")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("COMMA")) {
             return ret;
         }
         index++;
@@ -33,7 +33,7 @@ public class TwoExpressions {
             return ret;
         }
         index = retV2[0];
-        if (!Parser.tokens.get(index).key.equals("R_PARENTHESES")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("R_PARENTHESES")) {
             return ret;
         }
         ret[0] = index;
@@ -51,7 +51,7 @@ public class TwoExpressions {
      */
     public static double[] getTwoDecimalExpressions(int index) {
         double[] ret = new double[3];
-        if (!Parser.tokens.get(index).key.equals("L_PARENTHESES")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("L_PARENTHESES")) {
             return ret;
         }
         index++;
@@ -60,7 +60,7 @@ public class TwoExpressions {
             return ret;
         }
         index = (int) retV[0];
-        if (!Parser.tokens.get(index).key.equals("COMMA")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("COMMA")) {
             return ret;
         }
         index++;
@@ -69,7 +69,7 @@ public class TwoExpressions {
             return ret;
         }
         index = (int) retV2[0];
-        if (!Parser.tokens.get(index).key.equals("R_PARENTHESES")) {
+        if (Parser.tokens.size() > index && !Parser.tokens.get(index).key.equals("R_PARENTHESES")) {
             return ret;
         }
         ret[0] = index;

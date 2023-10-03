@@ -3,7 +3,7 @@ FikiCar Language or fclang for short is a new beginner-friendly
 programming language created and optimized for usage
 on mobile phones.
 
-Mobile online learning platform [NDP](https://github.com/FikiCarDev/ndp) 
+Mobile online learning platform NDP
 is using it.
 
 ### About interpreter
@@ -11,14 +11,14 @@ Fclang interpreter is written in Java to take advantage of portability
 of JVM to mobile devices, as it is targeted to them.
 
 Lexer analyses code and creates tokens per rules defined in 
-[token list](https://github.com/FikiCarDev/fclang/blob/master/info/tokensList.txt).
+tokensList.txt.
 
 Parser is of recursive descending type, and the grammar can be found in
 documentation and comments in the appropriate classes.
 
 ### Example
 The following code is displaying some of the features that fclang supports.
-More code snippets are found in [scripts folder](https://github.com/FikiCarDev/fclang/tree/master/scripts).
+More code snippets are found in scripts folder.
 
 ```py
 print "Data types"
@@ -142,7 +142,3 @@ decimal decimal_square = 16.0
 print "Root of 16 is " | sqrt(decimal_square)
 
 ```
-
-### Author
-
-[@FikiCarDev](https://github.com/FikiCarDev)
